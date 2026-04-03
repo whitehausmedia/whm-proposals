@@ -22,6 +22,7 @@ When Rico says "New proposal for [Business Name] at [URL]":
 - Search for Google reviews (rating and count)
 - Pull US Census Bureau ACS 5-Year Estimate data for the business's zip code — specifically median household income
 - Research competitors in the area to understand the local market
+- Always check who built the prospect's current website. Look for meta generator tags, footer credits, CMS signatures, or whois data. Note the incumbent vendor name, their tech stack, and any weaknesses in their work. This intel helps position during outreach. Add incumbent vendor info to HubSpot deal notes.
 - Analyze across these dimensions and return structured JSON:
 
 ```json
