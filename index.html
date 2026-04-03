@@ -16,7 +16,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --cream:#F4EFE6;--b:#080808;--b2:#0E0E0E;--b3:#141414;
-  --g:#C6A44C;--gl:#D4B565;--gp:#E2CA88;
+  --g:#C6A44C;--gl:#D4B565;--gp:#E2CA88;--gc:#9B7A28;
   --gd:rgba(198,164,76,.06);--gb:rgba(198,164,76,.1);
   --t1:rgba(244,239,230,.93);--t2:rgba(244,239,230,.5);--t3:rgba(244,239,230,.28);
   --bd:rgba(198,164,76,.07);
@@ -101,6 +101,8 @@ nav .w{display:flex;justify-content:space-between;align-items:center}
 .svc{padding:28px;border:1px solid var(--bd);border-radius:var(--r);background:rgba(198,164,76,.015);transition:border-color .3s}
 .svc:hover{border-color:rgba(198,164,76,.15)}
 .svc-n{font-size:28px;font-weight:800;color:var(--g);opacity:.4;margin-bottom:12px}
+.svc-icon{margin-bottom:12px}
+.svc-icon svg{width:32px;height:32px;stroke:var(--g);stroke-width:1.3;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:.6}
 .svc h3{font-size:16px;font-weight:700;margin-bottom:6px}
 .svc p{font-size:13px;color:var(--t2);line-height:1.6}
 .svc-divider{width:60px;height:1px;background:var(--g);margin:56px auto;opacity:.3}
@@ -237,6 +239,39 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 .ft-links a:hover{color:var(--t1)}
 .ft-copy{font-size:10px;color:rgba(244,239,230,.15)}
 
+/* ── CREAM SECTIONS ── */
+.cream{background:var(--cream)}
+.cream .ey{color:var(--b);font-weight:700}
+.cream .sh,.cream h2,.cream h3,.cream h4{color:var(--b)}
+.cream .sh .gl{color:var(--gc)}
+.cream .sp,.cream .card p,.cream .svc p,.cream .proc p,.cream .acc-bd p{color:rgba(8,8,8,.6)}
+.cream .svc-n{color:var(--gc);opacity:.5}
+.cream .proc-n{color:var(--gc)}
+.cream .card{background:rgba(8,8,8,.025);border-color:rgba(8,8,8,.07)}
+.cream .card:hover{border-color:rgba(8,8,8,.14)}
+.cream .card-ico{background:rgba(155,122,40,.07);color:var(--gc)}
+.cream .card-ico svg{stroke:var(--gc)}
+.cream .svc{background:rgba(8,8,8,.025);border-color:rgba(8,8,8,.07)}
+.cream .svc:hover{border-color:rgba(8,8,8,.14)}
+.cream .svc-icon svg{stroke:var(--gc)}
+.cream .acc-i{border-color:rgba(8,8,8,.07)}
+.cream .acc-h:hover{background:rgba(155,122,40,.04)}
+.cream .acc-h h4{color:var(--b)}
+.cream .acc-t{color:var(--gc)}
+.cream .proc{border-color:rgba(8,8,8,.07)}
+.cream .folio-card{border-color:rgba(8,8,8,.07)}
+.cream .folio-card:hover{border-color:rgba(8,8,8,.18)}
+.cream .folio-info p{color:rgba(8,8,8,.55)}
+.cream .svc-divider{background:var(--gc)}
+.cream.promise{border-top:none;border-bottom:none}
+.cream .promise-label{color:var(--b)}
+.cream .promise-item h4{color:var(--b)}
+.cream .promise-item p{color:rgba(8,8,8,.6)}
+.cream .promise-ico{border-color:rgba(155,122,40,.18);background:rgba(155,122,40,.06)}
+.cream .promise-ico svg{stroke:var(--gc)}
+.cream .pill{background:var(--b);color:var(--cream)}
+.cream .pill:hover{background:#1a1a1a}
+
 /* ANIMATIONS */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.23,1,.32,1),transform .55s cubic-bezier(.23,1,.32,1)}
 .rv.vis{opacity:1;transform:translateY(0)}
@@ -317,7 +352,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 </section>
 
 <!-- BRAND PROMISE — replaces "worked with brands" -->
-<section class="promise">
+<section class="promise cream">
 <div class="w">
   <div class="promise-label rv">We don't guess. We learn your business first.</div>
   <div class="promise-grid">
@@ -347,7 +382,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 
 
 <!-- THE GAP -->
-<section class="sec" id="why">
+<section class="sec cream" id="why">
 <div class="w">
   <div class="rv">
     <div class="ey">The Problem</div>
@@ -375,8 +410,8 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 </div>
 </section>
 
-<!-- SERVICES -->
-<section class="sec-alt" id="services">
+<!-- SERVICES — What We Build (cream) -->
+<section class="sec cream" id="services">
 <div class="w">
   <div class="rv">
     <div class="ey">What We Build</div>
@@ -389,26 +424,29 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
     <div class="svc rv d3"><div class="svc-n">03</div><h3>Brand Identity</h3><p>Logo, color system, typography, and a style guide that keeps everything consistent across every platform.</p></div>
     <div class="svc rv d4"><div class="svc-n">04</div><h3>Site Care & Hosting</h3><p>Hosting, maintenance, security updates, backups, and monthly reporting so your site never falls behind.</p></div>
   </div>
+</div>
+</section>
 
-  <div class="svc-divider"></div>
-
+<!-- SERVICES — How We Grow It (black) -->
+<section class="sec" id="growth">
+<div class="w">
   <div class="rv">
     <div class="ey">How We Grow It</div>
     <h2 class="sh">Your site is live. <span class="gl">Now let's fill it.</span></h2>
     <p class="sp">A great website is the foundation. These services turn it into a growth engine that brings customers to your door every month.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc rv d1"><div class="svc-n">05</div><h3>Google & Meta Ads</h3><p>Targeted ad campaigns on Google Search and Facebook/Instagram — set up, managed, and optimized monthly so you stop wasting money and start getting leads.</p></div>
-    <div class="svc rv d2"><div class="svc-n">06</div><h3>Email Marketing</h3><p>Automated welcome sequences, follow-ups, promotions, and newsletters that keep your business top-of-mind and bring past customers back.</p></div>
-    <div class="svc rv d3"><div class="svc-n">07</div><h3>Social Media Management</h3><p>Content creation, posting schedules, and community engagement across your platforms — so your brand shows up consistently without eating your time.</p></div>
-    <div class="svc rv d4"><div class="svc-n">08</div><h3>Local SEO & Google Business</h3><p>Google Business Profile optimization, local citations, review strategy, and content that gets you ranking in the map pack where your customers are searching.</p></div>
+    <div class="svc rv d1"><div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><h3>Google & Meta Ads</h3><p>Targeted ad campaigns on Google Search and Facebook/Instagram — set up, managed, and optimized monthly so every dollar works harder toward real leads.</p></div>
+    <div class="svc rv d2"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div><h3>Email Marketing</h3><p>Automated welcome sequences, follow-ups, promotions, and newsletters that keep your business top-of-mind and bring past customers back.</p></div>
+    <div class="svc rv d3"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M18 2h3a1 1 0 0 1 1 1v3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/><circle cx="9" cy="13" r="3"/><path d="M15 19c0-2.5-2.7-4-6-4s-6 1.5-6 4"/></svg></div><h3>Social Media Management</h3><p>Content creation, posting schedules, and community engagement across your platforms — so your brand stays consistent while you stay focused on the business.</p></div>
+    <div class="svc rv d4"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/><line x1="2" y1="22" x2="22" y2="22"/></svg></div><h3>Local SEO & Google Business</h3><p>Google Business Profile optimization, local citations, review strategy, and content that gets you ranking in the map pack where your customers are searching.</p></div>
   </div>
 </div>
 </section>
 
 
 <!-- PORTFOLIO -->
-<section class="sec" id="work">
+<section class="sec cream" id="work">
 <div class="w">
   <div class="rv">
     <div class="ey">Our Work</div>
@@ -495,7 +533,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 </section>
 
 <!-- PROCESS -->
-<section class="sec" id="process">
+<section class="sec cream" id="process">
 <div class="w">
   <div class="rv">
     <div class="ey">How It Works</div>
@@ -548,7 +586,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 
 
 <!-- UNDER THE HOOD -->
-<section class="sec" id="included">
+<section class="sec cream" id="included">
 <div class="w">
   <div class="rv">
     <div class="ey">Under The Hood</div>
