@@ -351,6 +351,26 @@ After generating the proposal, create via HubSpot MCP:
 
 ---
 
+## Volume Prospecting Workflow
+
+When running a batch daycare prospecting campaign:
+
+1. **Find 25 daycares** — Search Google Maps for "[city] daycare" or "[city] childcare." Pull the first 25 unique results. Log business name, website URL, and Google Business Profile link.
+
+1b. **VERIFY OPEN STATUS** — Verify EVERY business is currently open and operating. Check Google Business Profile for 'permanently closed' or 'temporarily closed' status. If closed, skip and find a replacement. Never analyze a closed business.
+
+2. **Score all 25** — Run the Step 1 scrape and analysis on each. Score 75+ = Hot, 50-74 = Warm, 25-49 = Moderate, <25 = Cold.
+
+3. **Rank by score** — Sort all 25 by overall opportunity score, highest first.
+
+4. **Select the Top 10** — The 10 highest-scoring prospects get full proposals: spec site + proposal page + HubSpot deal + email outreach.
+
+5. **Build proposals for Top 10** — Follow the full proposal generation flow for each (Steps 1–6, HubSpot creation, email draft). The bottom 15 get email-only outreach — no full proposal built. See **Bottom 15 — No Email Fallback** below.
+
+5b. **VERIFY PROPOSAL LIVE** — NEVER draft or send an email for a prospect that doesn't have a live proposal on whitehausmedia.com. Verify the proposal URL returns 200 before creating any email. If the build or push failed, skip that prospect's email and flag it in the summary.
+
+---
+
 ## Contact Enrichment Order
 
 When searching for a prospect's contact info, follow this order — do not skip ahead:
