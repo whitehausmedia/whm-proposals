@@ -280,6 +280,10 @@ The spec site is a complete, functional website mockup for the prospect's busine
 - Use typography and design appropriate to the PROSPECT'S industry (NOT the WHM brand — this is THEIR site)
 - Include a subtle "Site by White Haus Media" credit in the footer with link to whitehausmedia.com
 - Load Google Fonts appropriate to the industry
+- Extract actual images from the prospect's current website and use them in the spec site. Never use placeholder text like "Hero photography of children." If the current site has photos, use those image URLs. If no usable photos exist, use CSS-only abstract visuals, or stock images that are related to the business that are premium — never placeholder text.
+- Extract the prospect's brand colors from their current site and use them in the redesign. Not generic pastels or invented colors. Match what they already have.
+- No floating pill badges or stat bubbles. Integrate stats and trust signals naturally into the layout.
+- Design must look premium and custom, not template-like. No cookie-cutter card layouts. Each spec site should feel like it was designed specifically for that business.
 
 ### How the spec site connects to the proposal
 
