@@ -93,7 +93,7 @@ The recommended build fee is calculated from multiple factors, not any single on
 
 **Recommended range: $597 to $1,100.** Present a specific number with a 1-2 sentence rationale so Rico can quickly approve or adjust. Example: "Recommended $997 — affluent area (median income $112K), terrible current site (score 34), strong reputation (4.6 stars, 89 reviews), established business that can invest."
 
-**Minimum build fee: $600.** If the formula calculates a price below $600, round up to $697.
+**Minimum build fee: $600 (negotiation floor).** If the formula calculates a price below $697, round up to $697. This gives room to negotiate down to the $600 floor if needed. The listed price on a proposal should never be below $697.
 
 Rico always reviews and approves or adjusts the recommended price before the proposal is built. Never auto-generate a proposal without pricing confirmation.
 
