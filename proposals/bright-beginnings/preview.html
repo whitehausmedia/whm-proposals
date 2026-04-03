@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bright Beginnings Child Development Center | Cary's Trusted Child Care Since 2000</title>
+<meta name="description" content="Bright Beginnings Child Development Center is a family-owned, 5-star licensed child care center in Cary, NC serving children 3 months to 5 years. Creative Curriculum, low ratios, 26 years of excellence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#E83A33;
+  --red-deep:#CC2E28;
+  --red-dark:#A82520;
+  --sage:#7BAE7F;
+  --sage-deep:#5E9462;
+  --sage-dark:#4A7D4E;
+  --gold:#F2C94C;
+  --gold-soft:#FFF8E1;
+  --lavender:#9B8EC4;
+  --sky:#6BB8D6;
+  --peach:#F5A677;
+  --cream:#FDF8F3;
+  --cream-warm:#FFF5EC;
+  --white:#FFFFFF;
+  --off-white:#FAFAF7;
+  --text:#1E1E2D;
+  --text-body:#3D3D52;
+  --text-light:#6B6B80;
+  --text-muted:#9E9EB0;
+  --border:rgba(0,0,0,.06);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--text);background:var(--off-white);-webkit-font-smoothing:antialiased;line-height:1.65}
+img{max-width:100%;display:block;object-fit:cover}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 1px 24px rgba(0,0,0,.05)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;max-width:1280px;margin:0 auto}
+.nav-brand{display:flex;align-items:center;gap:14px}
+.nav-logo-icon{width:44px;height:44px;background:var(--red);border-radius:12px;display:grid;place-items:center;color:var(--white);font-weight:900;font-size:1.1rem;font-family:'Playfair Display',Georgia,serif}
+.nav-brand-text{font-weight:800;font-size:.95rem;color:var(--text);letter-spacing:-.01em;line-height:1.2}
+.nav-brand-text span{color:var(--red);display:block;font-size:.72rem;font-weight:700;letter-spacing:.04em}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:700;color:var(--text-light);letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{background:var(--red);color:var(--white);padding:12px 28px;border-radius:100px;font-size:.82rem;font-weight:800;letter-spacing:.03em;transition:all .3s;border:none;cursor:pointer;font-family:inherit}
+.nav-cta:hover{background:var(--red-deep);transform:translateY(-1px)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:140px 60px 80px 80px;position:relative;z-index:2}
+.hero-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:20px}
+.hero-label::before{content:'';width:28px;height:2px;background:var(--sage);border-radius:2px}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,4.2vw,3.6rem);line-height:1.08;color:var(--text);margin-bottom:24px;letter-spacing:-.02em}
+.hero h1 span{color:var(--red)}
+.hero-body{font-size:1.05rem;color:var(--text-body);max-width:440px;margin-bottom:36px;line-height:1.75;font-weight:500}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:100px;font-size:.88rem;font-weight:800;border:none;cursor:pointer;font-family:inherit;transition:all .3s}
+.btn-red{background:var(--red);color:var(--white)}
+.btn-red:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,58,51,.2)}
+.btn-sage{background:var(--sage);color:var(--white)}
+.btn-sage:hover{background:var(--sage-deep);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--text);background:var(--text);color:var(--white)}
+.hero-badges{display:flex;gap:20px;flex-wrap:wrap}
+.hero-badge{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-light);font-weight:600}
+.hero-badge svg{width:18px;height:18px;fill:none;stroke:var(--sage);stroke-width:2}
+.hero-media{position:relative;overflow:hidden;background:var(--cream)}
+.hero-media-img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--off-white) 0%,transparent 8%)}
+.hero-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-shapes .circle{position:absolute;border-radius:50%;opacity:.08}
+.hero-shapes .c1{width:300px;height:300px;background:var(--gold);top:-60px;right:-40px}
+.hero-shapes .c2{width:180px;height:180px;background:var(--red);bottom:80px;right:60px}
+.hero-shapes .c3{width:120px;height:120px;background:var(--sage);bottom:200px;right:240px}
+
+/* TRUST BAR */
+.trust-bar{background:var(--sage);padding:28px 40px}
+.trust-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.trust-stat{text-align:center;color:var(--white)}
+.trust-stat strong{display:block;font-size:1.6rem;font-weight:900;letter-spacing:-.02em}
+.trust-stat span{font-size:.72rem;font-weight:700;opacity:.85;letter-spacing:.06em;text-transform:uppercase}
+
+/* SECTION */
+section{padding:100px 40px}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:12px}
+.section-heading{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--text);line-height:1.15;margin-bottom:16px}
+.section-heading span{color:var(--red)}
+.section-sub{font-size:1rem;color:var(--text-light);max-width:520px;line-height:1.75;font-weight:500}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center}
+.about-image{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--cream)}
+.about-image-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--cream) 0%,var(--cream-warm) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px}
+.about-image-placeholder .icon-house{width:80px;height:80px;border-radius:50%;background:var(--red);opacity:.15}
+.about-image-placeholder p{font-size:.88rem;color:var(--text-muted);font-weight:600;text-align:center}
+.about-text p{font-size:1rem;color:var(--text-body);line-height:1.8;margin-bottom:16px;font-weight:500}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.highlight{padding:20px;background:var(--off-white);border-radius:16px;border-left:3px solid var(--sage)}
+.highlight h4{font-size:.88rem;font-weight:800;color:var(--text);margin-bottom:4px}
+.highlight p{font-size:.82rem;color:var(--text-light);line-height:1.6;margin:0;font-weight:500}
+
+/* CURRICULUM */
+.curriculum{background:var(--cream);position:relative;overflow:hidden}
+.curriculum::before{content:'';position:absolute;top:-120px;right:-80px;width:400px;height:400px;border-radius:50%;background:var(--gold);opacity:.06;filter:blur(60px)}
+.curriculum-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.curriculum-details{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+.curriculum-item{display:flex;gap:16px;align-items:flex-start}
+.curriculum-icon{width:44px;height:44px;min-width:44px;border-radius:12px;display:grid;place-items:center;font-size:1.1rem}
+.curriculum-icon.ci-1{background:rgba(232,58,51,.1);color:var(--red)}
+.curriculum-icon.ci-2{background:rgba(123,174,127,.1);color:var(--sage)}
+.curriculum-icon.ci-3{background:rgba(242,201,76,.15);color:var(--peach)}
+.curriculum-icon.ci-4{background:rgba(155,142,196,.1);color:var(--lavender)}
+.curriculum-item h4{font-size:.92rem;font-weight:800;color:var(--text);margin-bottom:3px}
+.curriculum-item p{font-size:.85rem;color:var(--text-light);line-height:1.6;font-weight:500}
+.curriculum-image{border-radius:24px;overflow:hidden;background:var(--white);padding:40px;display:flex;flex-direction:column;gap:24px}
+.curriculum-quote{font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-style:italic;color:var(--text);line-height:1.5;position:relative;padding-left:20px;border-left:3px solid var(--red)}
+.curriculum-attr{font-size:.82rem;color:var(--text-muted);font-weight:700;padding-left:20px}
+
+/* PROGRAMS */
+.programs{background:var(--off-white)}
+.programs-header{max-width:560px;margin-bottom:60px}
+.programs-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.program{border-radius:24px;overflow:hidden;position:relative;transition:transform .4s}
+.program:hover{transform:translateY(-4px)}
+.program-content{position:relative;z-index:2;padding:36px 28px}
+.program h3{font-family:'Playfair Display',Georgia,serif;font-size:1.35rem;margin-bottom:6px}
+.program .ages{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.program .ratio{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.program p{font-size:.88rem;line-height:1.65;opacity:.92;font-weight:500}
+.program-1{grid-column:1/8;background:var(--sage);color:var(--white)}
+.program-2{grid-column:8/13;background:var(--red);color:var(--white)}
+.program-3{grid-column:1/5;background:var(--lavender);color:var(--white)}
+.program-4{grid-column:5/9;background:var(--gold-soft);color:var(--text)}
+.program-4 .ages{color:var(--peach)}
+.program-4 .ratio{background:rgba(0,0,0,.06)}
+.program-5{grid-column:9/13;background:var(--text);color:var(--white)}
+
+/* WHY */
+.why{background:var(--text);color:var(--white);position:relative;overflow:hidden}
+.why::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:var(--sage);opacity:.05;filter:blur(80px)}
+.why .section-label{color:var(--gold)}
+.why .section-heading{color:var(--white)}
+.why .section-heading span{color:var(--gold)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
+.why-num{font-family:'Playfair Display',Georgia,serif;font-size:3rem;color:var(--sage);opacity:.3;margin-bottom:8px;line-height:1}
+.why-item h3{font-size:1.05rem;font-weight:800;margin-bottom:10px;color:var(--white)}
+.why-item p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;font-weight:500}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--cream)}
+.testimonial-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.testimonial-intro .section-heading{margin-bottom:20px}
+.testimonial-cards{display:flex;flex-direction:column;gap:20px}
+.testimonial-card{background:var(--white);border-radius:20px;padding:36px;position:relative;box-shadow:0 4px 32px rgba(0,0,0,.04)}
+.testimonial-card::before{content:'\201C';font-family:'Playfair Display',Georgia,serif;font-size:4rem;color:var(--sage);opacity:.2;position:absolute;top:12px;left:24px;line-height:1}
+.testimonial-quote{font-size:.95rem;color:var(--text);line-height:1.8;font-style:italic;position:relative;z-index:1;margin-bottom:16px;font-weight:500}
+.testimonial-attr{display:flex;align-items:center;gap:10px}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--white);font-weight:800;font-size:.8rem}
+.testimonial-name{font-weight:800;font-size:.82rem;color:var(--text)}
+.testimonial-role{font-size:.72rem;color:var(--text-muted);font-weight:600}
+
+/* CTA */
+.cta-banner{background:linear-gradient(135deg,var(--red) 0%,var(--sage-dark) 100%);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,.05);filter:blur(60px)}
+.cta-banner h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--white);margin-bottom:16px;position:relative;z-index:2}
+.cta-banner p{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 32px;position:relative;z-index:2;line-height:1.75;font-weight:500}
+.cta-banner .btn{position:relative;z-index:2}
+
+/* CONTACT */
+.contact{background:var(--white)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px}
+.contact-info h3{font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:var(--text);margin-bottom:16px}
+.contact-info>p{font-size:1rem;color:var(--text-light);line-height:1.75;margin-bottom:32px;font-weight:500}
+.contact-detail{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start}
+.contact-icon{width:40px;height:40px;min-width:40px;border-radius:12px;background:var(--sage);display:grid;place-items:center}
+.contact-icon svg{width:18px;height:18px;stroke:var(--white);fill:none;stroke-width:2}
+.contact-detail-text strong{display:block;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px}
+.contact-detail-text span{font-size:.95rem;color:var(--text);font-weight:500}
+.contact-detail-text a{color:var(--red);font-weight:700}
+.contact-form{background:var(--off-white);border-radius:24px;padding:48px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-size:.92rem;color:var(--text);background:var(--white);transition:border-color .2s;font-weight:500}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--sage)}
+.form-group textarea{height:110px;resize:vertical}
+.form-submit{width:100%;padding:16px;background:var(--red);color:var(--white);border:none;border-radius:100px;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;letter-spacing:.03em;cursor:pointer;transition:all .3s}
+.form-submit:hover{background:var(--red-deep)}
+
+/* FOOTER */
+.footer{background:var(--text);color:rgba(255,255,255,.5);padding:60px 40px}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
+.footer-brand-name{font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;color:var(--white);margin-bottom:12px}
+.footer-brand p{font-size:.88rem;line-height:1.7;max-width:300px;font-weight:500}
+.footer h4{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:.88rem;color:rgba(255,255,255,.5);transition:color .2s;font-weight:500}
+.footer-links a:hover{color:var(--sage)}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:32px;margin-top:32px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:.78rem;font-weight:500}
+.footer-bottom a{color:var(--sage);text-decoration:none}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-content{padding:120px 24px 60px}
+  .hero-media{height:360px}
+  .hero-media::after{background:linear-gradient(180deg,var(--off-white) 0%,transparent 15%)}
+  .nav-inner{padding:14px 24px}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  section{padding:72px 24px}
+  .about-layout,.contact-layout,.testimonial-layout,.curriculum-layout{grid-template-columns:1fr;gap:40px}
+  .programs-grid{grid-template-columns:1fr}
+  .programs-grid .program{grid-column:auto!important}
+  .why-grid{grid-template-columns:1fr;gap:32px}
+  .trust-inner{gap:24px}
+  .trust-stat strong{font-size:1.3rem}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:8px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo-icon">BB</div>
+      <span class="nav-brand-text">Bright Beginnings<span>Child Development Center</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:9193670009" style="color:var(--red);font-weight:800">919-367-0009</a></li>
+      <li><button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule a Tour</button></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label reveal">Cary, NC Child Development</div>
+    <h1 class="reveal">Where love and learning go <span>hand in hand</span></h1>
+    <p class="hero-body reveal">A family-owned child development center serving Cary families since 2000. Five-star NC licensed, Creative Curriculum certified, and built on the belief that every child deserves a bright beginning.</p>
+    <div class="hero-actions reveal">
+      <button class="btn btn-red" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule a Tour</button>
+      <a href="#programs" class="btn btn-outline">View Programs</a>
+    </div>
+    <div class="hero-badges reveal">
+      <span class="hero-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> 5-Star NC Licensed</span>
+      <span class="hero-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Open 7am - 6pm</span>
+      <span class="hero-badge"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Ages 3 Months - 5 Years</span>
+    </div>
+  </div>
+  <div class="hero-media">
+    <div class="hero-shapes">
+      <div class="circle c1"></div>
+      <div class="circle c2"></div>
+      <div class="circle c3"></div>
+    </div>
+    <img class="hero-media-img" src="https://brightbeginningsofcary.com/wp-content/uploads/2022/07/iStock-637859512-372x425.jpg" alt="Children learning at Bright Beginnings">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-stat"><strong>26</strong><span>Years Serving Cary</span></div>
+    <div class="trust-stat"><strong>188</strong><span>Children Enrolled</span></div>
+    <div class="trust-stat"><strong>5-Star</strong><span>NC Licensed Center</span></div>
+    <div class="trust-stat"><strong>1:4</strong><span>Infant Ratio</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-layout">
+      <div class="about-image reveal">
+        <div class="about-image-placeholder">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="40" fill="#E83A33" opacity=".12"/><path d="M40 20c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 36c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16z" fill="#E83A33" opacity=".25"/><path d="M40 28c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12zm0 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" fill="#E83A33" opacity=".35"/></svg>
+          <p>Founded by educators Shirley &amp; Leon Herndon in May 2000</p>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-heading">Built by educators. Run by <span>family.</span></h2>
+        <p>Bright Beginnings was founded in May 2000 by Shirley and Leon Herndon — both retired educators with over 70 combined years in the Wake County and Chatham County school systems. Shirley spent 32 years as a teacher and assistant principal. Leon served 38 years as a teacher, assistant principal, and principal.</p>
+        <p>Their philosophy is simple: the children who thrive in school are the ones who were lovingly taught, encouraged, and challenged early. Today, their daughter Lisa Ware serves as Assistant Director and their son Linwood as Marketing Director. Every grandchild in the family has attended the program.</p>
+        <div class="about-highlights">
+          <div class="highlight">
+            <h4>5-Star NC License</h4>
+            <p>The highest quality rating awarded by the state of North Carolina</p>
+          </div>
+          <div class="highlight">
+            <h4>Family Owned</h4>
+            <p>Independent, non-franchise center with second-generation leadership</p>
+          </div>
+          <div class="highlight">
+            <h4>Low Ratios</h4>
+            <p>Below state-required student-to-teacher ratios in every classroom</p>
+          </div>
+          <div class="highlight">
+            <h4>Open Door Policy</h4>
+            <p>Parents are welcome to visit anytime and observe their child's classroom</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="section-inner">
+    <div class="curriculum-layout">
+      <div class="reveal">
+        <div class="section-label">Our Approach</div>
+        <h2 class="section-heading">The Creative Curriculum<span>&reg;</span> System</h2>
+        <p class="section-sub">Young children learn best by doing. Our curriculum is built on the belief that learning is not just repeating what someone else says — it requires active thinking, hands-on exploration, and purposeful play.</p>
+        <div class="curriculum-details">
+          <div class="curriculum-item">
+            <div class="curriculum-icon ci-1">&#9829;</div>
+            <div>
+              <h4>Social-Emotional Growth</h4>
+              <p>Building confidence, empathy, and the social skills children need to thrive in group settings and beyond.</p>
+            </div>
+          </div>
+          <div class="curriculum-item">
+            <div class="curriculum-icon ci-2">&#9733;</div>
+            <div>
+              <h4>Cognitive Development</h4>
+              <p>Problem-solving, critical thinking, and early math and science concepts through guided exploration.</p>
+            </div>
+          </div>
+          <div class="curriculum-item">
+            <div class="curriculum-icon ci-3">&#9998;</div>
+            <div>
+              <h4>Language &amp; Literacy</h4>
+              <p>Rich vocabulary, early reading skills, and expressive communication through stories, songs, and conversation.</p>
+            </div>
+          </div>
+          <div class="curriculum-item">
+            <div class="curriculum-icon ci-4">&#9834;</div>
+            <div>
+              <h4>Physical Development</h4>
+              <p>Fine and gross motor skills through art, outdoor play, music, and hands-on activities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="curriculum-image reveal">
+        <div class="curriculum-quote">"All children have strengths. Our job is to help them discover those strengths through playful, social, and instructional interactions."</div>
+        <div class="curriculum-attr">— Shirley Herndon, Co-Founder</div>
+        <img src="https://brightbeginningsofcary.com/wp-content/uploads/2022/07/iStock-186851863-scaled-e1658521134486-372x425.jpg" alt="Children learning" style="border-radius:16px;margin-top:12px;max-height:280px;width:100%;object-fit:cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="section-inner">
+    <div class="programs-header reveal">
+      <div class="section-label">Programs</div>
+      <h2 class="section-heading">Care designed for <span>every stage</span></h2>
+      <p class="section-sub">From 3 months through kindergarten readiness, each program is built around where your child is developmentally — and where they are headed next.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program program-1 reveal">
+        <div class="program-content">
+          <div class="ages">3 - 12 Months</div>
+          <h3>Infant Care</h3>
+          <div class="ratio">&#128118; 1:4 Ratio</div>
+          <p>Nurturing, individualized attention in a warm and secure environment. Each baby follows their own schedule for feeding, napping, and sensory play with a dedicated caregiver they know and trust.</p>
+        </div>
+      </div>
+      <div class="program program-2 reveal">
+        <div class="program-content">
+          <div class="ages">12 - 24 Months</div>
+          <h3>Toddler Program</h3>
+          <div class="ratio">&#128103; 1:5 Ratio</div>
+          <p>Hands-on exploration and early social development. Language-rich activities that spark curiosity and build the confidence toddlers need to engage with the world around them.</p>
+        </div>
+      </div>
+      <div class="program program-3 reveal">
+        <div class="program-content">
+          <div class="ages">24 - 36 Months</div>
+          <h3>Preschool I</h3>
+          <div class="ratio">&#128214; 1:8 Ratio</div>
+          <p>Structured play and early academics in a nurturing classroom setting.</p>
+        </div>
+      </div>
+      <div class="program program-4 reveal">
+        <div class="program-content">
+          <div class="ages">3 Years Old</div>
+          <h3>Preschool II</h3>
+          <div class="ratio">&#127912; 1:9 Ratio</div>
+          <p>Creative Curriculum in action — building kindergarten readiness through purposeful play and guided learning.</p>
+        </div>
+      </div>
+      <div class="program program-5 reveal">
+        <div class="program-content">
+          <div class="ages">4 - 5 Years Old</div>
+          <h3>Kinderprep</h3>
+          <div class="ratio">&#127891; 1:12 Ratio</div>
+          <p>Advanced preparation for kindergarten with structured literacy, math readiness, and social skills development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+  <div class="section-inner">
+    <div class="section-label reveal">Why Bright Beginnings</div>
+    <h2 class="section-heading reveal">What families value <span>most</span></h2>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <h3>Founded by Educators, Not Investors</h3>
+        <p>Shirley and Leon Herndon built this center after 70 combined years in public education. Every decision — from curriculum to hiring — is informed by what actually helps children learn.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">02</div>
+        <h3>Below-Required Ratios</h3>
+        <p>Our student-to-teacher ratios are lower than what the state requires. That means more individual attention, more meaningful interactions, and fewer children competing for a teacher's time.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">03</div>
+        <h3>26 Years of Community Trust</h3>
+        <p>Since May 2000, Cary families have trusted Bright Beginnings with what matters most. That kind of longevity speaks to the consistency of care we provide every single day.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">04</div>
+        <h3>Low Staff Turnover</h3>
+        <p>Many of our teachers have been here for years. Children build real relationships with their caregivers — the kind of consistency that creates security and accelerates development.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">05</div>
+        <h3>Diversity as a Strength</h3>
+        <p>Our diverse student body and staff reflect the world outside. This reinforces to every child that "the world looks like me" — a value the Herndons have championed since day one.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">06</div>
+        <h3>Smartcare Parent App</h3>
+        <p>Stay connected throughout the day with real-time updates, daily activity reports, and progress tracking through the Smartcare platform. Two parent-teacher conferences annually.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="testimonial-layout">
+      <div class="testimonial-intro reveal">
+        <div class="section-label">From Our Families</div>
+        <h2 class="section-heading">Parents trust Bright Beginnings with what matters <span>most</span></h2>
+        <p class="section-sub">Every day, we earn the confidence of Cary families by treating their children like our own.</p>
+      </div>
+      <div class="testimonial-cards reveal">
+        <div class="testimonial-card">
+          <blockquote class="testimonial-quote">"My daughter has been excelling at kindergarten and according to her teacher, she is demonstrating mastery for some of the Wake County 1st grade standards. This is largely thanks to her time at Bright Beginnings."</blockquote>
+          <div class="testimonial-attr">
+            <div class="testimonial-avatar" style="background:var(--red)">R</div>
+            <div>
+              <div class="testimonial-name">Rhonda R.</div>
+              <div class="testimonial-role">Google Review</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote class="testimonial-quote">"The owners have worked diligently in the triangle school system for over 40 years! Their love and care shows in every aspect of the center."</blockquote>
+          <div class="testimonial-attr">
+            <div class="testimonial-avatar" style="background:var(--sage)">R</div>
+            <div>
+              <div class="testimonial-name">Reggie W.</div>
+              <div class="testimonial-role">Google Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Your child's bright beginning starts here</h2>
+  <p>Schedule a tour and see firsthand why Cary families have trusted us for over 26 years. Parents are welcome to visit anytime.</p>
+  <button class="btn" style="background:var(--white);color:var(--red);font-weight:800" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule a Tour</button>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <div class="section-label">Get in Touch</div>
+        <h3>We would love to meet your family</h3>
+        <p>Have questions about enrollment, programs, or scheduling? Call us anytime during business hours or fill out the form and we will get back to you promptly.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Address</strong>
+            <span>123 Bright Beginning Way, Cary, NC 27519</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            <span><a href="tel:9193670009">919-367-0009</a></span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span><a href="mailto:loveandlearning@brightbeginningsofcary.com">loveandlearning@brightbeginningsofcary.com</a></span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Hours</strong>
+            <span>Monday - Friday, 7:00am - 6:00pm</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="event.preventDefault();this.querySelector('.form-submit').textContent='Message Sent';this.querySelector('.form-submit').style.background='var(--sage)'">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="parentName">Parent / Guardian Name</label>
+            <input type="text" id="parentName" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(919) 000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="email@example.com" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="childAge">Child's Age</label>
+            <select id="childAge">
+              <option value="">Select age range</option>
+              <option>Infant (3 - 12 months)</option>
+              <option>Toddler (12 - 24 months)</option>
+              <option>Preschool I (24 - 36 months)</option>
+              <option>Preschool II (3 years)</option>
+              <option>Kinderprep (4 - 5 years)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="startDate">Desired Start Date</label>
+            <input type="text" id="startDate" placeholder="Month / Year">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your family and what you are looking for..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Bright Beginnings</div>
+      <p>A family-owned child development center in Cary, NC, serving children ages 3 months to 5 years since 2000. Where love and learning go hand in hand.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#curriculum">Curriculum</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Programs</h4>
+      <ul class="footer-links">
+        <li><a href="#programs">Infant Care</a></li>
+        <li><a href="#programs">Toddler Program</a></li>
+        <li><a href="#programs">Preschool I &amp; II</a></li>
+        <li><a href="#programs">Kinderprep</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Bright Beginnings Child Development Center. All rights reserved.</span>
+    <span>Site by <a href="https://whitehausmedia.com" target="_blank" rel="noopener">White Haus Media</a></span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+// Reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+reveals.forEach(el=>observer.observe(el));
+
+// Mobile menu
+const toggle=document.getElementById('menuToggle');
+const links=document.querySelector('.nav-links');
+toggle.addEventListener('click',()=>{
+  const open=links.style.display==='flex';
+  if(open){links.removeAttribute('style');return}
+  links.style.display='flex';
+  links.style.flexDirection='column';
+  links.style.position='absolute';
+  links.style.top='100%';
+  links.style.left='0';
+  links.style.right='0';
+  links.style.background='rgba(255,255,255,.98)';
+  links.style.padding='20px 24px';
+  links.style.gap='14px';
+  links.style.boxShadow='0 8px 32px rgba(0,0,0,.06)';
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    if(links.style.position==='absolute')links.removeAttribute('style');
+  });
+});
+</script>
+</body>
+</html>

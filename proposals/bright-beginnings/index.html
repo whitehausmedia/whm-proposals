@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bright Beginnings Child Development Center — Website Proposal | White Haus Media</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F4EFE6;
+  --black:#080808;
+  --gold:#C9A84C;
+  --gold-light:#D4BA6A;
+  --gold-border:rgba(201,168,76,.25);
+  --gold-dim:rgba(201,168,76,.06);
+  --panel:rgba(255,255,255,.03);
+  --soft-border:rgba(255,255,255,.06);
+  --text-primary:rgba(255,255,255,.88);
+  --text-secondary:rgba(255,255,255,.5);
+  --text-muted:rgba(255,255,255,.28);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--black);color:var(--text-primary);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none;color:inherit;transition:all .2s}
+
+/* Progress bar */
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:1000;width:0%;transition:width .1s linear}
+
+/* Nav */
+.nav{position:fixed;top:2px;left:0;right:0;z-index:100;padding:0 24px;transition:all .3s}
+.nav.scrolled{background:rgba(8,8,8,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1040px;margin:0 auto;padding:16px 0}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{height:28px}
+.nav-logo-text{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.88)}
+.nav-logo-text em{font-style:italic;color:var(--gold);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-pill{background:var(--gold);color:var(--black);padding:8px 20px;border-radius:100px;font-size:.82rem;font-weight:700;transition:all .2s}
+.nav-pill:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* Sections */
+.section{padding:100px 24px}
+.wrap{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:1040px;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:14px}
+.gold-rule{width:48px;height:1.5px;background:var(--gold);margin-bottom:32px;border-radius:2px}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* === HERO === */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:5%;right:15%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);padding:8px 20px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:32px}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:4rem;font-weight:500;line-height:1.08;color:rgba(255,255,255,.92);max-width:700px;margin:0 auto 24px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-body{font-size:1.08rem;color:var(--text-secondary);max-width:520px;margin:0 auto 48px;line-height:1.7}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--soft-border);border:1px solid var(--soft-border);border-radius:14px;overflow:hidden;max-width:640px;margin:0 auto}
+.hero-meta-item{background:var(--black);padding:20px 16px;text-align:center}
+.hero-meta-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:4px}
+.hero-meta-value{font-size:.88rem;font-weight:600;color:var(--text-primary)}
+
+/* === LETTER === */
+.letter{padding:100px 24px}
+.letter-card{max-width:680px;margin:0 auto}
+.letter-greeting{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;color:rgba(255,255,255,.85);margin-bottom:8px}
+.letter-rule{width:40px;height:1.5px;background:var(--gold-border);margin:20px 0 28px;border-radius:2px}
+.letter p{font-size:.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:20px}
+.letter-sig{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:28px;border-top:1px solid var(--soft-border)}
+.letter-sig img{height:24px;opacity:.5}
+.letter-sig-text{font-size:.82rem;color:var(--text-muted);line-height:1.5}
+.letter-sig-text strong{color:var(--text-secondary);display:block}
+
+/* === OPPORTUNITY === */
+.opp{padding:100px 24px}
+.opp h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px;letter-spacing:-.01em}
+.opp>div>.sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px;max-width:600px}
+.opp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1040px;margin:0 auto}
+.opp-card{background:var(--panel);border:1px solid var(--soft-border);border-radius:16px;padding:32px 28px;transition:all .3s;position:relative;overflow:hidden}
+.opp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:0;transition:opacity .3s}
+.opp-card:hover{border-color:var(--gold-border);background:rgba(255,255,255,.04)}
+.opp-card:hover::before{opacity:1}
+.opp-num{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:12px}
+.opp-card h3{font-size:1.05rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px}
+.opp-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.65}
+
+/* === SOLUTION === */
+.solution{padding:100px 24px}
+.solution h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px}
+.solution .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px;max-width:600px}
+.del-list{display:flex;flex-direction:column;gap:0}
+.del-item{display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--soft-border)}
+.del-item:first-child{border-top:1px solid var(--soft-border)}
+.del-star{color:var(--gold);font-size:.9rem;flex-shrink:0}
+.del-item span{font-size:.95rem;color:var(--text-primary);font-weight:500}
+
+/* === PREVIEW === */
+.preview{padding:100px 24px}
+.preview h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px}
+.preview .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:40px;max-width:600px}
+.browser{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.4);max-width:1040px;margin:0 auto}
+.browser-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
+.bd{width:10px;height:10px;border-radius:50%}
+.bd.r{background:#ff5f57}.bd.y{background:#febc2e}.bd.g{background:#28c840}
+.browser-url{margin-left:14px;background:rgba(255,255,255,.05);border-radius:6px;padding:5px 14px;font-size:.76rem;color:rgba(255,255,255,.3);flex:1;max-width:380px}
+.browser-open{margin-left:auto;font-size:.78rem;color:var(--gold);font-weight:600}
+.browser-open:hover{color:var(--gold-light)}
+.preview-iframe{width:100%;height:700px;border:none;display:block;background:#fafaf7}
+.preview-caption{text-align:center;margin-top:16px;font-size:.82rem;color:var(--text-muted)}
+
+/* === PROCESS === */
+.process{padding:100px 24px}
+.process h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px}
+.process .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1040px;margin:0 auto}
+.step{background:var(--panel);border:1px solid var(--soft-border);border-radius:16px;padding:28px 24px;text-align:center;position:relative}
+.step-num{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:12px}
+.step h4{font-size:1rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px}
+.step p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+.step-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--gold-border);font-size:1.2rem}
+
+/* === PRICING === */
+.pricing{padding:100px 24px}
+.pricing-head{text-align:center;margin-bottom:48px}
+.pricing-head h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:4px}
+.pricing-cards{display:grid;grid-template-columns:1fr;gap:20px;max-width:540px;margin:0 auto}
+.p-card{background:var(--panel);border:1px solid var(--gold-border);border-radius:20px;padding:48px 36px;text-align:center;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.2))}
+.p-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);padding:5px 14px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.p-card .p-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.p-card .p-headline{font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:28px}
+.p-amount{font-size:3.6rem;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.p-amount sup{font-size:1.4rem;vertical-align:super;margin-right:2px}
+.p-label{font-size:.85rem;color:var(--text-muted);margin-top:6px;margin-bottom:28px}
+.p-list{text-align:left;margin-bottom:32px}
+.p-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--soft-border)}
+.p-item:last-child{border:none}
+.p-check{color:var(--gold);flex-shrink:0;margin-top:2px;font-size:.85rem}
+.p-item span{font-size:.88rem;color:var(--text-secondary)}
+.p-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);padding:16px 36px;border-radius:100px;font-size:.95rem;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all .25s}
+.p-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.25)}
+.p-note{font-size:.78rem;color:var(--text-muted);margin-top:16px}
+
+/* Care plans */
+.care-plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:540px;margin:24px auto 0}
+.care-card{background:var(--panel);border:1px solid var(--soft-border);border-radius:16px;padding:28px 22px;text-align:center;transition:all .2s}
+.care-card.rec{border-color:var(--gold-border)}
+.care-card.rec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.care-card.rec{position:relative;overflow:hidden}
+.care-name{font-size:.92rem;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:4px}
+.care-price{font-size:1.6rem;font-weight:800;color:#fff}
+.care-price span{font-size:.82rem;font-weight:500;color:var(--text-muted)}
+.care-desc{font-size:.78rem;color:var(--text-secondary);margin-top:8px;line-height:1.6}
+.care-note{text-align:center;max-width:540px;margin:16px auto 0;font-size:.78rem;color:var(--text-muted)}
+
+/* === CTA === */
+.cta-section{padding:100px 24px}
+.cta-box{max-width:680px;margin:0 auto;background:rgba(201,168,76,.04);border:1px solid var(--gold-border);border-radius:24px;padding:64px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 60%);pointer-events:none}
+.cta-box h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:16px;position:relative}
+.cta-box p{font-size:.95rem;color:var(--text-secondary);line-height:1.7;max-width:480px;margin:0 auto 32px;position:relative}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);padding:16px 32px;border-radius:100px;font-size:.95rem;font-weight:700;transition:all .25s}
+.cta-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.cta-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--text-secondary);padding:16px 24px;border-radius:100px;font-size:.9rem;font-weight:500;border:1px solid var(--soft-border);transition:all .2s}
+.cta-secondary:hover{border-color:var(--gold-border);color:var(--gold)}
+
+/* === FOOTER === */
+.footer{padding:40px 24px;text-align:center;border-top:1px solid var(--soft-border)}
+.footer img{height:20px;margin:0 auto 12px;opacity:.3}
+.footer p{font-size:.78rem;color:var(--text-muted)}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .hero h1{font-size:2.6rem}
+  .hero-meta{grid-template-columns:1fr 1fr}
+  .opp-grid{grid-template-columns:1fr}
+  .step-grid{grid-template-columns:1fr 1fr}
+  .step-arrow{display:none}
+  .care-plans{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .section{padding:64px 20px}
+  .hero{padding:120px 20px 80px}
+  .cta-box{padding:40px 24px}
+  .opp h2,.solution h2,.preview h2,.process h2,.pricing-head h2,.cta-box h2{font-size:1.9rem}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2rem}
+  .hero-meta{grid-template-columns:1fr}
+  .p-card{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+      <span class="nav-logo-text">White Haus <em>Media</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#preview">Preview</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="#contact" class="nav-pill">Let's Talk</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-pill reveal">Prepared exclusively for Bright Beginnings Child Development Center</div>
+    <h1 class="reveal">Twenty-six years of trust deserve a website that <em>shows it.</em></h1>
+    <p class="hero-body reveal">You and Leon built something rare in Cary — a family-owned center with a 5-star NC license, 188 children, and a 26-year track record. Your digital presence should reflect the reputation you have earned.</p>
+    <div class="hero-meta reveal">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared for</div>
+        <div class="hero-meta-value">Shirley</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared by</div>
+        <div class="hero-meta-value">White Haus Media</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Date</div>
+        <div class="hero-meta-value">April 3, 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Delivery</div>
+        <div class="hero-meta-value">Under 2 Weeks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter">
+  <div class="letter-card">
+    <div class="eyebrow reveal">A note from White Haus Media</div>
+    <div class="letter-greeting reveal">Dear Shirley,</div>
+    <div class="letter-rule"></div>
+    <p class="reveal">We spent time looking through Bright Beginnings' online presence and came away genuinely impressed. Twenty-six years as co-owners, both retired educators with over 70 combined years in the Wake County and Chatham County school systems, a 5-star NC license, 188 children enrolled, and a family legacy that now includes Lisa and Linwood in leadership roles — this is not a daycare, it is an institution. The gap we see is not in your business. It is in how well your website communicates what you have built.</p>
+    <p class="reveal">So instead of just writing up a proposal, we built a working concept of what your website could look like. Not a generic mockup — a fully designed, interactive preview built specifically around Bright Beginnings' programs, your Creative Curriculum approach, and the Herndon family story. It is embedded below so you can scroll through it right here.</p>
+    <p class="reveal">Everything is outlined below: what we see as the opportunity, exactly what we would build, how we work together, and what it costs. No pressure — just an honest look at what is possible.</p>
+    <div class="letter-sig reveal">
+      <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="WHM">
+      <div class="letter-sig-text">
+        <strong>White Haus Media</strong>
+        Boutique Web Design &amp; Digital Media
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="opp section" id="opportunity">
+  <div class="wrap-wide">
+    <div class="eyebrow reveal">Where the opportunity lives</div>
+    <h2 class="reveal">Your online presence has room to work harder for you.</h2>
+    <p class="sub reveal">After reviewing your current website, we identified four areas where a stronger digital presence would directly impact how many new families choose Bright Beginnings.</p>
+    <div class="opp-grid">
+      <div class="opp-card reveal">
+        <div class="opp-num">01</div>
+        <h3>The Site Does Not Reflect a 5-Star Center</h3>
+        <p>Your current website uses stock photography throughout — none of the images show your actual facility, classrooms, or staff. Parents in zip code 27519, where the median household income is $165,000, are comparing options carefully. A site built on generic stock images next to centers with polished, branded websites creates a disconnect with the quality of care you actually provide.</p>
+      </div>
+      <div class="opp-card reveal">
+        <div class="opp-num">02</div>
+        <h3>No Mobile-Responsive Design</h3>
+        <p>The current site scores a 5 out of 100 on mobile usability. Parents searching "child care near me Cary" are overwhelmingly on their phones. When a site does not render properly on mobile, most visitors leave within seconds — before they ever learn about your Creative Curriculum, your ratios, or your 26-year track record.</p>
+      </div>
+      <div class="opp-card reveal">
+        <div class="opp-num">03</div>
+        <h3>Your Story Is Not Being Told</h3>
+        <p>Shirley's 32 years in Wake County schools, Leon's 38 years as a principal, the property built on Bertha Scott Herndon's land, Lisa and Linwood continuing the family mission — this is an extraordinary founding story. The current site mentions none of it. In a market full of franchise centers, your family legacy is your strongest differentiator and it is completely absent from your digital presence.</p>
+      </div>
+      <div class="opp-card reveal">
+        <div class="opp-num">04</div>
+        <h3>No Search Engine Foundation</h3>
+        <p>The site has no meta descriptions, no Open Graph tags for social sharing, no LocalBusiness schema markup, and no structured data that helps Google understand what Bright Beginnings is. For competitive local searches in the Cary 27519 area, these fundamentals are what determine whether families find you or find a competitor first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution section" id="solution">
+  <div class="wrap">
+    <div class="eyebrow reveal">What we would build</div>
+    <h2 class="reveal">A complete digital home for Bright Beginnings.</h2>
+    <p class="sub reveal">Every site we create is built from scratch around your specific business. Here is exactly what is included — delivered in under two weeks.</p>
+    <div class="del-list">
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Custom responsive homepage with hero section showcasing your 5-star license and 26-year legacy</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Dedicated programs page with individual descriptions for all five age groups and teacher-student ratios</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>About page telling the Herndon family story — Shirley, Leon, Lisa, Linwood, and the Bertha Scott Herndon legacy</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Creative Curriculum section explaining your educational philosophy and four developmental areas</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Parent testimonials section featuring real family stories and Google reviews</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Tour scheduling and enrollment inquiry form with age-group selection</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>SEO foundation — LocalBusiness schema, Open Graph tags, meta structure, sitemap</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Mobile-first design optimized for parents browsing on their phones</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section class="preview section" id="preview">
+  <div class="wrap-wide">
+    <div class="eyebrow reveal">See it for yourself</div>
+    <h2 class="reveal">We already built you a working concept.</h2>
+    <p class="sub reveal">Rather than mockups, we built a fully interactive preview. Every section is real content. Scroll through below or open the full screen version.</p>
+    <div class="browser reveal">
+      <div class="browser-bar">
+        <div class="bd r"></div><div class="bd y"></div><div class="bd g"></div>
+        <div class="browser-url">Bright Beginnings — Concept Preview by White Haus Media</div>
+        <a href="preview.html" target="_blank" class="browser-open">Open full screen &#8599;</a>
+      </div>
+      <iframe src="preview.html" class="preview-iframe" title="Bright Beginnings Website Concept" loading="lazy"></iframe>
+    </div>
+    <p class="preview-caption">Fully working prototype — not a mockup.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process section">
+  <div class="wrap-wide">
+    <div class="eyebrow reveal">How we work together</div>
+    <h2 class="reveal">Four steps. Under two weeks.</h2>
+    <p class="sub reveal">From kickoff to launch, the process is straightforward and transparent.</p>
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>Discovery Call</h4>
+        <p>We talk about your goals, your families, and what success looks like for Bright Beginnings online.</p>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h4>Design &amp; Build</h4>
+        <p>We create your site from scratch — no templates, no shortcuts. Every element is tailored to your business.</p>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h4>Review &amp; Refine</h4>
+        <p>You see everything before it goes live. We adjust until it is exactly right.</p>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h4>Launch &amp; Support</h4>
+        <p>We handle deployment, and your site keeps working for your business long after launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="investment">
+  <div>
+    <div class="pricing-head">
+      <div class="eyebrow reveal">Preliminary pricing</div>
+      <h2 class="reveal">An investment in where your business is headed.</h2>
+    </div>
+    <div class="pricing-cards">
+      <div class="p-card reveal">
+        <div class="p-badge">&#10003; Recommended</div>
+        <div class="p-eyebrow">Custom Website Build</div>
+        <div class="p-headline">Everything Bright Beginnings needs online.</div>
+        <div class="p-amount"><sup>$</sup>1,197</div>
+        <div class="p-label">One-time investment</div>
+        <div class="p-list">
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Fully custom responsive website design</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Mobile-first build optimized for parents</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>SEO fundamentals (schema, OG tags, meta)</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Creative Curriculum &amp; programs showcase</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Herndon family story &amp; legacy section</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Tour scheduling &amp; enrollment inquiry form</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Parent testimonials integration</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Delivered in under 2 weeks</span></div>
+        </div>
+        <a href="#contact" class="p-cta">Book a Free Consultation</a>
+        <p class="p-note">No obligation. We will walk through the concept together and answer every question.</p>
+      </div>
+    </div>
+
+    <!-- Care Plans -->
+    <div class="care-plans">
+      <div class="care-card reveal">
+        <div class="care-name">Core Care</div>
+        <div class="care-price">$47<span>/mo</span></div>
+        <p class="care-desc">Software updates, 2 content edits/month, hosting coordination.</p>
+      </div>
+      <div class="care-card rec reveal">
+        <div class="care-name">Full Care</div>
+        <div class="care-price">$97<span>/mo</span></div>
+        <p class="care-desc">Everything in Core + security monitoring, uptime monitoring, monthly performance report.</p>
+      </div>
+    </div>
+    <p class="care-note">Your site keeps working for you long after launch. Both plans are month-to-month with no commitments.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-box reveal">
+    <h2>Ready to see what's possible?</h2>
+    <p>Everything above is a recommendation based on what we found. Book a free consultation and we will walk through the concept together, answer every question, and make sure the scope fits exactly where your business is headed.</p>
+    <div class="cta-btns">
+      <a href="https://whitehausmedia.com" class="cta-primary">Book a Free Consultation</a>
+      <a href="mailto:hello@whitehausmedia.com" class="cta-secondary">hello@whitehausmedia.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+  <p>&copy; 2026 White Haus Media &middot; Wake Forest, NC</p>
+</footer>
+
+<!-- JS: Progress bar, scroll nav, reveal animations -->
+<script>
+(function(){
+  // Progress bar
+  const prog=document.getElementById('progress');
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    const s=window.scrollY;
+    prog.style.width=(s/h*100)+'%';
+    if(s>60)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Reveal on scroll
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+  // Smooth scroll nav links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+})();
+</script>
+</body>
+</html>
