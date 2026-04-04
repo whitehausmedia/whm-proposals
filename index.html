@@ -852,12 +852,6 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 
 
 <script>
-// Chatbot name randomization
-var chatName=Math.random()<.5?'Shiloh':'Noah';
-document.getElementById('chatAvatar').textContent=chatName[0];
-document.getElementById('chatName').textContent=chatName;
-document.getElementById('chatGreeting').textContent="Hey! \uD83D\uDC4B I'm "+chatName+", your White Haus Media concierge. I can answer questions about our services, process, or help you schedule a discovery call. What can I help you with?";
-
 // Scroll reveal
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')})},{threshold:.06});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
@@ -1026,6 +1020,12 @@ calcROI();
 </div>
 
 <script>
+// Chatbot name randomization
+var chatName=Math.random()<.5?'Shiloh':'Noah';
+document.getElementById('chatAvatar').textContent=chatName[0];
+document.getElementById('chatName').textContent=chatName;
+document.getElementById('chatGreeting').textContent="Hey! \uD83D\uDC4B I'm "+chatName+", your White Haus Media concierge. I can answer questions about our services, process, or help you schedule a discovery call. What can I help you with?";
+
 var chatOpen=false;
 var chatHistory=[];
 var chatBusy=false;
