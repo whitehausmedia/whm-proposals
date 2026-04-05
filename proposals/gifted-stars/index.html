@@ -365,11 +365,15 @@
         }
 
         .price-details li:before {
-            content: "✓";
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 10px;
+            border: solid var(--gold);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
             position: absolute;
             left: 0;
-            color: var(--gold);
-            font-weight: bold;
         }
 
         .price-cta {
@@ -591,10 +595,10 @@
             <p>A clean, modern website built on semantic HTML that search engines love. Responsive design that works on phones. Fast load times. Clear information architecture that makes it easy for parents to:</p>
 
             <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                <li style="margin-bottom: 12px;">✓ Find your programs by age group</li>
-                <li style="margin-bottom: 12px;">✓ Discover your enrichment curriculum (STEM, Spanish, yoga, cooking, sign language)</li>
-                <li style="margin-bottom: 12px;">✓ See your two-campus locations and hours</li>
-                <li style="margin-bottom: 12px;">✓ Get on a call to enroll</li>
+                <li style="margin-bottom: 12px;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"/></svg>Find your programs by age group</li>
+                <li style="margin-bottom: 12px;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"/></svg>Discover your enrichment curriculum (STEM, Spanish, yoga, cooking, sign language)</li>
+                <li style="margin-bottom: 12px;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"/></svg>See your two-campus locations and hours</li>
+                <li style="margin-bottom: 12px;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><polyline points="20 6 9 17 4 12"/></svg>Get on a call to enroll</li>
             </ul>
 
             <p><strong>Plus:</strong> you own the site. No platform lock-in. We deploy to Vercel—industry-standard reliability, lightning-fast CDN, built for growth.</p>

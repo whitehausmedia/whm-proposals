@@ -376,11 +376,15 @@
         }
 
         .pricing-feature::before {
-            content: '✓';
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 10px;
+            border: solid #C6A44C;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
             position: absolute;
             left: 0;
-            color: #C6A44C;
-            font-weight: 700;
         }
 
         /* CTA Section */

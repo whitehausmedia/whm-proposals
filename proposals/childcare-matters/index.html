@@ -430,11 +430,15 @@
         }
 
         .price-includes li::before {
-            content: '✓';
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 10px;
+            border: solid var(--gold);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
             position: absolute;
             left: 0;
-            color: var(--gold);
-            font-weight: bold;
         }
 
         /* CTA */

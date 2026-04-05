@@ -278,10 +278,14 @@
         }
 
         .solution-list li:before {
-            content: "✓";
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.3rem;
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 10px;
+            border: solid var(--gold);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-right: 0.75rem;
             flex-shrink: 0;
         }
 
