@@ -5,11 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>White Haus Media — Custom Websites for Small Businesses</title>
-<meta name="description" content="Custom-built websites designed around your business, your customers, and your goals. No templates. No shortcuts.">
+<title>White Haus Media — Custom Websites for Small Businesses in Raleigh & the Triangle</title>
+<meta name="description" content="Custom-built websites designed around your business, your audience, and your goals. No templates. No shortcuts. Serving Raleigh, Durham, Chapel Hill, and the Triangle.">
+<meta property="og:title" content="White Haus Media — Custom Websites That Convert">
+<meta property="og:description" content="Your business deserves a website built around how your audience actually finds you and takes action. No templates. No shortcuts.">
+<meta property="og:image" content="https://WhiteHaus.b-cdn.net/whm-og-share.png">
+<meta property="og:url" content="https://whitehausmedia.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"White Haus Media","url":"https://whitehausmedia.com","areaServed":"US","serviceType":["Web Design","Web Development","Brand Identity","SEO"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"White Haus Media","url":"https://whitehausmedia.com","telephone":"+19192634634","email":"hello@whitehausmedia.com","address":{"@type":"PostalAddress","addressLocality":"Wake Forest","addressRegion":"NC","addressCountry":"US"},"areaServed":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":35.7796,"longitude":-78.6382},"geoRadius":"50000"},"serviceType":["Web Design","Web Development","Brand Identity","SEO"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is included with every website?","acceptedAnswer":{"@type":"Answer","text":"Every site ships with SEO configuration, GA4 analytics, performance optimization, mobile-first responsive design, and SSL security — all configured from day one."}},{"@type":"Question","name":"How long does a website build take?","acceptedAnswer":{"@type":"Answer","text":"Most projects launch within one week. We keep the process tight: a discovery call, site audit, custom build, and launch with analytics configured."}},{"@type":"Question","name":"Do you offer ongoing maintenance?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our Site Care plans include hosting, security updates, backups, content edits, and monthly performance reporting."}},{"@type":"Question","name":"What industries do you work with?","acceptedAnswer":{"@type":"Answer","text":"We build for self-employed professionals, professional services, retail and hospitality, home and trade services, and community and education organizations across the Triangle area."}},{"@type":"Question","name":"How much does a website cost?","acceptedAnswer":{"@type":"Answer","text":"Every project is custom-quoted after a discovery call. Website projects typically start at $600 and scale based on complexity and features needed."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-23WP2WT5RC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-23WP2WT5RC');</script>
 <style>
@@ -48,8 +55,8 @@ nav .w{display:flex;justify-content:space-between;align-items:center}
 .mob-tog span{display:block;width:22px;height:2px;background:var(--cream);margin:4px 0}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--b)}
-.hero .w{position:relative;z-index:2;padding-top:160px;padding-bottom:100px;max-width:700px}
+.hero{min-height:min(100vh,800px);display:flex;align-items:center;position:relative;overflow:hidden;background:var(--b)}
+.hero .w{position:relative;z-index:2;padding-top:140px;padding-bottom:80px;max-width:700px}
 .hero-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:20px}
 .hero-accent{width:40px;height:2px;background:var(--g);margin-bottom:16px;border-radius:1px}
 .hero h1{font-size:clamp(32px,5.5vw,56px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:20px}
@@ -64,7 +71,7 @@ nav .w{display:flex;justify-content:space-between;align-items:center}
 /* ── BRAND PROMISE STRIP ── */
 .promise{padding:48px 0;border-top:1px solid rgba(155,122,40,.12);border-bottom:none;background:var(--cream)}
 .promise .w{text-align:center}
-.promise-label{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:28px}
+.promise-label{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:28px;text-wrap:balance}
 .promise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
 .promise-item{text-align:center}
 .promise-ico{width:40px;height:40px;margin:0 auto 10px;border:1px solid rgba(198,164,76,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(198,164,76,.04)}
@@ -345,12 +352,17 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
   .nav-links{display:none}
   .mob-tog{display:block}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(8,8,8,.98);justify-content:center;align-items:center;gap:32px;z-index:200;padding:20px}
-  .nav-links.open a{font-size:18px}
-  .hero .w{padding-top:100px;padding-bottom:60px}
+  .nav-links.open a{font-size:18px;color:var(--t1)}
+  .nav-links.open .pill-sm{margin-top:8px}
+  .mob-close{display:none;position:fixed;top:24px;right:24px;background:none;border:none;cursor:pointer;z-index:201;padding:8px}
+  .mob-close svg{stroke:var(--cream);width:24px;height:24px}
+  .mob-close.show{display:block}
+  .hero .w{padding-top:100px;padding-bottom:48px}
   .hero h1{font-size:28px}
   .hero-p{font-size:15px}
   .hero-cta{flex-direction:column;align-items:stretch}
   .hero-cta .pill{text-align:center}
+  .hero-cta .ghost{text-align:center;border:1px solid rgba(244,239,230,.15);border-radius:100px;padding:14px 24px}
   .sec-cream{padding:clamp(40px,8vw,72px) 0}
   .sec-cream .ey,.sec-cream .sh,.sec-cream .sp{padding:0}
   .sh{font-size:24px}
@@ -403,9 +415,10 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
     <a href="#work">Results</a>
     <a href="#audit" class="pill-sm">Let's talk</a>
   </div>
-  <button class="mob-tog" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+  <button class="mob-tog" onclick="document.querySelector('.nav-links').classList.toggle('open');document.querySelector('.mob-close').classList.toggle('show')">
     <span></span><span></span><span></span>
   </button>
+  <button class="mob-close" onclick="document.querySelector('.nav-links').classList.remove('open');this.classList.remove('show')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
 </div>
 </nav>
 
@@ -415,7 +428,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
   <div class="hero-accent rv"></div>
   <div class="hero-label rv">White Haus Media</div>
   <h1 class="rv">Your brand is worth more than <em>a bad first impression.</em></h1>
-  <p class="hero-p rv">You've built something real. Your website should carry that same standard — polished, intentional, and designed to turn visitors into clients.</p>
+  <p class="hero-p rv">You've built something worth showing off. Your website should carry that same standard — sharp, intentional, and built to turn visitors into revenue.</p>
   <div class="hero-cta rv">
     <a href="#audit" class="pill">Get a free site audit →</a>
     <a href="#services" class="ghost">See what we build</a>
@@ -426,27 +439,27 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 <!-- BRAND PROMISE — replaces "worked with brands" -->
 <section class="promise sec-cream" style="padding:48px 0;border-top:1px solid rgba(155,122,40,.12);border-bottom:none">
 <div class="w">
-  <div class="promise-label rv">We don't guess. We learn your business first.</div>
+  <div class="promise-label rv">We learn your business before we touch a single pixel.</div>
   <div class="promise-grid">
     <div class="promise-item rv d1">
       <div class="promise-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></div>
       <h4>Your Market</h4>
-      <p>We study your competitors, your customers, and what drives real conversions in your industry.</p>
+      <p>We study your competitors, your audience, and what drives real conversions in your industry.</p>
     </div>
     <div class="promise-item rv d2">
       <div class="promise-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></div>
-      <h4>Your Customers</h4>
-      <p>Every layout decision maps to how your specific audience finds you, evaluates you, and takes action.</p>
+      <h4>Your Audience</h4>
+      <p>Every layout decision maps to how the people you serve find you, evaluate you, and take action.</p>
     </div>
     <div class="promise-item rv d3">
       <div class="promise-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
       <h4>Your Voice</h4>
-      <p>Copy written in the language your customers use — not generic filler from a template library.</p>
+      <p>Copy written in the language your audience actually uses — not generic filler from a template library.</p>
     </div>
     <div class="promise-item rv d4">
       <div class="promise-ico"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
       <h4>Your Revenue</h4>
-      <p>Every page, button, and CTA is engineered to turn visitors into paying customers.</p>
+      <p>Every page, button, and CTA is engineered to turn traffic into measurable results.</p>
     </div>
   </div>
 </div>
@@ -459,12 +472,12 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
   <div class="rv">
     <div class="ey">The Problem</div>
     <h2 class="sh">Your business is great.<br>Your website <span class="gl">isn't telling that story.</span></h2>
-    <p class="sp">You've built something real. But when customers Google you, they find a site that doesn't reflect your quality. That gap is costing you money every day.</p>
+    <p class="sp">People Google you before they ever call. If your site doesn't match the quality of what you actually do, that gap is costing you money every single day.</p>
   </div>
   <div class="cards">
     <div class="card rv d1">
       <div class="card-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"/><line x1="12" y1="6" x2="12" y2="18"/></svg></div>
-      <div><h3>Losing leads to competitors</h3><p>Customers compare you online before they call. If your competitor looks better on screen, they win — even if you're better at what you do.</p></div>
+      <div><h3>Losing leads to competitors</h3><p>People compare you online before they ever reach out. If your competitor looks better on screen, they win — even if you're better at what you do.</p></div>
     </div>
     <div class="card rv d2">
       <div class="card-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -488,7 +501,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
   <div class="rv">
     <div class="ey">What We Build</div>
     <h2 class="sh">Simple services. <span class="gl">Serious results.</span></h2>
-    <p class="sp">No 47-page proposals. No six-month timelines. Just focused work that moves the needle.</p>
+    <p class="sp">No bloated timelines. No unnecessary complexity. Just focused work that moves the needle.</p>
   </div>
   <div class="svc-grid">
     <div class="svc rv d1"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#9B7A28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><h3>Website Refresh</h3><p>We take your existing site and make it faster, mobile-friendly, and built to convert. Done in a week.</p></div>
@@ -505,13 +518,13 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
   <div class="rv">
     <div class="ey">How We Grow It</div>
     <h2 class="sh">Your site is live. <span class="gl">Now let's fill it.</span></h2>
-    <p class="sp">A great website is the foundation. These services turn it into a growth engine that brings customers to your door every month.</p>
+    <p class="sp">A great website is the foundation. These services turn it into a growth engine that brings people through your door every month.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc rv d1"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><h3>Google & Meta Ads</h3><p>Professionally managed campaigns on Google and Meta — strategically placed so the right customers find you when they're ready to buy.</p></div>
-    <div class="svc rv d2"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Email Marketing</h3><p>Automated welcome sequences, follow-ups, promotions, and newsletters that keep your business top-of-mind and bring past customers back.</p></div>
+    <div class="svc rv d1"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><h3>Google & Meta Ads</h3><p>Professionally managed campaigns on Google and Meta — strategically placed so the right people find you when they're ready to act.</p></div>
+    <div class="svc rv d2"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Email Marketing</h3><p>Automated welcome sequences, follow-ups, promotions, and newsletters that keep your business top-of-mind and bring people back.</p></div>
     <div class="svc rv d3"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Social Media Management</h3><p>Content creation, posting schedules, and community engagement across your platforms — so your brand stays consistent and your audience keeps growing.</p></div>
-    <div class="svc rv d4"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Local SEO & Google Business</h3><p>Google Business Profile optimization, local citations, review strategy, and content that gets you ranking in the map pack where your customers are searching.</p></div>
+    <div class="svc rv d4"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#C6A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Local SEO & Google Business</h3><p>Google Business Profile optimization, local citations, review strategy, and content that gets you ranking in the map pack where your audience is searching.</p></div>
   </div>
 </div>
 </section>
@@ -521,7 +534,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
 <section class="verticals" id="work" style="background: var(--cream, #F4EFE6);">
   <div class="section-label">Who We Build For</div>
   <h2 class="section-heading">Every industry has a story. <span style="color:#9B7A28;font-style:italic">We know how to tell yours.</span></h2>
-  <p class="section-sub">Every business is different. We build sites tailored to how your specific customers find you, evaluate you, and take action.</p>
+  <p class="section-sub">Every business is different. We build sites tailored to how the people you serve find you, evaluate you, and take action.</p>
 
   <div class="verticals-layout">
 
@@ -553,7 +566,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
       <div class="tab-panel active" data-panel="0">
         <div class="panel-header">
           <h3 class="panel-title">You are the brand.</h3>
-          <p class="panel-desc">Barbers, stylists, personal trainers, photographers, car concierges, DJs, tutors — if customers book you by name, your website needs to feel like an extension of your reputation. We build sites that make solo operators look established, professional, and instantly bookable.</p>
+          <p class="panel-desc">Barbers, stylists, personal trainers, photographers, car concierges, DJs, tutors — if people book you by name, your website needs to feel like an extension of your reputation. We build sites that make solo operators look established, professional, and instantly bookable.</p>
         </div>
         <div class="panel-features">
           <div class="panel-features-label">What we build for you</div>
@@ -585,7 +598,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
       <div class="tab-panel" data-panel="1">
         <div class="panel-header">
           <h3 class="panel-title">Credibility before the first meeting.</h3>
-          <p class="panel-desc">Architects, attorneys, accountants, consultants, financial advisors, real estate agents — your prospects research you before they ever pick up the phone. Your site needs to communicate competence, trust, and authority from the first scroll.</p>
+          <p class="panel-desc">Architects, attorneys, accountants, consultants, financial advisors, real estate agents — people research you before they ever pick up the phone. Your site needs to communicate competence, trust, and authority from the first scroll.</p>
         </div>
         <div class="panel-features">
           <div class="panel-features-label">What we build for you</div>
@@ -635,7 +648,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
       <div class="tab-panel" data-panel="3">
         <div class="panel-header">
           <h3 class="panel-title">Win the job before the estimate.</h3>
-          <p class="panel-desc">Roofers, plumbers, electricians, painters, landscapers, contractors — homeowners Google three companies and call the one that looks most legit. Your site needs to load fast, show your work, and make it dead simple to request a quote.</p>
+          <p class="panel-desc">Roofers, plumbers, electricians, painters, landscapers, contractors — people Google three companies and call the one that looks most legit. Your site needs to load fast, show your work, and make it dead simple to request a quote.</p>
         </div>
         <div class="panel-features">
           <div class="panel-features-label">What we build for you</div>
@@ -709,7 +722,7 @@ footer{border-top:1px solid var(--bd);padding:48px 0;background:var(--b)}
     <p class="sp">We keep it simple so you can get back to what matters.</p>
   </div>
   <div class="proc-grid">
-    <div class="proc rv d1"><div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#9B7A28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h4>We Talk</h4><p>A 20-minute call where we learn about your business, your customers, and what's not working.</p></div>
+    <div class="proc rv d1"><div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#9B7A28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h4>We Talk</h4><p>A 20-minute call where we learn about your business, your audience, and what's not working.</p></div>
     <div class="proc rv d2"><div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#9B7A28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h4>We Audit</h4><p>We go through your site, your Google presence, and your competitors. We find every gap.</p></div>
     <div class="proc rv d3"><div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#9B7A28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h4>We Build</h4><p>Custom code, responsive design, speed optimization, and every integration you need.</p></div>
     <div class="proc rv d4"><div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#9B7A28" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3"/></svg></div><h4>We Launch</h4><p>You review, we refine, then go live. Analytics and tracking configured from day one.</p></div>
@@ -891,7 +904,7 @@ window.addEventListener('scroll',()=>{document.querySelector('nav').classList.to
 document.querySelector('.fab').classList.toggle('show',window.scrollY>400)});
 
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.querySelector('.nav-links').classList.remove('open')})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.querySelector('.nav-links').classList.remove('open');var mc=document.querySelector('.mob-close');if(mc)mc.classList.remove('show')})});
 
 // Accordion
 document.querySelectorAll('.acc-h').forEach(h=>{h.addEventListener('click',()=>{h.parentElement.classList.toggle('open')})});
@@ -902,7 +915,9 @@ function submitAudit(){
   var n=document.getElementById('auditName').value;
   var e=document.getElementById('auditEmail').value;
   var ind=document.getElementById('auditIndustry').value;
-  if(!u||!n||!e){alert('Please fill in your URL, name, and email.');return}
+  var err=document.getElementById('auditError');
+  if(!u||!n||!e){if(!err){err=document.createElement('div');err.id='auditError';err.style.cssText='color:#e85b5b;font-size:12px;margin-bottom:10px;font-weight:500';document.querySelector('.audit-card button').before(err)}err.textContent='Please fill in your URL, name, and email.';return}
+  if(err)err.remove();
   if(typeof gtag==='function')gtag('event','audit_submit',{event_category:'lead',event_label:ind});
   var btn=document.querySelector('.audit-card button');
   btn.textContent='Sending...';btn.disabled=true;
@@ -912,7 +927,7 @@ function submitAudit(){
     body:JSON.stringify({name:n,email:e,website:u,industry:ind})
   }).then(function(r){
     if(r.ok){
-      document.querySelector('.audit-card').innerHTML='<div style="text-align:center;padding:40px 0"><div style="font-size:32px;color:var(--g);margin-bottom:16px">✓</div><h3 style="margin-bottom:8px">We\'re on it, '+n.split(' ')[0]+'.</h3><p style="font-size:14px;color:var(--t2);line-height:1.7">Your audit for <strong>'+u+'</strong> is in the queue. We\'ll send a detailed breakdown to <strong>'+e+'</strong> within 24 hours.</p></div>';
+      document.querySelector('.audit-card').innerHTML='<div style="text-align:center;padding:40px 0"><div style="margin:0 auto 16px;width:40px;height:40px;border-radius:50%;border:2px solid var(--g);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3 style="margin-bottom:8px">We\'re on it, '+n.split(' ')[0]+'.</h3><p style="font-size:14px;color:var(--t2);line-height:1.7">Your audit for <strong>'+u+'</strong> is in the queue. We\'ll send a detailed breakdown to <strong>'+e+'</strong> within 24 hours.</p></div>';
     }else{
       btn.textContent='Send my free audit →';btn.disabled=false;
       alert('Something went wrong — try again or email us directly at hello@whitehausmedia.com');
@@ -960,7 +975,7 @@ function calcROI(){
   document.getElementById('roiAnn').textContent='$'+ann.toLocaleString();
   
   var tips={
-    'Self-Employed Professionals':'A polished personal brand site with clear CTAs and booking integration converts referrals into paying clients before the first call.',
+    'Self-Employed Professionals':'A polished personal brand site with clear CTAs and booking integration converts referrals into paying business before the first call.',
     'Professional Services':'Case studies and client testimonials build trust faster than any sales page. Clear intake forms convert 4x better than generic contact pages.',
     'Retail & Hospitality':'Product photography, online ordering, and streamlined checkout flows can reduce abandonment by up to 40% and drive more covers.',
     'Home & Trade Services':'Before/after galleries and instant quote forms convert 3x better than generic contact pages for contractors and trades.',
@@ -1011,7 +1026,7 @@ calcROI();
 @media(max-width:640px){.chat-win{width:calc(100vw - 16px);right:8px;bottom:8px;max-height:calc(100vh - 80px)}.chat-bubble{bottom:16px;right:16px;width:50px;height:50px;font-size:18px}}
 </style>
 
-<button class="chat-bubble" onclick="toggleChat()" aria-label="Chat with us">💬</button>
+<button class="chat-bubble" onclick="toggleChat()" aria-label="Chat with us"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></button>
 
 <div class="chat-win" id="chatWin">
   <div class="chat-head">
@@ -1022,7 +1037,7 @@ calcROI();
         <span>● Online now</span>
       </div>
     </div>
-    <button class="chat-close" onclick="toggleChat()">✕</button>
+    <button class="chat-close" onclick="toggleChat()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-body" id="chatBody">
     <div class="chat-msg bot" id="chatGreeting"></div>
@@ -1038,7 +1053,7 @@ calcROI();
 var chatName=Math.random()<.5?'Shiloh':'Noah';
 document.getElementById('chatAvatar').textContent=chatName[0];
 document.getElementById('chatName').textContent=chatName;
-document.getElementById('chatGreeting').textContent="Hey! \uD83D\uDC4B I'm "+chatName+", your White Haus Media concierge. I can answer questions about our services, process, or help you schedule a discovery call. What can I help you with?";
+document.getElementById('chatGreeting').textContent="Hey! I'm "+chatName+", your White Haus Media concierge. I can answer questions about our services, process, or help you schedule a discovery call. What can I help you with?";
 
 var chatOpen=false;
 var chatHistory=[];
@@ -1084,6 +1099,7 @@ If someone wants to book a call or schedule a consultation, collect their name, 
 
 RULES:
 - Never make up specific prices — always say "it depends on the project" and offer to set up a call
+- Use industry-agnostic language — say "people", "audience", "leads" instead of "customers" or "clients" unless you know their specific industry
 - Never mention AI, automation, or that you are an AI chatbot — just be helpful
 - If asked something you don't know, say "Great question — let me connect you with the team. Want to leave your email?"
 - Keep it warm and human. Use contractions. Be direct.`;
@@ -1121,12 +1137,10 @@ async function sendChat(){
   document.getElementById('chatSend').disabled=true;
 
   try{
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
+    var res=await fetch('https://thehaus.whitehausmedia.com/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:300,
         system:SYSTEM_PROMPT,
         messages:chatHistory
       })
