@@ -474,12 +474,15 @@
         }
 
         .footer-logo {
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
+            height: 56px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-logo img {
+            height: 100%;
+            width: auto;
         }
 
         .footer-text {
@@ -680,6 +683,7 @@
 
         <section class="container" id="preview">
             <h2 class="section-title">Live Preview</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Below is a working design concept showing exactly what your new site could look and feel like. This is built around your real programs, award-winning reputation, and what makes Grey Stone stand out in Durham. We can tailor every detail to your needs.</p>
             <div class="preview-section">
                 <div class="preview-frame">
                     <iframe src="preview.html" title="Grey Stone Preschool Website Preview"></iframe>
@@ -760,15 +764,16 @@
     </main>
 
     <footer>
+        <div class="footer-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+        </div>
         <div class="footer-content">
-            <div class="footer-logo">White Haus Media</div>
             <p class="footer-text">Premium custom websites for professional service businesses in the Triangle</p>
             <div class="footer-contact">
                 <a href="mailto:hello@whitehausmedia.com">hello@whitehausmedia.com</a> · <a href="tel:919-000-0000">(919) 000-0000</a>
             </div>
             <p class="footer-text" style="margin-top: 1.5rem; font-size: 0.8rem;">© 2026 White Haus Media. All rights reserved.</p>
         </div>
-    </footer>
 
     <script>
         // Progress bar on scroll
