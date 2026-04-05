@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knowledge Kickers | Unite. Inspire. Assist. #KickKnowledgeDaily</title>
+<meta name="description" content="Knowledge Kickers is a mission-driven apparel brand built on mentorship, community service, and spreading wisdom. Shop Kings, Queens, and Hats collections.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0A0A;
+  --bg-elevated:#111111;
+  --bg-card:#161616;
+  --accent:#D4A843;
+  --accent-dim:rgba(212,168,67,.12);
+  --accent-border:rgba(212,168,67,.25);
+  --white:#FFFFFF;
+  --off-white:#F5F0E8;
+  --text:#F0EDE6;
+  --text-body:#B8B3A8;
+  --text-muted:#706C63;
+  --border:rgba(255,255,255,.06);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit;transition:all .3s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .4s}
+.nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;max-width:1320px;margin:0 auto}
+.nav-brand{display:flex;align-items:center;gap:14px}
+.nav-owl{width:36px;height:36px}
+.nav-brand-text{font-weight:800;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:var(--bg);padding:12px 28px;border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .3s}
+.nav-cta:hover{background:var(--off-white);transform:translateY(-1px)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0A0A0A 0%,#1A1510 40%,#0A0A0A 100%)}
+.hero-glow{position:absolute;top:20%;right:10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.08) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:160px 48px 100px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid var(--accent-border);padding:8px 20px;border-radius:4px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.6rem,4.5vw,4rem);line-height:1.05;color:var(--text);margin-bottom:24px;letter-spacing:-.02em;font-weight:700}
+.hero h1 span{color:var(--accent);font-style:italic}
+.hero-body{font-size:1.1rem;color:var(--text-body);max-width:480px;margin-bottom:40px;line-height:1.8;font-weight:300}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;transition:all .3s}
+.btn-gold{background:var(--accent);color:var(--bg);border-radius:4px}
+.btn-gold:hover{background:var(--off-white);transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,168,67,.2)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:4px}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:40px}
+.hero-stat{text-align:left}
+.hero-stat strong{display:block;font-size:1.4rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+.hero-stat span{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-card{width:100%;max-width:460px;aspect-ratio:3/4;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;overflow:hidden;position:relative}
+.hero-card-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px;background:linear-gradient(180deg,rgba(212,168,67,.04) 0%,transparent 60%)}
+.hero-card-owl{width:80px;height:80px;margin-bottom:24px;opacity:.6}
+.hero-card h3{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;color:var(--text);margin-bottom:12px;font-weight:600}
+.hero-card p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+.hero-card-tag{position:absolute;bottom:24px;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+
+/* ===== MISSION BAR ===== */
+.mission-bar{background:var(--accent);padding:20px 48px;overflow:hidden}
+.mission-track{display:flex;gap:64px;animation:scroll-left 20s linear infinite;white-space:nowrap}
+.mission-item{font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);flex-shrink:0}
+@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ===== COLLECTIONS ===== */
+.collections{padding:120px 48px;max-width:1320px;margin:0 auto}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;color:var(--text);margin-bottom:16px;letter-spacing:-.01em}
+.section-sub{font-size:1rem;color:var(--text-body);max-width:560px;line-height:1.75;margin-bottom:64px;font-weight:300}
+.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.collection-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .4s;cursor:pointer;position:relative}
+.collection-card:hover{border-color:var(--accent-border);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.4)}
+.collection-img{aspect-ratio:1/1.15;background:linear-gradient(135deg,#1a1a1a 0%,#222 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.collection-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,10,10,.9) 100%)}
+.collection-placeholder{width:64px;height:64px;opacity:.2}
+.collection-name-overlay{position:absolute;bottom:16px;left:20px;z-index:2;font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-weight:700;color:var(--white)}
+.collection-info{padding:24px 20px}
+.collection-tag{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.collection-name{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.collection-desc{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+.collection-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* ===== ABOUT / STORY ===== */
+.story{padding:120px 48px;position:relative}
+.story-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-visual{position:relative}
+.story-block{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center}
+.story-owl{width:120px;height:120px;opacity:.15}
+.story-accent{position:absolute;bottom:-20px;right:-20px;width:200px;height:200px;border:1px solid var(--accent-border);border-radius:8px}
+.story-content .section-label{margin-bottom:16px}
+.story h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;color:var(--text);margin-bottom:24px;line-height:1.15}
+.story h2 span{color:var(--accent);font-style:italic}
+.story-text{font-size:.95rem;color:var(--text-body);line-height:1.85;margin-bottom:20px;font-weight:300}
+.story-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.value-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:24px 20px}
+.value-icon{width:32px;height:32px;margin-bottom:12px;color:var(--accent)}
+.value-card h4{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.value-card p{font-size:.78rem;color:var(--text-muted);line-height:1.6}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{padding:120px 48px;background:var(--bg-elevated)}
+.testimonials-inner{max-width:1320px;margin:0 auto}
+.testimonials .section-title{text-align:center;max-width:600px;margin:0 auto 16px}
+.testimonials .section-sub{text-align:center;max-width:600px;margin:0 auto 64px}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:36px 28px;position:relative}
+.testimonial-card::before{content:'\201C';position:absolute;top:20px;right:24px;font-family:'Playfair Display',Georgia,serif;font-size:3rem;color:var(--accent);opacity:.2;line-height:1}
+.testimonial-text{font-size:.92rem;color:var(--text-body);line-height:1.75;margin-bottom:24px;font-style:italic;font-weight:300}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center}
+.testimonial-avatar span{font-size:.82rem;font-weight:700;color:var(--accent)}
+.testimonial-name{font-size:.82rem;font-weight:700;color:var(--text)}
+.testimonial-role{font-size:.72rem;color:var(--text-muted)}
+
+/* ===== COMMUNITY / CTA ===== */
+.community{padding:120px 48px;position:relative;overflow:hidden}
+.community::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.04) 0%,transparent 60%);pointer-events:none}
+.community-inner{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.community h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:600;color:var(--text);margin-bottom:20px;line-height:1.1}
+.community h2 span{color:var(--accent);font-style:italic}
+.community-body{font-size:1.05rem;color:var(--text-body);line-height:1.8;margin-bottom:40px;font-weight:300}
+.community-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.community-social{display:flex;gap:20px;justify-content:center}
+.social-link{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.social-link:hover{border-color:var(--accent);background:var(--accent-dim)}
+.social-link svg{width:18px;height:18px;fill:none;stroke:var(--text-muted);stroke-width:2;transition:stroke .3s}
+.social-link:hover svg{stroke:var(--accent)}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 48px 32px}
+.footer-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-owl{width:28px;height:28px;opacity:.4}
+.footer-text{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.footer-tag{font-size:.72rem;color:var(--text-muted);letter-spacing:.06em}
+.footer-legal{font-size:.72rem;color:var(--text-muted)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;gap:48px;padding:140px 32px 80px}
+  .hero-visual{display:none}
+  .story-inner{grid-template-columns:1fr;gap:48px}
+  .story-visual{display:none}
+}
+@media(max-width:768px){
+  .nav-inner{padding:16px 24px}
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .hero-content{padding:120px 24px 60px}
+  .hero h1{font-size:2.2rem}
+  .hero-stats{flex-direction:column;gap:16px}
+  .collections{padding:80px 24px}
+  .collection-grid{grid-template-columns:1fr}
+  .story{padding:80px 24px}
+  .testimonials{padding:80px 24px}
+  .testimonial-grid{grid-template-columns:1fr}
+  .community{padding:80px 24px}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center}
+}
+
+/* ===== OWL SVG INLINE ===== */
+.owl-svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <svg class="nav-owl" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="22" r="18" fill="none" stroke="#D4A843" stroke-width="1.2"/>
+        <circle cx="18" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width="1.2"/>
+        <circle cx="30" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width="1.2"/>
+        <circle cx="18" cy="19" r="1.5" fill="#D4A843"/>
+        <circle cx="30" cy="19" r="1.5" fill="#D4A843"/>
+        <path d="M22 25 L24 28 L26 25" fill="none" stroke="#D4A843" stroke-width="1.2"/>
+        <path d="M16 8 L18 14" fill="none" stroke="#D4A843" stroke-width="1.2"/>
+        <path d="M32 8 L30 14" fill="none" stroke="#D4A843" stroke-width="1.2"/>
+        <path d="M12 36 L16 30" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <path d="M36 36 L32 30" fill="none" stroke="#D4A843" stroke-width="1"/>
+      </svg>
+      <span class="nav-brand-text">Knowledge Kickers</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#collections">Shop</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#" class="nav-cta">Shop Now</a></li>
+    </ul>
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">#KickKnowledgeDaily</div>
+      <h1>Wear the <span>Mission.</span> Spread the <span>Wisdom.</span></h1>
+      <p class="hero-body">Knowledge Kickers is more than apparel — it's a movement. We unite, inspire, and assist a generation of individuals to spread knowledge and kindness through mentorship and service.</p>
+      <div class="hero-actions">
+        <a href="#collections" class="btn btn-gold">Shop Collections</a>
+        <a href="#story" class="btn btn-outline">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>#DoMore</strong>
+          <span>Community Movement</span>
+        </div>
+        <div class="hero-stat">
+          <strong>3 Collections</strong>
+          <span>Kings &middot; Queens &middot; Hats</span>
+        </div>
+        <div class="hero-stat">
+          <strong>Mission-Driven</strong>
+          <span>Mentorship &amp; Service</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <svg class="hero-card-owl" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="22" r="18" fill="none" stroke="#D4A843" stroke-width="1"/>
+            <circle cx="18" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width="1"/>
+            <circle cx="30" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width="1"/>
+            <circle cx="18" cy="19" r="1.5" fill="#D4A843"/>
+            <circle cx="30" cy="19" r="1.5" fill="#D4A843"/>
+            <path d="M22 25 L24 28 L26 25" fill="none" stroke="#D4A843" stroke-width="1"/>
+            <path d="M16 8 L18 14" fill="none" stroke="#D4A843" stroke-width="1"/>
+            <path d="M32 8 L30 14" fill="none" stroke="#D4A843" stroke-width="1"/>
+          </svg>
+          <h3>Knowledge Kickers</h3>
+          <p>Unite. Inspire. Assist. Challenge a generation to spread wisdom and kindness.</p>
+          <span class="hero-card-tag">#KickKnowledgeDaily</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION BAR -->
+<div class="mission-bar">
+  <div class="mission-track">
+    <span class="mission-item">Unite</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Inspire</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Assist</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">#KickKnowledgeDaily</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">#DoMore</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Mentorship</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Community Service</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Spread Wisdom</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Unite</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Inspire</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Assist</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">#KickKnowledgeDaily</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">#DoMore</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Mentorship</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Community Service</span>
+    <span class="mission-item">&#10022;</span>
+    <span class="mission-item">Spread Wisdom</span>
+    <span class="mission-item">&#10022;</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="section-label">Shop the Movement</div>
+  <div class="section-title">Our Collections</div>
+  <p class="section-sub">Each piece carries the mission. Every purchase fuels the movement. Choose your collection and wear your commitment to spreading knowledge.</p>
+  <div class="collection-grid">
+    <div class="collection-card">
+      <div class="collection-img">
+        <svg class="collection-placeholder" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="12" width="28" height="28" rx="2" fill="none" stroke="#D4A843" stroke-width="1"/>
+          <path d="M18 20 v12 M24 16 v16 M30 22 v10" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+        </svg>
+        <span class="collection-name-overlay">Kings</span>
+      </div>
+      <div class="collection-info">
+        <div class="collection-tag">Men's Collection</div>
+        <div class="collection-name">Kings</div>
+        <p class="collection-desc">Premium tees, hoodies, and gear designed for men who lead with knowledge and walk with purpose.</p>
+        <a href="#" class="collection-link">Shop Kings &#8594;</a>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-img">
+        <svg class="collection-placeholder" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="14" fill="none" stroke="#D4A843" stroke-width="1"/>
+          <path d="M18 22 Q24 30 30 22" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+          <circle cx="20" cy="20" r="1.5" fill="#D4A843"/>
+          <circle cx="28" cy="20" r="1.5" fill="#D4A843"/>
+        </svg>
+        <span class="collection-name-overlay">Queens</span>
+      </div>
+      <div class="collection-info">
+        <div class="collection-tag">Women's Collection</div>
+        <div class="collection-name">Queens</div>
+        <p class="collection-desc">Bold, comfortable, and statement-making pieces for women who inspire and uplift their communities.</p>
+        <a href="#" class="collection-link">Shop Queens &#8594;</a>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-img">
+        <svg class="collection-placeholder" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 28 Q24 8 40 28" fill="none" stroke="#D4A843" stroke-width="1"/>
+          <path d="M12 28 L36 28" fill="none" stroke="#D4A843" stroke-width="1"/>
+          <circle cx="24" cy="20" r="3" fill="none" stroke="#D4A843" stroke-width="1"/>
+        </svg>
+        <span class="collection-name-overlay">Hats</span>
+      </div>
+      <div class="collection-info">
+        <div class="collection-tag">Accessories</div>
+        <div class="collection-name">Hats</div>
+        <p class="collection-desc">Snapbacks, dad hats, and cuffed beanies featuring the iconic Knowledge Kickers owl. Top off the look.</p>
+        <a href="#" class="collection-link">Shop Hats &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="story-visual">
+      <div class="story-block">
+        <svg class="story-owl" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="22" r="18" fill="none" stroke="#D4A843" stroke-width=".8"/>
+          <circle cx="18" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width=".8"/>
+          <circle cx="30" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width=".8"/>
+          <circle cx="18" cy="19" r="1.5" fill="#D4A843" opacity=".3"/>
+          <circle cx="30" cy="19" r="1.5" fill="#D4A843" opacity=".3"/>
+          <path d="M22 25 L24 28 L26 25" fill="none" stroke="#D4A843" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div class="story-accent"></div>
+    </div>
+    <div class="story-content">
+      <div class="section-label">Our Story</div>
+      <h2>Built on the Belief That <span>Knowledge</span> Is the Real Currency</h2>
+      <p class="story-text">Knowledge Kickers started with a simple idea: everyone plays a part in each other's growth. By kicking knowledge — sharing ideas, resources, culture, and wisdom — we assist in the growth of others and ourselves.</p>
+      <p class="story-text">This isn't just a clothing brand. It's a call to action. Every piece we make is a conversation starter, a reminder that mentorship and community service aren't side projects — they're how we build something that lasts.</p>
+      <div class="story-values">
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h4>Unite</h4>
+          <p>Bringing people together through shared purpose and collective growth.</p>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <h4>Inspire</h4>
+          <p>Motivating the next generation to pursue wisdom and lead with kindness.</p>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <h4>Assist</h4>
+          <p>Serving our communities through mentorship, action, and hands-on support.</p>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <h4>Challenge</h4>
+          <p>Pushing ourselves and others to do more, learn more, and give more.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-label" style="text-align:center">What the Community Says</div>
+    <div class="section-title">Real People. Real Impact.</div>
+    <p class="section-sub">Every shirt starts a conversation. Every conversation spreads knowledge.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">I wore my Knowledge Kickers tee to a community event and three people asked me about it. One conversation led to us organizing a mentorship group for teens in the neighborhood. The shirt started it all.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><span>KK</span></div>
+          <div>
+            <div class="testimonial-name">Knowledge Kickers Community</div>
+            <div class="testimonial-role">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">We fed the less fortunate while rocking our Knowledge Kickers gear. It's not just about the clothes — it's about what you do while you wear them. This brand is a reminder to show up and do more.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><span>KK</span></div>
+          <div>
+            <div class="testimonial-name">Knowledge Kickers Community</div>
+            <div class="testimonial-role">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">People always ask me about the design on my shirt. It's a great conversation opener — and it gives me a chance to talk about what Knowledge Kickers actually stands for. That's the whole point.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><span>KK</span></div>
+          <div>
+            <div class="testimonial-name">Knowledge Kickers Community</div>
+            <div class="testimonial-role">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY CTA -->
+<section class="community" id="community">
+  <div class="community-inner">
+    <div class="section-label">Join the Movement</div>
+    <h2>Ready to <span>Kick Knowledge</span> With Us?</h2>
+    <p class="community-body">Every purchase supports the mission. Every piece you wear is a statement. Join the Knowledge Kickers community and help us spread wisdom, mentorship, and kindness — one conversation at a time.</p>
+    <div class="community-actions">
+      <a href="#" class="btn btn-gold">Shop Now</a>
+      <a href="#" class="btn btn-outline">Follow @knowledgekickers</a>
+    </div>
+    <div class="community-social">
+      <a href="#" class="social-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Twitter">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="footer-owl" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="22" r="18" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="18" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="30" cy="19" r="4" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="18" cy="19" r="1.5" fill="#D4A843"/>
+        <circle cx="30" cy="19" r="1.5" fill="#D4A843"/>
+        <path d="M22 25 L24 28 L26 25" fill="none" stroke="#D4A843" stroke-width="1"/>
+      </svg>
+      <div>
+        <div class="footer-text">Knowledge Kickers</div>
+        <div class="footer-tag">#KickKnowledgeDaily &middot; #DoMore</div>
+      </div>
+    </div>
+    <div class="footer-legal">&copy; 2026 Knowledge Kickers. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- JS -->
+<script>
+(function(){
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>60)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+})();
+</script>
+</body>
+</html>
