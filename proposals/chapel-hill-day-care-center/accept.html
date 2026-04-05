@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accept Proposal — Chapel Hill Day Care Center | White Haus Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF7F2;
+  --cream-dark: #F0EBE3;
+  --cream-mid: #F5F1EA;
+  --black: #1A1A1A;
+  --black-soft: #2D2D2D;
+  --black-muted: #555;
+  --gold: #C9A84C;
+  --gold-light: #D4B96A;
+  --gold-muted: rgba(201,168,76,0.10);
+  --gold-glow: rgba(201,168,76,0.25);
+  --border: rgba(26,26,26,0.08);
+  --border-focus: rgba(201,168,76,0.4);
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.06);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --green: #34A853;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-header {
+  text-align: center;
+  padding: 48px 24px 32px;
+  position: relative;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+}
+.logo-text {
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.logo-text span { color: var(--gold); }
+.header-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.header-subtitle {
+  font-size: 15px;
+  color: var(--black-muted);
+  font-weight: 400;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* PROPOSAL SUMMARY STRIP */
+.proposal-summary {
+  max-width: 620px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+}
+.summary-card {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.summary-left h3 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+.summary-left p {
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  margin-top: 2px;
+}
+.summary-right {
+  text-align: right;
+}
+.summary-right .price {
+  color: var(--gold);
+  font-size: 28px;
+  font-weight: 800;
+}
+.summary-right .deposit {
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* PROGRESS */
+.progress-bar {
+  max-width: 560px;
+  margin: 32px auto 0;
+  padding: 0 24px;
+}
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.progress-line {
+  position: absolute;
+  top: 14px;
+  left: 28px;
+  right: 28px;
+  height: 2px;
+  background: var(--cream-dark);
+}
+.progress-line-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.5s ease;
+  width: 0%;
+}
+.progress-step {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--cream-dark);
+  border: 2px solid var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(26,26,26,0.3);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+}
+.progress-step.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--gold-glow);
+}
+.progress-step.completed {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+.progress-step-label {
+  position: absolute;
+  top: 36px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(26,26,26,0.3);
+  white-space: nowrap;
+}
+.progress-step.active .progress-step-label,
+.progress-step.completed .progress-step-label {
+  color: var(--gold);
+}
+
+/* FORM */
+.form-container {
+  max-width: 620px;
+  margin: 56px auto 0;
+  padding: 0 20px 80px;
+}
+.step { display: none; animation: stepIn 0.4s ease; }
+.step.active { display: block; }
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.step-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-card);
+}
+.step-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.step-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.step-desc {
+  font-size: 14px;
+  color: var(--black-muted);
+  margin-bottom: 28px;
+}
+.form-group { margin-bottom: 20px; }
+.form-row { display: flex; gap: 14px; }
+.form-row .form-group { flex: 1; }
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--black-soft);
+  margin-bottom: 6px;
+}
+.form-label .required { color: var(--gold); }
+.form-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--black);
+  transition: all 0.25s;
+  outline: none;
+}
+.form-input:focus {
+  border-color: var(--gold);
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--gold-muted);
+}
+.form-input::placeholder { color: rgba(26,26,26,0.25); }
+textarea.form-input { resize: vertical; min-height: 100px; }
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+.pill-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.pill {
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--cream);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--black-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.pill:hover { border-color: var(--gold); }
+.pill.selected {
+  background: var(--gold-muted);
+  border-color: var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+}
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.check-card {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--black-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.check-card:hover { border-color: var(--gold); }
+.check-card.checked {
+  background: var(--gold-muted);
+  border-color: var(--gold);
+}
+.check-dot {
+  width: 20px; height: 20px; border-radius: 5px;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.check-card.checked .check-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.check-card.checked .check-dot::after {
+  content: "\2713";
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* BUTTONS */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+.btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s;
+}
+.btn-back { background: var(--cream-dark); color: var(--black-soft); }
+.btn-back:hover { background: #E5E0D8; }
+.btn-next { background: var(--black); color: var(--cream); }
+.btn-next:hover { background: var(--black-soft); }
+.btn-submit {
+  background: var(--gold);
+  color: var(--black);
+  width: 100%;
+  padding: 16px;
+  font-size: 15px;
+}
+.btn-submit:hover { background: var(--gold-light); }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* CONFIRMATION */
+.confirmation {
+  display: none;
+  text-align: center;
+  padding: 80px 24px;
+  max-width: 520px;
+  margin: 0 auto;
+  animation: stepIn 0.6s ease;
+}
+.confirmation.active { display: block; }
+.confirm-icon {
+  width: 72px; height: 72px;
+  background: var(--gold-muted);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+}
+.confirm-icon svg { width: 36px; height: 36px; color: var(--gold); }
+.confirm-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.confirm-text {
+  font-size: 15px;
+  color: var(--black-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.confirm-detail {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+.confirm-detail h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.confirm-detail p {
+  font-size: 14px;
+  color: var(--black-muted);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.loading-spinner {
+  display: inline-block;
+  width: 20px; height: 20px;
+  border: 2px solid var(--cream-dark);
+  border-top: 2px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-footer {
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 12px;
+  color: rgba(26,26,26,0.3);
+}
+.form-footer a { color: var(--gold); text-decoration: none; }
+
+/* PAYMENT SUCCESS */
+.success-banner {
+  max-width: 620px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+.success-banner-inner {
+  background: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.success-banner-inner svg { flex-shrink: 0; color: var(--green); }
+.success-banner-inner p { font-size: 14px; font-weight: 500; color: #2E7D32; }
+
+@media (max-width: 640px) {
+  .site-header { padding: 36px 20px 28px; }
+  .header-title { font-size: 26px; }
+  .step-card { padding: 28px 22px; }
+  .form-row { flex-direction: column; gap: 0; }
+  .check-grid { grid-template-columns: 1fr; }
+  .progress-step-label { display: none; }
+  .summary-card { flex-direction: column; text-align: center; }
+  .summary-right { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-text">WHITE HAUS <span>MEDIA</span></div>
+  <h1 class="header-title" id="headerTitle">Let's Build Something Great</h1>
+  <p class="header-subtitle" id="headerSubtitle">Complete the questionnaire below, then pay your deposit to get started. We'll begin building within 48 hours.</p>
+
+  <!-- Proposal Summary -->
+  <div class="proposal-summary">
+    <div class="summary-card">
+      <div class="summary-left">
+        <h3>Chapel Hill Day Care Center</h3>
+        <p>Custom website build</p>
+      </div>
+      <div class="summary-right">
+        <div class="price">$797</div>
+        <div class="deposit">50% deposit: $399 today</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-bar" id="progressBarWrap">
+    <div class="progress-steps" id="progressSteps"></div>
+  </div>
+</header>
+
+<div class="form-container" id="formContainer"></div>
+
+<!-- Payment success banner (hidden, shown after Stripe redirect) -->
+<div class="success-banner" id="successBanner" style="display:none;">
+  <div class="success-banner-inner">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    <p>Payment received. You're all set — we'll be in touch within 24 hours.</p>
+  </div>
+</div>
+
+<!-- Confirmation (shown after Stripe success) -->
+<div class="confirmation" id="confirmation">
+  <div class="confirm-icon">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+  </div>
+  <h2 class="confirm-title">You're all set.</h2>
+  <p class="confirm-text">Payment received and your project details are in our hands. Rico is already getting to work.</p>
+  <div class="confirm-detail">
+    <h4>What happens next</h4>
+    <p><strong>1.</strong> We review your questionnaire and start building your custom site design.</p>
+    <p><strong>2.</strong> Within 48 hours, you'll get a first look at your new site.</p>
+    <p><strong>3.</strong> We walk through it together, make revisions, and launch.</p>
+  </div>
+</div>
+
+<div class="form-footer">
+  &copy; <span id="footerYear"></span> White Haus Media &middot; <a href="https://whitehausmedia.com">whitehausmedia.com</a>
+</div>
+
+<script>
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+// ── CONFIG (per-proposal) ──────────────────────
+const PROPOSAL_CONFIG = {
+  company_name: 'Chapel Hill Day Care Center',
+  company_slug: 'chapel-hill-day-care-center',
+  proposal_id: '',      // filled from The Haus if available
+  deal_id: '',          // filled from The Haus if available
+  company_id: '',       // filled from The Haus if available
+  build_fee: 797,
+  deposit_percent: 0.5,
+  api_base: 'https://thehaus.whitehausmedia.com',
+};
+
+const DEPOSIT_AMOUNT = Math.round(PROPOSAL_CONFIG.build_fee * PROPOSAL_CONFIG.deposit_percent);
+const DEPOSIT_CENTS = DEPOSIT_AMOUNT * 100;
+
+// ── STEPS (intake form) ────────────────────────
+const steps = [
+  {
+    id: "you", label: "You", eyebrow: "Step 1", title: "About You",
+    desc: "Who should we work with on this project?",
+    fields: [
+      { row: [
+        { id: "c_first", label: "First Name", required: true, type: "text", placeholder: "" },
+        { id: "c_last", label: "Last Name", required: true, type: "text", placeholder: "" }
+      ]},
+      { row: [
+        { id: "c_email", label: "Email", required: true, type: "email", placeholder: "you@company.com" },
+        { id: "c_phone", label: "Phone", type: "tel", placeholder: "(___) ___-____" }
+      ]},
+      { row: [{ id: "c_role", label: "Your Role", type: "text", placeholder: "Owner, Director, Marketing Manager..." }] }
+    ]
+  },
+  {
+    id: "business", label: "Business", eyebrow: "Step 2", title: "Your Business",
+    desc: "Help us understand what you do and who you serve.",
+    fields: [
+      { row: [
+        { id: "b_name", label: "Business Name", required: true, type: "text", placeholder: "" },
+        { id: "b_website", label: "Current Website (if any)", type: "url", placeholder: "https://" }
+      ]},
+      { row: [
+        { id: "b_industry", label: "Industry", required: true, type: "select", options: ["Select one...","Childcare / Early Education","Restaurant / Food Service","Health & Wellness","Legal / Law","Real Estate","Home Services (HVAC, Plumbing, etc.)","Retail / E-commerce","Fitness / Gym","Salon / Barbershop / Spa","Automotive","Medical / Dental","Non-Profit","Construction / Trades","Professional Services","Other"] },
+        { id: "b_industry_other", label: "If other, please specify", type: "text", placeholder: "", conditional: "b_industry=Other" }
+      ]},
+      { row: [
+        { id: "b_city", label: "City", required: true, type: "text", placeholder: "" },
+        { id: "b_state", label: "State", type: "text", placeholder: "NC" }
+      ]},
+      { row: [{ id: "b_description", label: "Describe your business in 1-2 sentences", required: true, type: "textarea", placeholder: "What do you do, who do you serve, and what sets you apart?" }] },
+      { row: [{ id: "b_audience", label: "Who is your ideal customer?", type: "textarea", placeholder: "Age range, demographics, what are they looking for?" }] }
+    ]
+  },
+  {
+    id: "goals", label: "Goals", eyebrow: "Step 3", title: "Your Goals & Vision",
+    desc: "What should your website do for your business?",
+    fields: [
+      { row: [{ id: "g_vision", label: "If your website was doing its job perfectly, what would that look like?", required: true, type: "textarea", placeholder: "More calls, more bookings, looking as professional as you really are..." }] },
+      { label: "Which of these matter to you?", type: "checks", id: "g_goals",
+        options: ["More phone calls & inquiries","Online booking / scheduling","Rank higher on Google","Build credibility & trust","Showcase work / portfolio","Capture leads / email list","Customer reviews integration","Enrollment / registration"] },
+      { row: [
+        { id: "g_timeline", label: "Ideal timeline", type: "select", options: ["Select one...","As soon as possible","Within 30 days","Within 60 days","Within 90 days","No rush","Tied to a specific date/event"] }
+      ]}
+    ]
+  },
+  {
+    id: "design", label: "Design", eyebrow: "Step 4", title: "Design & Content",
+    desc: "Your visual preferences and what you have ready.",
+    fields: [
+      { label: "What tone should your website have?", type: "pills", id: "d_tone",
+        options: ["Clean & modern","Warm & friendly","Bold & energetic","Elegant & premium","Playful & fun","Professional & corporate"] },
+      { row: [{ id: "d_logo", label: "Do you have a professional logo?", type: "select", options: ["Select one...","Yes, ready to use","Yes, but it needs updating","No — I need one"] }] },
+      { row: [{ id: "d_photos", label: "Do you have professional photos?", type: "select", options: ["Select one...","Yes, high quality","Some, but they need updating","No — I'll need help with this","I'm okay with stock photos for now"] }] },
+      { row: [{ id: "d_inspiration", label: "Any websites you admire? (URLs or describe what you like)", type: "textarea", placeholder: "Competitor sites, brands you admire..." }] },
+      { label: "What pages do you need?", type: "checks", id: "d_pages",
+        options: ["Home","About / Our Story","Services / Programs","Pricing","Contact","Gallery / Portfolio","Testimonials","FAQ","Blog","Team / Staff","Enrollment / Apply","Events / Calendar"] }
+    ]
+  },
+  {
+    id: "features", label: "Features", eyebrow: "Step 5", title: "Features & Integrations",
+    desc: "The tools and functionality that bring your site to life.",
+    fields: [
+      { label: "Which features do you need?", type: "checks", id: "f_features",
+        options: ["Online booking / scheduling","Payment processing","Contact form","Email marketing integration","Social media feeds","Google Maps","Live chat widget","Review / testimonial display","Video backgrounds / embeds","Analytics & tracking","ADA accessibility","Member login area"] },
+      { row: [{ id: "f_tools", label: "Any existing tools the site should connect with?", type: "textarea", placeholder: "e.g., Quickbooks, Procare, Square, Calendly, Mailchimp..." }] },
+      { row: [{ id: "f_domain", label: "Domain & hosting status", type: "select", options: ["Select one...","I have a domain and hosting","I have a domain only","I need everything set up","I'm not sure"] }] }
+    ]
+  },
+  {
+    id: "final", label: "Review", eyebrow: "Final Step", title: "Almost There",
+    desc: "Any last details before we get started.",
+    fields: [
+      { row: [{ id: "bu_anything_else", label: "Anything else we should know?", type: "textarea", placeholder: "Questions, concerns, special requirements — anything at all." }] },
+      { row: [{ id: "bu_how_found", label: "How did you hear about White Haus Media?", type: "select", options: ["Select one...","Google Search","Facebook / Instagram","Someone referred me","You reached out to me","Other"] }] }
+    ]
+  }
+];
+
+// ── STATE ───────────────────────────────────────
+let currentStep = 0;
+const formData = {};
+const checkData = {};
+const pillData = {};
+
+// Pre-fill business name from proposal
+formData['b_name'] = PROPOSAL_CONFIG.company_name;
+
+// ── CHECK FOR PAYMENT SUCCESS ───────────────────
+if (window.location.search.includes('payment=success')) {
+  document.getElementById('formContainer').style.display = 'none';
+  document.getElementById('progressBarWrap').style.display = 'none';
+  document.getElementById('headerTitle').style.display = 'none';
+  document.getElementById('headerSubtitle').style.display = 'none';
+  document.querySelector('.proposal-summary').style.display = 'none';
+  document.getElementById('confirmation').classList.add('active');
+}
+
+// ── RENDER ──────────────────────────────────────
+function renderAll() { renderProgress(); renderStep(); }
+
+function renderProgress() {
+  const c = document.getElementById('progressSteps');
+  c.innerHTML = '<div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>';
+  steps.forEach((s, i) => {
+    const cls = i < currentStep ? 'completed' : i === currentStep ? 'active' : '';
+    c.innerHTML += '<div class="progress-step ' + cls + '">' +
+      (i < currentStep ? '\u2713' : (i + 1)) +
+      '<span class="progress-step-label">' + s.label + '</span></div>';
+  });
+  const fill = document.getElementById('progressFill');
+  if (fill) fill.style.width = (currentStep / (steps.length - 1)) * 100 + '%';
+}
+
+function renderStep() {
+  const container = document.getElementById('formContainer');
+  const step = steps[currentStep];
+  let html = '<div class="step active"><div class="step-card">' +
+    '<div class="step-eyebrow">' + step.eyebrow + '</div>' +
+    '<h2 class="step-title">' + step.title + '</h2>' +
+    '<p class="step-desc">' + step.desc + '</p>';
+
+  step.fields.forEach(function(field) {
+    if (field.type === 'checks') html += renderCheckGroup(field);
+    else if (field.type === 'pills') html += renderPillGroup(field);
+    else if (field.row) {
+      html += '<div class="form-row">';
+      field.row.forEach(function(f) { html += renderField(f); });
+      html += '</div>';
+    }
+  });
+
+  const isLast = currentStep === steps.length - 1;
+  html += '<div class="step-nav">' +
+    '<button class="btn btn-back" ' + (currentStep === 0 ? 'disabled' : '') + ' onclick="prevStep()">\u2190 Back</button>' +
+    (isLast
+      ? '<button class="btn btn-submit" id="submitBtn" onclick="submitAndPay()">Submit & Pay $' + DEPOSIT_AMOUNT + ' Deposit</button>'
+      : '<button class="btn btn-next" onclick="nextStep()">Continue \u2192</button>'
+    ) + '</div></div></div>';
+
+  container.innerHTML = html;
+
+  // Restore values
+  step.fields.forEach(function(field) {
+    if (field.row) {
+      field.row.forEach(function(f) {
+        var el = document.getElementById(f.id);
+        if (el && formData[f.id]) el.value = formData[f.id];
+      });
+    }
+  });
+  handleConditionals();
+}
+
+function renderField(f) {
+  var reqMark = f.required ? ' <span class="required">*</span>' : '';
+  var html = '<div class="form-group" id="group_' + f.id + '"' +
+    (f.conditional ? ' data-conditional="' + f.conditional + '" style="display:none"' : '') + '>' +
+    '<label class="form-label">' + f.label + reqMark + '</label>';
+
+  if (f.type === 'textarea') {
+    html += '<textarea class="form-input" id="' + f.id + '" placeholder="' + (f.placeholder || '') + '" oninput="saveVal(\'' + f.id + '\', this.value)">' + (formData[f.id] || '') + '</textarea>';
+  } else if (f.type === 'select') {
+    html += '<select class="form-input" id="' + f.id + '" onchange="saveVal(\'' + f.id + '\', this.value); handleConditionals();">';
+    f.options.forEach(function(o) {
+      html += '<option value="' + o + '"' + (formData[f.id] === o ? ' selected' : '') + '>' + o + '</option>';
+    });
+    html += '</select>';
+  } else {
+    html += '<input type="' + f.type + '" class="form-input" id="' + f.id + '" placeholder="' + (f.placeholder || '') + '" value="' + (formData[f.id] || '') + '" oninput="saveVal(\'' + f.id + '\', this.value)" />';
+  }
+  return html + '</div>';
+}
+
+function renderCheckGroup(field) {
+  var checked = checkData[field.id] || [];
+  var html = '<div class="form-group"><label class="form-label">' + field.label + '</label><div class="check-grid">';
+  field.options.forEach(function(opt) {
+    var isChecked = checked.indexOf(opt) > -1;
+    html += '<div class="check-card' + (isChecked ? ' checked' : '') + '" onclick="toggleCheck(\'' + field.id + '\', \'' + opt.replace(/'/g, "\\'") + '\', this)"><div class="check-dot"></div><span>' + opt + '</span></div>';
+  });
+  return html + '</div></div>';
+}
+
+function renderPillGroup(field) {
+  var selected = pillData[field.id] || '';
+  var html = '<div class="form-group"><label class="form-label">' + field.label + '</label><div class="pill-grid">';
+  field.options.forEach(function(opt) {
+    html += '<div class="pill' + (selected === opt ? ' selected' : '') + '" onclick="togglePill(\'' + field.id + '\', \'' + opt.replace(/'/g, "\\'") + '\', this)">' + opt + '</div>';
+  });
+  return html + '</div></div>';
+}
+
+function saveVal(id, val) { formData[id] = val; }
+
+function toggleCheck(groupId, option, el) {
+  if (!checkData[groupId]) checkData[groupId] = [];
+  var idx = checkData[groupId].indexOf(option);
+  if (idx > -1) { checkData[groupId].splice(idx, 1); el.classList.remove('checked'); }
+  else { checkData[groupId].push(option); el.classList.add('checked'); }
+}
+
+function togglePill(groupId, option, el) {
+  var was = pillData[groupId] === option;
+  pillData[groupId] = was ? '' : option;
+  el.parentElement.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('selected'); });
+  if (!was) el.classList.add('selected');
+}
+
+function handleConditionals() {
+  document.querySelectorAll('[data-conditional]').forEach(function(el) {
+    var parts = el.dataset.conditional.split('=');
+    var val = formData[parts[0]] || (document.getElementById(parts[0]) || {}).value || '';
+    el.style.display = val === parts[1] ? '' : 'none';
+  });
+}
+
+function nextStep() {
+  var step = steps[currentStep];
+  var valid = true;
+  step.fields.forEach(function(field) {
+    if (field.row) {
+      field.row.forEach(function(f) {
+        if (f.required) {
+          var el = document.getElementById(f.id);
+          if (!el) return;
+          var val = el.value.trim();
+          if (!val || val === 'Select one...') {
+            el.style.borderColor = '#E57373';
+            el.style.boxShadow = '0 0 0 3px rgba(229,115,115,0.15)';
+            valid = false;
+          } else { el.style.borderColor = ''; el.style.boxShadow = ''; }
+        }
+      });
+    }
+  });
+  if (!valid) return;
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    renderAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) { currentStep--; renderAll(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+}
+
+// ── SUBMIT & PAY ────────────────────────────────
+async function submitAndPay() {
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="loading-spinner"></span>Processing...';
+
+  // Build submission object
+  var submission = {
+    submitted_at: new Date().toISOString(),
+    contact: {
+      first_name: formData.c_first || '',
+      last_name: formData.c_last || '',
+      email: formData.c_email || '',
+      phone: formData.c_phone || '',
+      role: formData.c_role || ''
+    },
+    business: {
+      name: formData.b_name || PROPOSAL_CONFIG.company_name,
+      website: formData.b_website || '',
+      industry: formData.b_industry || '',
+      industry_other: formData.b_industry_other || '',
+      city: formData.b_city || '',
+      state: formData.b_state || '',
+      description: formData.b_description || '',
+      audience: formData.b_audience || ''
+    },
+    goals: {
+      vision: formData.g_vision || '',
+      checklist: checkData.g_goals || [],
+      timeline: formData.g_timeline || ''
+    },
+    design: {
+      tone: pillData.d_tone || '',
+      has_logo: formData.d_logo || '',
+      has_photos: formData.d_photos || '',
+      inspiration: formData.d_inspiration || '',
+      pages_needed: checkData.d_pages || []
+    },
+    features: {
+      needed: checkData.f_features || [],
+      existing_tools: formData.f_tools || '',
+      domain_status: formData.f_domain || ''
+    },
+    budget: {
+      range: '$' + PROPOSAL_CONFIG.build_fee,
+      anything_else: formData.bu_anything_else || '',
+      referral_source: formData.bu_how_found || ''
+    }
+  };
+
+  try {
+    // 1. Save intake form to The Haus
+    var intakeRes = await fetch(PROPOSAL_CONFIG.api_base + '/api/intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        proposal_id: PROPOSAL_CONFIG.proposal_id || null,
+        deal_id: PROPOSAL_CONFIG.deal_id || null,
+        company_id: PROPOSAL_CONFIG.company_id || null,
+        submission: submission
+      })
+    });
+    var intakeData = await intakeRes.json();
+
+    // 2. Create Stripe Checkout session
+    var checkoutRes = await fetch(PROPOSAL_CONFIG.api_base + '/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount_cents: DEPOSIT_CENTS,
+        company_name: PROPOSAL_CONFIG.company_name,
+        client_email: formData.c_email,
+        proposal_id: PROPOSAL_CONFIG.proposal_id || '',
+        deal_id: PROPOSAL_CONFIG.deal_id || '',
+        company_id: PROPOSAL_CONFIG.company_id || '',
+        intake_id: intakeData.intake_id || '',
+        success_url: window.location.origin + window.location.pathname + '?payment=success',
+        cancel_url: window.location.href,
+      })
+    });
+    var checkoutData = await checkoutRes.json();
+
+    if (checkoutData.checkout_url) {
+      // Redirect to Stripe Checkout
+      window.location.href = checkoutData.checkout_url;
+    } else {
+      throw new Error(checkoutData.error || 'Failed to create checkout session');
+    }
+  } catch (err) {
+    console.error('Submit error:', err);
+    btn.disabled = false;
+    btn.textContent = 'Submit & Pay $' + DEPOSIT_AMOUNT + ' Deposit';
+    alert('Something went wrong. Please try again or email hello@whitehausmedia.com for assistance.');
+  }
+}
+
+// ── INIT ────────────────────────────────────────
+if (!window.location.search.includes('payment=success')) {
+  renderAll();
+}
+</script>
+</body>
+</html>

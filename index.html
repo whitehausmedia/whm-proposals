@@ -927,6 +927,12 @@ function submitAudit(){
     body:JSON.stringify({name:n,email:e,website:u,industry:ind})
   }).then(function(r){
     if(r.ok){
+      // Auto-create prospect in The Haus
+      fetch('https://thehaus.whitehausmedia.com/api/audit-webhook',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:n,email:e,phone:'',website:u,message:'Industry: '+(ind||'Not specified')})
+      }).catch(function(){});
       document.querySelector('.audit-card').innerHTML='<div style="text-align:center;padding:40px 0"><div style="margin:0 auto 16px;width:40px;height:40px;border-radius:50%;border:2px solid var(--g);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3 style="margin-bottom:8px">We\'re on it, '+n.split(' ')[0]+'.</h3><p style="font-size:14px;color:var(--t2);line-height:1.7">Your audit for <strong>'+u+'</strong> is in the queue. We\'ll send a detailed breakdown to <strong>'+e+'</strong> within 24 hours.</p></div>';
     }else{
       btn.textContent='Send my free audit →';btn.disabled=false;
