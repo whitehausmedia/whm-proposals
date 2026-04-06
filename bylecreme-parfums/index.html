@@ -1829,7 +1829,10 @@ function closeCart() {
 }
 
 function openCheckout() {
-  closeCart();
+  document.getElementById('cartOverlay').classList.remove('active');
+  document.getElementById('cartDrawer').classList.remove('active');
+  document.getElementById('cartDrawer').style.display = 'none';
+  setTimeout(() => { document.getElementById('cartDrawer').style.display = ''; }, 400);
   /* populate summary */
   const wrap = document.getElementById('checkoutItems');
   let total = 0; let html = '';
