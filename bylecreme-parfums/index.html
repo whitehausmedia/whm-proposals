@@ -690,12 +690,13 @@ nav.scrolled {
 .cart-checkout-btn {
   display: block; width: 100%; padding: 16px; text-align: center;
   font-family: var(--sans); font-size: 11px; letter-spacing: 4px;
-  color: #fff; background: var(--pink); border: none; border-radius: 0;
-  cursor: pointer; transition: all .3s;
+  color: var(--cream); background: linear-gradient(135deg, rgba(214,0,108,.12), rgba(155,0,80,.08));
+  border: 1px solid rgba(214,0,108,.4); border-radius: 0;
+  cursor: pointer; transition: all .4s ease;
   text-decoration: none;
 }
-.cart-checkout-btn:hover { background: #b8006a; }
-.cart-checkout-btn:disabled { opacity: .4; cursor: not-allowed; }
+.cart-checkout-btn:hover { border-color: var(--pink); color: #fff; background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.2)); }
+.cart-checkout-btn:disabled { opacity: .3; cursor: not-allowed; }
 
 /* â•â•â• CHECKOUT OVERLAY â•â•â• */
 .checkout-overlay {
@@ -785,10 +786,12 @@ nav.scrolled {
 .checkout-place-order {
   display: block; width: 100%; padding: 18px; margin-top: 28px;
   text-align: center; font-family: var(--sans); font-size: 11px;
-  letter-spacing: 4px; color: #fff; background: var(--pink);
-  border: none; cursor: pointer; transition: all .3s;
+  letter-spacing: 4px; color: var(--cream);
+  background: linear-gradient(135deg, rgba(214,0,108,.15), rgba(155,0,80,.1));
+  border: 1px solid rgba(214,0,108,.35);
+  cursor: pointer; transition: all .4s ease;
 }
-.checkout-place-order:hover { background: #b8006a; }
+.checkout-place-order:hover { border-color: var(--pink); color: #fff; background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.2)); box-shadow: 0 0 20px rgba(214,0,108,.15); }
 .checkout-secure {
   text-align: center; margin-top: 16px;
   font-family: var(--sans); font-size: 9px; letter-spacing: 2px;
@@ -1216,7 +1219,7 @@ footer {
             <button class="lux-btn primary atb-btn" onclick="event.stopPropagation();addToCart(this)">ADD TO BAG</button>
           </div>
         </div>
-        <div class="frag-img-col">
+        <div class="frag-img-col" onclick="event.stopPropagation();zoomProduct(this.querySelector('img').src)" style="cursor:zoom-in">
           <img src="https://WHMClients.b-cdn.net/clients/bylecreme/soul-ties-nobg.png" alt="Soul Ties fragrance by ByLeCreme" loading="lazy">
         </div>
       </div>
@@ -1272,7 +1275,7 @@ footer {
             <button class="lux-btn primary atb-btn" onclick="event.stopPropagation();addToCart(this)">ADD TO BAG</button>
           </div>
         </div>
-        <div class="frag-img-col">
+        <div class="frag-img-col" onclick="event.stopPropagation();zoomProduct(this.querySelector('img').src)" style="cursor:zoom-in">
           <img src="https://WHMClients.b-cdn.net/clients/bylecreme/lover-girl-nobg.png" alt="Lover Girl fragrance by ByLeCreme" loading="lazy">
         </div>
       </div>
@@ -1329,7 +1332,7 @@ footer {
             <button class="lux-btn primary atb-btn" onclick="event.stopPropagation();addToCart(this)">ADD TO BAG</button>
           </div>
         </div>
-        <div class="frag-img-col">
+        <div class="frag-img-col" onclick="event.stopPropagation();zoomProduct(this.querySelector('img').src)" style="cursor:zoom-in">
           <img src="https://WHMClients.b-cdn.net/clients/bylecreme/take-me-with-you-nobg.png" alt="Take Me With You fragrance by ByLeCreme" loading="lazy">
         </div>
       </div>
@@ -1742,12 +1745,19 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextImage();
 });
 
+/* PRODUCT IMAGE ZOOM */
+function zoomProduct(src) {
+  lightboxImg.src = src;
+  lightboxCounter.textContent = '';
+  lightbox.classList.add('visible');
+}
+
 /* â•â•â•â•â•â•â•â•â•â•â• CART & CHECKOUT SYSTEM â•â•â•â•â•â•â•â•â•â•â• */
 const cartState = [];
 const productMap = {
   'Soul Ties':      { price: 35, size: '10ML', img: 'https://WHMClients.b-cdn.net/clients/bylecreme/soul-ties-nobg.png' },
   'Lover Girl':     { price: 35, size: '10ML', img: 'https://WHMClients.b-cdn.net/clients/bylecreme/lover-girl-nobg.png' },
-  'Take Me With You':{ price: 35, size: '10ML', img: 'https://WHMClients.b-cdn.net/clients/bylecreme/take-me-nobg.png' },
+  'Take Me With You':{ price: 35, size: '10ML', img: 'https://WHMClients.b-cdn.net/clients/bylecreme/take-me-with-you-nobg.png' },
   'Discovery Set':  { price: 95, size: '3 \u00d7 10ML', img: 'https://WHMClients.b-cdn.net/clients/bylecreme/discovery-set-nobg.png' }
 };
 
