@@ -97,6 +97,7 @@
   --light-text: #888;
 }
 
+html { scroll-behavior: smooth; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { background: var(--black); min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
@@ -587,6 +588,17 @@ nav.scrolled {
   max-width: 680px; margin: 0 auto; text-align: center;
   position: relative; z-index: 1;
 }
+.podcast-split {
+  max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 64px;
+}
+.podcast-video-wrap { flex: 0 0 340px; }
+.podcast-video-frame {
+  width: 340px; height: 580px; border-radius: 8px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(214,0,108,.15), 0 0 0 1px rgba(214,0,108,.1);
+  background: var(--charcoal);
+}
+.podcast-text { flex: 1; text-align: left; }
 .podcast-inner h2 {
   font-family: var(--serif); font-style: italic; font-weight: 300;
   font-size: clamp(32px, 5vw, 48px); color: var(--cream); margin-top: 20px;
@@ -774,6 +786,10 @@ footer {
   .founder-inner { gap: 48px; }
   .founder-img-wrap { flex: 0 0 100%; max-width: 340px; }
   .podcast { padding: 80px 24px; }
+  .podcast-split { flex-direction: column; gap: 40px; text-align: center; }
+  .podcast-video-wrap { flex: none; }
+  .podcast-video-frame { width: 280px; height: 480px; margin: 0 auto; }
+  .podcast-text { text-align: center; }
   .experience { padding: 80px 24px; }
   .experience-cards { flex-direction: column; align-items: center; }
   .exp-card { max-width: 100%; width: 100%; }
@@ -931,10 +947,10 @@ footer {
   <div class="press-label">as featured in</div>
   <div class="press-logos">
     <span style="font-size:16px;font-weight:400;font-family:var(--sans);letter-spacing:3px">MTV</span>
-    <span style="font-size:16px;font-weight:300;font-family:var(--serif);font-style:italic;letter-spacing:1px">VoyageATL</span>
+    <a href="https://voyageatl.com/interview/meet-sakari-sanders-bylecreme-home-midtown-atlanta/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span style="font-size:16px;font-weight:300;font-family:var(--serif);font-style:italic;letter-spacing:1px">VoyageATL</span></a>
     <span style="font-size:16px;font-weight:300;font-family:var(--sans);letter-spacing:3px">peacock</span>
     <span style="font-size:11px;font-weight:500;font-family:var(--sans);letter-spacing:4px">LOVE &amp; HIP HOP</span>
-    <span style="font-size:10px;font-weight:400;font-family:var(--sans);letter-spacing:3px">SHOUTOUT ATLANTA</span>
+    <a href="https://shoutoutatlanta.com/meet-sakari-sanders-author-business-owner-creator/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span style="font-size:10px;font-weight:400;font-family:var(--sans);letter-spacing:3px">SHOUTOUT ATLANTA</span></a>
     <span style="font-size:15px;font-weight:300;font-family:var(--serif);font-style:italic;letter-spacing:2px">bestself</span>
   </div>
 </div>
@@ -998,7 +1014,7 @@ footer {
               <span class="frag-price">From $35</span>
               <span class="frag-size">10ML &middot; 50ML</span>
             </div>
-            <a href="#" class="lux-btn primary" onclick="event.stopPropagation()">ADD TO BAG</a>
+            <a href="https://www.bylecreme.com/category/all-products" target="_blank" rel="noopener" class="lux-btn primary atb-btn" onclick="event.stopPropagation();this.textContent='ADDED \u2713';this.style.background='var(--pink)';this.style.borderColor='var(--pink)';this.style.color='#fff';var el=this;setTimeout(function(){el.textContent='ADD TO BAG';el.style.background='';el.style.borderColor='';el.style.color=''},2000)">ADD TO BAG</a>
           </div>
         </div>
         <div class="frag-img-col">
@@ -1054,7 +1070,7 @@ footer {
               <span class="frag-price">From $35</span>
               <span class="frag-size">10ML &middot; 50ML</span>
             </div>
-            <a href="#" class="lux-btn primary" onclick="event.stopPropagation()">ADD TO BAG</a>
+            <a href="https://www.bylecreme.com/category/all-products" target="_blank" rel="noopener" class="lux-btn primary atb-btn" onclick="event.stopPropagation();this.textContent='ADDED \u2713';this.style.background='var(--pink)';this.style.borderColor='var(--pink)';this.style.color='#fff';var el=this;setTimeout(function(){el.textContent='ADD TO BAG';el.style.background='';el.style.borderColor='';el.style.color=''},2000)">ADD TO BAG</a>
           </div>
         </div>
         <div class="frag-img-col">
@@ -1111,7 +1127,7 @@ footer {
               <span class="frag-price">From $35</span>
               <span class="frag-size">10ML &middot; 50ML</span>
             </div>
-            <a href="#" class="lux-btn primary" onclick="event.stopPropagation()">ADD TO BAG</a>
+            <a href="https://www.bylecreme.com/category/all-products" target="_blank" rel="noopener" class="lux-btn primary atb-btn" onclick="event.stopPropagation();this.textContent='ADDED \u2713';this.style.background='var(--pink)';this.style.borderColor='var(--pink)';this.style.color='#fff';var el=this;setTimeout(function(){el.textContent='ADD TO BAG';el.style.background='';el.style.borderColor='';el.style.color=''},2000)">ADD TO BAG</a>
           </div>
         </div>
         <div class="frag-img-col">
@@ -1142,7 +1158,7 @@ footer {
         <div><div class="stat-val">3</div><div class="stat-label">FRAGRANCES</div></div>
         <div><div class="stat-val">10ml</div><div class="stat-label">EACH BOTTLE</div></div>
       </div>
-      <a href="#" class="lux-btn dark-bg primary">ADD TO BAG</a>
+      <a href="https://www.bylecreme.com/category/all-products" target="_blank" rel="noopener" class="lux-btn dark-bg primary atb-btn" onclick="this.textContent='ADDED \u2713';this.style.background='var(--pink)';this.style.borderColor='var(--pink)';var el=this;setTimeout(function(){el.textContent='ADD TO BAG';el.style.background='';el.style.borderColor=''},2000)">ADD TO BAG</a>
     </div>
   </div>
 </section>
@@ -1174,19 +1190,25 @@ footer {
 </section>
 
 <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PODCAST — DARK + FLORAL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<section class="podcast">
+<section id="podcast" class="podcast">
   <div class="podcast-atmosphere"></div>
-  <!-- Floating floral shapes -->
   <div style="position:absolute;pointer-events:none;top:10%;left:8%;width:120px;height:84px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(-15deg,rgba(214,0,108,.045),transparent);transform:rotate(-15deg);filter:blur(20px)"></div>
   <div style="position:absolute;pointer-events:none;top:60%;left:82%;width:90px;height:63px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(30deg,rgba(214,0,108,.04),transparent);transform:rotate(30deg);filter:blur(20px)"></div>
   <div style="position:absolute;pointer-events:none;top:25%;left:75%;width:70px;height:49px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(-45deg,rgba(214,0,108,.035),transparent);transform:rotate(-45deg);filter:blur(20px)"></div>
   <div style="position:absolute;pointer-events:none;top:70%;left:12%;width:100px;height:70px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:linear-gradient(20deg,rgba(214,0,108,.035),transparent);transform:rotate(20deg);filter:blur(20px)"></div>
-  <div class="podcast-inner anim-fade">
-    <span style="font-size:9px;letter-spacing:5px;color:var(--pink);font-family:var(--sans);font-weight:300;text-shadow:0 0 14px rgba(214,0,108,.33)">THE PODCAST</span>
-    <h2>Give Me Flowers</h2>
-    <div style="display:flex;justify-content:center;margin:20px 0"><div class="pink-line" style="width:32px"></div></div>
-    <p>A podcast centered on self-love, intentional care, and honoring women whose impact deserves recognition. Hosted by Sakari Sanders — the same creative vision behind the Give Me Flowers fragrance collection.</p>
-    <div style="margin-top:32px"><a href="#" class="lux-btn primary">LISTEN NOW</a></div>
+  <div class="podcast-split anim-fade">
+    <div class="podcast-video-wrap">
+      <div class="podcast-video-frame">
+        <iframe src="https://www.instagram.com/reel/DGCPJZCABa1/embed/" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" style="width:100%;height:100%;border:0;border-radius:4px"></iframe>
+      </div>
+    </div>
+    <div class="podcast-text">
+      <span style="font-size:9px;letter-spacing:5px;color:var(--pink);font-family:var(--sans);font-weight:300;text-shadow:0 0 14px rgba(214,0,108,.33)">THE PODCAST</span>
+      <h2>Give Me Flowers</h2>
+      <div style="margin:20px 0"><div class="pink-line" style="width:32px"></div></div>
+      <p>A podcast centered on self-love, intentional care, and honoring women whose impact deserves recognition. Hosted by Sakari Sanders — the same creative vision behind the Give Me Flowers fragrance collection.</p>
+      <div style="margin-top:32px"><a href="https://www.instagram.com/reel/DGCPJZCABa1/" target="_blank" rel="noopener" class="lux-btn primary">WATCH NOW</a></div>
+    </div>
   </div>
 </section>
 
@@ -1223,7 +1245,7 @@ footer {
         <div style="margin:28px 0"><div class="pink-line dark" style="width:20px;margin:0 auto"></div></div>
         <div class="price">$65</div>
         <div class="per">PER PERSON</div>
-        <div style="margin-top:32px"><a href="#" class="lux-btn dark-bg primary">BOOK NOW</a></div>
+        <div style="margin-top:32px"><a href="https://www.bylecreme.com/luxury-experiences" target="_blank" rel="noopener" class="lux-btn dark-bg primary">BOOK NOW</a></div>
       </div>
       <div class="exp-card">
         <span class="tag">CREATE</span>
@@ -1232,7 +1254,7 @@ footer {
         <div style="margin:28px 0"><div class="pink-line dark" style="width:20px;margin:0 auto"></div></div>
         <div class="price">$115</div>
         <div class="per">PER PERSON</div>
-        <div style="margin-top:32px"><a href="#" class="lux-btn dark-bg primary">BOOK NOW</a></div>
+        <div style="margin-top:32px"><a href="https://www.bylecreme.com/luxury-experiences" target="_blank" rel="noopener" class="lux-btn dark-bg primary">BOOK NOW</a></div>
       </div>
       <div class="exp-card">
         <span class="tag">INDULGE</span>
@@ -1241,7 +1263,7 @@ footer {
         <div style="margin:28px 0"><div class="pink-line dark" style="width:20px;margin:0 auto"></div></div>
         <div class="price">$150</div>
         <div class="per">PER PERSON</div>
-        <div style="margin-top:32px"><a href="#" class="lux-btn dark-bg primary">BOOK NOW</a></div>
+        <div style="margin-top:32px"><a href="https://www.bylecreme.com/luxury-experiences" target="_blank" rel="noopener" class="lux-btn dark-bg primary">BOOK NOW</a></div>
       </div>
     </div>
   </div>
@@ -1253,8 +1275,8 @@ footer {
     <span style="font-size:9px;letter-spacing:5px;color:var(--pink);font-family:var(--sans);font-weight:300;text-shadow:0 0 14px rgba(214,0,108,.27)">INNER CIRCLE</span>
     <h2>Stay in the Know</h2>
     <p>New scents, exclusive drops, and behind-the-scenes from the studio.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault()">
-      <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+    <form class="newsletter-form" onsubmit="event.preventDefault();var b=this.querySelector('button');var i=this.querySelector('input');b.textContent='SUBSCRIBED \u2713';b.style.background='var(--pink)';b.style.borderColor='var(--pink)';i.value='';setTimeout(function(){b.textContent='SUBSCRIBE';b.style.background='';b.style.borderColor=''},3000)">
+      <input type="email" placeholder="Your email" aria-label="Email for newsletter" required>
       <button type="submit" class="lux-btn primary">SUBSCRIBE</button>
     </form>
   </div>
@@ -1271,34 +1293,34 @@ footer {
     </div>
     <div class="footer-col">
       <div class="footer-col-title">PARFUMS</div>
-      <a href="#">Soul Ties</a>
-      <a href="#">Lover Girl</a>
-      <a href="#">Take Me With You</a>
-      <a href="#">Discovery Set</a>
-      <a href="#">Gift Cards</a>
+      <a href="#collection" onclick="document.querySelector('[data-index=&quot;0&quot;]').click()">Soul Ties</a>
+      <a href="#collection" onclick="document.querySelector('[data-index=&quot;1&quot;]').click()">Lover Girl</a>
+      <a href="#collection" onclick="document.querySelector('[data-index=&quot;2&quot;]').click()">Take Me With You</a>
+      <a href="#discovery">Discovery Set</a>
+      <a href="https://www.bylecreme.com/category/all-products" target="_blank" rel="noopener">Gift Cards</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">WORLD</div>
-      <a href="#">Our Story</a>
-      <a href="#">Sakari Sanders</a>
-      <a href="#">Press</a>
-      <a href="#">Give Me Flowers</a>
-      <a href="#">Bridal Packages</a>
+      <a href="#founder">Our Story</a>
+      <a href="https://www.bylecreme.com/owner" target="_blank" rel="noopener">Sakari Sanders</a>
+      <a href="https://voyageatl.com/interview/meet-sakari-sanders-bylecreme-home-midtown-atlanta/" target="_blank" rel="noopener">Press</a>
+      <a href="#podcast">Give Me Flowers</a>
+      <a href="https://www.bylecreme.com/luxury-experiences" target="_blank" rel="noopener">Bridal Packages</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">STUDIO</div>
-      <a href="#">Book a Session</a>
-      <a href="#">Private Events</a>
-      <a href="#">Refills</a>
-      <a href="#">Contact</a>
+      <a href="https://www.bylecreme.com/luxury-experiences" target="_blank" rel="noopener">Book a Session</a>
+      <a href="https://www.bylecreme.com/luxury-experiences" target="_blank" rel="noopener">Private Events</a>
+      <a href="https://www.bylecreme.com/category/all-products" target="_blank" rel="noopener">Refills</a>
+      <a href="https://www.bylecreme.com/contact" target="_blank" rel="noopener">Contact</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 ByLeCr&egrave;me Parfums</span>
     <div class="footer-social">
-      <a href="#">INSTAGRAM</a>
-      <a href="#">TIKTOK</a>
-      <a href="#">PINTEREST</a>
+      <a href="https://www.instagram.com/bylecreme/" target="_blank" rel="noopener">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/@bylecreme" target="_blank" rel="noopener">TIKTOK</a>
+      <a href="https://www.pinterest.com/bylecreme/" target="_blank" rel="noopener">PINTEREST</a>
     </div>
     <a href="https://www.whitehausmedia.com" target="_blank" rel="noopener" class="footer-credit" style="text-decoration:none;color:inherit;transition:color .3s" onmouseover="this.style.color='var(--pink)'" onmouseout="this.style.color='inherit'">DESIGNED BY WHITE HAUS MEDIA</a>
   </div>
