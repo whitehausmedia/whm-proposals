@@ -647,88 +647,181 @@ nav.scrolled {
 /* â•â•â• CART DRAWER â•â•â• */
 .cart-overlay {
   position: fixed; inset: 0; z-index: 9998;
-  background: rgba(0,0,0,.7); backdrop-filter: blur(6px);
-  opacity: 0; pointer-events: none; transition: opacity .3s ease;
+  background: rgba(0,0,0,.75); backdrop-filter: blur(10px);
+  opacity: 0; pointer-events: none; transition: opacity .4s ease;
 }
 .cart-overlay.active { opacity: 1; pointer-events: auto; }
+
+@keyframes cartItemAppear {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmerSlide {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes cartPulseGlow {
+  0%, 100% { box-shadow: -20px 0 60px rgba(214,0,108,.08); }
+  50%      { box-shadow: -20px 0 80px rgba(214,0,108,.18); }
+}
+
 .cart-drawer {
   position: fixed; top: 0; right: -440px; z-index: 9999;
   width: 420px; max-width: 92vw; height: 100vh;
-  background: var(--ink); border-left: 1px solid rgba(214,0,108,.15);
+  background: linear-gradient(165deg, #0e0a0c 0%, #080808 40%, #0a0608 100%);
+  border-left: 1px solid rgba(214,0,108,.2);
   display: flex; flex-direction: column;
-  transition: right .4s cubic-bezier(.22,1,.36,1);
-  box-shadow: -20px 0 60px rgba(0,0,0,.5);
+  transition: right .45s cubic-bezier(.22,1,.36,1);
+  box-shadow: -20px 0 60px rgba(0,0,0,.6);
 }
-.cart-drawer.active { right: 0; }
+.cart-drawer.active {
+  right: 0;
+  animation: cartPulseGlow 3s ease-in-out infinite;
+}
 .cart-header {
-  padding: 28px 28px 20px; border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 32px 28px 22px;
+  border-bottom: 1px solid rgba(214,0,108,.12);
   display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(180deg, rgba(214,0,108,.06) 0%, transparent 100%);
 }
 .cart-header h3 {
   font-family: var(--serif); font-style: italic; font-weight: 300;
-  font-size: 22px; color: var(--cream); margin: 0;
+  font-size: 24px; color: var(--cream); margin: 0;
+}
+.cart-header h3 span:first-child {
+  background: linear-gradient(135deg, var(--cream), var(--pink-soft));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.cart-bag-count {
+  font-family: var(--sans); font-size: 9px; letter-spacing: 3px;
+  color: rgba(214,0,108,.5); display: inline-block; margin-left: 12px;
+  -webkit-text-fill-color: rgba(214,0,108,.5);
 }
 .cart-close {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: transparent; border: 1px solid rgba(255,255,255,.12);
-  color: var(--cream); font-size: 16px; cursor: pointer;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(214,0,108,.06); border: 1px solid rgba(214,0,108,.15);
+  color: var(--pink-soft); font-size: 18px;
   display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
+  cursor: pointer; transition: all .25s;
 }
-.cart-close:hover { border-color: var(--pink); color: var(--pink); }
-.cart-items { flex: 1; overflow-y: auto; padding: 20px 28px; }
-.cart-item {
-  display: flex; align-items: center; gap: 16px;
-  padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+.cart-close:hover {
+  background: rgba(214,0,108,.15); border-color: rgba(214,0,108,.3);
+  transform: rotate(90deg);
 }
-.cart-item-img {
-  width: 64px; height: 64px; border-radius: 8px; overflow: hidden;
-  background: rgba(255,255,255,.03); flex-shrink: 0;
+.cart-items {
+  flex: 1; overflow-y: auto; padding: 20px 28px;
+  scrollbar-width: thin; scrollbar-color: rgba(214,0,108,.2) transparent;
 }
-.cart-item-img img { width: 100%; height: 100%; object-fit: contain; }
-.cart-item-info { flex: 1; }
-.cart-item-name {
-  font-family: var(--serif); font-style: italic; font-size: 15px;
-  color: var(--cream); margin-bottom: 4px;
-}
-.cart-item-meta { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,.4); font-family: var(--sans); }
-.cart-item-price { font-family: var(--sans); font-size: 14px; color: var(--pink); letter-spacing: 1px; }
-.cart-item-remove {
-  background: none; border: none; color: rgba(255,255,255,.25); cursor: pointer;
-  font-size: 14px; padding: 4px; transition: color .2s;
-}
-.cart-item-remove:hover { color: var(--pink); }
 .cart-empty {
   text-align: center; padding: 60px 20px;
-  font-family: var(--sans); font-size: 11px; letter-spacing: 2px;
-  color: rgba(255,255,255,.3);
+  font-family: var(--sans); font-size: 10px; letter-spacing: 4px;
+  color: rgba(255,255,255,.2);
 }
+.cart-empty::before {
+  content: "\2661"; display: block; font-size: 40px;
+  margin-bottom: 16px; color: rgba(214,0,108,.15);
+}
+.cart-item {
+  display: flex; gap: 18px; padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  animation: cartItemAppear .4s ease both;
+  transition: transform .2s ease; cursor: pointer;
+}
+.cart-item:hover { transform: translateX(4px); }
+.cart-item-img {
+  width: 72px; height: 72px; object-fit: contain;
+  border-radius: 10px; background: rgba(214,0,108,.04);
+  border: 1px solid rgba(214,0,108,.08);
+  padding: 6px; transition: border-color .25s;
+}
+.cart-item:hover .cart-item-img { border-color: rgba(214,0,108,.25); }
+.cart-item-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.cart-item-name {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 16px; color: var(--cream); transition: color .2s;
+}
+.cart-item:hover .cart-item-name { color: var(--pink-soft); }
+.cart-item-size {
+  font-family: var(--sans); font-size: 9px; letter-spacing: 2px;
+  color: rgba(255,255,255,.35); margin-top: 4px;
+}
+.cart-item-price {
+  font-family: var(--sans); font-size: 15px; letter-spacing: 1px;
+  color: var(--pink-soft); margin-top: 6px; font-weight: 500;
+}
+.cart-item-remove {
+  background: none; border: none; color: rgba(255,255,255,.15);
+  font-size: 16px; cursor: pointer; padding: 4px;
+  align-self: flex-start; transition: all .2s;
+}
+.cart-item-remove:hover { color: var(--pink); transform: scale(1.2); }
 .cart-footer {
-  padding: 20px 28px 28px; border-top: 1px solid rgba(255,255,255,.06);
+  padding: 24px 28px 32px;
+  border-top: 1px solid rgba(214,0,108,.12);
+  background: linear-gradient(0deg, rgba(214,0,108,.04) 0%, transparent 100%);
+}
+.cart-perks {
+  display: flex; gap: 20px; justify-content: center;
+  margin-bottom: 18px; padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.cart-perk {
+  font-family: var(--sans); font-size: 8px; letter-spacing: 2px;
+  color: rgba(214,0,108,.4); text-align: center; line-height: 1.5;
+}
+.cart-perk-icon {
+  display: block; font-size: 16px; margin-bottom: 4px;
+  filter: grayscale(1) brightness(1.5); opacity: .5;
 }
 .cart-total-row {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: space-between; align-items: baseline;
   margin-bottom: 20px;
 }
 .cart-total-label {
-  font-family: var(--sans); font-size: 10px; letter-spacing: 3px;
-  color: rgba(255,255,255,.5);
+  font-family: var(--sans); font-size: 10px; letter-spacing: 4px;
+  color: rgba(255,255,255,.35);
 }
 .cart-total-val {
-  font-family: var(--serif); font-size: 24px; color: var(--cream);
+  font-family: var(--serif); font-style: italic; font-size: 28px;
+  color: var(--cream); font-weight: 300;
 }
 .cart-checkout-btn {
-  display: block; width: 100%; padding: 16px; text-align: center;
-  font-family: var(--sans); font-size: 11px; letter-spacing: 4px;
-  color: var(--cream); background: linear-gradient(135deg, rgba(214,0,108,.12), rgba(155,0,80,.08));
-  border: 1px solid rgba(214,0,108,.4); border-radius: 0;
-  cursor: pointer; transition: all .4s ease;
-  text-decoration: none;
+  width: 100%; padding: 18px 0; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 11px; letter-spacing: 5px; font-weight: 600;
+  color: var(--cream);
+  background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.18));
+  border: 1px solid rgba(214,0,108,.4);
+  position: relative; overflow: hidden;
+  transition: all .35s ease;
 }
-.cart-checkout-btn:hover { border-color: var(--pink); color: #fff; background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.2)); }
-.cart-checkout-btn:disabled { opacity: .3; cursor: not-allowed; }
+.cart-checkout-btn::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(214,0,108,.18), transparent);
+  background-size: 200% 100%;
+  animation: shimmerSlide 2.5s ease-in-out infinite;
+}
+.cart-checkout-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(214,0,108,.45), rgba(155,0,80,.3));
+  border-color: rgba(214,0,108,.65);
+  box-shadow: 0 8px 32px rgba(214,0,108,.25);
+  transform: translateY(-1px); letter-spacing: 6px;
+}
+.cart-checkout-btn:disabled { opacity: .25; cursor: default; }
+.cart-checkout-btn:disabled::before { animation: none; }
+.cart-added-toast {
+  position: fixed; top: 24px; right: 24px; z-index: 10001;
+  background: linear-gradient(135deg, rgba(214,0,108,.2), rgba(155,0,80,.12));
+  border: 1px solid rgba(214,0,108,.35);
+  backdrop-filter: blur(20px);
+  padding: 16px 28px;
+  font-family: var(--sans); font-size: 10px; letter-spacing: 3px;
+  color: var(--cream);
+  transform: translateX(120%); transition: transform .4s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+.cart-added-toast.show { transform: translateX(0); }
 
-/* â•â•â• CHECKOUT OVERLAY â•â•â• */
+/* ---- Checkout Overlay ---- */
 .checkout-overlay {
   position: fixed; inset: 0; z-index: 10000;
   background: var(--ink);
@@ -744,9 +837,7 @@ nav.scrolled {
   font-family: var(--serif); font-style: italic; font-weight: 300;
   font-size: 28px; color: var(--cream); margin: 0 0 32px;
 }
-.checkout-field {
-  margin-bottom: 16px;
-}
+.checkout-field { margin-bottom: 16px; }
 .checkout-field label {
   display: block; font-family: var(--sans); font-size: 9px;
   letter-spacing: 3px; color: rgba(255,255,255,.45); margin-bottom: 8px;
@@ -759,85 +850,204 @@ nav.scrolled {
   -webkit-appearance: none;
 }
 .checkout-field input:focus, .checkout-field select:focus {
-  border-color: var(--pink);
+  border-color: rgba(214,0,108,.35);
 }
-.checkout-field input::placeholder { color: rgba(255,255,255,.2); }
-.checkout-row { display: flex; gap: 16px; }
-.checkout-row .checkout-field { flex: 1; }
+.checkout-field select option { background: var(--ink); color: var(--cream); }
+.checkout-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .checkout-section-title {
   font-family: var(--sans); font-size: 9px; letter-spacing: 4px;
-  color: var(--pink); margin: 32px 0 16px; padding-bottom: 8px;
-  border-bottom: 1px solid rgba(214,0,108,.15);
+  color: rgba(255,255,255,.3); margin: 28px 0 16px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.06);
 }
-.checkout-right {
-  padding-top: 8px;
-}
-.checkout-back {
-  background: none; border: none; color: rgba(255,255,255,.4);
-  font-family: var(--sans); font-size: 10px; letter-spacing: 2px;
-  cursor: pointer; margin-bottom: 24px; transition: color .2s;
-  padding: 0;
-}
-.checkout-back:hover { color: var(--pink); }
-.checkout-summary-title {
-  font-family: var(--sans); font-size: 9px; letter-spacing: 4px;
-  color: rgba(255,255,255,.45); margin-bottom: 20px;
+.checkout-right { padding-top: 16px; }
+.checkout-right h3 {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 20px; color: var(--cream); margin: 0 0 24px;
 }
 .checkout-summary-item {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+  display: flex; justify-content: space-between; padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  font-family: var(--sans); font-size: 13px; color: rgba(255,255,255,.6);
 }
-.checkout-summary-img {
-  width: 52px; height: 52px; border-radius: 6px; overflow: hidden;
-  background: rgba(255,255,255,.03);
-}
-.checkout-summary-img img { width: 100%; height: 100%; object-fit: contain; }
-.checkout-summary-name {
-  flex: 1; font-family: var(--serif); font-style: italic;
-  font-size: 14px; color: var(--cream);
-}
-.checkout-summary-price {
-  font-family: var(--sans); font-size: 13px; color: var(--pink);
-}
-.checkout-totals { margin-top: 24px; }
-.checkout-totals-row {
-  display: flex; justify-content: space-between;
-  padding: 8px 0; font-family: var(--sans); font-size: 12px;
-}
-.checkout-totals-row span:first-child { color: rgba(255,255,255,.4); letter-spacing: 2px; font-size: 10px; }
-.checkout-totals-row span:last-child { color: var(--cream); }
-.checkout-totals-row.total {
-  border-top: 1px solid rgba(255,255,255,.08);
-  margin-top: 8px; padding-top: 16px;
-}
-.checkout-totals-row.total span:last-child {
-  font-family: var(--serif); font-size: 22px; color: var(--cream);
+.checkout-summary-total {
+  display: flex; justify-content: space-between; padding: 20px 0 0;
+  font-family: var(--serif); font-style: italic; font-size: 22px;
+  color: var(--cream); font-weight: 300;
 }
 .checkout-place-order {
-  display: block; width: 100%; padding: 18px; margin-top: 28px;
-  text-align: center; font-family: var(--sans); font-size: 11px;
-  letter-spacing: 4px; color: var(--cream);
-  background: linear-gradient(135deg, rgba(214,0,108,.15), rgba(155,0,80,.1));
+  width: 100%; margin-top: 32px; padding: 18px 0;
+  font-family: var(--sans); font-size: 11px; letter-spacing: 5px; font-weight: 600;
+  color: var(--cream); cursor: pointer;
+  background: linear-gradient(135deg, rgba(214,0,108,.2), rgba(155,0,80,.12));
   border: 1px solid rgba(214,0,108,.35);
-  cursor: pointer; transition: all .4s ease;
+  position: relative; overflow: hidden; transition: all .35s ease;
 }
-.checkout-place-order:hover { border-color: var(--pink); color: #fff; background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.2)); box-shadow: 0 0 20px rgba(214,0,108,.15); }
-.checkout-secure {
-  text-align: center; margin-top: 16px;
-  font-family: var(--sans); font-size: 9px; letter-spacing: 2px;
-  color: rgba(255,255,255,.25);
+.checkout-place-order::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(214,0,108,.12), transparent);
+  background-size: 200% 100%; animation: shimmerSlide 3s ease-in-out infinite;
 }
-@media(max-width:768px) {
+.checkout-place-order:hover {
+  background: linear-gradient(135deg, rgba(214,0,108,.35), rgba(155,0,80,.2));
+  border-color: rgba(214,0,108,.55);
+  box-shadow: 0 6px 24px rgba(214,0,108,.15);
+}
+.checkout-back {
+  display: block; text-align: center; margin-top: 16px;
+  font-family: var(--sans); font-size: 9px; letter-spacing: 3px;
+  color: rgba(255,255,255,.25); cursor: pointer;
+  background: none; border: none; width: 100%; padding: 8px;
+}
+.checkout-back:hover { color: rgba(255,255,255,.5); }
+@media(max-width:640px) {
   .checkout-wrap { grid-template-columns: 1fr; gap: 32px; padding: 32px 20px; }
 }
-.podcast-inner h2 {
-  font-family: var(--serif); font-style: italic; font-weight: 300;
-  font-size: clamp(32px, 5vw, 48px); color: var(--cream); margin-top: 20px;
+
+/* ---- Chatbot ---- */
+@keyframes chatBtnPulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(214,0,108,.2); }
+  50%      { box-shadow: 0 4px 32px rgba(214,0,108,.4); }
 }
-.podcast-inner p {
-  font-family: var(--serif); font-size: 15px; color: var(--silver);
-  line-height: 1.9; font-weight: 300; font-style: italic;
-  max-width: 520px; margin: 0 auto;
+@keyframes chatBubbleIn {
+  from { opacity: 0; transform: translateY(8px) scale(.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes typingDot {
+  0%, 80%, 100% { opacity: .25; transform: scale(.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+.chat-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(214,0,108,.85), rgba(155,0,80,.7));
+  border: 1px solid rgba(214,0,108,.5);
+  color: var(--cream); font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .3s ease;
+  animation: chatBtnPulse 3s ease-in-out infinite;
+}
+.chat-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 36px rgba(214,0,108,.45);
+}
+.chat-fab svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.chat-window {
+  position: fixed; bottom: 100px; right: 28px; z-index: 9001;
+  width: 360px; max-width: calc(100vw - 40px);
+  max-height: 480px;
+  background: linear-gradient(165deg, #0e0a0c, #080808);
+  border: 1px solid rgba(214,0,108,.2);
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,.7), 0 0 40px rgba(214,0,108,.08);
+  opacity: 0; transform: translateY(20px) scale(.95);
+  pointer-events: none;
+  transition: all .35s cubic-bezier(.22,1,.36,1);
+}
+.chat-window.open {
+  opacity: 1; transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.chat-win-header {
+  padding: 18px 20px; display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid rgba(214,0,108,.1);
+  background: linear-gradient(180deg, rgba(214,0,108,.06), transparent);
+}
+.chat-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.2));
+  border: 1px solid rgba(214,0,108,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.chat-win-title {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 15px; color: var(--cream);
+}
+.chat-win-subtitle {
+  font-family: var(--sans); font-size: 8px; letter-spacing: 2px;
+  color: rgba(214,0,108,.45); margin-top: 2px;
+}
+.chat-win-close {
+  margin-left: auto; background: none; border: none;
+  color: rgba(255,255,255,.3); font-size: 18px; cursor: pointer;
+  transition: color .2s;
+}
+.chat-win-close:hover { color: var(--pink-soft); }
+.chat-messages {
+  flex: 1; overflow-y: auto; padding: 20px 16px; min-height: 200px;
+  display: flex; flex-direction: column; gap: 12px;
+  scrollbar-width: thin; scrollbar-color: rgba(214,0,108,.15) transparent;
+}
+.chat-msg {
+  max-width: 85%; padding: 12px 16px;
+  font-family: var(--sans); font-size: 13px; line-height: 1.6;
+  animation: chatBubbleIn .35s ease both;
+}
+.chat-msg.bot {
+  align-self: flex-start;
+  background: rgba(214,0,108,.08);
+  border: 1px solid rgba(214,0,108,.12);
+  border-radius: 2px 14px 14px 14px;
+  color: rgba(255,255,255,.8);
+}
+.chat-msg.user {
+  align-self: flex-end;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px 2px 14px 14px;
+  color: var(--cream);
+}
+.chat-typing {
+  display: flex; gap: 5px; padding: 12px 16px;
+  align-self: flex-start;
+}
+.chat-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(214,0,108,.4);
+  animation: typingDot 1.4s ease-in-out infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: .2s; }
+.chat-typing span:nth-child(3) { animation-delay: .4s; }
+.chat-input-row {
+  padding: 14px 16px; border-top: 1px solid rgba(214,0,108,.1);
+  display: flex; gap: 10px;
+  background: rgba(0,0,0,.3);
+}
+.chat-input {
+  flex: 1; padding: 10px 14px;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  color: var(--cream); font-family: var(--sans); font-size: 13px;
+  border-radius: 8px; outline: none; transition: border-color .2s;
+}
+.chat-input:focus { border-color: rgba(214,0,108,.3); }
+.chat-input::placeholder { color: rgba(255,255,255,.2); }
+.chat-send {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(214,0,108,.3), rgba(155,0,80,.2));
+  border: 1px solid rgba(214,0,108,.3);
+  color: var(--cream); font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .25s;
+}
+.chat-send:hover {
+  background: linear-gradient(135deg, rgba(214,0,108,.5), rgba(155,0,80,.35));
+  transform: scale(1.05);
+}
+.chat-quick-btns {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 0 16px 14px;
+}
+.chat-quick-btn {
+  padding: 7px 14px;
+  background: rgba(214,0,108,.06); border: 1px solid rgba(214,0,108,.15);
+  border-radius: 20px;
+  font-family: var(--sans); font-size: 11px; color: rgba(214,0,108,.6);
+  cursor: pointer; transition: all .2s;
+}
+.chat-quick-btn:hover {
+  background: rgba(214,0,108,.14); border-color: rgba(214,0,108,.3);
+  color: var(--pink-soft);
 }
 
 /* â”€â”€â”€ EXPERIENCE — LIGHT â”€â”€â”€ */
@@ -1809,66 +2019,79 @@ const productMap = {
 };
 
 function addToCart(btn) {
-  /* figure out which product */
-  const card = btn.closest('.frag-card') || btn.closest('.discovery-text');
-  let name;
-  if (card && card.classList.contains('discovery-text')) {
-    name = 'Discovery Set';
-  } else if (card) {
-    name = card.querySelector('.frag-name')?.textContent || 'Fragrance';
-  } else {
-    /* discovery set fallback */
-    name = btn.closest('#discovery') ? 'Discovery Set' : 'Fragrance';
+    var card = btn.closest(".frag-card");
+    var name = card.querySelector(".frag-name").textContent.trim();
+    var existing = cartState.find(function(i) { return i.name === name; });
+    if (existing) { existing.qty++; } else { cartState.push({ name: name, qty: 1 }); }
+    renderCart();
+    var badge = document.getElementById("cartBadge");
+    var count = cartState.reduce(function(s,i){ return s + i.qty; }, 0);
+    if (badge) { badge.textContent = count; badge.style.display = "flex"; }
+    // Toast
+    var toast = document.getElementById("cartToast");
+    if (toast) {
+      toast.textContent = name.toUpperCase() + " ADDED \u2661";
+      toast.classList.add("show");
+      setTimeout(function(){ toast.classList.remove("show"); }, 2200);
+    }
+    // Button feedback
+    var orig = btn.textContent;
+    btn.textContent = "ADDED \u2661";
+    btn.style.background = "rgba(214,0,108,.2)";
+    btn.style.borderColor = "rgba(214,0,108,.4)";
+    setTimeout(function(){
+      btn.textContent = orig;
+      btn.style.background = "";
+      btn.style.borderColor = "";
+    }, 1500);
   }
-  const prod = productMap[name] || { price: 35, size: '10ML', img: '' };
 
-  /* animate button */
-  btn.textContent = 'ADDED \u2713';
-  btn.style.background = 'var(--pink)';
-  btn.style.borderColor = 'var(--pink)';
-  btn.style.color = '#fff';
-  setTimeout(() => { btn.textContent = 'ADD TO BAG'; btn.style.background = ''; btn.style.borderColor = ''; btn.style.color = ''; }, 1800);
-
-  /* add to state */
-  const existing = cartState.find(i => i.name === name);
-  if (existing) { existing.qty++; }
-  else { cartState.push({ name, price: prod.price, size: prod.size, img: prod.img, qty: 1 }); }
-
-  renderCart();
-  openCart();
-  trackEvent('add_to_bag_click', { product: name });
-}
-
+  function goToProduct(name, cardIndex) {
+    closeCart();
+    if (cardIndex >= 0) {
+      setTimeout(function() {
+        var cards = document.querySelectorAll(".frag-card");
+        if (cards[cardIndex]) {
+          cards[cardIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+          setTimeout(function() { toggleScent(cardIndex, null); }, 500);
+        }
+      }, 450);
+    }
+  }
 function renderCart() {
-  const wrap = document.getElementById('cartItems');
-  const totalEl = document.getElementById('cartTotal');
-  const checkBtn = document.getElementById('cartCheckoutBtn');
-  const badge = document.getElementById('cartBadge');
-  const count = cartState.reduce((s, i) => s + i.qty, 0);
-  if (badge) { badge.textContent = count; badge.style.display = count ? 'flex' : 'none'; }
-  if (!cartState.length) {
-    wrap.innerHTML = '<div class="cart-empty">YOUR BAG IS EMPTY</div>';
-    totalEl.textContent = '$0';
-    checkBtn.disabled = true;
-    return;
+    var container = document.getElementById("cartItems");
+    var totalEl = document.getElementById("cartTotal");
+    var checkBtn = document.getElementById("cartCheckoutBtn");
+    var bagCount = document.getElementById("cartBagCount");
+    if (!cartState.length) {
+      container.innerHTML = '<div class="cart-empty">YOUR BAG IS WAITING</div>';
+      totalEl.textContent = "$0";
+      checkBtn.disabled = true;
+      if (bagCount) bagCount.textContent = "";
+      return;
+    }
+    var total = 0;
+    var html = "";
+    var cardNames = ["Soul Ties", "Lover Girl", "Take Me With You"];
+    cartState.forEach(function(item, idx) {
+      var p = productMap[item.name];
+      total += p.price * item.qty;
+      var prodIdx = cardNames.indexOf(item.name);
+      html += '<div class="cart-item" onclick="goToProduct(\x27' + item.name + '\x27, ' + prodIdx + ')" style="animation-delay:' + (idx * .08) + 's">'
+            + '<img class="cart-item-img" src="' + p.img + '" alt="' + item.name + '">'
+            + '<div class="cart-item-info">'
+            + '<div class="cart-item-name">' + item.name + '</div>'
+            + '<div class="cart-item-size">' + p.size + '</div>'
+            + '<div class="cart-item-price">$' + p.price + (item.qty > 1 ? ' \u00d7 ' + item.qty : '') + '</div>'
+            + '</div>'
+            + '<button class="cart-item-remove" onclick="event.stopPropagation();removeFromCart(' + idx + ')">&times;</button>'
+            + '</div>';
+    });
+    container.innerHTML = html;
+    totalEl.textContent = "$" + total;
+    checkBtn.disabled = false;
+    if (bagCount) bagCount.textContent = cartState.length + (cartState.length === 1 ? " ITEM" : " ITEMS");
   }
-  let html = '';
-  let total = 0;
-  cartState.forEach((item, i) => {
-    total += item.price * item.qty;
-    html += '<div class="cart-item">'
-      + '<div class="cart-item-img"><img src="' + item.img + '" alt="' + item.name + '"></div>'
-      + '<div class="cart-item-info"><div class="cart-item-name">' + item.name + '</div>'
-      + '<div class="cart-item-meta">' + item.size + (item.qty > 1 ? ' \u00d7 ' + item.qty : '') + '</div></div>'
-      + '<span class="cart-item-price">$' + (item.price * item.qty) + '</span>'
-      + '<button class="cart-item-remove" onclick="removeFromCart(' + i + ')">\u2715</button>'
-      + '</div>';
-  });
-  wrap.innerHTML = html;
-  totalEl.textContent = '$' + total;
-  checkBtn.disabled = false;
-}
-
 function removeFromCart(idx) {
   cartState.splice(idx, 1);
   renderCart();
@@ -1953,13 +2176,18 @@ document.addEventListener('keydown', e => {
 <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
 <div id="cartDrawer" class="cart-drawer">
   <div class="cart-header">
-    <h3>Your Bag</h3>
-    <button class="cart-close" onclick="closeCart()">&times;</button>
+    <h3><span>Your Bag</span> <span class="cart-bag-count" id="cartBagCount"></span></h3>
+    <button class="cart-close" onclick="closeCart()">×</button>
   </div>
   <div id="cartItems" class="cart-items">
-    <div class="cart-empty">YOUR BAG IS EMPTY</div>
+    <div class="cart-empty">YOUR BAG IS WAITING</div>
   </div>
   <div class="cart-footer">
+    <div class="cart-perks">
+      <div class="cart-perk"><span class="cart-perk-icon">✨</span>FREE SHIPPING</div>
+      <div class="cart-perk"><span class="cart-perk-icon">🌹</span>HAND POURED</div>
+      <div class="cart-perk"><span class="cart-perk-icon">💌</span>GIFT READY</div>
+    </div>
     <div class="cart-total-row">
       <span class="cart-total-label">SUBTOTAL</span>
       <span id="cartTotal" class="cart-total-val">$0</span>
@@ -1967,6 +2195,7 @@ document.addEventListener('keydown', e => {
     <button id="cartCheckoutBtn" class="cart-checkout-btn" disabled onclick="openCheckout()">CHECKOUT</button>
   </div>
 </div>
+<div id="cartToast" class="cart-added-toast">ADDED TO BAG ♡</div>
 
 <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CHECKOUT OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div id="checkoutOverlay" class="checkout-overlay">
@@ -2018,6 +2247,108 @@ document.addEventListener('keydown', e => {
     <iframe id="reelFrame" src="" frameborder="0" scrolling="no" allowtransparency="true" style="width:100%;height:100%;border:0;border-radius:12px"></iframe>
   </div>
 </div>
+
+
+<!-- CHATBOT -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-win-header">
+    <div class="chat-avatar">🌹</div>
+    <div>
+      <div class="chat-win-title">LeCrème Concierge</div>
+      <div class="chat-win-subtitle">POWERED BY AI</div>
+    </div>
+    <button class="chat-win-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey love! 🌸 Welcome to ByLeCrème. I'm here to help you find your signature scent. What can I help you with today?</div>
+  </div>
+  <div class="chat-quick-btns" id="chatQuickBtns">
+    <button class="chat-quick-btn" onclick="chatQuick(this)">When is the next fragrance releasing?</button>
+    <button class="chat-quick-btn" onclick="chatQuick(this)">What scent is best for date night?</button>
+    <button class="chat-quick-btn" onclick="chatQuick(this)">Tell me about the Discovery Set</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()">→</button>
+  </div>
+</div>
+<script>
+var chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+  document.getElementById('chatFab').style.display = chatOpen ? 'none' : 'flex';
+}
+function chatQuick(btn) {
+  var text = btn.textContent;
+  document.getElementById('chatQuickBtns').style.display = 'none';
+  addChatMsg(text, 'user');
+  showTyping(function() { addChatMsg(getChatReply(text), 'bot'); });
+}
+function sendChat() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  document.getElementById('chatQuickBtns').style.display = 'none';
+  addChatMsg(text, 'user');
+  showTyping(function() { addChatMsg(getChatReply(text), 'bot'); });
+}
+function addChatMsg(text, type) {
+  var msgs = document.getElementById('chatMessages');
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping(cb) {
+  var msgs = document.getElementById('chatMessages');
+  var typing = document.createElement('div');
+  typing.className = 'chat-typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(function() { typing.remove(); cb(); }, 1200 + Math.random() * 800);
+}
+function getChatReply(text) {
+  var t = text.toLowerCase();
+  if (t.includes('next fragrance') || t.includes('new fragrance') || t.includes('releasing') || t.includes('release') || t.includes('new scent') || t.includes('upcoming')) {
+    return "Ooh great question babe! We\'ve got something special in the works and trust me, you don\'t wanna miss it. Subscribe to LeCr\u00e8me Insiders for priority access to new fragrances, exclusive drops, and all the perks! You\'ll be the first to know \u2728";
+  }
+  if (t.includes('date night') || t.includes('romantic') || t.includes('sexy') || t.includes('evening')) {
+    return "Oh you trying to have them HOOKED? Soul Ties is THAT girl for date night. She\'s warm, magnetic, a little mysterious\u2014think vanilla bourbon meets late night conversations. You won\'t be forgotten, period.";
+  }
+  if (t.includes('discovery') || t.includes('set') || t.includes('sampler') || t.includes('try all') || t.includes('bundle')) {
+    return "The Discovery Set is literally the move if you can\'t decide\u2014and honestly why would you when all three are amazing? You get Soul Ties, Lover Girl, AND Take Me With You in cute 10ML rollerballs. It\'s giving thoughtful gift or treat yourself energy for just $95!";
+  }
+  if (t.includes('soul ties')) {
+    return "Soul Ties is that warm, intoxicating scent that makes people lean in and ask \'what are you wearing?\' She\'s got vanilla, bourbon, and a little bit of mystery. Perfect for when you want to leave an impression. And at $35 for 10ML? That\'s a whole vibe for the price.";
+  }
+  if (t.includes('lover girl')) {
+    return "Lover Girl is soft, flirty, and absolutely irresistible! Think fresh florals with a sweet base\u2014she\'s the one you reach for on a sunny day or a girls\' brunch. She makes you feel like the main character and honestly? You ARE. $35 for 10ML!";
+  }
+  if (t.includes('take me')) {
+    return "Take Me With You is for the bold babe who knows what she wants. She\'s confident, layered, a little edgy but still feminine. People will literally ask to follow you just from the trail you leave behind. $35 for 10ML\u2014she\'s a MUST.";
+  }
+  if (t.includes('shipping') || t.includes('deliver') || t.includes('how long')) {
+    return "We ship fast because we know you need your scent ASAP! Most orders go out within 1-2 business days. And yes ma\'am, shipping is on us! Can\'t have you waiting too long to smell amazing.";
+  }
+  if (t.includes('gift') || t.includes('present') || t.includes('birthday')) {
+    return "You\'re about to be somebody\'s favorite person! The Discovery Set makes the PERFECT gift\u2014three gorgeous scents in one beautiful package. Or grab their fave individual rollerball. Either way, they\'re gonna love you for it!";
+  }
+  if (t.includes('subscribe') || t.includes('insider') || t.includes('email') || t.includes('newsletter')) {
+    return "Yes! Join LeCr\u00e8me Insiders and be part of the inner circle. You\'ll get early access to new drops, exclusive discounts, and behind-the-scenes content before anyone else. It\'s giving VIP energy and it\'s completely free!";
+  }
+  if (t.includes('ingredients') || t.includes('natural') || t.includes('clean') || t.includes('vegan')) {
+    return "We keep it clean over here! All ByLeCr\u00e8me fragrances are hand-poured with love in Atlanta. We\'re all about quality ingredients that smell luxurious and last. No shortcuts, no compromise\u2014just pure elegance in a bottle.";
+  }
+  return "I love that you\'re curious! I\'d love to help\u2014try asking me about our fragrances, what\'s best for a specific occasion, or when new scents are dropping. I got you!";
+}
+<\/script>
 
 </body>
 </html>
