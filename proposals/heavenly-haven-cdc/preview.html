@@ -3,89 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heavenly Haven CDC – Web Presence</title>
+    <title>Heavenly Haven Child Development Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --cream: #FAF7F2;
+            --cream-dark: #F0EBE3;
+            --sage: #7A8F6D;
+            --sage-light: #A3B899;
+            --sage-dark: #5C6F51;
+            --plum: #6B4C6E;
+            --plum-light: #8B6C8E;
+            --lavender: #D4C5E2;
+            --lavender-light: #EDE6F5;
+            --warm-brown: #8B7355;
+            --rose: #C17B7B;
+            --rose-light: #E8C4C4;
+            --gold-soft: #C4A96A;
+            --charcoal: #2D2D2D;
+            --text: #3A3A3A;
+            --text-light: #6B6B6B;
+            --white: #FFFFFF;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            color: #3D3D3D;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
             line-height: 1.6;
-            background: #FFFFFF;
+            background: var(--cream);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* âââ NAVIGATION âââ */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid #9B72CF;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 1px 30px rgba(0,0,0,0.06);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
+            padding: 1.25rem 3rem;
+            max-width: 1400px;
             margin: 0 auto;
-            width: 100%;
         }
 
         .logo {
-            font-family: 'Lora', serif;
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
             font-weight: 700;
-            color: #9B72CF;
+            color: var(--plum);
             letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--sage);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
         }
 
         .nav-menu {
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-menu a {
             text-decoration: none;
-            color: #3D3D3D;
-            font-size: 0.95rem;
-            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.3s ease;
-            position: relative;
+            letter-spacing: 0.3px;
         }
 
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #E57373;
-            transition: width 0.3s ease;
+        .nav-menu a:hover { color: var(--plum); }
+
+        .nav-cta {
+            background: var(--plum) !important;
+            color: var(--white) !important;
+            padding: 0.7rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            transition: all 0.3s ease !important;
+            letter-spacing: 0.3px;
         }
 
-        .nav-menu a:hover {
-            color: #9B72CF;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
+        .nav-cta:hover {
+            background: var(--plum-light) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107, 76, 110, 0.25);
         }
 
         .hamburger {
@@ -95,922 +138,1259 @@
             cursor: pointer;
             background: none;
             border: none;
+            padding: 5px;
         }
 
         .hamburger span {
-            width: 25px;
-            height: 2.5px;
-            background: #9B72CF;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
             transition: 0.3s;
+            border-radius: 2px;
         }
 
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                gap: 0;
-                background: white;
-                padding: 1rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu a {
-                padding: 0.75rem;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-
+        /* âââ HERO âââ */
         .hero {
-            margin-top: 70px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-content h1 {
-            font-family: 'Lora', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #9B72CF;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-content .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #9B72CF 0%, #8B63BB 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .hero-content .cta-button:hover {
-            background: linear-gradient(135deg, #8B63BB 0%, #7B53AB 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(155, 114, 207, 0.3);
-        }
-
-        .hero-image {
+            margin-top: 80px;
             position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, #9B72CF 0%, #B58FD1 100%);
-            border-radius: 20px;
-            overflow: hidden;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 50px rgba(155, 114, 207, 0.25);
+            overflow: hidden;
         }
 
-        .hero-image svg {
-            width: 85%;
-            height: 85%;
-            opacity: 0.95;
+        .hero-video-wrap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        .trust-badges {
+        .hero-video-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--cream) 0%, rgba(250,247,242,0.3) 40%, rgba(250,247,242,0) 100%);
+            z-index: 1;
+        }
+
+        .hero-video-wrap video,
+        .hero-video-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            width: 100%;
+        }
+
+        .hero-inner {
+            max-width: 560px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--lavender-light);
+            color: var(--plum);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.12;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--plum);
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+        }
+
+        .hero-actions {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
+            gap: 1rem;
+            align-items: center;
             flex-wrap: wrap;
         }
 
-        .badge {
-            display: flex;
+        .btn-primary {
+            display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            background: #FFF5EB;
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #3D3D3D;
-            font-weight: 500;
-            border: 1px solid #E57373;
-        }
-
-        .badge svg {
-            width: 20px;
-            height: 20px;
-            stroke: #9B72CF;
-            stroke-width: 2;
-        }
-
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 3rem 2rem;
-            background: linear-gradient(90deg, #F3E5F5 0%, #FCE4EC 100%);
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Lora', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #9B72CF;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: #555;
+            gap: 0.5rem;
+            background: var(--plum);
+            color: var(--white);
+            padding: 1rem 2.25rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .about-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .btn-primary:hover {
+            background: var(--plum-light);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(107, 76, 110, 0.3);
         }
 
-        .about-section h2 {
-            font-family: 'Lora', serif;
-            font-size: 2.3rem;
-            color: #9B72CF;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        .btn-secondary {
+            display: inline-flex;
             align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--text);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cream-dark);
         }
 
-        .highlights {
+        .btn-secondary:hover {
+            border-color: var(--plum);
+            color: var(--plum);
+        }
+
+        .hero-stats {
             display: flex;
-            flex-direction: column;
-            gap: 1.75rem;
+            gap: 3rem;
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--cream-dark);
         }
 
-        .highlight-item {
-            display: flex;
-            gap: 1.25rem;
+        .hero-stat h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--plum);
+            font-weight: 700;
+            line-height: 1;
         }
 
-        .highlight-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #E57373 0%, #EF9A9A 100%);
-            border-radius: 12px;
+        .hero-stat p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* âââ TRUST BAR âââ */
+        .trust-bar {
+            background: var(--white);
+            padding: 2.5rem 3rem;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .trust-inner {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            width: 22px;
+            height: 22px;
+            color: var(--sage);
             flex-shrink: 0;
         }
 
-        .highlight-icon svg {
+        /* âââ SECTION UTILITIES âââ */
+        .section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
             width: 24px;
-            height: 24px;
-            stroke: white;
-            stroke-width: 2;
+            height: 1.5px;
+            background: var(--sage);
         }
 
-        .highlight-content h3 {
-            font-family: 'Lora', serif;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
             font-weight: 700;
-            color: #9B72CF;
-            margin-bottom: 0.5rem;
-            font-size: 1.15rem;
+            color: var(--charcoal);
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            letter-spacing: -1px;
         }
 
-        .highlight-content p {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        /* âââ ABOUT / MISSION âââ */
+        .about-section {
+            background: var(--white);
+            padding: 6rem 3rem;
+        }
+
+        .about-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
         }
 
         .about-image {
             position: relative;
-            height: 380px;
-            background: linear-gradient(135deg, #1E2A4A 0%, #2D3A5C 100%);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
+            height: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(transparent, rgba(107,76,110,0.15));
+        }
+
+        .about-accent {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem 1.75rem;
+            border-radius: 16px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .about-accent-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--lavender-light);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .about-image svg {
-            width: 75%;
-            height: 75%;
-            opacity: 0.9;
+        .about-accent-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--plum);
         }
 
-        .programs-section {
-            padding: 4rem 2rem;
-            background: #FAFAFA;
-            margin-top: 2rem;
-        }
-
-        .programs-section h2 {
-            font-family: 'Lora', serif;
-            font-size: 2.3rem;
-            color: #9B72CF;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .program-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            border-top: 4px solid #9B72CF;
-        }
-
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(155, 114, 207, 0.2);
-        }
-
-        .program-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #E57373 0%, #EF9A9A 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .program-icon svg {
-            width: 35px;
-            height: 35px;
-            stroke: white;
-            stroke-width: 1.5;
-        }
-
-        .program-card h3 {
-            font-family: 'Lora', serif;
-            font-size: 1.35rem;
-            color: #9B72CF;
-            margin-bottom: 0.75rem;
+        .about-accent h4 {
+            font-size: 1.1rem;
             font-weight: 700;
+            color: var(--charcoal);
         }
 
-        .program-card p {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
+        .about-accent p {
+            font-size: 0.8rem;
+            color: var(--text-light);
         }
 
-        .why-choose {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #1E2A4A 0%, #2D3A5C 100%);
-            color: white;
+        .about-text .section-desc {
+            margin-bottom: 2rem;
+        }
+
+        .about-values {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
             margin-top: 2rem;
         }
 
-        .why-choose h2 {
-            font-family: 'Lora', serif;
-            font-size: 2.3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #E57373;
-        }
-
-        .why-choose-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .why-item {
+        .about-value {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: flex-start;
         }
 
-        .why-number {
-            font-family: 'Lora', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #E57373;
-            min-width: 65px;
-            text-align: center;
+        .about-value-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--sage);
+            margin-top: 0.5rem;
+            flex-shrink: 0;
         }
 
-        .why-content h3 {
-            font-family: 'Lora', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-            color: white;
-            font-weight: 700;
+        .about-value h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.15rem;
         }
 
-        .why-content p {
-            font-size: 0.95rem;
-            color: #DDD;
+        .about-value p {
+            font-size: 0.9rem;
+            color: var(--text-light);
             line-height: 1.6;
         }
 
-        .testimonial-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
+        /* âââ PROGRAMS âââ */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .program-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+
+        .program-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.05);
+        }
+
+        .program-body {
+            padding: 1.75rem;
+        }
+
+        .program-age {
+            display: inline-block;
+            background: var(--lavender-light);
+            color: var(--plum);
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .program-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .program-body p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        /* âââ THERAPY / DIFFERENTIATOR âââ */
+        .therapy-section {
+            background: linear-gradient(135deg, var(--plum) 0%, #7D5C80 50%, var(--sage-dark) 100%);
+            padding: 6rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .therapy-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .therapy-inner {
+            max-width: 1400px;
             margin: 0 auto;
-            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .testimonial {
-            background: linear-gradient(135deg, #F3E5F5 0%, #FCE4EC 100%);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border-left: 6px solid #E57373;
+        .therapy-inner .section-label {
+            color: var(--lavender);
         }
 
-        .testimonial-text {
-            font-size: 1.15rem;
-            color: #3D3D3D;
+        .therapy-inner .section-label::before {
+            background: var(--lavender);
+        }
+
+        .therapy-inner .section-title {
+            color: var(--white);
+            max-width: 600px;
+        }
+
+        .therapy-inner .section-desc {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 3.5rem;
+        }
+
+        .therapy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .therapy-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 2.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .therapy-card:hover {
+            background: rgba(255,255,255,0.14);
+            transform: translateY(-4px);
+        }
+
+        .therapy-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 1.5rem;
-            line-height: 1.8;
+        }
+
+        .therapy-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--white);
+            stroke: var(--white);
+        }
+
+        .therapy-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .therapy-card p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.65;
+        }
+
+        /* âââ LOCATIONS âââ */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .location-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--plum), var(--sage));
+        }
+
+        .location-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        }
+
+        .location-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--lavender);
+            line-height: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .location-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .location-detail svg {
+            width: 18px;
+            height: 18px;
+            color: var(--sage);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .location-detail p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .location-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            color: var(--plum);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .location-cta:hover {
+            gap: 0.75rem;
+        }
+
+        .location-cta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* âââ TESTIMONIALS âââ */
+        .testimonials-section {
+            background: var(--white);
+            padding: 6rem 3rem;
+        }
+
+        .testimonials-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-header .section-desc {
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--gold-soft);
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
             font-style: italic;
         }
 
         .testimonial-author {
-            font-family: 'Lora', serif;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--lavender-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: #9B72CF;
+            color: var(--plum);
+            font-size: 1rem;
         }
 
-        .testimonial-title {
-            font-size: 0.9rem;
-            color: #777;
-            margin-top: 0.25rem;
+        .testimonial-author h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--charcoal);
         }
 
-        .cta-banner {
-            background: linear-gradient(135deg, #9B72CF 0%, #B58FD1 100%);
-            color: white;
-            padding: 3rem 2rem;
+        .testimonial-author p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* âââ CTA âââ */
+        .cta-section {
+            background: var(--cream);
+            padding: 6rem 3rem;
+        }
+
+        .cta-inner {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
-            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--plum) 0%, var(--sage-dark) 100%);
+            border-radius: 32px;
+            padding: 5rem 4rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-banner h2 {
-            font-family: 'Lora', serif;
-            font-size: 2.2rem;
+        .cta-inner::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-inner > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--white);
             margin-bottom: 1rem;
             font-weight: 700;
+            letter-spacing: -1px;
         }
 
-        .cta-banner p {
+        .cta-inner p {
             font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-banner .cta-button {
-            background: #FFF5EB;
-            color: #9B72CF;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .cta-banner .cta-button:hover {
-            background: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .enrollment-form {
-            padding: 4rem 2rem;
-            background: #FAFAFA;
-            margin-top: 2rem;
-        }
-
-        .enrollment-form h2 {
-            font-family: 'Lora', serif;
-            font-size: 2rem;
-            color: #9B72CF;
-            text-align: center;
+            color: rgba(255,255,255,0.75);
             margin-bottom: 2.5rem;
+            line-height: 1.7;
         }
 
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #3D3D3D;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #E8E8E8;
-            border-radius: 8px;
+        .cta-inner .btn-primary {
+            background: var(--white);
+            color: var(--plum);
             font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
+            padding: 1.1rem 2.5rem;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #9B72CF;
-            box-shadow: 0 0 0 3px rgba(155, 114, 207, 0.1);
+        .cta-inner .btn-primary:hover {
+            background: var(--cream);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-button {
-            width: 100%;
-            background: linear-gradient(135deg, #9B72CF 0%, #8B63BB 100%);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .form-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(155, 114, 207, 0.3);
-        }
-
+        /* âââ FOOTER âââ */
         footer {
-            background: #3D3D3D;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.6);
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand .logo-text {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .logo-text span {
+            color: var(--sage-light);
+        }
+
+        .footer-brand p {
             font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 300px;
+            color: rgba(255,255,255,0.5);
         }
 
-        footer a {
-            color: #E57373;
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.5);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            transition: color 0.3s;
         }
 
-        footer a:hover {
-            color: #EF9A9A;
+        .footer-col a:hover {
+            color: var(--white);
         }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            font-size: 0.8rem;
         }
 
-        .reveal {
-            opacity: 0;
-            animation: slideInUp 0.8s ease-out forwards;
+        /* âââ RESPONSIVE âââ */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-video-wrap { width: 45%; }
+            .programs-grid { grid-template-columns: repeat(2, 1fr); }
+            .therapy-grid { grid-template-columns: repeat(2, 1fr); }
+            .locations-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-menu { display: none; }
+            .nav-menu.active {
+                display: flex;
+                position: fixed;
+                top: 65px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--cream);
+                padding: 1.5rem;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+                gap: 0;
+            }
+            .nav-menu.active a {
+                padding: 1rem;
+                border-bottom: 1px solid var(--cream-dark);
+            }
+            .hamburger { display: flex; }
+
             .hero {
-                grid-template-columns: 1fr;
-                padding: 2rem 1rem;
-                gap: 2rem;
+                min-height: auto;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
             }
+            .hero-video-wrap {
+                position: relative;
+                width: 100%;
+                height: 300px;
+                border-radius: 20px;
+                margin-top: 2rem;
+            }
+            .hero-video-wrap::after {
+                background: linear-gradient(180deg, var(--cream) 0%, transparent 30%);
+            }
+            .hero-content { padding: 2rem 1.5rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-stats { gap: 2rem; }
+            .hero-stat h3 { font-size: 1.6rem; }
 
-            .hero-content h1 {
-                font-size: 2rem;
-            }
+            .section { padding: 4rem 1.5rem; }
+            .section-title { font-size: 2rem; }
+            .about-section { padding: 4rem 1.5rem; }
+            .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-image { height: 350px; }
 
-            .hero-image {
-                height: 280px;
-            }
+            .programs-grid,
+            .therapy-grid,
+            .locations-grid,
+            .testimonials-grid { grid-template-columns: 1fr; }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .therapy-section { padding: 4rem 1.5rem; }
+            .testimonials-section { padding: 4rem 1.5rem; }
+            .cta-section { padding: 4rem 1.5rem; }
+            .cta-inner { padding: 3rem 2rem; border-radius: 24px; }
+            .cta-inner h2 { font-size: 2rem; }
 
-            .about-image {
-                height: 280px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
+            footer { padding: 3rem 1.5rem 1.5rem; }
+            .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
 
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
+        /* âââ ANIMATIONS âââ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
 
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .about-section h2,
-            .programs-section h2,
-            .why-choose h2 {
-                font-size: 1.6rem;
-            }
-
-            .cta-banner h2 {
-                font-size: 1.5rem;
-            }
-
-            .enrollment-form {
-                padding: 2rem 1rem;
-            }
-
-            .form-container {
-                padding: 1.5rem;
-            }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header>
+
+    <header id="mainHeader">
         <nav>
-            <div class="logo">Heavenly Haven CDC</div>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="22" cy="22" r="21" stroke="#6B4C6E" stroke-width="1.5" fill="none"/>
+                    <path d="M22 10C18 10 14 14 14 20C14 26 18 32 22 34C26 32 30 26 30 20C30 14 26 10 22 10Z" fill="#D4C5E2" opacity="0.5"/>
+                    <path d="M22 14C20 14 17 17 17 21C17 25 20 29 22 30C24 29 27 25 27 21C27 17 24 14 22 14Z" fill="#6B4C6E" opacity="0.6"/>
+                    <circle cx="22" cy="20" r="3" fill="#7A8F6D"/>
+                </svg>
+                <div class="logo-text">
+                    Heavenly Haven
+                    <span>Child Development Center</span>
+                </div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#programs">Programs</a></li>
-                <li><a href="#why">Why Us</a></li>
-                <li><a href="#enroll">Enroll</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#testimonials">Families</a></li>
+                <li><a href="#enroll" class="nav-cta">Enroll Now</a></li>
             </ul>
+            <button class="hamburger" onclick="document.getElementById('navMenu').classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
+    <!-- âââ HERO âââ -->
     <section class="hero">
+        <div class="hero-video-wrap">
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1587654780291-39c9404d7dd0?w=1200&q=80">
+                <source src="https://vid.hellonetcdn.com/vid/nc/fayetteville/biz/ncfay16_27_rev2_iwd_xtlrg_univ.mp4" type="video/mp4">
+                <img src="https://images.unsplash.com/photo-1587654780291-39c9404d7dd0?w=1200&q=80" alt="Children learning at Heavenly Haven">
+            </video>
+        </div>
         <div class="hero-content">
-            <h1>Faith-Centered, Family-Focused Care</h1>
-            <p>Heavenly Haven CDC serves military families and the local community with faith-based early care and learning that nurtures the whole child—spiritually, emotionally, and academically.</p>
-            <button class="cta-button" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})">Learn More</button>
-            <div class="trust-badges">
-                <div class="badge">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Faith-Based</span>
+            <div class="hero-inner">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    NC Pre-K Certified Program
                 </div>
-                <div class="badge">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Military Families</span>
+                <h1>Where <em>every child</em> finds their place to grow</h1>
+                <p class="hero-desc">Three Fayetteville locations offering nurturing early education, on-site therapy services, and faith-centered care for children six weeks through age twelve.</p>
+                <div class="hero-actions">
+                    <a href="#enroll" class="btn-primary">
+                        Schedule a Tour
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#programs" class="btn-secondary">
+                        Explore Programs
+                    </a>
                 </div>
-                <div class="badge">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span>Multi-Location</span>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3>3</h3>
+                        <p>Fayetteville Locations</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>6wk&ndash;12</h3>
+                        <p>Ages Served</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>4+</h3>
+                        <p>Star Rated Programs</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="85" stroke="white" fill="none" stroke-width="2"/>
-                <path d="M100 30 L120 70 L165 70 L130 105 L150 145 L100 110 L50 145 L70 105 L25 70 L70 70 Z" stroke="white" fill="none" stroke-width="2" stroke-linejoin="round"/>
-                <circle cx="100" cy="50" r="12" stroke="white" fill="none" stroke-width="1.5"/>
-            </svg>
-        </div>
     </section>
 
-    <section class="stats-bar">
-        <div class="stat-item reveal">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">Locations in Fayetteville</div>
+    <!-- âââ TRUST BAR âââ -->
+    <div class="trust-bar">
+        <div class="trust-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Licensed &amp; Regulated
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Creative Curriculum Certified
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                CPR &amp; First Aid Certified Staff
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Federal Food Program
+            </div>
         </div>
-        <div class="stat-item reveal">
-            <div class="stat-number">6</div>
-            <div class="stat-label">Age groups & programs</div>
-        </div>
-        <div class="stat-item reveal">
-            <div class="stat-number">Military</div>
-            <div class="stat-label">Family-focused service</div>
-        </div>
-        <div class="stat-item reveal">
-            <div class="stat-number">Faith</div>
-            <div class="stat-label">At the center</div>
-        </div>
-    </section>
+    </div>
 
+    <!-- âââ ABOUT âââ -->
     <section class="about-section" id="about">
-        <h2>About Heavenly Haven</h2>
-        <div class="about-grid">
-            <div>
-                <p style="font-size: 1.1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">Heavenly Haven Child Development Center brings together faith-based values with comprehensive early learning for infants through pre-K. Serving military families and the local Fayetteville community with multiple locations, we create a nurturing environment where every child grows spiritually, intellectually, and emotionally.</p>
-                <div class="highlights">
-                    <div class="highlight-item reveal">
-                        <div class="highlight-icon">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        </div>
-                        <div class="highlight-content">
-                            <h3>Faith-Based Foundation</h3>
-                            <p>Values-centered education rooted in spirituality, character building, and service to others.</p>
+        <div class="about-inner">
+            <div class="about-image fade-up">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" alt="Children playing and learning together">
+                <div class="about-accent">
+                    <div class="about-accent-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Faith-Centered Care</h4>
+                        <p>Nurturing hearts and minds</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text fade-up">
+                <div class="section-label">Our Mission</div>
+                <h2 class="section-title">Nurturing every child's potential</h2>
+                <p class="section-desc">Heavenly Haven provides a nurturing environment that fosters and develops children's cognitive, physical, social, and emotional abilities. Our devoted staff view their positions as callings, not just jobs &mdash; preparing every child for school and life success.</p>
+                <div class="about-values">
+                    <div class="about-value">
+                        <div class="about-value-dot"></div>
+                        <div>
+                            <h4>Whole-Child Development</h4>
+                            <p>Academic readiness, social skills, and emotional confidence &mdash; developed together through intentional, play-based learning.</p>
                         </div>
                     </div>
-                    <div class="highlight-item reveal">
-                        <div class="highlight-icon">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        </div>
-                        <div class="highlight-content">
-                            <h3>Military-Ready</h3>
-                            <p>Dedicated support for military families with flexible schedules and transition support.</p>
+                    <div class="about-value">
+                        <div class="about-value-dot" style="background: var(--plum)"></div>
+                        <div>
+                            <h4>Values-Aligned Education</h4>
+                            <p>A faith-centered approach that gives families confidence their children are growing in character as much as in knowledge.</p>
                         </div>
                     </div>
-                    <div class="highlight-item reveal">
-                        <div class="highlight-icon">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        </div>
-                        <div class="highlight-content">
-                            <h3>Multiple Locations</h3>
-                            <p>Conveniently located throughout Fayetteville for family accessibility and consistency of care.</p>
+                    <div class="about-value">
+                        <div class="about-value-dot" style="background: var(--rose)"></div>
+                        <div>
+                            <h4>On-Site Therapy Services</h4>
+                            <p>Speech, occupational, physical, and behavioral therapy available in-house &mdash; so children get the support they need without leaving the center.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="about-image">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 100 30 Q 130 50 130 90 Q 130 130 100 150 Q 70 130 70 90 Q 70 50 100 30 Z" stroke="white" fill="none" stroke-width="2"/>
-                    <circle cx="85" cy="85" r="6" stroke="white" fill="none" stroke-width="1.5"/>
-                    <circle cx="115" cy="85" r="6" stroke="white" fill="none" stroke-width="1.5"/>
-                    <path d="M 90 110 Q 100 120 110 110" stroke="white" fill="none" stroke-width="2"/>
-                </svg>
-            </div>
         </div>
     </section>
 
-    <section class="programs-section" id="programs">
-        <h2>Our Programs</h2>
+    <!-- âââ PROGRAMS âââ -->
+    <section class="section" id="programs">
+        <div class="fade-up">
+            <div class="section-label">Programs</div>
+            <h2 class="section-title">Age-appropriate learning<br>at every stage</h2>
+            <p class="section-desc">From first steps to school readiness, our Creative Curriculum framework meets your child exactly where they are &mdash; building confidence, curiosity, and critical thinking skills.</p>
+        </div>
         <div class="programs-grid">
-            <div class="program-card reveal">
-                <div class="program-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+            <div class="program-card fade-up">
+                <div class="program-img">
+                    <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=600&q=80" alt="Infant care at Heavenly Haven">
                 </div>
-                <h3>Infant Care</h3>
-                <p>Tender, faith-centered care for newborns, with focus on bonding, milestone development, and spiritual foundation.</p>
-            </div>
-            <div class="program-card reveal">
-                <div class="program-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <h3>Toddler Program</h3>
-                <p>Nurturing exploration and learning with emphasis on social-emotional growth and character values.</p>
-            </div>
-            <div class="program-card reveal">
-                <div class="program-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <h3>Preschool</h3>
-                <p>Interactive learning integrated with spiritual lessons, preparing children academically and spiritually for kindergarten.</p>
-            </div>
-            <div class="program-card reveal">
-                <div class="program-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <h3>Pre-K Program</h3>
-                <p>Comprehensive academic and character development program grounded in faith-based values and elementary readiness.</p>
-            </div>
-            <div class="program-card reveal">
-                <div class="program-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <h3>Before/After School</h3>
-                <p>Safe, faith-centered care for school-age children with homework support and character-building activities.</p>
-            </div>
-            <div class="program-card reveal">
-                <div class="program-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <h3>Faith-Based Learning</h3>
-                <p>Every program weaves spiritual values, character education, and service-learning throughout the day.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="why-choose" id="why">
-        <h2>Why Choose Heavenly Haven</h2>
-        <div class="why-choose-grid">
-            <div class="why-item reveal">
-                <div class="why-number">1</div>
-                <div class="why-content">
-                    <h3>Faith Integration</h3>
-                    <p>Spiritual values aren't extra—they're woven through every activity, relationship, and learning experience.</p>
+                <div class="program-body">
+                    <div class="program-age">6 Weeks &ndash; 1 Year</div>
+                    <h3>Infant Care</h3>
+                    <p>Loving, responsive care from CPR and First Aid certified staff. A warm, safe environment where your baby's earliest milestones are celebrated and supported.</p>
                 </div>
             </div>
-            <div class="why-item reveal">
-                <div class="why-number">2</div>
-                <div class="why-content">
-                    <h3>Military Family Support</h3>
-                    <p>Flexible scheduling, transition support, and understanding of military lifestyle needs and challenges.</p>
+            <div class="program-card fade-up">
+                <div class="program-img">
+                    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d7dd0?w=600&q=80" alt="Toddler program">
+                </div>
+                <div class="program-body">
+                    <div class="program-age">1 &ndash; 2 Years</div>
+                    <h3>Toddler Program</h3>
+                    <p>Exploration-based learning through play, movement, and sensory activities. Building language, motor skills, and social connections during these foundational years.</p>
                 </div>
             </div>
-            <div class="why-item reveal">
-                <div class="why-number">3</div>
-                <div class="why-content">
-                    <h3>Multiple Convenient Locations</h3>
-                    <p>Five+ locations throughout Fayetteville, serving your neighborhood with consistent quality care.</p>
+            <div class="program-card fade-up">
+                <div class="program-img">
+                    <img src="https://images.unsplash.com/photo-1560421741-30b9d289dd42?w=600&q=80" alt="Preschool classroom">
+                </div>
+                <div class="program-body">
+                    <div class="program-age">2 &ndash; 5 Years</div>
+                    <h3>Preschool</h3>
+                    <p>The Creative Curriculum comes alive through structured play, outdoor activities, and hands-on learning &mdash; building critical thinking and school readiness every day.</p>
                 </div>
             </div>
-            <div class="why-item reveal">
-                <div class="why-number">4</div>
-                <div class="why-content">
-                    <h3>Whole-Child Development</h3>
-                    <p>We nurture spiritual, emotional, social, and academic growth—every dimension of your child.</p>
+            <div class="program-card fade-up">
+                <div class="program-img">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="NC Pre-K program">
+                </div>
+                <div class="program-body">
+                    <div class="program-age">Age 4 &bull; Free Program</div>
+                    <h3>NC Pre-K</h3>
+                    <p>A federally funded, year-round program bridging preschool and kindergarten. Six and a half hours daily of literacy, math, science, music, and art instruction.</p>
                 </div>
             </div>
-            <div class="why-item reveal">
-                <div class="why-number">5</div>
-                <div class="why-content">
-                    <h3>Character-Centered Education</h3>
-                    <p>Service, kindness, integrity, and values are taught and lived daily, not just in curriculum.</p>
+            <div class="program-card fade-up">
+                <div class="program-img">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Before and after school care">
+                </div>
+                <div class="program-body">
+                    <div class="program-age">Up to 12 Years</div>
+                    <h3>Before &amp; After School</h3>
+                    <p>Safe, supportive care before and after the school day with homework help, enrichment activities, and time to just be a kid with friends.</p>
                 </div>
             </div>
-            <div class="why-item reveal">
-                <div class="why-number">6</div>
-                <div class="why-content">
-                    <h3>Trusted Community Institution</h3>
-                    <p>Years of faithful service to Fayetteville families—a place where faith and education meet daily.</p>
+            <div class="program-card fade-up">
+                <div class="program-img">
+                    <img src="https://imµÌ¹Õ¹ÍÁ±Í ¹½´½Á¡½Ñ¼´ÄÐÜÈÄØÈÀÜÈäÐÈµÔÄÐÝÌäÀÈýÜôØÀÀÄôàÀ±ÐôMÕµµÈµÀÁÉ½É´ø(ð½¥Øø(ñ¥Ø±ÍÌôÁÉ½É´µ½äø(ñ¥Ø±ÍÌôÁÉ½É´µùMÍ½¹°ð½¥Øø(ñ ÌùMÕµµÈAÉ½ÉµÌð½ Ìø(ñÀù-Á¥¹¡¥±É¸Ñ¥Ù¹ÉÑ¥ÙÑ¡É½Õ Ñ¡ÍÕµµÈµ½¹Ñ¡ÌÝ¥Ñ Ñ¡µÑ¥Ù¥Ñ¥Ì°½ÕÑ½½ÈÙ¹ÑÕÉÌ°¹¹É¥¡µ¹ÐÑ¡Ðµ­ÌÙÉäÝ¬á¥Ñ¥¹¸ð½Àø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RRR Q!IAd¼%I9Q%Q=HRRR ´´ø(ñÍÑ¥½¸±ÍÌôÑ¡ÉÁäµÍÑ¥½¸¥ôÍÉÙ¥Ìø(ñ¥Ø±ÍÌôÑ¡ÉÁäµ¥¹¹Èø(ñ¥Ø±ÍÌôµÕÀø(ñ¥Ø±ÍÌôÍÑ¥½¸µ±°ù5½ÉQ¡¸
+¡¥±Éð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±ù=¸µÍ¥ÑÑ¡ÉÁäÍÉÙ¥Ìå½ÕÈ¡¥±ÍÉÙÌð½ Èø(ñÀ±ÍÌôÍÑ¥½¸µÍùU¹±¥­µ½ÍÐ¡¥±É¹ÑÉÌ°!Ù¹±ä!Ù¸½ÉÌ½µÁÉ¡¹Í¥ÙÑ¡ÉÁäÍÉÙ¥Ì¥¸µ¡½ÕÍµÍ ìÍ¼å½ÕÈ¡¥±ÑÌÑ¡ÍÕÁÁ½ÉÐÑ¡ä¹¥¸Ñ¡¹Ù¥É½¹µ¹ÐÑ¡ä±ÉäÑÉÕÍÐ¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÑ¡ÉÁäµÉ¥ø(ñ¥Ø±ÍÌôÑ¡ÉÁäµÉµÕÀø(ñ¥Ø±ÍÌôÑ¡ÉÁäµ¥½¸ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÄÈÄà¸ÕÌ¸ÔÀØ´È¸ÔØ´Ù ´ÉÀÈ¸Ô´Ä¸ÔÐ´ÐÑÌ´Ð´Ä¸Ô´Ð´Ñ ÙÀÌ¸ÔÈ¸ÔØØÙè¼øñÁÑ ô4äå ¸ÀÅ4ÄÔå ¸ÀÄ¼øñ¥É±àôÄÈäôÄÈÈôÄÀ¼øð½ÍÙø(ð½¥Øø(ñ ÌùMÁ Q¡ÉÁäð½ Ìø(ñÀùMÕÁÁ½ÉÑ¥¹±¹ÕÙ±½Áµ¹Ð°ÉÑ¥Õ±Ñ¥½¸°¹½µµÕ¹¥Ñ¥½¸Í­¥±±ÌÑ¡É½Õ Á±äµÍÑ¡ÉÁÕÑ¥¥¹ÑÉÙ¹Ñ¥½¹Ì¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÑ¡ÉÁäµÉµÕÀø(ñ¥Ø±ÍÌôÑ¡ÉÁäµ¥½¸ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÄàÈÁXÄÁ4ÄÈÈÁXÑ4ØÈÁØ´Ø¼øð½ÍÙø(ð½¥Øø(ñ Ìù=ÕÁÑ¥½¹°Q¡ÉÁäð½ Ìø(ñÀù	Õ¥±¥¹¥¹µ½Ñ½ÈÍ­¥±±Ì°Í¹Í½ÉäÁÉ½ÍÍ¥¹°¹¥±ä±¥Ù¥¹¥±¥Ñ¥ÌÍ¼¡¥±É¸¸Ñ¡É¥Ù¥¹Á¹¹Ñ±ä¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÑ¡ÉÁäµÉµÕÀø(ñ¥Ø±ÍÌôÑ¡ÉÁäµ¥½¸ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÄÌÉ0ÌÄÑ å°´ÄàÄÀ´ÄÉ ´å°Ä´áè¼øð½ÍÙø(ð½¥Øø(ñ ÌùA¡åÍ¥°Q¡ÉÁäð½ Ìø(ñÀùMÑÉ¹Ñ¡¹¥¹É½ÍÌµ½Ñ½ÈÍ­¥±±Ì°±¹°½½É¥¹Ñ¥½¸°¹Á¡åÍ¥°½¹¥¹Ñ¡É½Õ Õ¥µ½Ùµ¹ÐÑ¥Ù¥Ñ¥Ì¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÑ¡ÉÁäµÉµÕÀø(ñ¥Ø±ÍÌôÑ¡ÉÁäµ¥½¸ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÀ¸àÐÐ¸ØÅÔ¸ÔÔ¸ÔÀÀÀ´Ü¸ÜàÁ0ÄÈÔ¸ØÝ°´Ä¸ÀØ´Ä¸ÀÙÔ¸ÔÔ¸ÔÀÀÀ´Ü¸ÜàÜ¸Üá°Ä¸ÀØÄ¸ÀÙ0ÄÈÈÄ¸ÈÍ°Ü¸Üà´Ü¸ÜàÄ¸ÀØ´Ä¸ÀÙÔ¸ÔÔ¸ÔÀÀÀÀ´Ü¸Üáè¼øð½ÍÙø(ð½¥Øø(ñ Ìù	¡Ù¥½É°Q¡ÉÁäð½ Ìø(ñÀù!±Á¥¹¡¥±É¸Ù±½Àµ½Ñ¥½¹°ÉÕ±Ñ¥½¸°Í½¥°Í­¥±±Ì°¹Á½Í¥Ñ¥Ù¡Ù¥½ÈÁÑÑÉ¹Ì¥¸ÍÕÁÁ½ÉÑ¥ÙÍÑÑ¥¹¸ð½Àø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RRR 1=
+Q%=9LRRR ´´ø(ñÍÑ¥½¸±ÍÌôÍÑ¥½¸¥ô±½Ñ¥½¹Ìø(ñ¥Ø±ÍÌôµÕÀÍÑå±ôÑáÐµ±¥¸è¹ÑÈìµÉ¥¸µ½ÑÑ½´èÅÉ´ìø(ñ¥Ø±ÍÌôÍÑ¥½¸µ±°ÍÑå±ô©ÕÍÑ¥äµ½¹Ñ¹Ðè¹ÑÈìù=ÕÈ1½Ñ¥½¹Ìð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±ùQ¡É¹ÑÉÌÉ½ÍÌåÑÑÙ¥±±ð½ Èø(ñÀ±ÍÌôÍÑ¥½¸µÍÍÑå±ôµÉ¥¸èÀÕÑ¼ìù ±½Ñ¥½¸½ÉÌÑ¡ÍµÅÕ±¥ÑäÉ°ÕÉÉ¥Õ±Õ´°¹Ù±ÕÌµÍ ì¥¹Ñ¡!Ù¹±ä!Ù¸±½ÍÍÐÑ¼å½ÕÈµ¥±ä¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¹ÌµÉ¥ø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÉµÕÀø(ñ¥Ø±ÍÌô±½Ñ¥½¸µ¹ÕµÈøÀÄð½¥Øø(ñ ÌùI½Í¡¥±°I½ð½ Ìø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÄÄÁÀÜ´äÄÌ´äÄÍÌ´ä´Ø´ä´ÄÍääÀÀÄÄàÁè¼øñ¥É±àôÄÈäôÄÀÈôÌ¼øð½ÍÙø(ñÀøÌÌÄÄI½Í¡¥±°I¸ñÈùåÑÑÙ¥±±°9ÈàÌÀÄð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÈÄØ¸äÉØÍÈÈÀÀÄ´È¸ÄàÈÄä¸ÜäÄä¸ÜäÀÀÄ´à¸ØÌ´Ì¸ÀÜÄä¸ÔÄä¸ÔÀÀÄ´Ø´ØÄä¸ÜäÄä¸ÜäÀÀÄ´Ì¸ÀÜ´à¸ØÝÈÈÀÀÄÐ¸ÄÄÉ ÍÈÈÀÀÄÈÄ¸ÜÉ¸ÄÈÜ¸äØ¸ÌØÈÄ¸äÀÌ¸ÜÈ¸àÅÈÈÀÀÄ´¸ÐÔÈ¸ÄÅ0à¸Àää¸äÅÄØÄØÀÀÀØÙ°Ä¸ÈÜ´Ä¸ÈÝÈÈÀÀÄÈ¸ÄÄ´¸ÐÕ¸äÀÜ¸ÌÌàÄ¸àÔ¸ÔÜÌÈ¸àÄ¸ÝÈÈÀÀÄÈÈÄØ¸äÉè¼øð½ÍÙø(ñÀø äÄÀ¤Ðàà´äÀÀÔð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñ¥É±àôÄÈäôÄÈÈôÄÀ¼øñÁ½±å±¥¹Á½¥¹ÑÌôÄÈØÄÈÄÈÄØÄÐ¼øð½ÍÙø(ñÀøØèÀÀ4¹Í ìØèÌÀA4ð½Àø(ð½¥Øø(ñ¡Éô¹É½±°±ÍÌô±½Ñ¥½¸µÑø(M¡Õ±Ù¥Í¥Ð(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÈÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÔÄÉ ÄÑ4ÄÈÕ°ÜÜ´ÜÜ¼øð½ÍÙø(ð½ø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÉµÕÀø(ñ¥Ø±ÍÌô±½Ñ¥½¸µ¹ÕµÈøÀÈð½¥Øø(ñ Ìù!±¸MÑÉÐð½ Ìø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÄÄÁÀÜ´äÄÌ´äÄÍÌ´ä´Ø´ä´ÄÍääÀÀÄÄàÁè¼øñ¥É±àôÄÈäôÄÀÈôÌ¼øð½ÍÙø(ñÀøäÀÔ!±¸MÐ¸ñÈùåÑÑÙ¥±±°9ÈàÌÀÌð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÈÄØ¸äÉØÍÈÈÀÀÄ´È¸ÄàÈÄä¸ÜäÄä¸ÜäÀÀÄ´à¸ØÌ´Ì¸ÀÜÄä¸ÔÄä¸ÔÀÀÄ´Ø´ØÄä¸ÜäÄä¸ÜäÀÀÄ´Ì¸ÀÜ´à¸ØÝÈÈÀÀÄÐ¸ÄÄÉ ÍÈÈÀÀÄÈÄ¸ÜÉ¸ÄÈÜ¸äØ¸ÌØÈÄ¸äÀÌ¸ÜÈ¸àÅÈÈÀÀÄ´¸ÐÔÈ¸ÄÅ0à¸Àää¸äÅÄØÄØÀÀÀØÙ°Ä¸ÈÜ´Ä¸ÈÝÈÈÀÀÄÈ¸ÄÄ´¸ÐÕ¸äÀÜ¸ÌÌàÄ¸àÔ¸ÔÜÌÈ¸àÄ¸ÝÈÈÀÀÄÈÈÄØ¸äÉè¼øð½ÍÙø(ñÀø äÄÀ¤ÌÈÌ´ÈÈÜÌð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñ¥É±àôÄÈäôÄÈÈôÄÀ¼øñÁ½±å±¥¹Á½¥¹ÑÌôÄÈØÄÈÄÈÄØÄÐ¼øð½ÍÙø(ñÀøØèÀÀ4¹Í ìØèÀÀA4ð½Àø(ð½¥Øø(ñ¡Éô¹É½±°±ÍÌô±½Ñ¥½¸µÑø(M¡Õ±Ù¥Í¥Ð(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÈÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÔÄÉ ÄÑ4ÄÈÕ°ÜÜ´ÜÜ¼øð½ÍÙø(ð½ø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÉµÕÀø(ñ¥Ø±ÍÌô±½Ñ¥½¸µ¹ÕµÈøÀÌð½¥Øø(ñ Ìù5ÉÑ¡ÕÈI½ð½ Ìø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÄÄÁÀÜ´äÄÌ´äÄÍÌ´ä´Ø´ä´ÄÍääÀÀÄÄàÁè¼øñ¥É±àôÄÈäôÄÀÈôÌ¼øð½ÍÙø(ñÀøäÐÔ5ÉÑ¡ÕÈI¸ñÈùåÑÑÙ¥±±°9ÈàÌÄÄð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÈÈÄØ¸äÉØÍÈÈÀÀÄ´È¸ÄàÈÄä¸ÜäÄä¸ÜäÀÀÄ´à¸ØÌ´Ì¸ÀÜÄä¸ÔÄä¸ÔÀÀÄ´Ø´ØÄä¸ÜäÄä¸ÜäÀÀÄ´Ì¸ÀÜ´à¸ØÝÈÈÀÀÄÐ¸ÄÄÉ ÍÈÈÀÀÄÈÄ¸ÜÉ¸ÄÈÜ¸äØ¸ÌØÈÄ¸äÀÌ¸ÜÈ¸àÅÈÈÀÀÄ´¸ÐÔÈ¸ÄÅ0à¸Àää¸äÅÄØÄØÀÀÀØÙ°Ä¸ÈÜ´Ä¸ÈÝÈÈÀÀÄÈ¸ÄÄ´¸ÐÕ¸äÀÜ¸ÌÌàÄ¸àÔ¸ÔÜÌÈ¸àÄ¸ÝÈÈÀÀÄÈÈÄØ¸äÉè¼øð½ÍÙø(ñÀø äÄÀ¤àÈÈ´ÀÜÌÀð½Àø(ð½¥Øø(ñ¥Ø±ÍÌô±½Ñ¥½¸µÑ¥°ø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÄ¸ÔÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñ¥É±àôÄÈäôÄÈÈôÄÀ¼øñÁ½±å±¥¹Á½¥¹ÑÌôÄÈØÄÈÄÈÄØÄÐ¼øð½ÍÙø(ñÀøØèÀÀ4¹Í ìØèÀÀA4ð½Àø(ð½¥Øø(ñ¡Éô¹É½±°±ÍÌô±½Ñ¥½¸µÑø(M¡Õ±Ù¥Í¥Ð(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐ¥±°ô¹½¹ÍÑÉ½­ôÕÉÉ¹Ñ
+½±½ÈÍÑÉ½­µÝ¥Ñ ôÈÍÑÉ½­µ±¥¹ÀôÉ½Õ¹øñÁÑ ô4ÔÄÉ ÄÑ4ÄÈÕ°ÜÜ´ÜÜ¼øð½ÍÙø(ð½ø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RRR QMQ%5=9%1LRRR ´´ø(ñÍÑ¥½¸±ÍÌôÑÍÑ¥µ½¹¥±ÌµÍÑ¥½¸¥ôÑÍÑ¥µ½¹¥±Ìø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥±Ìµ¥¹¹Èø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥±Ìµ¡ÈµÕÀø(ñ¥Ø±ÍÌôÍÑ¥½¸µ±°ÍÑå±ô©ÕÍÑ¥äµ½¹Ñ¹Ðè¹ÑÈìù]¡Ðµ¥±¥ÌMäð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±ùQÉÕÍÑäåÑÑÙ¥±±µ¥±¥Ìð½ Èø(ñÀ±ÍÌôÍÑ¥½¸µÍùI°ÍÑ½É¥ÌÉ½´ÁÉ¹ÑÌÝ¡¼ÙÍ¸Ñ¡!Ù¹±ä!Ù¸¥É¹¥¸Ñ¡¥È¡¥±É¸ÌÉ½ÝÑ ¹½¹¥¹¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥±ÌµÉ¥ø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÉµÕÀø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÍÑÉÌø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ð½¥Øø(ñ±½­ÅÕ½Ñø5äÍ½¸aÙ¥È¡Ì¹¥ÑÍ¼µÕ É½´5Ì¸AÐÌ¥¹ÍÑÉÕÑ¥½¸¸É½´Ñ¡µ½µ¹Ð¡ÍÑÉÑÑ¡É½Õ ÉÕÑ¥½¸°Ñ¡É½ÝÑ ¥¸¡¥Ì½¹¥¹¹Í­¥±±ÌÝÌ¥¹É¥±¸ð½±½­ÅÕ½Ñø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÕÑ¡½Èø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÙÑÈùPð½¥Øø(ñ¥Øø(ñ ÐùQ¹å4¸ð½ Ðø(ñÀùAÉµ,AÉ¹Ðð½Àø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÉµÕÀø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÍÑÉÌø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ð½¥Øø(ñ±½­ÅÕ½ÑøQ¡9AÉµ,ÁÉ½É´¡ÉÑÉÕ±äÁÉÁÉµäÕ¡ÑÈ½È­¥¹ÉÉÑ¸¸!È±¥ÑÉä¹¹ÕµÉäÍ­¥±±ÌÙ±½ÁÍ¼ÅÕ¥­±äµÍ ìÍ¡ÝÌµ½ÉÑ¡¸ÉäÝ¡¸Ñ¡Ñ¥µµ¸ð½±½­ÅÕ½Ñø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÕÑ¡½Èø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÙÑÈùð½¥Øø(ñ¥Øø(ñ Ðù¹¥ÍH¸ð½ Ðø(ñÀù9AÉµ,AÉ¹Ðð½Àø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÉµÕÀø(ñ¥Ø±ÍÌôÑÍÑ¥µ½¹¥°µÍÑÉÌø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ñÍÙÙ¥Ý	½àôÀÀÈÐÈÐøñÁÑ ô4ÄÈÉ°Ì¸ÀäØ¸ÈÙ0ÈÈä¸ÈÝ°´ÔÐ¸àÜÄ¸ÄàØ¸àá0ÄÈÄÜ¸ÜÝ°´Ø¸ÄàÌ¸ÈÕ0ÜÄÐ¸ÄÐÈä¸ÈÝ°Ø¸äÄ´Ä¸ÀÅ0ÄÈÉè¼øð½ÍÙø(ð½¥Øø(ñ±½­ÅÕ½ÑøQ¡Ñ¡ÉÌ¼½Ù¹å½¹¸Q¡äÑÉÕ±äÉ½ÕÐÙÉächild and it shows in the way the kids light up each morning. Heavenly Haven is family, not just childcare."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">K</div>
+                        <div>
+                            <h4>Keisha W.</h4>
+                            <p>Toddler &amp; Preschool Parent</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonial-section">
-        <div class="testimonial reveal">
-            <div class="testimonial-text">"Heavenly Haven has been a blessing for our military family. The staff's faith-centered approach and understanding of military life transitions made all the difference. Our children learned so much—spiritually and academically. We're grateful."</div>
-            <div class="testimonial-author">Military Family Testimonial</div>
-            <div class="testimonial-title">Fayetteville, NC</div>
+    <!-- âââ CTA âââ -->
+    <section class="cta-section" id="enroll">
+        <div class="cta-inner fade-up">
+            <h2>Begin your child's journey today</h2>
+            <p>Schedule a tour of any of our three Fayetteville locations and see the Heavenly Haven difference for yourself.</p>
+            <a href="mailto:donnapyles@mail.com?subject=Tour%20Request%20-%20Heavenly%20Haven%20CDC" class="btn-primary">
+                Schedule a Tour
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </div>
     </section>
 
-    <section class="cta-banner">
-        <h2>Join the Heavenly Haven Family</h2>
-        <p>Faith-centered, family-focused early care for all seasons of life.</p>
-        <button class="cta-button" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})">Explore Programs</button>
-    </section>
-
-    <section class="enrollment-form" id="enroll">
-        <h2>Interested in Heavenly Haven?</h2>
-        <div class="form-container">
-            <form onsubmit="handleSubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="parent-name">Parent Name *</label>
-                        <input type="text" id="parent-name" name="parent_name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="child-name">Child Name *</label>
-                        <input type="text" id="child-name" name="child_name" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="child-age">Child Age *</label>
-                        <input type="text" id="child-age" name="child_age" placeholder="e.g., 18 months old" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="program">Program Interest *</label>
-                        <select id="program" name="program" required>
-                            <option value="">Select Program</option>
-                            <option value="infant">Infant Care</option>
-                            <option value="toddler">Toddler Program</option>
-                            <option value="preschool">Preschool</option>
-                            <option value="prek">Pre-K Program</option>
-                            <option value="before-after">Before/After School</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Phone *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Tell us about your family or ask a question..."></textarea>
-                </div>
-                <button type="submit" class="form-button">Request Information</button>
-            </form>
-        </div>
-    </section>
-
+    <!-- âââ FOOTER âââ -->
     <footer>
-        <p>&copy; 2026 Heavenly Haven Child Development Center. All rights reserved.</p>
-        <p>Site by <a href="https://whitehausmedia.com">White Haus Media</a></p>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo-text">
+                        Heavenly Haven
+                        <span>Child Development Center</span>
+                    </div>
+                    <p style="margin-top: 1rem;">Nurturing hearts and minds across three Fayetteville locations. Where fun begins and learning never ends.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <a href="#programs">Infant Care</a>
+                    <a href="#programs">Toddler Program</a>
+                    <a href="#programs">Preschool</a>
+                    <a href="#programs">NC Pre-K</a>
+                    <a href="#programs">Before &amp; After School</a>
+                    <a href="#programs">Summer Programs</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#services">Speech Therapy</a>
+                    <a href="#services">Occupational Therapy</a>
+                    <a href="#services">Physical Therapy</a>
+                    <a href="#services">Behavioral Therapy</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:donnapyles@mail.com">donnapyles@mail.com</a>
+                    <a href="tel:9104889005">(910) 488-9005</a>
+                    <a href="tel:9103232273">(910) 323-2273</a>
+                    <a href="tel:9108220730">(910) 822-0730</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Heavenly Haven Child Development Center. All rights reserved.</p>
+                <p>Fayetteville, North Carolina</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.nav-menu');
-            menu.classList.toggle('active');
-        }
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            alert('Thank you for your interest! We\'ll be in touch soon. May God bless your family!');
-            event.target.reset();
-        }
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
+        // Intersection Observer for fade-up animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 80);
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(element => {
-            observer.observe(element);
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        document.getElementById('navMenu').classList.remove('active');
+                    }
+                }
+            });
         });
     </script>
 </body>
