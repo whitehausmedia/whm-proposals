@@ -1268,62 +1268,8 @@ function updateOrderSummary() {
   const total = seats * PRICE_PER_SEAT;
   const label = seats === 1 ? '1 Seat' : seats + ' Seats';
   document.getElementById('orderText').textContent = label;
-  document.getElementById('orderTotal').textContent = '
-
-/* === GA4 SCROLL TRACKING PLACEHOLDER === */
-let scrollMilestones = [25, 50, 75, 100];
-window.addEventListener('scroll', () => {
-  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-  scrollMilestones = scrollMilestones.filter(m => {
-    if (pct >= m) {
-      if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { percent: m });
-      return false;
-    }
-    return true;
-  });
-});
-
-/* === CTA CLICK TRACKING === */
-document.querySelectorAll('.lux-btn, .rsvp-submit').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'cta_click', { cta_text: btn.textContent.trim() });
-    }
-  });
-});
-</script>
-
-</body>
-</html>
- + total.toFixed(2);
-  document.getElementById('btnText').innerHTML = 'RESERVE &amp; PAY &mdash; 
-
-/* === GA4 SCROLL TRACKING PLACEHOLDER === */
-let scrollMilestones = [25, 50, 75, 100];
-window.addEventListener('scroll', () => {
-  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-  scrollMilestones = scrollMilestones.filter(m => {
-    if (pct >= m) {
-      if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { percent: m });
-      return false;
-    }
-    return true;
-  });
-});
-
-/* === CTA CLICK TRACKING === */
-document.querySelectorAll('.lux-btn, .rsvp-submit').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'cta_click', { cta_text: btn.textContent.trim() });
-    }
-  });
-});
-</script>
-
-</body>
-</html>
- + total.toFixed(2);
+  document.getElementById('orderTotal').textContent = '$' + total.toFixed(2);
+  document.getElementById('btnText').innerHTML = 'RESERVE &amp; PAY &mdash; $' + total.toFixed(2);
 }
 
 async function handleCheckout() {
@@ -1332,6 +1278,7 @@ async function handleCheckout() {
   const spinner = document.getElementById('btnSpinner');
   const errors = document.getElementById('stripeCardErrors');
 
+  // Collect form data
   const formData = {
     first_name: document.getElementById('firstName').value.trim(),
     last_name: document.getElementById('lastName').value.trim(),
@@ -1342,16 +1289,19 @@ async function handleCheckout() {
     total: parseInt(document.getElementById('seats').value) * PRICE_PER_SEAT
   };
 
+  // Validate
   if (!formData.first_name || !formData.last_name || !formData.email) {
     errors.textContent = 'Please fill in all required fields.';
     return;
   }
 
+  // Disable button, show spinner
   btn.disabled = true;
   btnText.style.display = 'none';
   spinner.style.display = 'inline-block';
   errors.textContent = '';
 
+  // GA4 event
   if (typeof gtag !== 'undefined') {
     gtag('event', 'begin_checkout', {
       event_name: 'give_me_flowers',
@@ -1362,11 +1312,12 @@ async function handleCheckout() {
   }
 
   try {
+    // Create Stripe PaymentIntent via serverless function
     const res = await fetch(CHECKOUT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        amount: formData.total * 100,
+        amount: formData.total * 100, // cents
         currency: 'usd',
         metadata: {
           first_name: formData.first_name,
@@ -1378,13 +1329,14 @@ async function handleCheckout() {
           event: 'give_me_flowers_2026'
         },
         receipt_email: formData.email,
-        description: 'Give Me Flowers — ' + formData.seats + ' seat(s) — June 27, 2026'
+        description: 'Give Me Flowers â ' + formData.seats + ' seat(s) â June 27, 2026'
       })
     });
 
     if (!res.ok) throw new Error('Payment server error. Please try again.');
     const { clientSecret } = await res.json();
 
+    // Confirm payment with Stripe
     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: cardElement,
@@ -1405,6 +1357,7 @@ async function handleCheckout() {
     }
 
     if (paymentIntent.status === 'succeeded') {
+      // GA4 purchase event
       if (typeof gtag !== 'undefined') {
         gtag('event', 'purchase', {
           transaction_id: paymentIntent.id,
@@ -1414,6 +1367,7 @@ async function handleCheckout() {
         });
       }
 
+      // Show confirmation
       document.getElementById('checkoutForm').style.display = 'none';
       document.getElementById('orderSummary').style.display = 'none';
       document.querySelector('.stripe-badge').style.display = 'none';
