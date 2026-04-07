@@ -576,7 +576,60 @@ nav.scrolled {
 }
 .rsvp-note {
   font-family: var(--sans); font-size: 10px; color: var(--light-text);
-  text-align: center; margin-top: 16px; line-height: 1.6; font-weight: 300;
+  text-align: center; margin-top: 12px; line-height: 1.6; font-weight: 300;
+}
+
+/* --- ORDER SUMMARY --- */
+.order-summary {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; margin-bottom: 20px;
+  background: linear-gradient(135deg, rgba(214,0,108,.06), rgba(155,0,80,.04));
+  border: 1px solid rgba(214,0,108,.12); border-radius: 8px;
+  font-family: var(--sans); font-size: 13px; letter-spacing: 1px;
+  color: var(--dark-text); font-weight: 400;
+}
+.order-summary #orderTotal {
+  font-weight: 600; color: var(--pink); font-size: 16px;
+}
+
+/* --- STRIPE CARD ELEMENT --- */
+.stripe-card-el {
+  padding: 12px 14px;
+  background: rgba(250,246,241,.6); border: 1px solid rgba(8,8,8,.1);
+  border-radius: 6px; transition: border-color .3s, box-shadow .3s;
+}
+.stripe-card-el:focus-within, .stripe-card-el.StripeElement--focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(214,0,108,.08);
+}
+.stripe-card-el.StripeElement--invalid {
+  border-color: #e53e3e;
+}
+.stripe-card-errors {
+  font-family: var(--sans); font-size: 11px; color: #e53e3e;
+  margin-top: 6px; min-height: 16px; font-weight: 300;
+}
+
+/* --- STRIPE BADGE --- */
+.stripe-badge {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: var(--sans); font-size: 10px; letter-spacing: 1px;
+  color: var(--light-text); margin-top: 14px; font-weight: 300;
+}
+.stripe-badge svg { opacity: .5; }
+
+/* --- SUBMIT BUTTON SPINNER --- */
+.btn-spinner {
+  display: inline-block; width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin .6s linear infinite; vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.rsvp-submit:disabled {
+  opacity: .7; cursor: not-allowed;
+  transform: none !important;
 }
 
 /* --- FOOTER --- */
@@ -1019,31 +1072,37 @@ footer {
       </div>
       <div class="reserve-limit">LIMITED TO 30 ATTENDEES &middot; 21+ EVENT</div>
 
-      <form class="rsvp-form" onsubmit="event.preventDefault();handleRSVP()">
+      <!-- Order summary bar -->
+      <div id="orderSummary" class="order-summary">
+        <span id="orderText">1 Seat</span>
+        <span id="orderTotal">$115.00</span>
+      </div>
+
+      <form class="rsvp-form" id="checkoutForm" onsubmit="event.preventDefault();handleCheckout()">
         <div class="rsvp-row">
           <div class="rsvp-field">
             <label>FIRST NAME</label>
-            <input type="text" name="first_name" placeholder="First name" required>
+            <input type="text" name="first_name" id="firstName" placeholder="First name" required>
           </div>
           <div class="rsvp-field">
             <label>LAST NAME</label>
-            <input type="text" name="last_name" placeholder="Last name" required>
+            <input type="text" name="last_name" id="lastName" placeholder="Last name" required>
           </div>
         </div>
         <div class="rsvp-row">
           <div class="rsvp-field">
             <label>EMAIL</label>
-            <input type="email" name="email" placeholder="your@email.com" required>
+            <input type="email" name="email" id="email" placeholder="your@email.com" required>
           </div>
           <div class="rsvp-field">
             <label>PHONE</label>
-            <input type="tel" name="phone" placeholder="(000) 000-0000">
+            <input type="tel" name="phone" id="phone" placeholder="(000) 000-0000">
           </div>
         </div>
         <div class="rsvp-row">
           <div class="rsvp-field">
             <label>NUMBER OF SEATS</label>
-            <select name="seats">
+            <select name="seats" id="seats" onchange="updateOrderSummary()">
               <option value="1">1 Seat &mdash; $115</option>
               <option value="2">2 Seats &mdash; $230</option>
               <option value="3">3 Seats &mdash; $345</option>
@@ -1052,7 +1111,7 @@ footer {
           </div>
           <div class="rsvp-field">
             <label>HOW DID YOU HEAR ABOUT US?</label>
-            <select name="source">
+            <select name="source" id="source">
               <option value="">Select one</option>
               <option value="instagram">Instagram</option>
               <option value="friend">Friend</option>
@@ -1062,9 +1121,33 @@ footer {
             </select>
           </div>
         </div>
-        <button type="submit" class="rsvp-submit">RESERVE MY SEAT</button>
+
+        <!-- Stripe card element mount point -->
+        <div class="rsvp-field" style="margin-top:4px">
+          <label>PAYMENT</label>
+          <div id="stripeCardElement" class="stripe-card-el"></div>
+          <div id="stripeCardErrors" class="stripe-card-errors"></div>
+        </div>
+
+        <button type="submit" class="rsvp-submit" id="submitBtn">
+          <span id="btnText">RESERVE &amp; PAY &mdash; $115.00</span>
+          <span id="btnSpinner" class="btn-spinner" style="display:none"></span>
+        </button>
       </form>
-      <p class="rsvp-note">You'll receive a confirmation email with payment details. All sales final.</p>
+      <div class="stripe-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secured by Stripe &middot; 256-bit encryption
+      </div>
+      <p class="rsvp-note">All sales final. You&rsquo;ll receive a confirmation email upon successful payment.</p>
+
+      <!-- Confirmation state (hidden by default) -->
+      <div id="confirmationState" style="display:none;text-align:center;padding:48px 24px">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(122,143,109,.8),rgba(90,120,80,.7));margin:0 auto 20px;display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 style="font-family:var(--serif);font-weight:300;font-style:italic;font-size:28px;color:var(--black);margin-bottom:8px">You&rsquo;re In</h3>
+        <p class="section-body dark" style="max-width:400px;margin:0 auto">Your reservation is confirmed. Check your email for details and what to expect on June 27th.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1096,8 +1179,11 @@ footer {
 
 <!-- Mobile sticky reserve button -->
 <div class="mobile-sticky" id="mobileSticky">
-  <a href="#reserve">RESERVE YOUR SEAT &mdash; $115</a>
+  <a href="#reserve">RESERVE &amp; PAY &mdash; $115</a>
 </div>
+
+<!-- Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
 
 <script>
 /* === NAV SCROLL === */
@@ -1147,17 +1233,198 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.anim-fade, .anim-fade-left, .anim-fade-right').forEach(el => observer.observe(el));
 
-/* === RSVP HANDLER === */
-function handleRSVP() {
-  const btn = document.querySelector('.rsvp-submit');
-  btn.textContent = 'RESERVATION RECEIVED';
-  btn.style.background = 'linear-gradient(135deg, rgba(122,143,109,.8), rgba(90,120,80,.7))';
-  btn.style.borderColor = 'rgba(122,143,109,.6)';
-  btn.disabled = true;
+/* === STRIPE CHECKOUT === */
+const PRICE_PER_SEAT = 115;
+const STRIPE_PK = 'pk_test_PLACEHOLDER'; // TODO: Replace with live publishable key
+const CHECKOUT_API = '/api/create-checkout-session'; // TODO: Serverless function endpoint
 
-  // GA4 event placeholder
+// Initialize Stripe
+let stripe, cardElement;
+(function initStripe() {
+  if (typeof Stripe !== 'undefined') {
+    stripe = Stripe(STRIPE_PK);
+    const elements = stripe.elements({
+      fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap' }]
+    });
+    cardElement = elements.create('card', {
+      style: {
+        base: {
+          fontFamily: 'Outfit, sans-serif', fontSize: '14px', fontWeight: '300',
+          color: '#080808', '::placeholder': { color: '#999' }
+        },
+        invalid: { color: '#e53e3e' }
+      },
+      hidePostalCode: false
+    });
+    cardElement.mount('#stripeCardElement');
+    cardElement.on('change', (e) => {
+      document.getElementById('stripeCardErrors').textContent = e.error ? e.error.message : '';
+    });
+  }
+})();
+
+function updateOrderSummary() {
+  const seats = parseInt(document.getElementById('seats').value);
+  const total = seats * PRICE_PER_SEAT;
+  const label = seats === 1 ? '1 Seat' : seats + ' Seats';
+  document.getElementById('orderText').textContent = label;
+  document.getElementById('orderTotal').textContent = '
+
+/* === GA4 SCROLL TRACKING PLACEHOLDER === */
+let scrollMilestones = [25, 50, 75, 100];
+window.addEventListener('scroll', () => {
+  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+  scrollMilestones = scrollMilestones.filter(m => {
+    if (pct >= m) {
+      if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { percent: m });
+      return false;
+    }
+    return true;
+  });
+});
+
+/* === CTA CLICK TRACKING === */
+document.querySelectorAll('.lux-btn, .rsvp-submit').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'cta_click', { cta_text: btn.textContent.trim() });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+ + total.toFixed(2);
+  document.getElementById('btnText').innerHTML = 'RESERVE &amp; PAY &mdash; 
+
+/* === GA4 SCROLL TRACKING PLACEHOLDER === */
+let scrollMilestones = [25, 50, 75, 100];
+window.addEventListener('scroll', () => {
+  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+  scrollMilestones = scrollMilestones.filter(m => {
+    if (pct >= m) {
+      if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { percent: m });
+      return false;
+    }
+    return true;
+  });
+});
+
+/* === CTA CLICK TRACKING === */
+document.querySelectorAll('.lux-btn, .rsvp-submit').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'cta_click', { cta_text: btn.textContent.trim() });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+ + total.toFixed(2);
+}
+
+async function handleCheckout() {
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const spinner = document.getElementById('btnSpinner');
+  const errors = document.getElementById('stripeCardErrors');
+
+  const formData = {
+    first_name: document.getElementById('firstName').value.trim(),
+    last_name: document.getElementById('lastName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    seats: parseInt(document.getElementById('seats').value),
+    source: document.getElementById('source').value,
+    total: parseInt(document.getElementById('seats').value) * PRICE_PER_SEAT
+  };
+
+  if (!formData.first_name || !formData.last_name || !formData.email) {
+    errors.textContent = 'Please fill in all required fields.';
+    return;
+  }
+
+  btn.disabled = true;
+  btnText.style.display = 'none';
+  spinner.style.display = 'inline-block';
+  errors.textContent = '';
+
   if (typeof gtag !== 'undefined') {
-    gtag('event', 'rsvp_form_submit', { event_name: 'give_me_flowers' });
+    gtag('event', 'begin_checkout', {
+      event_name: 'give_me_flowers',
+      value: formData.total,
+      currency: 'USD',
+      items: [{ item_name: 'Give Me Flowers Seat', quantity: formData.seats, price: PRICE_PER_SEAT }]
+    });
+  }
+
+  try {
+    const res = await fetch(CHECKOUT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: formData.total * 100,
+        currency: 'usd',
+        metadata: {
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          email: formData.email,
+          phone: formData.phone,
+          seats: formData.seats.toString(),
+          source: formData.source,
+          event: 'give_me_flowers_2026'
+        },
+        receipt_email: formData.email,
+        description: 'Give Me Flowers — ' + formData.seats + ' seat(s) — June 27, 2026'
+      })
+    });
+
+    if (!res.ok) throw new Error('Payment server error. Please try again.');
+    const { clientSecret } = await res.json();
+
+    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: cardElement,
+        billing_details: {
+          name: formData.first_name + ' ' + formData.last_name,
+          email: formData.email,
+          phone: formData.phone
+        }
+      }
+    });
+
+    if (error) {
+      errors.textContent = error.message;
+      btn.disabled = false;
+      btnText.style.display = '';
+      spinner.style.display = 'none';
+      return;
+    }
+
+    if (paymentIntent.status === 'succeeded') {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'purchase', {
+          transaction_id: paymentIntent.id,
+          value: formData.total,
+          currency: 'USD',
+          items: [{ item_name: 'Give Me Flowers Seat', quantity: formData.seats, price: PRICE_PER_SEAT }]
+        });
+      }
+
+      document.getElementById('checkoutForm').style.display = 'none';
+      document.getElementById('orderSummary').style.display = 'none';
+      document.querySelector('.stripe-badge').style.display = 'none';
+      document.querySelector('.rsvp-note').style.display = 'none';
+      document.getElementById('confirmationState').style.display = '';
+    }
+  } catch (err) {
+    errors.textContent = err.message || 'Something went wrong. Please try again.';
+    btn.disabled = false;
+    btnText.style.display = '';
+    spinner.style.display = 'none';
   }
 }
 
