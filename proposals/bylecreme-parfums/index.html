@@ -657,7 +657,7 @@ nav.scrolled {
 }
 .reel-overlay.active { opacity: 1; pointer-events: auto; }
 .reel-modal {
-  position: relative; width: 380px; height: 680px;
+  position: relative; width: min(800px, 90vw); height: min(450px, 50.6vw);
   border-radius: 12px; overflow: hidden;
   box-shadow: 0 30px 80px rgba(214,0,108,.25), 0 0 0 1px rgba(214,0,108,.15);
   background: var(--charcoal);
@@ -2277,7 +2277,7 @@ document.addEventListener('keydown', e => {
 <div id="reelOverlay" class="reel-overlay" onclick="if(event.target===this){this.classList.remove('active');document.getElementById('reelFrame').src=''}">
   <div class="reel-modal">
     <button class="reel-close" onclick="document.getElementById('reelOverlay').classList.remove('active');document.getElementById('reelFrame').src=''">&times;</button>
-    <iframe id="reelFrame" src="" frameborder="0" scrolling="no" allowtransparency="true" style="width:100%;height:100%;border:0;border-radius:12px"></iframe>
+    <iframe id="reelFrame" src="" frameborder="0" scrolling="no" allowtransparency="true" style="width:100%;height:100%;border:0;border-radius:12px" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
   </div>
 </div>
 
