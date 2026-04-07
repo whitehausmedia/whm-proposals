@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Give Me Flowers: A Weekend with ByLeCr&egrave;me Parfums | Raleigh &amp; Durham | June 27&ndash;28, 2026</title>
-<meta name="description" content="Atlanta's celebrated luxury fragrance experience comes to the Triangle for one unforgettable weekend. Saturday evening at The District, Raleigh. Sunday at Primrose, Durham. 30 seats only.">
+<meta name="description" content="Atlanta's celebrated luxury fragrance experience comes to the Triangle for one unforgettable weekend. Saturday evening at The District, Raleigh. Sunday afternoon at Primrose, Durham. Limited seats.">
 <meta property="og:title" content="Give Me Flowers: A Weekend with ByLeCrème Parfums">
 <meta property="og:description" content="Atlanta's celebrated luxury fragrance experience comes to the Triangle. Sat evening at The District, Raleigh. Sun at Primrose, Durham.">
 <meta property="og:image" content="https://WHMClients.b-cdn.net/clients/bylecreme/hero-studio.jpg">
@@ -49,7 +49,7 @@
     "validFrom": "2026-04-07"
   },
   "image": "https://WHMClients.b-cdn.net/clients/bylecreme/hero-studio.jpg"
-,
+},
 {
   "@context": "https://schema.org",
   "@type": "Event",
@@ -618,6 +618,16 @@ nav.scrolled {
   text-align: center; margin-top: 12px; line-height: 1.6; font-weight: 300;
 }
 
+/* --- EVENT SELECTOR --- */
+.event-card { padding: 20px 16px; text-align: center; cursor: pointer; border: 1px solid #ddd; background: var(--cream); transition: all .3s ease; }
+.event-card:hover { border-color: rgba(214,0,108,.3); box-shadow: 0 4px 16px rgba(214,0,108,.06); }
+.event-card.active { border-color: var(--pink); background: linear-gradient(135deg, rgba(214,0,108,.04), rgba(155,0,80,.02)); box-shadow: 0 4px 20px rgba(214,0,108,.08); }
+.event-card-day { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 300; color: var(--dark-text); margin-bottom: 4px; }
+.event-card.active .event-card-day { color: var(--pink-deep); }
+.event-card-venue { font-family: var(--sans); font-size: 10px; letter-spacing: 4px; font-weight: 400; color: var(--light-text); margin-bottom: 8px; }
+.event-card.active .event-card-venue { color: var(--pink); }
+.event-card-detail { font-family: var(--sans); font-size: 9px; letter-spacing: 2px; color: var(--light-text); font-weight: 300; }
+
 /* --- ORDER SUMMARY --- */
 .order-summary {
   display: flex; justify-content: space-between; align-items: center;
@@ -795,8 +805,7 @@ footer {
     <a href="#invitation">THE WEEKEND</a>
     <a href="#experience">EXPERIENCE</a>
     <a href="#collection">COLLECTION</a>
-    <a href="#sponsors">EVENTS</a>
-    <a href="#brunch">SUNDAY</a>
+    <a href="#events">EVENTS</a>
     <a href="#reserve" class="lux-btn primary">RESERVE</a>
   </div>
   <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Menu toggle">
@@ -808,9 +817,7 @@ footer {
   <a href="#invitation" onclick="closeMobile()">THE WEEKEND</a>
   <a href="#experience" onclick="closeMobile()">EXPERIENCE</a>
   <a href="#collection" onclick="closeMobile()">COLLECTION</a>
-  <a href="#sponsors" onclick="closeMobile()">EVENTS</a>
-  <a href="#venue" onclick="closeMobile()">VENUE</a>
-  <a href="#brunch" onclick="closeMobile()">SUNDAY</a>
+  <a href="#events" onclick="closeMobile()">EVENTS</a>
   <a href="#reserve" onclick="closeMobile()" class="lux-btn primary" style="margin-top:16px">RESERVE YOUR SEAT</a>
 </div>
 
@@ -862,7 +869,7 @@ footer {
       </div>
       <div class="pillar">
         <div class="pillar-label">COMMUNITY</div>
-        <p class="pillar-text">Connect with women across Raleigh in an intimate, curated setting</p>
+        <p class="pillar-text">Connect with women across the Triangle in an intimate, curated setting</p>
       </div>
       <div class="pillar">
         <div class="pillar-label">CELEBRATE</div>
@@ -1004,7 +1011,7 @@ footer {
       <p class="section-body light">Bring your best friend. Bring your sister. Bring yourself.</p>
     </div>
     <div class="vibe-row anim-fade anim-delay-3">
-      <span class="vibe-item">INTIMATE &middot; 30 SEATS ONLY</span>
+      <span class="vibe-item">INTIMATE &middot; LIMITED SEATS</span>
       <div class="vibe-divider"></div>
       <span class="vibe-item">LUXURY &middot; CURATED BY SAKARI</span>
       <div class="vibe-divider"></div>
@@ -1014,7 +1021,7 @@ footer {
 </section>
 
 <!-- ═══════════════════ 7. SPONSORS — LIGHT ═══════════════════ -->
-<section id="sponsors" class="section-light section-pad">
+<section id="events" class="section-light section-pad">
   <div class="section-inner" style="text-align:center">
     <div class="section-tag center anim-fade">
       <div class="pink-line dark"></div>
@@ -1137,8 +1144,8 @@ footer {
       <span class="pink-dark">LIMITED AVAILABILITY</span>
       <div class="pink-line dark"></div>
     </div>
-    <h2 class="section-title lg dark anim-fade anim-delay-1">Only 30 Seats. One Weekend.</h2>
-    <p class="section-body dark anim-fade anim-delay-2" style="margin:8px auto 0">Sat June 27 &middot; The District &middot; 6 &ndash; 8 PM&nbsp; |&nbsp; Sun June 28 &middot; Primrose &middot; 1 &ndash; 3 PM</p>
+    <h2 class="section-title lg dark anim-fade anim-delay-1">Intimate by Design.</h2>
+    <p class="section-body dark anim-fade anim-delay-2" style="margin:8px auto 0">Two venues. Two experiences. Limited seats at each &mdash; once they're gone, they're gone.</p>
 
     <div class="reserve-card anim-fade anim-delay-3" style="margin-top:48px">
       <div class="reserve-price">$115</div>
@@ -1146,7 +1153,7 @@ footer {
       <div class="reserve-includes">
         Perfume making experience &middot; Take-home 1.7oz bottle &middot; Signature cocktails &middot; Welcome rose &middot; Pop-up access
       </div>
-      <div class="reserve-limit">LIMITED TO 30 ATTENDEES &middot; 21+ EVENT</div>
+      <div class="reserve-limit">INTIMATE GATHERING &middot; 21+ EVENT</div>
 
       <!-- Order summary bar -->
       <div id="orderSummary" class="order-summary">
@@ -1155,6 +1162,23 @@ footer {
       </div>
 
       <form class="rsvp-form" id="checkoutForm" onsubmit="event.preventDefault();handleCheckout()">
+        <!-- Event selector cards -->
+        <div class="rsvp-field" style="margin-bottom:20px">
+          <label>CHOOSE YOUR EXPERIENCE</label>
+          <div id="eventSelector" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+            <div class="event-card active" data-event="saturday" onclick="selectEvent(this,'saturday')">
+              <div class="event-card-day">Saturday</div>
+              <div class="event-card-venue">The District</div>
+              <div class="event-card-detail">June 27 &middot; 6 &ndash; 8 PM &middot; Raleigh</div>
+            </div>
+            <div class="event-card" data-event="sunday" onclick="selectEvent(this,'sunday')">
+              <div class="event-card-day">Sunday</div>
+              <div class="event-card-venue">Primrose</div>
+              <div class="event-card-detail">June 28 &middot; 1 &ndash; 3 PM &middot; Durham</div>
+            </div>
+          </div>
+        </div>
+
         <div class="rsvp-row">
           <div class="rsvp-field">
             <label>FIRST NAME</label>
@@ -1193,6 +1217,7 @@ footer {
               <option value="friend">Friend</option>
               <option value="bylecreme">ByLeCr&egrave;me</option>
               <option value="district">The District</option>
+              <option value="primrose">Primrose</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -1222,7 +1247,7 @@ footer {
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h3 style="font-family:var(--serif);font-weight:300;font-style:italic;font-size:28px;color:var(--black);margin-bottom:8px">You&rsquo;re In</h3>
-        <p class="section-body dark" style="max-width:400px;margin:0 auto">Your reservation is confirmed. Check your email for details and what to expect on June 27th.</p>
+        <p class="section-body dark" style="max-width:400px;margin:0 auto">Your reservation is confirmed. Check your email for details and what to expect.</p>
       </div>
     </div>
   </div>
@@ -1310,6 +1335,15 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.anim-fade, .anim-fade-left, .anim-fade-right').forEach(el => observer.observe(el));
 
+/* === EVENT SELECTOR === */
+let selectedEvent = 'saturday';
+function selectEvent(el, eventId) {
+  selectedEvent = eventId;
+  document.querySelectorAll('.event-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  updateOrderSummary();
+}
+
 /* === STRIPE CHECKOUT === */
 const PRICE_PER_SEAT = 115;
 const STRIPE_PK = 'pk_test_PLACEHOLDER'; // TODO: Replace with live publishable key
@@ -1344,7 +1378,8 @@ function updateOrderSummary() {
   const seats = parseInt(document.getElementById('seats').value);
   const total = seats * PRICE_PER_SEAT;
   const label = seats === 1 ? '1 Seat' : seats + ' Seats';
-  document.getElementById('orderText').textContent = label;
+  const eventLabel = selectedEvent === 'saturday' ? 'Sat' : 'Sun';
+  document.getElementById('orderText').textContent = label + ' \u00B7 ' + eventLabel;
   document.getElementById('orderTotal').textContent = '$' + total.toFixed(2);
   document.getElementById('btnText').innerHTML = 'RESERVE &amp; PAY &mdash; $' + total.toFixed(2);
 }
@@ -1363,6 +1398,8 @@ async function handleCheckout() {
     phone: document.getElementById('phone').value.trim(),
     seats: parseInt(document.getElementById('seats').value),
     source: document.getElementById('source').value,
+    event: selectedEvent,
+    event_name: selectedEvent === 'saturday' ? 'Saturday \u2013 The District, Raleigh' : 'Sunday \u2013 Primrose, Durham',
     total: parseInt(document.getElementById('seats').value) * PRICE_PER_SEAT
   };
 
@@ -1403,10 +1440,11 @@ async function handleCheckout() {
           phone: formData.phone,
           seats: formData.seats.toString(),
           source: formData.source,
-          event: 'give_me_flowers_2026'
+          event: 'give_me_flowers_' + formData.event,
+          event_name: formData.event_name
         },
         receipt_email: formData.email,
-        description: 'Give Me Flowers â ' + formData.seats + ' seat(s) â June 27, 2026'
+        description: 'Give Me Flowers \u2014 ' + formData.seats + ' seat(s) \u2014 ' + formData.event_name
       })
     });
 
