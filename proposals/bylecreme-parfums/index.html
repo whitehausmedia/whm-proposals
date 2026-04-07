@@ -337,6 +337,35 @@ nav.scrolled {
 .frag-card:hover .frag-number { color: var(--pink); text-shadow: 0 0 10px rgba(214,0,108,.27); }
 .frag-card:hover .frag-mood-inline { color: var(--pink-soft); }
 .frag-card:hover .frag-arrow { color: var(--pink); text-shadow: 0 0 8px rgba(214,0,108,.27); transform: translateX(4px); }
+.frag-close-btn {
+  position: absolute; top: 16px; right: 16px; z-index: 5;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: transparent; border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.35); font-size: 14px;
+  cursor: pointer; display: none; align-items: center; justify-content: center;
+  transition: all .3s; font-family: var(--sans);
+}
+.frag-card.open .frag-close-btn { display: flex; }
+.frag-close-btn:hover { border-color: var(--pink); color: var(--pink); }
+.note-hint {
+  font-family: var(--sans); font-size: 8px; letter-spacing: 3px;
+  color: rgba(214,0,108,.35); text-align: center; margin-top: 14px;
+  animation: noteHintPulse 3s ease-in-out infinite;
+}
+@keyframes noteHintPulse {
+  0%, 100% { opacity: .35; }
+  50% { opacity: .7; }
+}
+.note-pill { cursor: pointer; transition: all .3s; }
+.note-pill:hover {
+  background: rgba(214,0,108,.18);
+  border-color: rgba(214,0,108,.4);
+  color: var(--pink-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(214,0,108,.15);
+}
+
+
 .frag-card:hover { border-top-color: rgba(214,0,108,.13); }
 
 .frag-card.open { min-height: 540px; border-top-color: rgba(214,0,108,.27); }
@@ -1172,8 +1201,9 @@ footer {
 
   <div id="fragContainer">
     <!-- Soul Ties -->
-    <article class="frag-card grad-soul" data-index="0" onclick="toggleScent(0)">
+    <article class="frag-card grad-soul" data-index="0" onclick="toggleScent(0, event)">
       <div class="frag-edge"></div>
+      <button class="frag-close-btn" onclick="event.stopPropagation();toggleScent(0, {target:{classList:{contains:function(c){return c==='frag-close-btn'}}}})">&#10005;</button>
       <div class="frag-num-col"><span class="frag-number">01</span></div>
       <div class="frag-body">
         <div class="frag-info">
@@ -1212,7 +1242,8 @@ footer {
                 </div>
               </div>
             </div>
-            <div class="frag-price-row">
+                        <div class="note-hint">TAP A NOTE TO EXPLORE</div>
+<div class="frag-price-row">
               <span class="frag-price">From $35</span>
               <span class="frag-size">10ML &middot; 50ML</span>
             </div>
@@ -1227,8 +1258,9 @@ footer {
     </article>
 
     <!-- Lover Girl -->
-    <article class="frag-card grad-lover" data-index="1" onclick="toggleScent(1)">
+    <article class="frag-card grad-lover" data-index="1" onclick="toggleScent(1, event)">
       <div class="frag-edge"></div>
+      <button class="frag-close-btn" onclick="event.stopPropagation();toggleScent(1, {target:{classList:{contains:function(c){return c==='frag-close-btn'}}}})">&#10005;</button>
       <div class="frag-num-col"><span class="frag-number">02</span></div>
       <div class="frag-body">
         <div class="frag-info">
@@ -1268,7 +1300,8 @@ footer {
                 </div>
               </div>
             </div>
-            <div class="frag-price-row">
+                        <div class="note-hint">TAP A NOTE TO EXPLORE</div>
+<div class="frag-price-row">
               <span class="frag-price">From $35</span>
               <span class="frag-size">10ML &middot; 50ML</span>
             </div>
@@ -1283,8 +1316,9 @@ footer {
     </article>
 
     <!-- Take Me With You -->
-    <article class="frag-card grad-take" data-index="2" onclick="toggleScent(2)">
+    <article class="frag-card grad-take" data-index="2" onclick="toggleScent(2, event)">
       <div class="frag-edge"></div>
+      <button class="frag-close-btn" onclick="event.stopPropagation();toggleScent(2, {target:{classList:{contains:function(c){return c==='frag-close-btn'}}}})">&#10005;</button>
       <div class="frag-num-col"><span class="frag-number">03</span></div>
       <div class="frag-body">
         <div class="frag-info">
@@ -1325,7 +1359,8 @@ footer {
                 </div>
               </div>
             </div>
-            <div class="frag-price-row">
+                        <div class="note-hint">TAP A NOTE TO EXPLORE</div>
+<div class="frag-price-row">
               <span class="frag-price">From $35</span>
               <span class="frag-size">10ML &middot; 50ML</span>
             </div>
@@ -1563,23 +1598,28 @@ hamburger.addEventListener('click', () => {
 
 /* â”€â”€â”€ ACCORDION FRAGRANCE CARDS â”€â”€â”€ */
 let activeScent = null;
-function toggleScent(index) {
-  const cards = document.querySelectorAll('.frag-card');
-  const card = cards[index];
-  const rect = card.getBoundingClientRect();
-  const scrollY = window.scrollY;
+function toggleScent(index, e) {
+  var cards = document.querySelectorAll('.frag-card');
+  var card = cards[index];
+  /* if card is already open, only close via the close btn — not blank clicks */
   if (activeScent === index) {
-    card.classList.remove('open');
-    activeScent = null;
-  } else {
-    cards.forEach(c => c.classList.remove('open'));
-    card.classList.add('open');
-    activeScent = index;
+    if (e && e.target.classList.contains('frag-close-btn')) {
+      var rect2 = card.getBoundingClientRect();
+      var sy2 = window.scrollY;
+      card.classList.remove('open');
+      activeScent = null;
+      requestAnimationFrame(function(){ var d = card.getBoundingClientRect().top - rect2.top; if(Math.abs(d)>2) window.scrollTo({top:sy2+d,behavior:'instant'}); });
+    }
+    return;
   }
-  /* pin scroll so card stays put — no jerk */
-  requestAnimationFrame(() => {
-    const newRect = card.getBoundingClientRect();
-    const drift = newRect.top - rect.top;
+  var rect = card.getBoundingClientRect();
+  var scrollY = window.scrollY;
+  cards.forEach(function(c){ c.classList.remove('open'); });
+  card.classList.add('open');
+  activeScent = index;
+  requestAnimationFrame(function(){
+    var newRect = card.getBoundingClientRect();
+    var drift = newRect.top - rect.top;
     if (Math.abs(drift) > 2) window.scrollTo({ top: scrollY + drift, behavior: 'instant' });
   });
 }
