@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heavenly Haven CDC – Web Presence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: #3D3D3D;
+            line-height: 1.6;
+            background: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #9B72CF;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #9B72CF;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #3D3D3D;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #E57373;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #9B72CF;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2.5px;
+            background: #9B72CF;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 0.75rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .hero {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #9B72CF;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-content .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #9B72CF 0%, #8B63BB 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .hero-content .cta-button:hover {
+            background: linear-gradient(135deg, #8B63BB 0%, #7B53AB 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(155, 114, 207, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #9B72CF 0%, #B58FD1 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(155, 114, 207, 0.25);
+        }
+
+        .hero-image svg {
+            width: 85%;
+            height: 85%;
+            opacity: 0.95;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #FFF5EB;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #3D3D3D;
+            font-weight: 500;
+            border: 1px solid #E57373;
+        }
+
+        .badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: #9B72CF;
+            stroke-width: 2;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(90deg, #F3E5F5 0%, #FCE4EC 100%);
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Lora', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #9B72CF;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .about-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.3rem;
+            color: #9B72CF;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #E57373 0%, #EF9A9A 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .highlight-content h3 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: #9B72CF;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .highlight-content p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .about-image {
+            position: relative;
+            height: 380px;
+            background: linear-gradient(135deg, #1E2A4A 0%, #2D3A5C 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image svg {
+            width: 75%;
+            height: 75%;
+            opacity: 0.9;
+        }
+
+        .programs-section {
+            padding: 4rem 2rem;
+            background: #FAFAFA;
+            margin-top: 2rem;
+        }
+
+        .programs-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.3rem;
+            color: #9B72CF;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #9B72CF;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(155, 114, 207, 0.2);
+        }
+
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #E57373 0%, #EF9A9A 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .program-icon svg {
+            width: 35px;
+            height: 35px;
+            stroke: white;
+            stroke-width: 1.5;
+        }
+
+        .program-card h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.35rem;
+            color: #9B72CF;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .program-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .why-choose {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1E2A4A 0%, #2D3A5C 100%);
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .why-choose h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #E57373;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .why-number {
+            font-family: 'Lora', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #E57373;
+            min-width: 65px;
+            text-align: center;
+        }
+
+        .why-content h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .why-content p {
+            font-size: 0.95rem;
+            color: #DDD;
+            line-height: 1.6;
+        }
+
+        .testimonial-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #F3E5F5 0%, #FCE4EC 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 6px solid #E57373;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            color: #3D3D3D;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: #9B72CF;
+        }
+
+        .testimonial-title {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 0.25rem;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #9B72CF 0%, #B58FD1 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-banner .cta-button {
+            background: #FFF5EB;
+            color: #9B72CF;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .cta-banner .cta-button:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .enrollment-form {
+            padding: 4rem 2rem;
+            background: #FAFAFA;
+            margin-top: 2rem;
+        }
+
+        .enrollment-form h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: #9B72CF;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #3D3D3D;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #9B72CF;
+            box-shadow: 0 0 0 3px rgba(155, 114, 207, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            width: 100%;
+            background: linear-gradient(135deg, #9B72CF 0%, #8B63BB 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(155, 114, 207, 0.3);
+        }
+
+        footer {
+            background: #3D3D3D;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #E57373;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #EF9A9A;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 280px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 280px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .about-section h2,
+            .programs-section h2,
+            .why-choose h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+
+            .enrollment-form {
+                padding: 2rem 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Heavenly Haven CDC</div>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#enroll">Enroll</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Faith-Centered, Family-Focused Care</h1>
+            <p>Heavenly Haven CDC serves military families and the local community with faith-based early care and learning that nurtures the whole child—spiritually, emotionally, and academically.</p>
+            <button class="cta-button" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+            <div class="trust-badges">
+                <div class="badge">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Faith-Based</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Military Families</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Multi-Location</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="85" stroke="white" fill="none" stroke-width="2"/>
+                <path d="M100 30 L120 70 L165 70 L130 105 L150 145 L100 110 L50 145 L70 105 L25 70 L70 70 Z" stroke="white" fill="none" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="100" cy="50" r="12" stroke="white" fill="none" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stat-item reveal">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Locations in Fayetteville</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Age groups & programs</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number">Military</div>
+            <div class="stat-label">Family-focused service</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number">Faith</div>
+            <div class="stat-label">At the center</div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About Heavenly Haven</h2>
+        <div class="about-grid">
+            <div>
+                <p style="font-size: 1.1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">Heavenly Haven Child Development Center brings together faith-based values with comprehensive early learning for infants through pre-K. Serving military families and the local Fayetteville community with multiple locations, we create a nurturing environment where every child grows spiritually, intellectually, and emotionally.</p>
+                <div class="highlights">
+                    <div class="highlight-item reveal">
+                        <div class="highlight-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Faith-Based Foundation</h3>
+                            <p>Values-centered education rooted in spirituality, character building, and service to others.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item reveal">
+                        <div class="highlight-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Military-Ready</h3>
+                            <p>Dedicated support for military families with flexible schedules and transition support.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item reveal">
+                        <div class="highlight-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Multiple Locations</h3>
+                            <p>Conveniently located throughout Fayetteville for family accessibility and consistency of care.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100 30 Q 130 50 130 90 Q 130 130 100 150 Q 70 130 70 90 Q 70 50 100 30 Z" stroke="white" fill="none" stroke-width="2"/>
+                    <circle cx="85" cy="85" r="6" stroke="white" fill="none" stroke-width="1.5"/>
+                    <circle cx="115" cy="85" r="6" stroke="white" fill="none" stroke-width="1.5"/>
+                    <path d="M 90 110 Q 100 120 110 110" stroke="white" fill="none" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="programs-section" id="programs">
+        <h2>Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Infant Care</h3>
+                <p>Tender, faith-centered care for newborns, with focus on bonding, milestone development, and spiritual foundation.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Toddler Program</h3>
+                <p>Nurturing exploration and learning with emphasis on social-emotional growth and character values.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Preschool</h3>
+                <p>Interactive learning integrated with spiritual lessons, preparing children academically and spiritually for kindergarten.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Pre-K Program</h3>
+                <p>Comprehensive academic and character development program grounded in faith-based values and elementary readiness.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Before/After School</h3>
+                <p>Safe, faith-centered care for school-age children with homework support and character-building activities.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Faith-Based Learning</h3>
+                <p>Every program weaves spiritual values, character education, and service-learning throughout the day.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose" id="why">
+        <h2>Why Choose Heavenly Haven</h2>
+        <div class="why-choose-grid">
+            <div class="why-item reveal">
+                <div class="why-number">1</div>
+                <div class="why-content">
+                    <h3>Faith Integration</h3>
+                    <p>Spiritual values aren't extra—they're woven through every activity, relationship, and learning experience.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">2</div>
+                <div class="why-content">
+                    <h3>Military Family Support</h3>
+                    <p>Flexible scheduling, transition support, and understanding of military lifestyle needs and challenges.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">3</div>
+                <div class="why-content">
+                    <h3>Multiple Convenient Locations</h3>
+                    <p>Five+ locations throughout Fayetteville, serving your neighborhood with consistent quality care.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">4</div>
+                <div class="why-content">
+                    <h3>Whole-Child Development</h3>
+                    <p>We nurture spiritual, emotional, social, and academic growth—every dimension of your child.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">5</div>
+                <div class="why-content">
+                    <h3>Character-Centered Education</h3>
+                    <p>Service, kindness, integrity, and values are taught and lived daily, not just in curriculum.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">6</div>
+                <div class="why-content">
+                    <h3>Trusted Community Institution</h3>
+                    <p>Years of faithful service to Fayetteville families—a place where faith and education meet daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial reveal">
+            <div class="testimonial-text">"Heavenly Haven has been a blessing for our military family. The staff's faith-centered approach and understanding of military life transitions made all the difference. Our children learned so much—spiritually and academically. We're grateful."</div>
+            <div class="testimonial-author">Military Family Testimonial</div>
+            <div class="testimonial-title">Fayetteville, NC</div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Join the Heavenly Haven Family</h2>
+        <p>Faith-centered, family-focused early care for all seasons of life.</p>
+        <button class="cta-button" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})">Explore Programs</button>
+    </section>
+
+    <section class="enrollment-form" id="enroll">
+        <h2>Interested in Heavenly Haven?</h2>
+        <div class="form-container">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parent-name">Parent Name *</label>
+                        <input type="text" id="parent-name" name="parent_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="child-name">Child Name *</label>
+                        <input type="text" id="child-name" name="child_name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="child-age">Child Age *</label>
+                        <input type="text" id="child-age" name="child_age" placeholder="e.g., 18 months old" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="program">Program Interest *</label>
+                        <select id="program" name="program" required>
+                            <option value="">Select Program</option>
+                            <option value="infant">Infant Care</option>
+                            <option value="toddler">Toddler Program</option>
+                            <option value="preschool">Preschool</option>
+                            <option value="prek">Pre-K Program</option>
+                            <option value="before-after">Before/After School</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your family or ask a question..."></textarea>
+                </div>
+                <button type="submit" class="form-button">Request Information</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Heavenly Haven Child Development Center. All rights reserved.</p>
+        <p>Site by <a href="https://whitehausmedia.com">White Haus Media</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            alert('Thank you for your interest! We\'ll be in touch soon. May God bless your family!');
+            event.target.reset();
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

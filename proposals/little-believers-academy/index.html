@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Proposal: Little Believer's Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #080808;
+            color: #E8E8E8;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #C9A84C;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #E6C470;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .nav-logo img {
+            height: 35px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C9A84C 0%, #E6C470 100%);
+            z-index: 99;
+            transition: width 0.1s ease;
+        }
+
+        main {
+            margin-top: 80px;
+            padding-bottom: 60px;
+        }
+
+        .hero {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: #C9A84C;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #B0B0B0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .letter-section {
+            max-width: 800px;
+            margin: 80px auto 0;
+            padding: 60px 40px;
+            background: rgba(201, 168, 76, 0.05);
+            border-left: 3px solid #C9A84C;
+            border-radius: 4px;
+        }
+
+        .letter-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #C9A84C;
+            margin-bottom: 25px;
+        }
+
+        .letter-section p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #D0D0D0;
+        }
+
+        .letter-section strong {
+            color: #C9A84C;
+            font-weight: 700;
+        }
+
+        .opportunity-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: #C9A84C;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .opportunity-card {
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 35px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .opportunity-card:hover {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: rgba(201, 168, 76, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .opportunity-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: #C9A84C;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .opportunity-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #B0B0B0;
+        }
+
+        .solution-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .deliverables {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .deliverable {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .deliverable-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: #C9A84C;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .deliverable-content h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #E8E8E8;
+            margin-bottom: 8px;
+        }
+
+        .deliverable-content p {
+            font-size: 13px;
+            color: #A0A0A0;
+            line-height: 1.6;
+        }
+
+        .preview-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-container {
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .preview-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
+        .process-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-step {
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .process-step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: #C9A84C;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .process-step h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #E8E8E8;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 13px;
+            color: #A0A0A0;
+            line-height: 1.6;
+        }
+
+        .pricing-section {
+            padding: 80px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-container {
+            background: rgba(201, 168, 76, 0.05);
+            border: 2px solid #C9A84C;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .price-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            color: #C9A84C;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .price-label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #E8E8E8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .payment-option {
+            background: rgba(201, 168, 76, 0.1);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 3px solid #C9A84C;
+        }
+
+        .payment-option h4 {
+            font-size: 14px;
+            color: #C9A84C;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .payment-option p {
+            font-size: 13px;
+            color: #B0B0B0;
+        }
+
+        .recurring-plans {
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            padding-top: 30px;
+            margin-top: 30px;
+        }
+
+        .recurring-plans h3 {
+            font-size: 16px;
+            color: #E8E8E8;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .plan-card {
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .plan-card.featured {
+            border: 2px solid #C9A84C;
+            background: rgba(201, 168, 76, 0.1);
+        }
+
+        .plan-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #C9A84C;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .plan-name {
+            font-size: 14px;
+            color: #E8E8E8;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-details {
+            font-size: 12px;
+            color: #A0A0A0;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            padding: 80px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #C9A84C;
+            color: #080808;
+            padding: 18px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .cta-button:hover {
+            background: #E6C470;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        footer {
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #707070;
+        }
+
+        footer a {
+            color: #C9A84C;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .letter-section {
+                padding: 40px 20px;
+                margin-top: 40px;
+            }
+
+            .letter-section h2 {
+                font-size: 22px;
+            }
+
+            .opportunity-section,
+            .solution-section,
+            .preview-section,
+            .process-section,
+            .pricing-section,
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 36px;
+                margin-bottom: 40px;
+            }
+
+            .opportunity-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .deliverables {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-container iframe {
+                height: 400px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .process-step {
+                padding: 20px;
+            }
+
+            .process-step-number {
+                font-size: 32px;
+            }
+
+            .pricing-container {
+                padding: 40px 20px;
+            }
+
+            .price-main {
+                font-size: 48px;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .letter-section {
+                padding: 30px 15px;
+            }
+
+            .letter-section h2 {
+                font-size: 18px;
+            }
+
+            .letter-section p {
+                font-size: 13px;
+            }
+
+            .opportunity-section,
+            .solution-section,
+            .preview-section,
+            .process-section,
+            .pricing-section,
+            .cta-section {
+                padding: 40px 15px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .opportunity-card {
+                padding: 20px;
+            }
+
+            .opportunity-card h3 {
+                font-size: 18px;
+            }
+
+            .opportunity-card p {
+                font-size: 13px;
+            }
+
+            .deliverable-content h4 {
+                font-size: 14px;
+            }
+
+            .deliverable-content p {
+                font-size: 12px;
+            }
+
+            .preview-container iframe {
+                height: 300px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                padding: 15px;
+            }
+
+            .process-step-number {
+                font-size: 24px;
+            }
+
+            .price-main {
+                font-size: 42px;
+            }
+
+            .payment-option {
+                padding: 15px;
+            }
+
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav>
+        <div class="nav-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#preview">Preview</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Prepared exclusively for Little Believer's Academy</h1>
+            <p>A premium website designed to attract families and showcase your faith-centered STEM programs across Clayton and Raleigh.</p>
+
+            <div class="letter-section">
+                <h2>Dear Cassandra,</h2>
+                <p>
+                    Your two-location daycare serves families with a clear mission: Christian education paired with innovative STEM learning. That's remarkable—and it deserves a digital presence that matches the quality of your programs.
+                </p>
+                <p>
+                    Right now, your current website doesn't reflect the premium, modern experience families expect. Parents searching for childcare in the Triangle are drawn to sites that feel trustworthy, show clear programming, and make enrollment easy. You're competing against larger chains with polished online marketing—and you have something better: real values and real results.
+                </p>
+                <p>
+                    This proposal outlines a <strong>$600 custom website</strong> that positions Little Believer's Academy as the premium choice for families who want faith, STEM, and exceptional care. We'll redesign your digital storefront, integrate enrollment forms, showcase your two locations, and make it mobile-friendly for parents on the go.
+                </p>
+                <p>
+                    Below, you'll find the opportunity this presents, the solution we've designed, a live preview, our process, and clear pricing.
+                </p>
+            </div>
+        </section>
+
+        <section class="opportunity-section" id="opportunity">
+            <h2 class="section-title">The Opportunity</h2>
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <h3>Website Outdated vs. Market Standards</h3>
+                    <p>Your current site is losing enrollment opportunities to competitors with modern, mobile-friendly designs. Parents expect smooth navigation, clear program info, and easy contact—not complicated or dated layouts.</p>
+                </div>
+                <div class="opportunity-card">
+                    <h3>Missing Enrollment Funnel</h3>
+                    <p>No dedicated enrollment form. Interested parents have to email or call without a clear next step. You're leaving conversions on the table and creating friction in the sales process.</p>
+                </div>
+                <div class="opportunity-card">
+                    <h3>Two Locations Underutilized</h3>
+                    <p>Your dual-campus advantage isn't highlighted. Families may not know about both Clayton and Raleigh locations. A redesigned site clearly showcases reach and flexibility parents need.</p>
+                </div>
+                <div class="opportunity-card">
+                    <h3>STEM + Faith Story Untold</h3>
+                    <p>Your unique differentiation—combining Biblical principles with cutting-edge STEM—isn't clearly communicated. The market needs to understand why Little Believer's is premium, not generic.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section" id="solution">
+            <h2 class="section-title">Our Solution</h2>
+            <div class="deliverables">
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Responsive Homepage Design</h4>
+                        <p>Modern, fast-loading homepage optimized for desktop, tablet, and mobile with clear calls-to-action and trust-building badges.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Program Showcase Pages</h4>
+                        <p>Dedicated sections for Infant, Toddler, Preschool, Pre-K, Before/After School, and Summer Camp with detailed descriptions and benefits.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Dual-Location Integration</h4>
+                        <p>Both Clayton and Raleigh campuses highlighted with addresses, phone numbers, and program availability per location.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Enrollment Form</h4>
+                        <p>Streamlined form capturing parent name, child info, program interest, and contact details—all leading to immediate follow-up.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Brand-Aligned Visual Design</h4>
+                        <p>Custom color palette reflecting your brand identity (blues, deep blues, light accents), plus high-quality photography and SVG iconography.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>SEO Foundation & Performance</h4>
+                        <p>Built on modern standards with fast load times, mobile optimization, and keyword structure for local daycare search visibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section" id="preview">
+            <h2 class="section-title">Live Preview</h2>
+            <div class="preview-container">
+                <iframe src="preview.html" title="Little Believer's Academy Website Preview"></iframe>
+            </div>
+            <p style="text-align: center; color: #A0A0A0; margin-top: 30px; font-size: 13px;">
+                Click and explore the preview above. This is your new website in action—mobile-responsive, fast, and designed to convert.
+            </p>
+        </section>
+
+        <section class="process-section" id="process">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-step-number">1</div>
+                    <h4>Kickoff & Content</h4>
+                    <p>You provide brand info, photos, and program details. We finalize messaging and design direction.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">2</div>
+                    <h4>Design & Build</h4>
+                    <p>We create your custom website with responsive design, enrollment form, and SEO foundation.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">3</div>
+                    <h4>Review & Refine</h4>
+                    <p>You review and request edits. We refine copy, images, and design elements based on your feedback.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">4</div>
+                    <h4>Launch & Support</h4>
+                    <p>We deploy live, test all functionality, and provide 30 days of post-launch support and updates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="pricing">
+            <h2 class="section-title">Pricing</h2>
+            <div class="pricing-container">
+                <div class="price-main">$600</div>
+                <div class="price-label">Recommended: Full Build</div>
+
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <h4>Option 1: Full Payment</h4>
+                        <p>Pay $600 upfront. Launch within 2–3 weeks.</p>
+                    </div>
+                    <div class="payment-option">
+                        <h4>Option 2: Split Payment</h4>
+                        <p>$300 today to begin, $300 upon launch. No financing fees.</p>
+                    </div>
+                </div>
+
+                <div class="recurring-plans">
+                    <h3>Optional Monthly Support (After Launch)</h3>
+                    <div class="plans-grid">
+                        <div class="plan-card">
+                            <div class="plan-name">Core Care</div>
+                            <div class="plan-price">$47<span style="font-size: 14px; color: #A0A0A0;">/mo</span></div>
+                            <div class="plan-details">
+                                • Monthly updates<br>
+                                • 2 content edits<br>
+                                • Email support<br>
+                                • Mobile monitoring
+                            </div>
+                        </div>
+                        <div class="plan-card featured">
+                            <div class="plan-name">Full Care</div>
+                            <div class="plan-price">$97<span style="font-size: 14px; color: #A0A0A0;">/mo</span></div>
+                            <div class="plan-details">
+                                • Core Care + everything below<br>
+                                • Security & SSL monitoring<br>
+                                • Uptime guarantee<br>
+                                • Monthly performance report<br>
+                                • Priority support
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 42px; color: #C9A84C; margin-bottom: 30px;">Ready to Stand Out?</h2>
+            <p style="font-size: 16px; color: #B0B0B0; margin-bottom: 30px;">
+                Let's build a website that reflects the premium experience you deliver. Book a free consultation to discuss timeline, any custom requests, and next steps.
+            </p>
+            <a href="mailto:hello@whitehausmedia.com?subject=Little%20Believer%27s%20Academy%20Website%20Proposal&body=Hi%20White%20Haus%20Media%2C%0A%0AI%27m%20interested%20in%20moving%20forward%20with%20the%20%24600%20website%20build.%20Let%27s%20schedule%20a%20free%20consultation.%0A%0AThanks%2C%0ACassandra" class="cta-button">Book a Free Consultation</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 White Haus Media. All rights reserved.</p>
+        <p>This proposal is exclusive to Little Believer's Academy. Any questions? Email <a href="mailto:hello@whitehausmedia.com">hello@whitehausmedia.com</a></p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>

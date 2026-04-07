@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Beginnings Website Proposal - White Haus Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #e0e0e0;
+            background: #080808;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C9A84C, #d4af37);
+            width: 0%;
+            z-index: 2000;
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(8, 8, 8, 0.8);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #C9A84C;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #C9A84C;
+        }
+
+        .nav-links a.active {
+            color: #C9A84C;
+            border-bottom: 2px solid #C9A84C;
+            padding-bottom: 2px;
+        }
+
+        .cta-link {
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .cta-link:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #C9A84C;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem 8rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            color: #C9A84C;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: #C9A84C;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #333;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-value {
+            color: #C9A84C;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Letter Section */
+        .letter {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.05) 0%, rgba(201, 168, 76, 0.01) 100%);
+            border-left: 3px solid #C9A84C;
+        }
+
+        .letter h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .letter p {
+            font-size: 1rem;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .letter-signature {
+            margin-top: 2rem;
+            color: #C9A84C;
+            font-weight: 600;
+        }
+
+        /* Opportunity Section */
+        .opportunity {
+            padding: 5rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .opportunity-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .opp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .opp-card {
+            background: #111;
+            border-top: 2px solid #C9A84C;
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .opp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
+        }
+
+        .opp-card h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .opp-card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .deliverables {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .deliverable {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.05) 0%, transparent 100%);
+            border-left: 2px solid #C9A84C;
+            border-radius: 2px;
+        }
+
+        .deliverable h4 {
+            color: #C9A84C;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .checkmark {
+            color: #C9A84C;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .deliverable p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Preview Section */
+        .preview {
+            padding: 5rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-browser {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            margin-top: 2rem;
+        }
+
+        .browser-chrome {
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            background: #f9f8f6;
+        }
+
+        .preview-actions {
+            padding: 1.5rem;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-actions a {
+            color: #C9A84C;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .preview-actions a:hover {
+            color: #d4af37;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 4px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, transparent 100%);
+            border: 1px solid #222;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #C9A84C;
+            color: #080808;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .pricing-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pricing-eyebrow {
+            color: #C9A84C;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-intro {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 4px;
+            border: 1px solid #222;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #C9A84C;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(201, 168, 76, 0.2);
+        }
+
+        .pricing-card:hover {
+            border-color: #C9A84C;
+            box-shadow: 0 15px 40px rgba(201, 168, 76, 0.15);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .pricing-amount {
+            font-size: 2.8rem;
+            color: #C9A84C;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .pricing-term {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 2rem 0;
+            border-top: 1px solid #222;
+            padding-top: 2rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            color: #a0a0a0;
+            list-style: none;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pricing-features li:before {
+            content: "✦ ";
+            color: #C9A84C;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .pricing-card p {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #C9A84C 0%, #d4af37 100%);
+            color: #080808;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 168, 76, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            border-top: 1px solid #222;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 30px;
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #C9A84C;
+            text-decoration: none;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(8, 8, 8, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-metadata {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .opp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-iframe {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-logo img {
+                height: 28px;
+            }
+
+            .nav-brand {
+                font-size: 1rem;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 3rem 1rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .letter {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+            <span class="nav-brand">Haus</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#opportunity" class="nav-item">Opportunity</a></li>
+            <li><a href="#solution" class="nav-item">Solution</a></li>
+            <li><a href="#preview" class="nav-item">Preview</a></li>
+            <li><a href="#pricing" class="nav-item">Investment</a></li>
+            <li><a href="mailto:hello@whitehausmedia.com" class="cta-link">Let's Talk</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-eyebrow">Prepared exclusively for Primary Beginnings</div>
+        <h1>A premium digital experience for families discovering <em>play-based learning</em></h1>
+        <p class="hero-description">Primary Beginnings has spent three decades building trust through excellence in early childhood education. Your website should reflect that heritage while connecting with modern families seeking play-based learning environments in Raleigh.</p>
+
+        <div class="hero-metadata">
+            <div class="meta-item">
+                <div class="meta-label">Prepared For</div>
+                <div class="meta-value">Michele Baker</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Organization</div>
+                <div class="meta-value">Primary Beginnings</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Prepared By</div>
+                <div class="meta-value">White Haus Media</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Timeline</div>
+                <div class="meta-value">10-14 Days</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Letter Section -->
+    <section class="letter" id="letter">
+        <h2>Dear Michele,</h2>
+        <p>Primary Beginnings stands apart in the Raleigh market. Your 5-star accreditation, 30+ years of experience, play-based philosophy, and 4.7 Google rating speak to a commitment that most child care centers simply cannot match. Yet your current website doesn't tell that story with the clarity and confidence it deserves.</p>
+
+        <p>Today, when families search for quality child care, they visit your website within the first five minutes of their consideration. They're making critical decisions there: Does this center understand my values? Is enrollment easy? Can I trust them with my child? A generic, outdated site leaves those questions unanswered.</p>
+
+        <p>We've designed a premium website that positions Primary Beginnings as the premier choice for families seeking play-based learning in the Triangle. It showcases your heritage, makes enrollment frictionless, and builds confidence through every interaction. Below, we outline the opportunity, our solution, the process, and investment.</p>
+
+        <div class="letter-signature">Warm regards,<br>White Haus Media</div>
+    </section>
+
+    <!-- Opportunity Section -->
+    <section class="opportunity" id="opportunity">
+        <div class="opportunity-container">
+            <h2 class="section-title reveal">The Opportunity</h2>
+            <p class="section-subtitle">Your current web presence isn't matching the quality of your on-ground experience.</p>
+
+            <div class="opp-grid">
+                <div class="opp-card reveal">
+                    <h3>Outdated Design & Experience</h3>
+                    <p>Your current site uses generic templates and doesn't reflect the premium nature of your programs or your 30+ year legacy. Modern families expect polished, intentional design.</p>
+                </div>
+                <div class="opp-card reveal">
+                    <h3>Limited Mobile Experience</h3>
+                    <p>With 60%+ of child care searches happening on mobile, your site struggles on phones. This is costing you leads who can't navigate or don't see enrollment options clearly.</p>
+                </div>
+                <div class="opp-card reveal">
+                    <h3>No Enrollment System Online</h3>
+                    <p>Families have to call or fill out paper forms. This friction costs you interested prospects who are ready to move forward but take the path of least resistance elsewhere.</p>
+                </div>
+                <div class="opp-card reveal">
+                    <h3>Weak Local SEO Visibility</h3>
+                    <p>You're not ranking for high-intent keywords like "play-based preschool Raleigh" or "5-star child care Falls of Neuse." Families aren't finding you easily in search.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <h2 class="section-title reveal">Our Solution</h2>
+        <p class="section-subtitle reveal">A premium, custom-built website that converts families and reflects the excellence you deliver every day.</p>
+
+        <div class="deliverables">
+            <div class="deliverable reveal">
+                <h4><span class="checkmark">✦</span> Custom Design & Brand Expression</h4>
+                <p>A premium, fully custom site built from scratch (not a template) that uses your brand colors and communicates the professionalism and care that define your center.</p>
+            </div>
+            <div class="deliverable reveal">
+                <h4><span class="checkmark">✦</span> Fully Responsive Mobile Experience</h4>
+                <p>Flawless functionality on phones, tablets, and desktops. Enrollment, program details, and contact info all optimized for mobile-first families.</p>
+            </div>
+            <div class="deliverable reveal">
+                <h4><span class="checkmark">✦</span> Online Enrollment Inquiry Form</h4>
+                <p>Families can express interest, provide basic information, and request a tour directly from the site. Inquiries delivered to your email in real-time.</p>
+            </div>
+            <div class="deliverable reveal">
+                <h4><span class="checkmark">✦</span> Program & Location Showcase</h4>
+                <p>Dedicated pages for each program (Infant through Pre-K, Before & After School, Extracurriculars) and all three locations, with rich details and enrollment CTAs.</p>
+            </div>
+            <div class="deliverable reveal">
+                <h4><span class="checkmark">✦</span> Local SEO Foundation</h4>
+                <p>Built-in technical SEO, structured data for child care search engines, and strategic keyword optimization to help families find you on Google.</p>
+            </div>
+            <div class="deliverable reveal">
+                <h4><span class="checkmark">✦</span> Launch & Support</h4>
+                <p>Deployment to a secure, fast CDN. Initial 30-day support period to monitor performance, address questions, and ensure everything runs smoothly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section class="preview" id="preview">
+        <div class="preview-container">
+            <h2 class="section-title reveal">Your New Website (Preview)</h2>
+            <p class="section-subtitle reveal">Interactive mockup of the custom site we've designed for Primary Beginnings</p>
+
+            <div class="preview-browser reveal">
+                <div class="browser-chrome">
+                    <div class="browser-dot dot-red"></div>
+                    <div class="browser-dot dot-yellow"></div>
+                    <div class="browser-dot dot-green"></div>
+                </div>
+                <iframe class="preview-iframe" src="preview.html"></iframe>
+            </div>
+            <div class="preview-actions reveal">
+                <span style="color: #888; font-size: 0.9rem;">Explore the full site experience</span>
+                <a href="preview.html" target="_blank">Open Full Screen →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <h2 class="section-title reveal">The Process</h2>
+        <p class="section-subtitle reveal">From kickoff to launch in 10-14 days</p>
+
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <div class="step-number">1</div>
+                <h3>Discovery</h3>
+                <p>We align on vision, gather your messaging and brand assets, and clarify the enrollment journey you want families to experience.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">2</div>
+                <h3>Design & Build</h3>
+                <p>Our team custom-builds your site with premium design, responsive functionality, enrollment forms, and SEO foundation.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">3</div>
+                <h3>Review & Refine</h3>
+                <p>You review the live site, provide feedback, and we refine until everything aligns with your vision and goals.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">4</div>
+                <h3>Launch & Support</h3>
+                <p>We deploy to production, handle DNS setup, and provide 30 days of support to monitor performance and address questions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-container">
+            <div class="pricing-eyebrow reveal">Preliminary Pricing</div>
+            <h2 class="section-title reveal">An investment in where your business is headed</h2>
+            <p class="pricing-intro reveal">This proposal includes custom design, development, enrollment integration, mobile optimization, and local SEO foundation. Two simple payment options available.</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card featured reveal">
+                    <div class="pricing-badge">Recommended</div>
+                    <h3>Website</h3>
+                    <div class="pricing-amount">$600</div>
+                    <div class="pricing-term">One-time investment</div>
+                    <ul class="pricing-features">
+                        <li>Custom Premium Design</li>
+                        <li>Full Responsive Build</li>
+                        <li>Enrollment Forms</li>
+                        <li>Program Pages</li>
+                        <li>Location Showcase</li>
+                        <li>SEO Foundation</li>
+                        <li>30-Day Support</li>
+                    </ul>
+                    <p>Or split as two payments of $300</p>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3>Core Care</h3>
+                    <div class="pricing-amount" style="font-size: 2.2rem;">$47</div>
+                    <div class="pricing-term">Per month</div>
+                    <ul class="pricing-features">
+                        <li>Monthly Updates</li>
+                        <li>2 Content Edits</li>
+                        <li>Security Monitoring</li>
+                        <li>Uptime Guarantee</li>
+                    </ul>
+                    <p>Ongoing maintenance & updates</p>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3>Full Care</h3>
+                    <div class="pricing-amount" style="font-size: 2.2rem;">$97</div>
+                    <div class="pricing-term">Per month</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Core Care</li>
+                        <li>Unlimited Content Edits</li>
+                        <li>Monthly Performance Report</li>
+                        <li>Priority Support</li>
+                    </ul>
+                    <p>Premium care & analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="cta-content">
+            <h2>Ready to Attract More Families?</h2>
+            <p>A premium website positions Primary Beginnings as the premier choice for families seeking play-based learning in Raleigh. Let's build it together.</p>
+            <a href="mailto:hello@whitehausmedia.com" class="cta-button">Book a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" class="footer-logo">
+        <p>Copyright 2026 <a href="https://whitehausmedia.com">White Haus Media</a></p>
+    </footer>
+
+    <script>
+        // Progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Active nav item on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        reveals.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

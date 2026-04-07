@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children's Campus - Website Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: #2C2C2C;
+            line-height: 1.6;
+            background: #FAF7F0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #FAF7F0;
+            border-bottom: 1px solid rgba(58, 107, 53, 0.1);
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3A6B35;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2C2C2C;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D4A843;
+        }
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: #3A6B35;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #3A6B35 0%, #2C2C2C 100%);
+            color: #FAF7F0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 600px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .badge-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SVG Icons */
+        .icon-svg {
+            width: 20px;
+            height: 20px;
+            stroke: #D4A843;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: #FAF7F0;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3A6B35;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .about h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #3A6B35;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .about-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #3A6B35 0%, rgba(58, 107, 53, 0.2) 100%);
+            border-radius: 8px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(58, 107, 53, 0.4);
+            font-size: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 250px;
+            }
+        }
+
+        /* Programs Grid */
+        .programs-section {
+            background: #FAF7F0;
+            padding: 4rem 2rem;
+        }
+
+        .programs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #3A6B35;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            border-left: 4px solid #D4A843;
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .program-card:hover {
+            box-shadow: 0 8px 24px rgba(58, 107, 53, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .program-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #3A6B35;
+            margin-bottom: 0.8rem;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: #2C2C2C;
+            color: #FAF7F0;
+            padding: 4rem 2rem;
+        }
+
+        .why-choose-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-choose h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #D4A843;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #D4A843;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #D4A843;
+            fill: none;
+            stroke-width: 1.2;
+        }
+
+        .benefit-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-item p {
+            color: rgba(250, 247, 240, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .testimonial-content {
+            background: white;
+            border-radius: 8px;
+            padding: 3rem;
+            border-top: 4px solid #D4A843;
+            box-shadow: 0 4px 16px rgba(58, 107, 53, 0.1);
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #2C2C2C;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #3A6B35;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #D4A843 0%, #3A6B35 100%);
+            color: #FAF7F0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FAF7F0;
+            color: #3A6B35;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #FAF7F0;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #FAF7F0;
+        }
+
+        /* Enrollment Form */
+        .enrollment-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(58, 107, 53, 0.1);
+        }
+
+        .enrollment-form h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #3A6B35;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2C2C2C;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(58, 107, 53, 0.2);
+            border-radius: 4px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D4A843;
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: #3A6B35;
+            color: #FAF7F0;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: #2C2C2C;
+            box-shadow: 0 4px 12px rgba(58, 107, 53, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2C2C2C;
+            color: #FAF7F0;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid #D4A843;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(250, 247, 240, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-credit {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 168, 67, 0.3);
+            font-size: 0.85rem;
+            color: rgba(250, 247, 240, 0.6);
+        }
+
+        .footer-credit a {
+            color: #D4A843;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-credit a:hover {
+            color: #FAF7F0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 60px;
+                min-height: 500px;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .programs-section h2,
+            .why-choose h2,
+            .about h2 {
+                font-size: 2rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.4rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Children's Campus</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#why-choose">Why Choose</a></li>
+                <li><a href="#enrollment">Enrollment</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Nurturing Growth, Building Futures</h1>
+        <p>Premium childcare and education for infants through Pre-K across the Triangle</p>
+        <div class="trust-badges">
+            <div class="badge">
+                <div class="badge-icon">
+                    <svg class="icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                Family-Owned
+            </div>
+            <div class="badge">
+                <div class="badge-icon">
+                    <svg class="icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                    </svg>
+                </div>
+                Since 1995
+            </div>
+            <div class="badge">
+                <div class="badge-icon">
+                    <svg class="icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                    </svg>
+                </div>
+                3 Locations
+            </div>
+            <div class="badge">
+                <div class="badge-icon">
+                    <svg class="icon-svg" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z"/>
+                    </svg>
+                </div>
+                5-Star Rated
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats">
+        <div class="stat scroll-reveal">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Years Serving the Triangle</div>
+        </div>
+        <div class="stat scroll-reveal">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Families Trusted</div>
+        </div>
+        <div class="stat scroll-reveal">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Convenient Locations</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Children's Campus</h2>
+        <div class="about-content scroll-reveal">
+            <div class="about-text">
+                <h3>Trusted by Triangle Families</h3>
+                <p>For more than 30 years, Children's Campus has been the choice of families seeking quality, nurturing childcare across the Triangle. With three convenient locations serving Durham and Chapel Hill, we provide comprehensive programs from infant care through Pre-K.</p>
+                <p>Our team of experienced educators creates safe, stimulating environments where children thrive developmentally and emotionally. We combine structured learning with play-based discovery to support each child's unique growth journey.</p>
+            </div>
+            <div class="about-image">
+                🏫
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section" id="programs">
+        <div class="programs-container">
+            <h2>Our Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card scroll-reveal">
+                    <h3>Infant Care</h3>
+                    <p>Gentle, attentive care for newborns through 12 months, with structured routines supporting healthy development and parent communication.</p>
+                </div>
+                <div class="program-card scroll-reveal">
+                    <h3>Toddler Program</h3>
+                    <p>Exploration-based learning for ages 1-3, developing motor skills, language, and social growth through safe, engaging activities.</p>
+                </div>
+                <div class="program-card scroll-reveal">
+                    <h3>Preschool</h3>
+                    <p>Structured curriculum for ages 3-4, introducing pre-academic skills, creativity, and social development through play and learning.</p>
+                </div>
+                <div class="program-card scroll-reveal">
+                    <h3>Pre-K Program</h3>
+                    <p>Comprehensive preparation for kindergarten, building academic foundations, independence, and critical thinking skills.</p>
+                </div>
+                <div class="program-card scroll-reveal">
+                    <h3>Full-Day Care</h3>
+                    <p>Extended hours (Monday-Friday) providing continuity and flexibility for working families across all age groups.</p>
+                </div>
+                <div class="program-card scroll-reveal">
+                    <h3>Enrichment Activities</h3>
+                    <p>Art, music, physical education, and outdoor play integrated throughout the day to support holistic child development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="why-choose-container">
+            <h2>Why Choose Children's Campus</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Experienced Team</h3>
+                    <p>Dedicated educators with extensive training in early childhood development and care best practices.</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <path d="M10 17l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                        </svg>
+                    </div>
+                    <h3>Safety First</h3>
+                    <p>Rigorous protocols, secure facilities, and continuous monitoring ensure your child's well-being every day.</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Quality Education</h3>
+                    <p>Research-based curriculum designed to foster cognitive, social, and emotional growth at every stage.</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/>
+                            <path d="M12 14c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <h3>Family Partnership</h3>
+                    <p>Open communication and transparent updates help parents stay connected to their child's daily growth.</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8-1.41-1.42z"/>
+                        </svg>
+                    </div>
+                    <h3>Proven Track Record</h3>
+                    <p>Three decades of trusted service and thousands of families choosing us year after year speaks to our commitment.</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M11 19c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+                            <path d="M5.5 4v3h5v12c0 1.65-1.35 3-3 3s-3-1.35-3-3"/>
+                            <path d="M19 7h-8V4h8c2.21 0 4 1.79 4 4 0 2-1.57 3.63-3.53 3.97"/>
+                        </svg>
+                    </div>
+                    <h3>Flexible Hours</h3>
+                    <p>Full-day programs Monday through Friday designed to accommodate working family schedules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial scroll-reveal">
+        <div class="testimonial-content">
+            <p class="testimonial-text">"Children's Campus has been a blessing for our family. The care, attention, and educational approach our daughter receives is exceptional. We've seen her flourish and grow in confidence."</p>
+            <p class="testimonial-author">— Parent of 3-year-old student</p>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Join the Children's Campus Family?</h2>
+        <p>Enroll your child today and give them the foundation for lifelong success</p>
+        <a href="#enrollment" class="cta-button">Start Enrollment</a>
+    </section>
+
+    <!-- Enrollment Form -->
+    <section class="enrollment-form" id="enrollment">
+        <h3>Enrollment Inquiry</h3>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="parent-name">Parent/Guardian Name *</label>
+                <input type="text" id="parent-name" name="parentName" required>
+            </div>
+            <div class="form-group">
+                <label for="child-name">Child's Name *</label>
+                <input type="text" id="child-name" name="childName" required>
+            </div>
+            <div class="form-group">
+                <label for="child-age">Child's Age/Age Range *</label>
+                <input type="text" id="child-age" name="childAge" placeholder="e.g., 2 years old" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Preferred Location *</label>
+                <input type="text" id="location" name="location" placeholder="Chapel Hill or Durham" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Questions or Special Requests</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Submit Inquiry</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Children's Campus</div>
+            <p class="footer-text">Quality childcare and education serving the Triangle since 1995</p>
+            <p class="footer-text">📍 Chapel Hill • Durham, NC | 📞 (919) 967-5020</p>
+            <div class="footer-credit">
+                Website by <a href="https://whitehausmedia.com" target="_blank">White Haus Media</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach(el => observer.observe(el));
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            // Simulate form submission
+            alert(`Thank you for your inquiry! We'll contact you at ${data.email} soon.`);
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

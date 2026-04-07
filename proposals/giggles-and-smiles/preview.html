@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giggles and Smiles Playschool - Website Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #E8809A;
+            --blue: #7DC4E4;
+            --cream: #FFF9F0;
+            --charcoal: #3D3D3D;
+            --text: #2C2C2C;
+            --light: #FAF6F1;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(232, 128, 154, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--pink);
+            flex-direction: column;
+            padding: 2rem;
+            gap: 1.5rem;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            min-height: 500px;
+            background: linear-gradient(135deg, var(--cream), #FFFBF7));
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            color: var(--pink);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), #F0999E);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(232, 128, 154, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 128, 154, 0.3);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .shape-blob {
+            position: absolute;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            opacity: 0.7;
+        }
+
+        .blob-1 {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, var(--blue), #8DD5F0);
+            top: 0;
+            right: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--pink), #F0999E);
+            bottom: 40px;
+            left: 20px;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* TRUST BADGES */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+            background: var(--light);
+        }
+
+        .badge {
+            text-align: center;
+            flex: 1;
+            min-width: 110px;
+        }
+
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 0.5rem;
+            background: linear-gradient(135deg, var(--blue), #8DD5F0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .badge p {
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* STATS BAR */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--pink), #F0999E);
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .highlight-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .highlight-list li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, var(--blue), #8DD5F0);
+            border-radius: 50%;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .gradient-blob {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--pink), #F0999E);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        /* PROGRAMS GRID */
+        .programs {
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--pink);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid var(--blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(125, 196, 228, 0.15);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--blue), #8DD5F0);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .program-card h3 {
+            color: var(--pink);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .program-card p {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* WHY CHOOSE */
+        .why-choose {
+            background: linear-gradient(135deg, var(--blue), #8DD5F0);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .why-choose h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .why-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            min-width: 60px;
+        }
+
+        .why-content h3 {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .why-content p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* TESTIMONIAL */
+        .testimonial {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .testimonial-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--pink);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .testimonial-author {
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: var(--blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--pink), #F0999E);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-banner-btn {
+            display: inline-block;
+            background: var(--blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(125, 196, 228, 0.3);
+        }
+
+        /* ENROLLMENT FORM */
+        .enrollment {
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .enrollment h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--pink);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--blue);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--pink);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--blue);
+            border-radius: 10px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--pink);
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--pink), #F0999E);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: scale(1.02);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--blue);
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-visual {
+                height: 250px;
+            }
+
+            .blob-1 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .why-choose h2,
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .trust-badges {
+                gap: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+
+            .program-card {
+                padding: 1.5rem;
+            }
+
+            .why-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .why-number {
+                font-size: 2rem;
+                margin: 0 auto;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Giggles & Smiles</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Care Programs</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#enrollment">Enroll</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">About</a>
+        <a href="#programs">Care Programs</a>
+        <a href="#why">Why Us</a>
+        <a href="#enrollment">Enroll</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Personalized Infant & Toddler Care</h1>
+            <p>Small family-style childcare where every child gets individual attention and love. Est. 1990—30+ years of trusted care in Durham.</p>
+            <a href="#enrollment" class="hero-cta">Learn More</a>
+        </div>
+        <div class="hero-visual">
+            <div class="shape-blob blob-1"></div>
+            <div class="shape-blob blob-2"></div>
+        </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="trust-badges">
+        <div class="badge">
+            <div class="badge-icon">✓</div>
+            <p>4-Star Licensed</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">★</div>
+            <p>30+ Years</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">♥</div>
+            <p>Personalized Care</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">◆</div>
+            <p>Small Groups</p>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>3,000+</h3>
+            <p>Families Served</p>
+        </div>
+        <div class="stat-item">
+            <h3>30+</h3>
+            <p>Years in Business</p>
+        </div>
+        <div class="stat-item">
+            <h3>Ages 0-2</h3>
+            <p>Infant Specialists</p>
+        </div>
+        <div class="stat-item">
+            <h3>4-Star</h3>
+            <p>Licensed Rating</p>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>Our Approach</h2>
+            <p>Giggles and Smiles Playschool specializes in loving, attentive care for infants and toddlers ages 0-2. As a small family child care home, we provide the personalized attention every young child needs during these critical developmental years.</p>
+            <ul class="highlight-list">
+                <li>Individual care plans tailored to each child</li>
+                <li>Safe, nurturing home-like environment</li>
+                <li>State-licensed and fully insured</li>
+                <li>Small group sizes for maximum attention</li>
+                <li>Regular communication with parents</li>
+            </ul>
+        </div>
+        <div class="about-visual">
+            <div class="gradient-blob"></div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section class="programs" id="programs">
+        <h2 class="section-title">Care Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-icon">👶</div>
+                <h3>Infant Care</h3>
+                <p>Specialized care for newborns (0-12 months) with custom feeding, nap, and diaper schedules.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🧸</div>
+                <h3>Young Toddlers</h3>
+                <p>Care for 12-18 month olds with developmental activities and growing independence.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🎨</div>
+                <h3>Toddlers (18mo-2yr)</h3>
+                <p>Enriched learning through play, exploration, language development, and social skills.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🌟</div>
+                <h3>Full-Day Care</h3>
+                <p>Flexible scheduling options including full-day, part-time, and drop-in care.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">💙</div>
+                <h3>Flexible Hours</h3>
+                <p>Designed for working parents with extended hours and weekend care available.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section class="why-choose" id="why">
+        <h2>Why Choose Giggles and Smiles</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-number">1</div>
+                <div class="why-content">
+                    <h3>Specialized Infant Care</h3>
+                    <p>30+ years of expertise caring for the youngest learners during critical development stages.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-number">2</div>
+                <div class="why-content">
+                    <h3>Small, Safe Home</h3>
+                    <p>Licensed family child care home with secure environment and individual attention for each child.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-number">3</div>
+                <div class="why-content">
+                    <h3>Parent Partnership</h3>
+                    <p>Open communication and daily updates help us work together for your child's best care.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-number">4</div>
+                <div class="why-content">
+                    <h3>Affordable & Flexible</h3>
+                    <p>Competitive rates with flexible scheduling to fit your family's working lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="testimonial-text">"Our daughter thrived under Giggles and Smiles' care. The attention and love she received during her infant and toddler years made all the difference."</p>
+            <p class="testimonial-author">— Sarah M., Parent</p>
+            <p class="testimonial-role">Durham, NC</p>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Ready to Find Quality Infant Care?</h2>
+        <p>Schedule a visit to see our home and meet our caregiving team.</p>
+        <a href="#enrollment" class="cta-banner-btn">Get Started Today</a>
+    </section>
+
+    <!-- ENROLLMENT FORM -->
+    <section class="enrollment" id="enrollment">
+        <h2>Enrollment Inquiry</h2>
+        <div class="form-container">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Parent/Guardian Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="child">Child's Age</label>
+                    <select id="child" name="child" required>
+                        <option value="">Select Age</option>
+                        <option value="newborn">Newborn (0-3 months)</option>
+                        <option value="infant">Infant (3-12 months)</option>
+                        <option value="young-toddler">Young Toddler (12-18 months)</option>
+                        <option value="toddler">Toddler (18-24 months)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="interest">How did you hear about us?</label>
+                    <input type="text" id="interest" name="interest" placeholder="Referral, online search, etc.">
+                </div>
+                <button type="submit" class="form-submit">Schedule a Visit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Giggles and Smiles Playschool</strong></p>
+        <p>Licensed Family Child Care Home, Durham, NC</p>
+        <p>Northwest Durham | (919) 555-CARE | gigglesandsmiles@nc.rr.com</p>
+        <div class="footer-credit">
+            <p>Site by White Haus Media</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-card, .why-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! We\'ll be in touch soon.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

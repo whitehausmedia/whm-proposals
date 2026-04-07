@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Proposal — Discovery Child Development Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #080808;
+            color: #E8DCC8;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(198, 164, 76, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #E8DCC8;
+        }
+
+        .logo-text-italic {
+            font-style: italic;
+            color: #C9A84C;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C9A84C, #E8DCC8);
+            width: 0%;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 2rem 4rem;
+            background: linear-gradient(135deg, rgba(32, 32, 32, 0.5) 0%, rgba(8, 8, 8, 0.8) 100%);
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 600;
+            color: #E8DCC8;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-meta {
+            font-size: 1rem;
+            color: #C9A84C;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta span {
+            display: inline-block;
+            margin: 0 1rem;
+        }
+
+        /* Letter Section */
+        .letter {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            background: rgba(32, 32, 32, 0.6);
+            border-left: 3px solid #C9A84C;
+            border-radius: 8px;
+        }
+
+        .letter h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #E8DCC8;
+            margin-bottom: 2rem;
+        }
+
+        .letter p {
+            font-size: 1rem;
+            color: #E8DCC8;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .letter p:first-letter {
+            margin-right: 0.1em;
+        }
+
+        .signature {
+            margin-top: 2rem;
+            color: #C9A84C;
+            font-weight: 500;
+        }
+
+        /* Opportunity Section */
+        .opportunity {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #E8DCC8;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #C9A84C;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .opportunity-card {
+            background: rgba(50, 50, 50, 0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 3px solid #C9A84C;
+            transition: all 0.3s ease;
+        }
+
+        .opportunity-card:hover {
+            background: rgba(50, 50, 50, 0.9);
+            transform: translateY(-4px);
+        }
+
+        .opportunity-card h3 {
+            font-size: 1.2rem;
+            color: #C9A84C;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .opportunity-card p {
+            color: #E8DCC8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-item {
+            background: rgba(50, 50, 50, 0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 3px solid #C9A84C;
+            transition: all 0.3s ease;
+        }
+
+        .solution-item:hover {
+            background: rgba(50, 50, 50, 0.9);
+            border-left-color: #E8DCC8;
+        }
+
+        .solution-icon {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #C9A84C;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-item h3 {
+            font-size: 1.1rem;
+            color: #E8DCC8;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .solution-item p {
+            color: #C8C8C8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Preview Section */
+        .preview {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .preview-container {
+            background: rgba(32, 32, 32, 0.8);
+            border: 1px solid rgba(198, 164, 76, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .preview-header {
+            background: linear-gradient(90deg, rgba(198, 164, 76, 0.1), rgba(232, 116, 97, 0.1));
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(198, 164, 76, 0.2);
+            text-align: center;
+        }
+
+        .preview-header p {
+            color: #C9A84C;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            background: #FFF8F0;
+        }
+
+        /* Process Section */
+        .process {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(50, 50, 50, 0.6);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: rgba(50, 50, 50, 0.9);
+            transform: translateY(-4px);
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #C9A84C;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: #E8DCC8;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: #C8C8C8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(50, 50, 50, 0.6);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(198, 164, 76, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #C9A84C;
+            background: rgba(50, 50, 50, 0.8);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            color: #E8DCC8;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #C9A84C;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            color: #C8C8C8;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-details {
+            color: #E8DCC8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .pricing-list {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-list li {
+            color: #C8C8C8;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #C9A84C;
+        }
+
+        /* CTA Section */
+        .cta {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(198, 164, 76, 0.1) 0%, rgba(232, 116, 97, 0.05) 100%);
+            border: 1px solid rgba(198, 164, 76, 0.2);
+            border-radius: 12px;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #E8DCC8;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: #C8C8C8;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #C9A84C, #E8DCC8);
+            color: #080808;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(198, 164, 76, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(198, 164, 76, 0.2);
+            text-align: center;
+            color: #C8C8C8;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #C9A84C;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #E8DCC8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 100px 1.5rem 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .letter {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-iframe {
+                height: 400px;
+            }
+
+            .process-steps,
+            .opportunity-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-meta {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+            }
+
+            .letter {
+                padding: 1.5rem 1rem;
+            }
+
+            .letter p {
+                font-size: 0.9rem;
+            }
+
+            .price {
+                font-size: 1.8rem;
+            }
+
+            .preview-iframe {
+                height: 300px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .opportunity-card,
+        .solution-item,
+        .step,
+        .pricing-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .opportunity-card:nth-child(1) { animation-delay: 0.1s; }
+        .opportunity-card:nth-child(2) { animation-delay: 0.2s; }
+        .opportunity-card:nth-child(3) { animation-delay: 0.3s; }
+        .opportunity-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .solution-item:nth-child(1) { animation-delay: 0.1s; }
+        .solution-item:nth-child(2) { animation-delay: 0.2s; }
+        .solution-item:nth-child(3) { animation-delay: 0.3s; }
+        .solution-item:nth-child(4) { animation-delay: 0.4s; }
+        .solution-item:nth-child(5) { animation-delay: 0.5s; }
+        .solution-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+
+        .pricing-card:nth-child(1) { animation-delay: 0.2s; }
+        .pricing-card:nth-child(2) { animation-delay: 0s; }
+        .pricing-card:nth-child(3) { animation-delay: 0.2s; }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+            <div>
+                <div class="logo-text">White Haus Media</div>
+                <div class="logo-text-italic" style="font-size: 0.8rem; margin-top: -4px;">Haus</div>
+            </div>
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div>
+            <h1>Prepared exclusively for<br>Discovery Child Development Center</h1>
+            <div class="hero-meta">
+                <span>Dr. Alejandra Livas-Dlott & Michael Dlott</span>
+                <span>•</span>
+                <span>Morrisville, NC</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Letter -->
+    <section class="letter">
+        <h2>Dear Alejandra,</h2>
+        <p>Discovery Child Development Center has built something remarkable over 15 years. Your research-based curriculum, 70% staff retention through genuine family investment, and trusted reputation across the Triangle speak to a business built on real values. Your website, however, doesn't tell that story with the clarity and warmth it deserves.</p>
+        <p>Most child development centers online feel transactional. Discovery is relational. Your digital presence should reflect that difference. Parents choosing childcare aren't just looking for enrollment forms—they're searching for reassurance that their child will be genuinely known and cherished. Your current site doesn't capture the human investment that defines your center.</p>
+        <p>We've prepared a complete web design that positions Discovery as the premium, family-first alternative in your market. This site will attract families who value research-based curriculum and authentic relationships with their child's educators. It's built for conversion—from tour inquiries to enrollments—while maintaining the warmth and professionalism your brand demands.</p>
+        <div class="signature">
+            From our team,<br>
+            <strong>White Haus Media</strong>
+        </div>
+    </section>
+
+    <!-- Opportunity -->
+    <section class="opportunity">
+        <h2 class="section-title">The Current Situation</h2>
+        <div class="opportunity-grid">
+            <div class="opportunity-card">
+                <h3>Weak Brand Presence</h3>
+                <p>Your website doesn't communicate the research-based, family-focused philosophy that sets Discovery apart. Competitors blend together online—you should stand out.</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>Low Conversion</h3>
+                <p>Parents land on your site and lack a clear path to enrollment or tours. Form friction and unclear calls-to-action lose interested families before they connect.</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>Missing Trust Signals</h3>
+                <p>Your 15-year track record, staff expertise, and community reputation aren't highlighted. New parents see no evidence of why Discovery is worth the investment.</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>Outdated Visual Experience</h3>
+                <p>A dated or generic design undermines your premium positioning. Your website should feel as intentional and caring as your center.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution">
+        <h2 class="section-title">Our Solution</h2>
+        <div class="solution-grid">
+            <div class="solution-item">
+                <div class="solution-icon">✦</div>
+                <h3>Premium Brand Design</h3>
+                <p>Custom design system using your brand colors (navy, coral, teal, cream) that communicates professionalism and warmth simultaneously.</p>
+            </div>
+            <div class="solution-item">
+                <div class="solution-icon">✦</div>
+                <h3>Trust Badge Architecture</h3>
+                <p>Hero section highlights: Family-Run since 2010, Research-Based, 70% Staff Connection, Serving 3 Counties. These become visual proof of your advantage.</p>
+            </div>
+            <div class="solution-item">
+                <div class="solution-icon">✦</div>
+                <h3>Program Clarity</h3>
+                <p>All five programs (Young Preschool through Kindergarten) presented with developmental benefits and age ranges. Staggered grid design creates natural visual hierarchy.</p>
+            </div>
+            <div class="solution-item">
+                <div class="solution-icon">✦</div>
+                <h3>Conversion Funnel</h3>
+                <p>Strategically placed CTA buttons, streamlined enrollment form, and clear contact information reduce friction and capture qualified tour requests.</p>
+            </div>
+            <div class="solution-item">
+                <div class="solution-icon">✦</div>
+                <h3>Mobile Responsiveness</h3>
+                <p>Full optimization for tablets and smartphones. Parents often research childcare on mobile—this site performs flawlessly across all devices.</p>
+            </div>
+            <div class="solution-item">
+                <div class="solution-icon">✦</div>
+                <h3>Fast, Secure, Scalable</h3>
+                <p>Built on Vercel for lightning-fast load times, automatic HTTPS security, and zero server maintenance. Always up, always fast.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview -->
+    <section class="preview">
+        <h2 class="section-title">Live Preview</h2>
+        <div class="preview-container">
+            <div class="preview-header">
+                <p>Click through the live preview below to see your new website in action</p>
+            </div>
+            <iframe class="preview-iframe" src="preview.html" title="Discovery Child Development Center Website Preview"></iframe>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <h2 class="section-title">Our Process</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Discovery</h3>
+                <p>We learn your market, messaging, and growth goals through detailed conversations with your leadership team.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Design</h3>
+                <p>Custom design system created using your brand guidelines. All assets optimized for performance and accessibility.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Deployment</h3>
+                <p>Site goes live on our enterprise infrastructure. Automatic SSL, CDN delivery, and uptime monitoring included.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Growth</h3>
+                <p>Ongoing support through Core or Full Care packages. Monthly updates, edits, and strategic reporting to drive enrollment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <h2 class="section-title">Pricing & Support</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Website Build</h3>
+                <div class="price">$300</div>
+                <div class="price-period">Initial investment</div>
+                <div class="price-details">Custom design, responsive development, and deployment to our secure hosting infrastructure.</div>
+                <ul class="pricing-list">
+                    <li>Unlimited revisions during design phase</li>
+                    <li>Mobile-optimized</li>
+                    <li>Contact form integration</li>
+                    <li>Live on Vercel (CDN delivery)</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Recommended</div>
+                <h3>First Year Bundle</h3>
+                <div class="price">$600</div>
+                <div class="price-period">Special rate</div>
+                <div class="price-details">Website build + Core Care package for year one. Lock in ongoing support and updates.</div>
+                <ul class="pricing-list">
+                    <li>Website design & development</li>
+                    <li>Core Care (12 months)</li>
+                    <li>2 content edits/month</li>
+                    <li>Enrollment-form monitoring</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>Ongoing Care</h3>
+                <div class="price">$47–$97</div>
+                <div class="price-period">Monthly</div>
+                <div class="price-details">Choose Core (updates + edits) or Full (Core + security + monthly reports).</div>
+                <ul class="pricing-list">
+                    <li><strong>Core:</strong> 2 edits + updates</li>
+                    <li><strong>Full:</strong> Core + security + reports</li>
+                    <li>Email & chat support</li>
+                    <li>Performance monitoring</li>
+                </ul>
+            </div>
+        </div>
+        <p style="text-align: center; color: #C8C8C8; margin-top: 2rem; font-size: 0.95rem;">
+            Pricing is guaranteed for 12 months. After year one, renew at then-current rates. No long-term contracts required.
+        </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Grow Discovery's Enrollment?</h2>
+        <p>Let's build a website that tells your story and converts families into lifelong community members.</p>
+        <button class="cta-button" onclick="handleApproval()">Let's Get Started</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 White Haus Media. All rights reserved.</p>
+        <p><a href="https://whitehausmedia.com">whitehausmedia.com</a> | hello@whitehausmedia.com | (919) 555-0123</p>
+    </footer>
+
+    <script>
+        // Progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = window.scrollY;
+            const scrollPercent = (scrolled / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // CTA button handler
+        function handleApproval() {
+            alert('Thank you for your interest! We\'ll be in touch within 24 hours to discuss Discovery\'s web design and growth strategy.');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

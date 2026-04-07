@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preschool at Woodland - Modern Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5B8DB8;
+            --secondary: #7B9E73;
+            --accent: #8B6B4A;
+            --cream: #FFF9F0;
+            --dark: #1a1a1a;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 249, 240, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 4rem;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, rgba(91, 141, 184, 0.1) 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(91, 141, 184, 0.3);
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .badge-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .badge-text small {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* Hero Image Placeholder */
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 249, 240, 0.2);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 249, 240, 0.15);
+            border-radius: 50%;
+            bottom: -30px;
+            left: 20px;
+        }
+
+        /* Stats Bar */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .highlight-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--secondary);
+            fill: none;
+            stroke-width: 2;
+            flex-shrink: 0;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+        }
+
+        /* Programs Grid */
+        .programs {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .programs h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary);
+            opacity: 0;
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .program-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .program-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(91, 141, 184, 0.2);
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .program-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 6rem 2rem;
+            background: var(--dark);
+            color: white;
+        }
+
+        .why-choose h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--cream);
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            text-align: center;
+        }
+
+        .why-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .why-item svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--secondary);
+            fill: none;
+            stroke-width: 1.5;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .why-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .why-item p {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 6rem 2rem;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .testimonial-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .testimonial-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .testimonial-author small {
+            display: block;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button-white {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button-white:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* Enrollment Form */
+        .enrollment {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .enrollment-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .enrollment h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .enrollment p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .about h2,
+            .programs h2,
+            .why-choose h2 {
+                font-size: 1.8rem;
+            }
+
+            .programs-grid {
+                gap: 1rem;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-quote {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Preschool at Woodland</div>
+        <ul class="nav-links">
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#enroll">Enroll Today</a></li>
+        </ul>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Growing Hearts & Minds in Wake Forest</h1>
+            <p>Faith-based preschool education for ages 2–5, rooted in community values and child-centered learning.</p>
+            <button class="cta-button">Schedule a Tour</button>
+            <div class="trust-badges">
+                <div class="badge">
+                    <div class="badge-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <small>Faith-Based Curriculum</small>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                    </div>
+                    <small>Warm Community</small>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <small>Family-Focused</small>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>50+</h3>
+            <p>Children Served</p>
+        </div>
+        <div class="stat-item">
+            <h3>20+</h3>
+            <p>Years in Community</p>
+        </div>
+        <div class="stat-item">
+            <h3>4:1</h3>
+            <p>Student-Teacher Ratio</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <div>
+                <h2>A Place Where Children Thrive</h2>
+                <p>Preschool at Woodland is built on the foundation of faith, community, and compassionate education. We believe every child deserves a nurturing environment where they can explore, learn, and grow into confident, curious learners.</p>
+                <div class="highlights">
+                    <div class="highlight-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
+                        <span><strong>Developmental Milestones:</strong> Programs designed around age-appropriate activities</span>
+                    </div>
+                    <div class="highlight-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
+                        <span><strong>Small Class Sizes:</strong> More one-on-one attention and personalized care</span>
+                    </div>
+                    <div class="highlight-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
+                        <span><strong>Community Connection:</strong> Regular parent involvement and events</span>
+                    </div>
+                    <div class="highlight-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
+                        <span><strong>Safe, Engaging Space:</strong> Purpose-built facilities and outdoor play areas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image"></div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <h2>Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>2-Year-Olds</h3>
+                <p>Sensory-rich exploration with music, movement, and early social development in a safe, language-rich environment.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>3-Year-Olds</h3>
+                <p>Growing independence through structured play, pre-academic activities, and small group learning experiences.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3>4-5 Year-Olds</h3>
+                <p>Kindergarten readiness with phonics, math concepts, science exploration, and collaborative group projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why">
+        <h2>Why Families Choose Woodland</h2>
+        <div class="why-choose-grid">
+            <div class="why-item">
+                <div class="why-number">1</div>
+                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h3>Trusted Education</h3>
+                <p>Faith-based curriculum grounded in proven early childhood development practices.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-number">2</div>
+                <svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h3>Invested Staff</h3>
+                <p>Dedicated, trained teachers who genuinely care about each child's growth and wellbeing.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-number">3</div>
+                <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10h4M3 20h5v-2a3 3 0 00-5.856-1.487M3 10h4M6 10a2 2 0 11-4 0 2 2 0 014 0zM17 16a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <h3>Community Focus</h3>
+                <p>Strong family connections with regular events, open communication, and partnership in child's development.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-number">4</div>
+                <svg viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                <h3>Growth-Oriented</h3>
+                <p>Each child's unique pace honored; flexible, responsive programming meets individual developmental needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="testimonial-quote">"My daughter came home singing, learning, and excited about school. The warmth and care here are unmatched. Woodland feels like family."</p>
+            <div class="testimonial-author">
+                Sarah M., Parent
+                <small>Preschool at Woodland</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Join Our Community?</h2>
+        <p>Limited spaces available for the 2025–26 school year</p>
+        <button class="cta-button-white">Schedule Your Tour</button>
+    </section>
+
+    <!-- Enrollment Form -->
+    <section class="enrollment" id="enroll">
+        <div class="enrollment-container">
+            <h2>Get Started</h2>
+            <p>Fill out the form below and we'll contact you within 24 hours.</p>
+            <form>
+                <div class="form-group">
+                    <label>Parent Name *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel">
+                </div>
+                <div class="form-group">
+                    <label>Child's Age *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Request More Information</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Preschool at Woodland</p>
+        <p>Wake Forest, NC • Community-Centered Education</p>
+        <div class="footer-credit">
+            <p>Site by White Haus Media</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-card, .why-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

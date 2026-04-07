@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Thinkers – Web Presence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2D2D2D;
+            line-height: 1.6;
+            background: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 150, 136, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #009688;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2D2D2D;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #FF8A65;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #009688;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 0.75rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        .hero {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #009688;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-content .cta-button {
+            display: inline-block;
+            background: #FF8A65;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .hero-content .cta-button:hover {
+            background: #FF6E40;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 138, 101, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0, 150, 136, 0.2);
+        }
+
+        .hero-image svg {
+            width: 80%;
+            height: 80%;
+            opacity: 0.9;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #F5F5F5;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #2D2D2D;
+        }
+
+        .badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: #009688;
+            stroke-width: 1.5;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(90deg, #E0F2F1 0%, #B2DFDB 100%);
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #009688;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .about-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.25rem;
+            color: #009688;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            stroke-width: 1.5;
+        }
+
+        .highlight-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #009688;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-content p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .about-image {
+            position: relative;
+            height: 350px;
+            background: linear-gradient(135deg, #FF8A65 0%, #FF6E40 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image svg {
+            width: 70%;
+            height: 70%;
+            opacity: 0.9;
+        }
+
+        .programs-section {
+            padding: 4rem 2rem;
+            background: #F9F9F9;
+            margin-top: 2rem;
+        }
+
+        .programs-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.25rem;
+            color: #009688;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #009688;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 150, 136, 0.15);
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF8A65 0%, #FF6E40 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .program-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            stroke-width: 1.5;
+        }
+
+        .program-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            color: #009688;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .program-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .why-choose {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2D2D2D 100%);
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .why-choose h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #FF8A65;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .why-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FF8A65;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .why-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .why-content p {
+            font-size: 0.95rem;
+            color: #DDD;
+            line-height: 1.6;
+        }
+
+        .testimonial-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 5px solid #FF8A65;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #2D2D2D;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #009688;
+        }
+
+        .testimonial-title {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-banner .cta-button {
+            background: #FF8A65;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cta-banner .cta-button:hover {
+            background: #FFB74D;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .enrollment-form {
+            padding: 4rem 2rem;
+            background: #F9F9F9;
+            margin-top: 2rem;
+        }
+
+        .enrollment-form h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: #009688;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2D2D2D;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #009688;
+            box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            width: 100%;
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 150, 136, 0.3);
+        }
+
+        footer {
+            background: #2D2D2D;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #FF8A65;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FFB74D;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-image {
+                height: 250px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+
+            .about-section h2,
+            .programs-section h2,
+            .why-choose h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.3rem;
+            }
+
+            .enrollment-form {
+                padding: 2rem 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            nav {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Little Thinkers</div>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#enroll">Enroll</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Growing Minds, Play-Based Learning</h1>
+            <p>Where children discover, explore, and thrive through intentional play and nurturing care. Est. 2008, serving the Burlington community across two locations.</p>
+            <button class="cta-button" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+            <div class="trust-badges">
+                <div class="badge">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>2008 Legacy</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>2 Locations</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Play-Based</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="30" stroke="white" fill="none" stroke-width="1.5"/>
+                <circle cx="150" cy="50" r="30" stroke="white" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="140" r="30" stroke="white" fill="none" stroke-width="1.5"/>
+                <path d="M 50 80 Q 100 110 150 80" stroke="white" fill="none" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stat-item reveal">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Locations serving families</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Age groups & programs</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number">18+</div>
+            <div class="stat-label">Years of excellence</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Family-centered approach</div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About Little Thinkers</h2>
+        <div class="about-grid">
+            <div>
+                <p style="font-size: 1.1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">Since 2008, Little Thinkers has been the trusted choice for early childhood education in Burlington. Our play-based learning philosophy ensures every child develops confidence, curiosity, and lifelong love of learning.</p>
+                <div class="highlights">
+                    <div class="highlight-item reveal">
+                        <div class="highlight-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Play-Based Learning</h3>
+                            <p>Intentional exploration through play that builds critical thinking and social skills.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item reveal">
+                        <div class="highlight-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Two Locations</h3>
+                            <p>2485 Moran St & 731 N Fisher St, both serving Burlington families with excellence.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item reveal">
+                        <div class="highlight-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Locally Owned</h3>
+                            <p>Rooted in our community, invested in your child's growth and family's success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="40" width="120" height="120" rx="15" stroke="white" fill="none" stroke-width="1.5"/>
+                    <circle cx="100" cy="100" r="40" stroke="white" fill="none" stroke-width="1.5"/>
+                    <path d="M 100 70 L 120 100 L 100 130 L 80 100 Z" stroke="white" fill="none" stroke-width="1.5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="programs-section" id="programs">
+        <h2>Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Infant Care</h3>
+                <p>Nurturing care for the littlest learners, focusing on bonding and developmental milestones in a safe, loving environment.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Toddler Program</h3>
+                <p>Interactive learning through play, exploration, and social development designed for emerging independence.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Preschool</h3>
+                <p>Dynamic, play-based curriculum preparing children for school readiness through hands-on learning experiences.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Pre-K Program</h3>
+                <p>Focused academic foundation with continued play-based discovery, building confidence for kindergarten.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-8 8-8s8 4 8 8" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Play-Based Learning</h3>
+                <p>Our signature approach—every program centers on intentional play that fuels discovery and genuine love of learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose" id="why">
+        <h2>Why Choose Little Thinkers?</h2>
+        <div class="why-choose-grid">
+            <div class="why-item reveal">
+                <div class="why-number">1</div>
+                <div class="why-content">
+                    <h3>18-Year Legacy</h3>
+                    <p>Trusted by families since 2008—proven track record of excellence and child-centered education in our community.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">2</div>
+                <div class="why-content">
+                    <h3>Play-Based Philosophy</h3>
+                    <p>Research-backed approach that builds lifelong learners, critical thinkers, and confident, independent children.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">3</div>
+                <div class="why-content">
+                    <h3>Dual Locations</h3>
+                    <p>Convenience for families—quality care available at both 2485 Moran St and 731 N Fisher St in Burlington.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">4</div>
+                <div class="why-content">
+                    <h3>Community-Focused</h3>
+                    <p>Locally owned and operated with deep roots in Burlington—your child matters to us like family.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">5</div>
+                <div class="why-content">
+                    <h3>Family Partnership</h3>
+                    <p>We communicate openly and work as partners with families to support each child's unique growth journey.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">6</div>
+                <div class="why-content">
+                    <h3>Age-Appropriate Programs</h3>
+                    <p>Infant through Pre-K curricula designed specifically for each developmental stage and learning style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial reveal">
+            <div class="testimonial-text">"Little Thinkers has been such a wonderful part of our family's journey. The play-based learning keeps our daughter engaged, and we've seen tremendous growth in confidence and independence. Roxanne and her team truly care."</div>
+            <div class="testimonial-author">Jessica M., Parent</div>
+            <div class="testimonial-title">Burlington, NC</div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Ready to Join the Little Thinkers Family?</h2>
+        <p>Discover how play-based learning transforms early childhood education.</p>
+        <button class="cta-button" onclick="document.getElementById('enroll').scrollIntoView({behavior: 'smooth'})">Start Your Journey</button>
+    </section>
+
+    <section class="enrollment-form" id="enroll">
+        <h2>Explore Our Programs</h2>
+        <div class="form-container">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parent-name">Parent Name *</label>
+                        <input type="text" id="parent-name" name="parent_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="child-name">Child Name *</label>
+                        <input type="text" id="child-name" name="child_name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="child-age">Child Age *</label>
+                        <input type="text" id="child-age" name="child_age" placeholder="e.g., 2 years old" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="program">Program Interest *</label>
+                        <select id="program" name="program" required>
+                            <option value="">Select Program</option>
+                            <option value="infant">Infant Care</option>
+                            <option value="toddler">Toddler Program</option>
+                            <option value="preschool">Preschool</option>
+                            <option value="prek">Pre-K Program</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your family or ask a question..."></textarea>
+                </div>
+                <button type="submit" class="form-button">Request Information</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Little Thinkers Early Learning Center. All rights reserved.</p>
+        <p>Site by <a href="https://whitehausmedia.com">White Haus Media</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            alert('Thank you! We\'ll be in touch soon to discuss your family\'s learning journey.');
+            event.target.reset();
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

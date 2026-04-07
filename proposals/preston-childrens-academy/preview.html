@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preston Children's Academy - Premium Website Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #1e1e1e;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e498f;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e1e1e;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1e498f;
+        }
+
+        .nav-cta {
+            background: #ffed63;
+            color: #1e1e1e;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #1e498f;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #1e1e1e;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #062557;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            background: #f0f4f8;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e498f;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .badge svg {
+            width: 18px;
+            height: 18px;
+            stroke: #1e498f;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #1e498f 0%, #062557 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .abstract-art {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        .circle-1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 3px solid rgba(255, 237, 99, 0.4);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            bottom: -50px;
+            left: 50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .square-accent {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #ffed63;
+            bottom: 50px;
+            right: 50px;
+            border-radius: 12px;
+            animation: pulse 4s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: #f8f8f8;
+            padding: 2rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto;
+            border-radius: 12px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1e498f;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #062557;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #ffed63;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-card h3 {
+            color: #1e498f;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .highlight-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #f0f4f8 0%, white 100%);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #1e498f;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 237, 99, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(30, 73, 143, 0.15);
+        }
+
+        .program-card:hover::before {
+            opacity: 1;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: rgba(255, 237, 99, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #1e498f;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .program-card h3 {
+            font-size: 1.3rem;
+            color: #062557;
+            margin-bottom: 0.8rem;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: #062557;
+            color: white;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .why-choose .section-title {
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .reason {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .reason-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #ffed63;
+            color: #062557;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .reason-content h4 {
+            color: #ffed63;
+            margin-bottom: 0.5rem;
+        }
+
+        .reason-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f8f8f8;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #ffed63;
+        }
+
+        .testimonial-stars {
+            color: #ffed63;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: #333;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: #1e498f;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #1e498f 0%, #062557 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: #ffed63;
+            color: #1e1e1e;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* Enrollment Form */
+        .enrollment-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .enrollment-form {
+            background: #f8f8f8;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #062557;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1e498f;
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            background: #1e498f;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: #062557;
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            background: #062557;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #ffed63;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ffed63;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            color: #ffed63;
+            font-weight: 600;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 2rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+                margin-top: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .trust-badges {
+                gap: 0.8rem;
+            }
+
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .highlights-grid,
+            .programs-grid,
+            .reasons-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+
+            .enrollment-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .program-card h3 {
+                font-size: 1.1rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">Preston</div>
+        <ul class="nav-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why">Why Choose</a></li>
+            <li><a href="#enrollment">Enroll</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <button class="nav-cta">Schedule Tour</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Early Childhood Thrives</h1>
+            <p>Preston Children's Academy provides nurturing care and learning in Cary, NC. From infant care through pre-K, our NAEYC-accredited programs support your child's growth every step of the way.</p>
+
+            <div class="trust-badges">
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5 4 2 7-6-4-6 4 2-7-5-4h7z"/></svg>
+                    Five-Star Rated
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8m3.5-9c.8 0 1.5-.7 1.5-1.5S16.3 8 15.5 8 14 8.7 14 9.5s.7 1.5 1.5 1.5m-7 0c.8 0 1.5-.7 1.5-1.5S9.3 8 8.5 8 7 8.7 7 9.5 7.7 11 8.5 11m3.5 6.5c2.3 0 4.3-1.5 5-3.7H6c.7 2.2 2.7 3.7 5 3.7z"/></svg>
+                    NAEYC Accredited
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8l-9 9z"/></svg>
+                    Est. 2000+
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8m1-13h-2v6l5.3 3.2.75-1.23-3.05-1.97z"/></svg>
+                    Cary, NC
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="abstract-art">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+                <div class="square-accent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Dedicated Staff Members</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Children Served Annually</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">1:4</div>
+            <div class="stat-label">Low Teacher-to-Child Ratio</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">Open</div>
+            <div class="stat-label">Mon-Fri 7AM to 6PM</div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">Why Families Choose Preston</h2>
+        <div class="highlights-grid reveal">
+            <div class="highlight-card reveal">
+                <h3>Degreed & Certified Educators</h3>
+                <p>Our teachers hold degrees and certifications in early childhood education. Continuous professional development ensures best-in-class instruction.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>On-Site Nutrition Program</h3>
+                <p>Fresh, balanced meals prepared in our kitchen daily. Customized options for allergies and dietary preferences.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Indoor Gym & Outdoor Play</h3>
+                <p>Dedicated facilities for gross motor development. Safe, engaging environments for ages 6 weeks through 5 years.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>NAEYC Accredited Standards</h3>
+                <p>Rigorous accreditation ensures quality care, learning outcomes, and family engagement at every level.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Five-Star Rated Care</h3>
+                <p>Recognized for excellence in health, safety, and developmental practices by parents and education specialists.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Your Child Is Our Child™</h3>
+                <p>Our tagline reflects our commitment. Individualized attention, responsive care, and genuine partnerships with families.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2"/><circle cx="16" cy="8" r="2"/><path d="M12 13c3.3 0 6-1.3 6-3"/><path d="M12 13c-3.3 0-6-1.3-6-3"/><circle cx="12" cy="21" r="9"/></svg>
+                </div>
+                <h3>Infant Care</h3>
+                <p>6 weeks to 12 months. Responsive, individualized care with secure attachments, developmental milestones, and family communication.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4"/><path d="M12 14c-3.3 0-10 1.7-10 5v4h20v-4c0-3.3-6.7-5-10-5"/></svg>
+                </div>
+                <h3>Toddler Care</h3>
+                <p>12 to 24 months. Language development, exploration-based learning, and social skill foundations in a safe, nurturing environment.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 6h-2V4c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2h-2V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H5c-3 0-5 2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V11c0-3-2-5-5-5"/></svg>
+                </div>
+                <h3>Early Preschool</h3>
+                <p>Ages 2-3. Pre-academic learning, cooperative play, and emergent literacy through play-based curriculum.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V7l-10-5"/><path d="M10 17l-4-4 1.4-1.4L10 14.2l6.6-6.6L18 9l-8 8z"/></svg>
+                </div>
+                <h3>Pre-K (4-5)</h3>
+                <p>Ages 4-5. Kindergarten readiness, advanced academics, and school transition support with certified instructors.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24"><path d="M11 9H9V7h2m-2 4h2v2h-2m4-4h2v2h-2m-2 4h2v2h-2M7 9h2v2H7m12-6H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"/></svg>
+                </div>
+                <h3>Nutrition Program</h3>
+                <p>On-site kitchen-prepared meals and snacks. Balanced nutrition for growing bodies, with allergy accommodations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why">
+        <h2 class="section-title">Why Preston Stands Out</h2>
+        <div class="reasons-grid">
+            <div class="reason reveal">
+                <div class="reason-number">1</div>
+                <div class="reason-content">
+                    <h4>Lowest Teacher-to-Child Ratios</h4>
+                    <p>We exceed state requirements. Your child receives the individual attention they deserve.</p>
+                </div>
+            </div>
+            <div class="reason reveal">
+                <div class="reason-number">2</div>
+                <div class="reason-content">
+                    <h4>Qualified, Invested Staff</h4>
+                    <p>Degreed educators with genuine passion for early childhood development and family partnership.</p>
+                </div>
+            </div>
+            <div class="reason reveal">
+                <div class="reason-number">3</div>
+                <div class="reason-content">
+                    <h4>Evidence-Based Curriculum</h4>
+                    <p>Research-driven programs that support cognitive, emotional, social, and physical growth.</p>
+                </div>
+            </div>
+            <div class="reason reveal">
+                <div class="reason-number">4</div>
+                <div class="reason-content">
+                    <h4>NAEYC Accreditation</h4>
+                    <p>Recognized standard of excellence. Regular evaluations ensure quality and continuous improvement.</p>
+                </div>
+            </div>
+            <div class="reason reveal">
+                <div class="reason-number">5</div>
+                <div class="reason-content">
+                    <h4>Real Communication & Transparency</h4>
+                    <p>Daily updates, open-door policy, and regular family conferences keep you connected.</p>
+                </div>
+            </div>
+            <div class="reason reveal">
+                <div class="reason-number">6</div>
+                <div class="reason-content">
+                    <h4>Your Child Is Our Child™</h4>
+                    <p>Not just words. Our commitment to individualized care, respect, and growth is evident every day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Families Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"Preston transformed our family's daily routine. The care and attention our daughter receives is exceptional. The staff truly treats her like their own child."</div>
+                <div class="testimonial-author">— Sarah M., Parent</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"We tried three daycares before Preston. The difference is night and day. Our son comes home excited, and we sleep soundly knowing he's in great hands."</div>
+                <div class="testimonial-author">— James & Lisa T., Parents</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"The transition to kindergarten was seamless thanks to Preston's Pre-K program. Our daughter walked in with confidence and skills her teachers immediately noticed."</div>
+                <div class="testimonial-author">— Michelle D., Parent</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Join the Preston Family?</h2>
+        <p>Schedule a tour and see why families in Cary choose Preston for their children's early care and education.</p>
+        <button class="cta-button">Request a Tour Today</button>
+    </section>
+
+    <!-- Enrollment Section -->
+    <section class="enrollment-section" id="enrollment">
+        <h2 class="section-title">Start Your Journey</h2>
+        <form class="enrollment-form">
+            <div class="form-group">
+                <label for="parent-name">Parent/Guardian Name</label>
+                <input type="text" id="parent-name" name="parent-name" required>
+            </div>
+            <div class="form-group">
+                <label for="child-name">Child's Name</label>
+                <input type="text" id="child-name" name="child-name" required>
+            </div>
+            <div class="form-group">
+                <label for="child-dob">Child's Date of Birth</label>
+                <input type="date" id="child-dob" name="child-dob" required>
+            </div>
+            <div class="form-group">
+                <label for="program">Program Interest</label>
+                <select id="program" name="program" required>
+                    <option value="">Select a program</option>
+                    <option value="infant">Infant Care (6 weeks - 12 months)</option>
+                    <option value="toddler">Toddler (12-24 months)</option>
+                    <option value="early-preschool">Early Preschool (2-3 years)</option>
+                    <option value="prek">Pre-K (4-5 years)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="notes">Questions or Notes</label>
+                <textarea id="notes" name="notes"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Request Tour & Information</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Preston Children's Academy</h4>
+                <p>551 James Jackson Avenue<br>Cary, NC 27513<br>(919) 297-0007</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hours</h4>
+                <p>Monday - Friday<br>7:00 AM - 6:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#programs">Infant Care</a></li>
+                    <li><a href="#programs">Toddler</a></li>
+                    <li><a href="#programs">Early Preschool</a></li>
+                    <li><a href="#programs">Pre-K</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:info@prestonacademy.com">Email Us</a></li>
+                    <li><a href="tel:+19192970007">Call Now</a></li>
+                    <li><a href="#enrollment">Request Tour</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Preston Children's Academy. <span class="footer-credit">Site by White Haus Media.</span>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Form submission
+        document.querySelector('.enrollment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your interest! We will be in touch shortly.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Calling Childcare Center - Website Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5B2C8E;
+            --secondary: #D4A843;
+            --cream: #FFF8F0;
+            --navy: #1A1A3E;
+            --text: #2C2C2C;
+            --light: #F9F7F3;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(91, 44, 142, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            flex-direction: column;
+            padding: 2rem;
+            gap: 1.5rem;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            min-height: 500px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #6B3C9E);
+            color: var(--cream);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(91, 44, 142, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(91, 44, 142, 0.3);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .shape-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #D4A843, #E5B860);
+            top: 20px;
+            right: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #5B2C8E, #7B4CB3);
+            bottom: 50px;
+            left: 20px;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* TRUST BADGES */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+            background: var(--light);
+        }
+
+        .badge {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 0.5rem;
+            background: linear-gradient(135deg, var(--secondary), #E5B860);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .badge p {
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* STATS BAR */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: var(--navy);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .highlight-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .highlight-list li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, var(--secondary), #E5B860);
+            border-radius: 50%;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .gradient-box {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), #7B4CB3);
+            border-radius: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        /* PROGRAMS GRID */
+        .programs {
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--secondary);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(91, 44, 142, 0.15);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), #E5B860);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .program-card p {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* WHY CHOOSE */
+        .why-choose {
+            background: linear-gradient(135deg, var(--primary), #6B3C9E);
+            color: var(--cream);
+            padding: 4rem 2rem;
+        }
+
+        .why-choose h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .why-number {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            min-width: 60px;
+        }
+
+        .why-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .why-content p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* TESTIMONIAL */
+        .testimonial {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .testimonial-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--navy), var(--primary));
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 168, 67, 0.3);
+        }
+
+        /* ENROLLMENT FORM */
+        .enrollment {
+            padding: 4rem 2rem;
+            background: var(--light);
+        }
+
+        .enrollment h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), #6B3C9E);
+            color: var(--cream);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: scale(1.02);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 168, 67, 0.3);
+            color: var(--secondary);
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-visual {
+                height: 250px;
+            }
+
+            .circle-1 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .why-choose h2,
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .trust-badges {
+                gap: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+
+            .program-card {
+                padding: 1.5rem;
+            }
+
+            .why-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .why-number {
+                font-size: 2rem;
+                margin: 0 auto;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Higher Calling</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why">Why Choose</a></li>
+            <li><a href="#enrollment">Enroll</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#why">Why Choose</a>
+        <a href="#enrollment">Enroll</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Faith-Based Childcare Excellence</h1>
+            <p>Nurturing young minds with love, care, and spiritual foundation. Serving Johnston County families for years.</p>
+            <a href="#enrollment" class="hero-cta">Learn More</a>
+        </div>
+        <div class="hero-visual">
+            <div class="shape-circle circle-1"></div>
+            <div class="shape-circle circle-2"></div>
+        </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="trust-badges">
+        <div class="badge">
+            <div class="badge-icon">✓</div>
+            <p>Licensed & Insured</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">★</div>
+            <p>Faith-Based Care</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">♥</div>
+            <p>Loving Staff</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">◆</div>
+            <p>Safe Environment</p>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>600+</h3>
+            <p>Children Served</p>
+        </div>
+        <div class="stat-item">
+            <h3>25+</h3>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>5</h3>
+            <p>Program Levels</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Support Available</p>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>Our Mission</h2>
+            <p>Higher Calling Childcare Center combines world-class early childhood education with faith-based values. We create a safe, loving environment where children learn, grow, and develop lasting foundations for success.</p>
+            <ul class="highlight-list">
+                <li>Comprehensive curriculum aligned with developmental milestones</li>
+                <li>Small class ratios for personalized attention</li>
+                <li>Daily spiritual guidance and character building</li>
+                <li>Nutritious meals and snacks prepared fresh</li>
+                <li>Parent communication and involvement</li>
+            </ul>
+        </div>
+        <div class="about-visual">
+            <div class="gradient-box"></div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section class="programs" id="programs">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-icon">👶</div>
+                <h3>Infant Care</h3>
+                <p>Nurturing care for newborns and infants with custom feeding and nap schedules.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">🧸</div>
+                <h3>Toddler Program</h3>
+                <p>Interactive learning through play, exploration, and social development activities.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">📚</div>
+                <h3>Preschool</h3>
+                <p>Pre-academic skills, language development, and creative expression.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">⭐</div>
+                <h3>Pre-K Program</h3>
+                <p>Kindergarten readiness with focus on social skills and academic foundations.</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">✨</div>
+                <h3>Faith Integration</h3>
+                <p>Biblical teaching, prayer, and spiritual values woven throughout all programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section class="why-choose" id="why">
+        <h2>Why Choose Higher Calling</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-number">1</div>
+                <div class="why-content">
+                    <h3>Qualified Staff</h3>
+                    <p>Our educators hold early childhood certifications and undergo continuous professional development.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-number">2</div>
+                <div class="why-content">
+                    <h3>Safe Facilities</h3>
+                    <p>State-of-the-art security, cleanliness standards, and safety protocols in place daily.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-number">3</div>
+                <div class="why-content">
+                    <h3>Strong Community</h3>
+                    <p>Family-oriented environment with open communication and regular parent events.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-number">4</div>
+                <div class="why-content">
+                    <h3>Values-Based</h3>
+                    <p>Christian principles guide everything we do, shaping character alongside academics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="testimonial-text">"Higher Calling transformed our daughter's early learning experience. The staff's care and attention to her spiritual development gave us peace of mind."</p>
+            <p class="testimonial-author">— Elizabeth N., Parent</p>
+            <p class="testimonial-role">Smithfield, NC</p>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Ready to Give Your Child a Higher Calling?</h2>
+        <p>Schedule a tour and see our classrooms in action.</p>
+        <a href="#enrollment" class="cta-banner-btn">Get Started Today</a>
+    </section>
+
+    <!-- ENROLLMENT FORM -->
+    <section class="enrollment" id="enrollment">
+        <h2>Enrollment Inquiry</h2>
+        <div class="form-container">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Parent/Guardian Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="child">Child's Age</label>
+                    <select id="child" name="child" required>
+                        <option value="">Select Age</option>
+                        <option value="infant">Infant (0-12 months)</option>
+                        <option value="toddler">Toddler (1-3 years)</option>
+                        <option value="preschool">Preschool (3-4 years)</option>
+                        <option value="prek">Pre-K (4-5 years)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="interest">How did you hear about us?</label>
+                    <input type="text" id="interest" name="interest" placeholder="Word of mouth, online, etc.">
+                </div>
+                <button type="submit" class="form-submit">Schedule a Tour</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Higher Calling Childcare Center</strong></p>
+        <p>115B North 7th Street, Smithfield, NC 27577</p>
+        <p>(919) 205-1236 | highercalling1000@yahoo.com</p>
+        <div class="footer-credit">
+            <p>Site by White Haus Media</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-card, .why-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! We\'ll be in touch soon.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

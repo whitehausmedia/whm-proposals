@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsheBridge Academy | Family-Centered Early Education in Apex & Fuquay-Varina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #2D2D2D;
+            background: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(111, 142, 107, 0.98);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #F5F0E8;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #F5F0E8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #F5F0E8;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #F5F0E8 0%, #FFFFFF 100%);
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2D2D2D;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #4A4A4A;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #C17646;
+            color: #F5F0E8;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: #A85A35;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            height: 450px;
+            background: linear-gradient(135deg, #6B8E6B 0%, #5A7A5A 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(197, 118, 70, 0.2);
+            border-radius: 50%;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            background: rgba(245, 240, 232, 0.15);
+            border-radius: 50%;
+        }
+
+        /* TRUST BADGES */
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+            background: #2D2D2D;
+        }
+
+        .badge {
+            text-align: center;
+            color: #F5F0E8;
+        }
+
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            background: rgba(193, 118, 70, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .badge h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .badge p {
+            font-size: 0.85rem;
+            color: #B0B0B0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .trust-badges {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* STATS BAR */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2.5rem;
+            background: #6B8E6B;
+            color: #F5F0E8;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2D2D2D;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .about-intro {
+            font-size: 1.05rem;
+            color: #4A4A4A;
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            background: #F5F0E8;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .highlight-card:nth-child(1) { animation-delay: 0.1s; }
+        .highlight-card:nth-child(2) { animation-delay: 0.2s; }
+        .highlight-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #6B8E6B;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: #4A4A4A;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* PROGRAMS SECTION */
+        .programs {
+            padding: 5rem 2rem;
+            background: #F5F0E8;
+        }
+
+        .programs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #C17646;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .program-card:nth-child(1) { animation-delay: 0.1s; }
+        .program-card:nth-child(2) { animation-delay: 0.2s; }
+        .program-card:nth-child(3) { animation-delay: 0.3s; }
+        .program-card:nth-child(4) { animation-delay: 0.4s; }
+        .program-card:nth-child(5) { animation-delay: 0.5s; }
+        .program-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #2D2D2D;
+            margin-bottom: 0.8rem;
+        }
+
+        .program-card p {
+            font-size: 0.95rem;
+            color: #4A4A4A;
+            line-height: 1.7;
+        }
+
+        .program-age {
+            display: inline-block;
+            background: #6B8E6B;
+            color: #F5F0E8;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .programs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .programs {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* WHY CHOOSE */
+        .why-choose {
+            padding: 5rem 2rem;
+            background: #2D2D2D;
+            color: #F5F0E8;
+        }
+
+        .why-choose-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .why-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(193, 118, 70, 0.1);
+            border-radius: 8px;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .why-item:nth-child(1) { animation-delay: 0.1s; }
+        .why-item:nth-child(2) { animation-delay: 0.2s; }
+        .why-item:nth-child(3) { animation-delay: 0.3s; }
+        .why-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .why-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #C17646;
+            min-width: 60px;
+        }
+
+        .why-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #F5F0E8;
+        }
+
+        .why-content p {
+            font-size: 0.95rem;
+            color: #D0D0D0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .why-items {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .why-choose h2 {
+                font-size: 2rem;
+            }
+
+            .why-choose {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* TESTIMONIAL */
+        .testimonial {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #6B8E6B 0%, #5A7A5A 100%);
+            color: #F5F0E8;
+            text-align: center;
+        }
+
+        .testimonial-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #C17646 0%, #A85A35 100%);
+            color: #F5F0E8;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #F5F0E8;
+            color: #C17646;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ENROLLMENT FORM */
+        .enrollment-form {
+            padding: 5rem 2rem;
+            background: #F5F0E8;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2D2D2D;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2D2D2D;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #6B8E6B;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #C17646;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: #6B8E6B;
+            color: #F5F0E8;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #5A7A5A;
+        }
+
+        @media (max-width: 768px) {
+            .enrollment-form {
+                padding: 3rem 1.5rem;
+            }
+
+            .form-container h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2D2D2D;
+            color: #F5F0E8;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #C17646;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #D0D0D0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #C17646;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(193, 118, 70, 0.3);
+            font-size: 0.9rem;
+            color: #B0B0B0;
+        }
+
+        .footer-credit {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem 1rem;
+            }
+        }
+
+        /* SVG ICONS */
+        .svg-icon {
+            width: 32px;
+            height: 32px;
+            stroke: #C17646;
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* SCROLL ANIMATION */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-logo">AsheBridge</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#enroll">Enrollment</a></li>
+        </ul>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Children Thrive Through Play & Community</h1>
+            <p>Family-owned early education celebrating curiosity, partnership, and growth since 2010. Now serving Apex and Fuquay-Varina.</p>
+            <a href="#enroll" class="hero-cta">Schedule a Tour</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="trust-badges">
+        <div class="badge">
+            <div class="badge-icon">🏠</div>
+            <h4>Family-Owned</h4>
+            <p>Founded by Christine & Jeff in 2010</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">📍</div>
+            <h4>Two Locations</h4>
+            <p>Apex & Fuquay-Varina</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">🎨</div>
+            <h4>Play-Based</h4>
+            <p>Learning through exploration</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">👥</div>
+            <h4>Community-Centered</h4>
+            <p>Parent partnerships matter</p>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>15+</h3>
+            <p>Years of Excellence</p>
+        </div>
+        <div class="stat-item">
+            <h3>200+</h3>
+            <p>Families Served</p>
+        </div>
+        <div class="stat-item">
+            <h3>6</h3>
+            <p>Quality Programs</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <h2 class="section-title">Our Approach to Early Education</h2>
+        <p class="about-intro">We believe every child deserves an environment where curiosity is celebrated, parents are true partners, and play is the foundation for learning. That's AsheBridge.</p>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <h3>Play-Based Learning</h3>
+                <p>We trust that children learn best through exploration, discovery, and joyful play. Every activity nurtures creativity and confidence.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Parent Partnership</h3>
+                <p>Your voice matters. We communicate daily, celebrate milestones together, and approach development as a shared journey.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Community Values</h3>
+                <p>Since 2010, we've built a warm, inclusive community where every child and family feels seen, valued, and celebrated.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS SECTION -->
+    <section class="programs" id="programs">
+        <div class="programs-container">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Infant Care</h3>
+                    <p>Nurturing, responsive care for our youngest learners. We create a secure foundation for growth with gentle routines and loving attention.</p>
+                    <span class="program-age">6 weeks – 12 months</span>
+                </div>
+                <div class="program-card">
+                    <h3>Toddler Program</h3>
+                    <p>Exploring the world with confidence. Our toddlers develop independence, language, and social skills in a safe, playful setting.</p>
+                    <span class="program-age">12 – 24 months</span>
+                </div>
+                <div class="program-card">
+                    <h3>Preschool</h3>
+                    <p>Building friendships and skills. Through play-based learning, preschoolers develop creativity, problem-solving, and social-emotional growth.</p>
+                    <span class="program-age">2 – 3 years</span>
+                </div>
+                <div class="program-card">
+                    <h3>Pre-K Preparation</h3>
+                    <p>Ready for big school. Our Pre-K program develops foundational academics, independence, and confidence for kindergarten success.</p>
+                    <span class="program-age">3 – 4 years</span>
+                </div>
+                <div class="program-card">
+                    <h3>Before & After School</h3>
+                    <p>Flexible care that fits your family's schedule. Safe, engaging activities before and after the school day.</p>
+                    <span class="program-age">School-age children</span>
+                </div>
+                <div class="program-card">
+                    <h3>Summer Camp</h3>
+                    <p>Adventure awaits. Full of games, exploration, and friendships, our summer camp makes learning feel like pure fun.</p>
+                    <span class="program-age">All ages</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-choose" id="why">
+        <div class="why-choose-container">
+            <h2>Why Families Choose AsheBridge</h2>
+            <div class="why-items">
+                <div class="why-item">
+                    <div class="why-number">1</div>
+                    <div class="why-content">
+                        <h3>Trusted Leadership</h3>
+                        <p>Christine and Jeff founded AsheBridge on values of warmth, care, and genuine partnership with families. Fifteen years of trust earned.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">2</div>
+                    <div class="why-content">
+                        <h3>Play, Not Pressure</h3>
+                        <p>We reject one-size-fits-all academics. Instead, we celebrate the joy of learning through exploration, creativity, and natural curiosity.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">3</div>
+                    <div class="why-content">
+                        <h3>Real Communication</h3>
+                        <p>Daily updates, parent events, and genuine conversations. You're never wondering—we keep you connected to your child's world.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-number">4</div>
+                    <div class="why-content">
+                        <h3>Two Locations, One Community</h3>
+                        <p>Serving Apex and Fuquay-Varina with the same warmth, quality, and values. Convenience without compromising care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="testimonial-text">"AsheBridge isn't just childcare—it's a community. Our daughter didn't just learn; she became herself. The care, the teachers, the values—it's everything we could hope for."</p>
+            <p class="testimonial-author">— A grateful AsheBridge parent</p>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <h2>Ready to Join the AsheBridge Family?</h2>
+        <p>Schedule a tour of our Apex or Fuquay-Varina location and experience our warm, play-centered community firsthand.</p>
+        <a href="#enroll" class="cta-button">Schedule Your Tour Today</a>
+    </section>
+
+    <!-- ENROLLMENT FORM -->
+    <section class="enrollment-form" id="enroll">
+        <div class="form-container">
+            <h2>Start Your Journey</h2>
+            <form>
+                <div class="form-group">
+                    <label for="parent-name">Parent/Guardian Name</label>
+                    <input type="text" id="parent-name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(919) 555-0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="child-age">Child's Age</label>
+                    <select id="child-age" required>
+                        <option value="">Select age group</option>
+                        <option value="infant">Infant (6 weeks – 12 months)</option>
+                        <option value="toddler">Toddler (12 – 24 months)</option>
+                        <option value="preschool">Preschool (2 – 3 years)</option>
+                        <option value="prek">Pre-K (3 – 4 years)</option>
+                        <option value="school-age">School-Age</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Preferred Location</label>
+                    <select id="location" required>
+                        <option value="">Select location</option>
+                        <option value="apex">Apex</option>
+                        <option value="fuquay">Fuquay-Varina</option>
+                        <option value="both">Both, open to either</option>
+                    </select>
+                </div>
+                <button type="submit" class="form-submit">Request a Tour</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>AsheBridge Academy</h4>
+                <ul>
+                    <li><a href="tel:9193037767">(919) 303-7767</a></li>
+                    <li><a href="mailto:apex@ashebridge.com">apex@ashebridge.com</a></li>
+                    <li><a href="#">Visit Our Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#programs">Infant Care</a></li>
+                    <li><a href="#programs">Toddler</a></li>
+                    <li><a href="#programs">Preschool</a></li>
+                    <li><a href="#programs">Pre-K</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Locations</h4>
+                <ul>
+                    <li>Apex<br>3901 Kildaire Farm Rd</li>
+                    <li>Fuquay-Varina<br><a href="#">See location</a></li>
+                    <li><a href="#">Directions & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Parent Portal</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AsheBridge Academy. All rights reserved.</p>
+            <div class="footer-credit">Site by White Haus Media</div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll reveals
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle (basic)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile menu would open here');
+            });
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! We'll be in touch to schedule your tour.');
+        });
+    </script>
+</body>
+</html>

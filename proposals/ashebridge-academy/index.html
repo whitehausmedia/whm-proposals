@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsheBridge Academy Website Proposal | White Haus Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #080808;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(198, 164, 76, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #C9A84C;
+            letter-spacing: 2px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #C9A84C;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(198, 164, 76, 0.1);
+            z-index: 999;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #C9A84C 0%, #D4B956 100%);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 73px;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%);
+            border-bottom: 1px solid rgba(198, 164, 76, 0.15);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(198, 164, 76, 0.15);
+            color: #C9A84C;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #B0B0B0;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .metadata {
+            font-size: 0.95rem;
+            color: #808080;
+            margin-top: 1.5rem;
+        }
+
+        .metadata-item {
+            display: inline-block;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* LETTER SECTION */
+        .letter {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #0F0F0F;
+            border: 1px solid rgba(198, 164, 76, 0.15);
+            border-radius: 8px;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .letter-salutation {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #C9A84C;
+            margin-bottom: 2rem;
+        }
+
+        .letter p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #D0D0D0;
+            line-height: 1.8;
+        }
+
+        .letter-signature {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(198, 164, 76, 0.2);
+        }
+
+        .signature-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #C9A84C;
+            font-weight: 600;
+        }
+
+        .signature-title {
+            font-size: 0.85rem;
+            color: #808080;
+            margin-top: 0.3rem;
+        }
+
+        /* OPPORTUNITY SECTION */
+        .opportunity {
+            padding: 5rem 2rem;
+            background: #0F0F0F;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: #B0B0B0;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .opportunity-card {
+            background: linear-gradient(135deg, #1A1A1A 0%, #151515 100%);
+            padding: 2rem;
+            border: 1px solid rgba(198, 164, 76, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .opportunity-card:hover {
+            border-color: rgba(198, 164, 76, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.1);
+        }
+
+        .opportunity-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #C9A84C;
+            margin-bottom: 0.8rem;
+        }
+
+        .opportunity-card p {
+            color: #D0D0D0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .opportunity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .opportunity {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* SOLUTION SECTION */
+        .solution {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+            border-top: 1px solid rgba(198, 164, 76, 0.15);
+            border-bottom: 1px solid rgba(198, 164, 76, 0.15);
+        }
+
+        .solution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .deliverable {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .deliverable-icon {
+            flex-shrink: 0;
+            color: #C9A84C;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .deliverable-content h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverable-content p {
+            color: #B0B0B0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .deliverables-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .solution {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* PREVIEW SECTION */
+        .preview {
+            padding: 5rem 2rem;
+            background: #0F0F0F;
+            text-align: center;
+        }
+
+        .preview-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .preview-frame {
+            background: #1A1A1A;
+            border: 1px solid rgba(198, 164, 76, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .browser-chrome {
+            background: #2A2A2A;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(198, 164, 76, 0.1);
+        }
+
+        .browser-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #555;
+        }
+
+        .browser-dot:first-child {
+            background: #C9A84C;
+        }
+
+        .browser-url {
+            color: #808080;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+            flex: 1;
+            text-align: left;
+        }
+
+        .preview-content {
+            height: 500px;
+            background: linear-gradient(135deg, #6B8E6B 0%, #5A7A5A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        /* PROCESS SECTION */
+        .process {
+            padding: 5rem 2rem;
+            background: #0F0F0F;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            position: relative;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: rgba(198, 164, 76, 0.2);
+            border: 2px solid #C9A84C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #C9A84C;
+        }
+
+        .process-step h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            margin-bottom: 0.8rem;
+        }
+
+        .process-step p {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+        }
+
+        .step-connector {
+            position: absolute;
+            top: 30px;
+            left: 60px;
+            width: calc(100% - 80px);
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #C9A84C 50%, transparent 100%);
+        }
+
+        .process-step:last-child .step-connector {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .step-connector {
+                display: none !important;
+            }
+
+            .process {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+            border-top: 1px solid rgba(198, 164, 76, 0.15);
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-intro {
+            text-align: center;
+            color: #B0B0B0;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #151515 0%, #0A0A0A 100%);
+            border: 1px solid rgba(198, 164, 76, 0.2);
+            border-radius: 8px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: #C9A84C;
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #C9A84C;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .pricing-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-description {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-list li {
+            padding: 0.6rem 0;
+            color: #D0D0D0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(198, 164, 76, 0.1);
+        }
+
+        .pricing-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card.featured .pricing-list li {
+            color: #FFFFFF;
+        }
+
+        /* SUPPORT OPTIONS */
+        .support {
+            background: linear-gradient(135deg, #151515 0%, #0A0A0A 100%);
+            border: 1px solid rgba(198, 164, 76, 0.2);
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .support h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .support-option {
+            background: rgba(198, 164, 76, 0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid #C9A84C;
+        }
+
+        .support-option h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #C9A84C;
+            margin-bottom: 0.8rem;
+        }
+
+        .support-option p {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* CTA SECTION */
+        .cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #C9A84C 0%, #D4B956 100%);
+            color: #080808;
+            text-align: center;
+            border-top: 1px solid rgba(198, 164, 76, 0.15);
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #080808;
+            color: #C9A84C;
+            padding: 1rem 3rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            border-color: #080808;
+            color: #080808;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem 2rem 1.5rem;
+            background: #080808;
+            border-top: 1px solid rgba(198, 164, 76, 0.15);
+            text-align: center;
+        }
+
+        .footer-credit {
+            color: #808080;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-company {
+            color: #C9A84C;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            color: #606060;
+            font-size: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        /* UTILITIES */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .accent {
+            color: #C9A84C;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .opportunity-card,
+            .pricing-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-logo">White Haus Media</div>
+        <ul class="nav-links">
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#preview">Preview</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge">Proposal</div>
+        <h1>Custom Website for AsheBridge Academy</h1>
+        <p class="subtitle">Prepared exclusively for your early education community</p>
+        <div class="metadata">
+            <span class="metadata-item"><span class="accent">Christine Teander</span>, Owner</span>
+            <span class="metadata-item">Apex, NC</span>
+            <span class="metadata-item">April 2026</span>
+        </div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="letter">
+        <div class="letter-salutation">Dear Christine,</div>
+        <p>Thank you for inviting us to work with AsheBridge Academy. After learning about your family-centered approach to early education and your vision for deeper connections with families, we're excited to share how a custom website can become the digital home for your community.</p>
+        <p>Your current website works, but it doesn't reflect the warmth, intentionality, and family-first values that define AsheBridge. Parents deserve to feel the love and care in every interaction—starting with your website. A custom, responsive design built specifically for your programs, philosophy, and community will strengthen trust, simplify enrollment, and showcase what makes you different from every other daycare in the Triangle.</p>
+        <p>This proposal outlines what we'd build together, how we'd do it, and what it costs. We're here to answer questions and partner with you every step of the way.</p>
+        <div class="letter-signature">
+            <div class="signature-name">From our team at White Haus Media</div>
+            <div class="signature-title">Premium Custom Web Design | Wake Forest, NC</div>
+        </div>
+    </section>
+
+    <!-- OPPORTUNITY SECTION -->
+    <section class="opportunity" id="opportunity">
+        <h2 class="section-title">The Opportunity</h2>
+        <p class="section-intro">Your current website is functional—but there's a bigger opportunity ahead.</p>
+        <div class="opportunity-grid">
+            <div class="opportunity-card">
+                <h3>Limited Design Flexibility</h3>
+                <p>Template-based platforms cap what you can express. Your unique pedagogy and family values deserve a design that's equally distinctive and warm.</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>Basic Structure</h3>
+                <p>Standard site layouts don't highlight what matters most: your six programs, your community approach, and what makes AsheBridge feel like home.</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>Mobile Experience Needs Work</h3>
+                <p>More than 60% of potential families research daycare on mobile. Your site should shine on phones—and convert visitors into inquiries.</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>SEO Improvements Possible</h3>
+                <p>Custom builds perform better in search. Families in Apex and Fuquay-Varina should find you first, before competitors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="solution" id="solution">
+        <div class="solution-container">
+            <h2 class="section-title">Our Solution</h2>
+            <p class="section-intro">A premium, custom-built website that tells your story and converts families into enrollments.</p>
+            <div class="deliverables-grid">
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Custom Design & Layout</h4>
+                        <p>Every pixel crafted to reflect AsheBridge's warmth, values, and family-centered philosophy. Sage greens, terracotta accents, and human-centered design—not templates.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Mobile Optimization</h4>
+                        <p>Fully responsive design that works beautifully on phones, tablets, and desktops. Parents research on the go—your site will be ready.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Program Showcase Grid</h4>
+                        <p>Dedicated sections for each of your six programs (Infant, Toddler, Preschool, Pre-K, Before/After School, Summer Camp) with clear age ranges and descriptions.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Trust & Community Section</h4>
+                        <p>Showcase your family-owned heritage, community values, play-based approach, and 15+ years of trust. Include testimonials and impact stats.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Enrollment Call-to-Action</h4>
+                        <p>Simple, compelling form and multiple CTAs throughout the site to schedule tours, request information, and move families toward enrollment.</p>
+                    </div>
+                </div>
+                <div class="deliverable">
+                    <div class="deliverable-icon">✦</div>
+                    <div class="deliverable-content">
+                        <h4>Fast, Secure, Future-Ready</h4>
+                        <p>Built on modern infrastructure with fast load times, SSL security, mobile optimization, and SEO fundamentals to help families find you in search.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREVIEW SECTION -->
+    <section class="preview" id="preview">
+        <div class="preview-container">
+            <h2 class="section-title">What It Looks Like</h2>
+            <p class="section-intro">Below is a live preview of your custom website. This is a fully functional spec built specifically for AsheBridge Academy.</p>
+            <div class="preview-frame">
+                <div class="browser-chrome">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-url">ashebridge.com</div>
+                </div>
+                <div class="preview-content"></div>
+            </div>
+            <p style="margin-top: 2rem; color: #808080; font-size: 0.95rem;">
+                <strong>Note:</strong> This is a preview render. The live preview.html file shows the fully interactive spec with all sections, animations, and functionality.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process">
+        <div class="process-container">
+            <h2 class="section-title">How We Build It</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-connector"></div>
+                    <div class="step-number">1</div>
+                    <h4>Discovery</h4>
+                    <p>We learn your story, your programs, your community. Deep conversations ensure we capture what makes AsheBridge special.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-connector"></div>
+                    <div class="step-number">2</div>
+                    <h4>Design</h4>
+                    <p>Custom mockups and prototypes. We show you how every page will look before a single line of code is written.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-connector"></div>
+                    <div class="step-number">3</div>
+                    <h4>Build</h4>
+                    <p>Hand-coded, custom development. Every feature is built for speed, security, and your specific needs—not a plugin or template.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Launch & Support</h4>
+                    <p>We handle deployment, testing, and training. Then Core or Full Care keeps everything running smoothly forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-container">
+            <h2 class="section-title">Investment & Support</h2>
+            <p class="pricing-intro">Flexible options to fit your budget. All include deployment, mobile optimization, and ongoing support.</p>
+
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-label">Single Payment</div>
+                    <div class="pricing-price">$600</div>
+                    <p class="pricing-description">One-time investment for custom build</p>
+                    <ul class="pricing-list">
+                        <li>Custom design & build</li>
+                        <li>Mobile responsive</li>
+                        <li>Deployment & launch</li>
+                        <li>Training & handoff</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-label">Flexible Payment</div>
+                    <div class="pricing-price">$300 × 2</div>
+                    <p class="pricing-description">Split into two installments</p>
+                    <ul class="pricing-list">
+                        <li>First installment: Discovery & design</li>
+                        <li>Second: Build & launch</li>
+                        <li>Same quality & timeline</li>
+                        <li>Easier cash flow</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-label">Website Only</div>
+                    <div class="pricing-price">$600</div>
+                    <p class="pricing-description">You manage updates yourself</p>
+                    <ul class="pricing-list">
+                        <li>Custom build & design</li>
+                        <li>Training included</li>
+                        <li>No ongoing support</li>
+                        <li>One-time cost</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="support">
+                <h3>Add Ongoing Care & Updates</h3>
+                <div class="support-options">
+                    <div class="support-option">
+                        <h4>Core Care — $47/month</h4>
+                        <p>Updates, 2 content edits per month, SSL security, and peace of mind. Perfect for most families.</p>
+                    </div>
+                    <div class="support-option">
+                        <h4>Full Care — $97/month</h4>
+                        <p>Everything in Core, plus security monitoring, uptime guarantee, monthly performance report, and priority support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+        <h2>Let's Build Your Digital Home</h2>
+        <p>Your community deserves a website that feels as warm as AsheBridge Academy itself.</p>
+        <a href="mailto:apex@ashebridge.com?subject=AsheBridge Website Proposal" class="cta-button">Let's Talk Next Steps</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-credit">Prepared for <span class="footer-company">AsheBridge Academy</span></div>
+        <div class="footer-credit">Designed and proposed by <span class="footer-company">White Haus Media</span></div>
+        <div class="footer-note">
+            Ready to move forward? Contact us at <strong>hello@whitehausmedia.com</strong> or <strong>(919) 555-0000</strong>
+        </div>
+    </footer>
+
+    <script>
+        // Progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

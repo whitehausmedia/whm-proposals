@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Child Development Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2B4570;
+            background-color: #FFF8F0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(43, 69, 112, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2B4570;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 2rem;
+            background: #FFF8F0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(43, 69, 112, 0.15);
+            width: 250px;
+        }
+
+        .nav-menu.active {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            color: #2B4570;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(43, 69, 112, 0.1);
+        }
+
+        .nav-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .nav-menu a:hover {
+            color: #E87461;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #2B4570;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2B4570;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #5BA4A4;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(43, 69, 112, 0.08);
+            border-left: 3px solid #E87461;
+        }
+
+        .badge strong {
+            display: block;
+            color: #2B4570;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .badge span {
+            color: #5BA4A4;
+            font-size: 0.85rem;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #5BA4A4 0%, #E87461 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(43, 69, 112, 0.15);
+        }
+
+        .hero-image svg {
+            width: 80%;
+            height: 80%;
+            opacity: 0.9;
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: linear-gradient(90deg, #2B4570 0%, #5BA4A4 100%);
+            color: #FFF8F0;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: white;
+            margin: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(43, 69, 112, 0.08);
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2B4570;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-item {
+            padding: 1.5rem;
+            background: #FFF8F0;
+            border-radius: 8px;
+            border-top: 3px solid #5BA4A4;
+        }
+
+        .about-item h3 {
+            color: #E87461;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-item p {
+            color: #2B4570;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 4rem 2rem;
+        }
+
+        .programs h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2B4570;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(43, 69, 112, 0.1);
+            border-top: 4px solid #E87461;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .program-card:nth-child(1) { animation-delay: 0.1s; }
+        .program-card:nth-child(2) { animation-delay: 0.2s; }
+        .program-card:nth-child(3) { animation-delay: 0.3s; }
+        .program-card:nth-child(4) { animation-delay: 0.4s; }
+        .program-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(43, 69, 112, 0.15);
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5BA4A4, #E87461);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .program-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .program-card h3 {
+            color: #2B4570;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .program-card p {
+            color: #5BA4A4;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: #2B4570;
+            color: #FFF8F0;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-choose h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .why-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #E87461;
+            flex-shrink: 0;
+        }
+
+        .why-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+
+        .why-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #5BA4A4;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .why-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #FFF8F0;
+        }
+
+        .why-content p {
+            color: rgba(255, 248, 240, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 4rem 2rem;
+            background: white;
+            margin: 3rem;
+            border-radius: 12px;
+            border-left: 4px solid #E87461;
+            box-shadow: 0 5px 20px rgba(43, 69, 112, 0.08);
+        }
+
+        .testimonial blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #2B4570;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #5BA4A4;
+            font-weight: 600;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #E87461 0%, #5BA4A4 100%);
+            color: #FFF8F0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem;
+            border-radius: 12px;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2B4570;
+            color: #FFF8F0;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #1a2d45;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(43, 69, 112, 0.3);
+        }
+
+        /* Enrollment Form */
+        .enrollment-form {
+            padding: 3rem 2rem;
+            background: #FFF8F0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(43, 69, 112, 0.1);
+        }
+
+        .form-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #2B4570;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2B4570;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #5BA4A4;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #2B4570;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #E87461;
+            box-shadow: 0 0 0 3px rgba(232, 116, 97, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #2B4570 0%, #5BA4A4 100%);
+            color: #FFF8F0;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(43, 69, 112, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2B4570;
+            color: #FFF8F0;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #E87461;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                margin-top: 0;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .programs-grid,
+            .why-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .why-number {
+                font-size: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .about,
+            .testimonial,
+            .cta-banner {
+                margin: 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.75rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .trust-badges {
+                grid-template-columns: 1fr;
+            }
+
+            .badge {
+                padding: 0.75rem;
+            }
+
+            .about h2,
+            .programs h2,
+            .why-choose h2 {
+                font-size: 1.5rem;
+            }
+
+            .program-card {
+                padding: 1.5rem;
+            }
+
+            .why-number {
+                font-size: 1.5rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.3rem;
+            }
+
+            .form-container {
+                padding: 1rem;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Discovery</a>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-menu" id="navMenu">
+            <a href="#about">About</a>
+            <a href="#programs">Programs</a>
+            <a href="#why-choose">Why Choose Us</a>
+            <a href="#enrollment">Enrollment</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Learning Meets Love</h1>
+            <p>A family-run education center dedicated to research-based learning and authentic relationships with every child.</p>
+            <div class="trust-badges">
+                <div class="badge">
+                    <strong>Family-Run</strong>
+                    <span>Since Day One</span>
+                </div>
+                <div class="badge">
+                    <strong>Since 2010</strong>
+                    <span>15 Years Strong</span>
+                </div>
+                <div class="badge">
+                    <strong>Research-Based</strong>
+                    <span>Evidence-Driven</span>
+                </div>
+                <div class="badge">
+                    <strong>Morrisville, NC</strong>
+                    <span>Serving the Triangle</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="80" r="35" stroke="white" stroke-width="1.5" opacity="0.8"/>
+                <path d="M 100 120 Q 80 140 70 160" stroke="white" stroke-width="1.5" opacity="0.8"/>
+                <path d="M 100 120 Q 120 140 130 160" stroke="white" stroke-width="1.5" opacity="0.8"/>
+                <path d="M 70 110 Q 50 120 40 140" stroke="white" stroke-width="1.5" opacity="0.8"/>
+                <path d="M 130 110 Q 150 120 160 140" stroke="white" stroke-width="1.5" opacity="0.8"/>
+                <circle cx="85" cy="70" r="3" fill="white" opacity="0.8"/>
+                <circle cx="115" cy="70" r="3" fill="white" opacity="0.8"/>
+                <path d="M 90 90 Q 100 95 110 90" stroke="white" stroke-width="1.5" opacity="0.8"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>70%</h3>
+            <p>Staff with personal connections to our families</p>
+        </div>
+        <div class="stat-item">
+            <h3>5</h3>
+            <p>Developmental programs from age 6 weeks</p>
+        </div>
+        <div class="stat-item">
+            <h3>1:4</h3>
+            <p>Optimal teacher-to-student ratios</p>
+        </div>
+        <div class="stat-item">
+            <h3>3</h3>
+            <p>Counties served from one location</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>Our Foundation</h2>
+        <div class="about-grid">
+            <div class="about-item">
+                <h3>15 Years</h3>
+                <p>Founded in 2010 with a vision to create an environment where every child is truly known and cherished.</p>
+            </div>
+            <div class="about-item">
+                <h3>Family Values</h3>
+                <p>Seven out of ten staff members have children who attended Discovery, creating genuine investment in every child's growth.</p>
+            </div>
+            <div class="about-item">
+                <h3>Research-Based</h3>
+                <p>Our curriculum is grounded in educational research and Montessori principles, designed for real developmental growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <h2>Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="10" r="4"/>
+                        <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/>
+                    </svg>
+                </div>
+                <h3>Young Preschool</h3>
+                <p>Ages 18-30 months. Sensory exploration, language development, and secure attachment in a warm, nurturing setting.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="10" r="4"/>
+                        <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/>
+                    </svg>
+                </div>
+                <h3>Preschool</h3>
+                <p>Ages 2-3 years. Social skills, creative play, early literacy, and independence building through hands-on learning.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="10" r="4"/>
+                        <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/>
+                    </svg>
+                </div>
+                <h3>Pre-K</h3>
+                <p>Ages 3-4 years. Academic readiness, collaborative learning, and confidence building as children prepare for elementary.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="10" r="4"/>
+                        <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/>
+                    </svg>
+                </div>
+                <h3>Transitional Kindergarten</h3>
+                <p>Ages 4-5 years. A bridge year combining structured academics with play-based learning for optimal development.</p>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="10" r="4"/>
+                        <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/>
+                    </svg>
+                </div>
+                <h3>Kindergarten</h3>
+                <p>Ages 5-6 years. Full-day program with rigorous academics, enrichment activities, and social-emotional development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why-choose">
+        <h2>Why Choose Discovery</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/>
+                    </svg>
+                </div>
+                <h3>Authentic Family Connection</h3>
+                <p>Our staff brings personal investment and love. When staff have skin in the game, they provide genuine care that shows.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/>
+                    </svg>
+                </div>
+                <h3>Research-Backed Methods</h3>
+                <p>Every activity and curriculum choice is grounded in developmental psychology and Montessori education principles.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/>
+                    </svg>
+                </div>
+                <h3>Trusted by the Triangle</h3>
+                <p>For 15 years, families across Cary, Morrisville, Apex, Raleigh, and Durham have entrusted us with their children.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/>
+                    </svg>
+                </div>
+                <h3>Individualized Attention</h3>
+                <p>Optimal teacher-to-student ratios and small class sizes mean every child is truly known and supported daily.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <blockquote>"Discovery is more than a daycare. It's a community of people who genuinely care about your child's development and wellbeing. Our children have thrived here."</blockquote>
+        <div class="testimonial-author">— Discovery Family</div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Join Our Community?</h2>
+        <p>Limited enrollment available for our upcoming spring programs.</p>
+        <button class="cta-button" onclick="document.getElementById('enrollment').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+    </section>
+
+    <!-- Enrollment Form -->
+    <section class="enrollment-form" id="enrollment">
+        <div class="form-container">
+            <h2>Schedule a Tour</h2>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Child's Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="parent">Parent/Guardian Name</label>
+                    <input type="text" id="parent" name="parent" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="program">Interested Program</label>
+                    <select id="program" name="program" required>
+                        <option value="">Select a program...</option>
+                        <option value="young-preschool">Young Preschool (18-30 months)</option>
+                        <option value="preschool">Preschool (2-3 years)</option>
+                        <option value="pre-k">Pre-K (3-4 years)</option>
+                        <option value="transitional-k">Transitional Kindergarten (4-5 years)</option>
+                        <option value="kindergarten">Kindergarten (5-6 years)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Tour Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <button type="submit" class="submit-btn">Schedule My Tour</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Discovery Child Development Center</p>
+        <p>11000 Lake Grove Blvd, Morrisville, NC 27560 | (919) 234-0735</p>
+        <p>Site by <a href="https://whitehausmedia.com">White Haus Media</a></p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when link clicked
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! We\'ll be in touch shortly to confirm your tour.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling for mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({behavior: 'smooth'});
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

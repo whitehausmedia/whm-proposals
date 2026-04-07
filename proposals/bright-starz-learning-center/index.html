@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Presence Proposal – Bright Starz Learning Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #080808;
+            color: #E8E8E8;
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo-img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #C9A84C;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #E8C547;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #C9A84C;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C9A84C, #E8C547);
+            width: 0%;
+            z-index: 2000;
+        }
+
+        .hero {
+            margin-top: 70px;
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(198, 164, 76, 0.02) 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #C9A84C;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #AAA;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .letter-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 193, 7, 0.03);
+            border-left: 3px solid #C9A84C;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .letter-header {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #C9A84C;
+            margin-bottom: 2rem;
+        }
+
+        .letter-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #D0D0D0;
+            margin-bottom: 1.5rem;
+        }
+
+        .letter-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .letter-signature {
+            margin-top: 2rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        .opportunity-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #C9A84C;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .opportunity-card {
+            background: rgba(255, 193, 7, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .opportunity-card:hover {
+            background: rgba(255, 193, 7, 0.12);
+            border-color: rgba(255, 193, 7, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: #C9A84C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #080808;
+            stroke-width: 1.5;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: #C9A84C;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #AAA;
+            line-height: 1.6;
+        }
+
+        .solution-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 193, 7, 0.03);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 193, 7, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #C9A84C;
+        }
+
+        .deliverable-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #C9A84C;
+            font-weight: 700;
+            min-width: 50px;
+        }
+
+        .deliverable-content h3 {
+            color: #C9A84C;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .deliverable-content p {
+            color: #AAA;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .preview-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #C9A84C;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .preview-frame {
+            width: 100%;
+            height: 800px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .preview-frame {
+                height: 600px;
+            }
+        }
+
+        .process-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 193, 7, 0.03);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #C9A84C;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #C9A84C;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .step-desc {
+            color: #AAA;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: rgba(255, 193, 7, 0.3);
+            transform: translateY(-50%);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .pricing-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 193, 7, 0.08);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: #C9A84C;
+            background: rgba(255, 193, 7, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 193, 7, 0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .pricing-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #C9A84C;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #E8C547;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-description {
+            color: #AAA;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 1.5rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 193, 7, 0.2);
+            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .pricing-features li {
+            list-style: none;
+            padding: 0.5rem 0;
+            color: #AAA;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✦';
+            color: #C9A84C;
+            flex-shrink: 0;
+        }
+
+        .add-on-card {
+            background: rgba(255, 193, 7, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 193, 7, 0.15);
+            margin-top: 1.5rem;
+        }
+
+        .add-on-title {
+            color: #C9A84C;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .add-on-price {
+            color: #E8C547;
+            font-weight: 700;
+        }
+
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #C9A84C 0%, #E8C547 100%);
+            color: #080808;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #080808;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #080808;
+            color: #C9A84C;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid #080808;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #080808;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #999;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 193, 7, 0.2);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #C9A84C;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #E8C547;
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 193, 7, 0.2);
+            margin: 3rem 0;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .deliverable-number {
+                font-size: 1.5rem;
+            }
+
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+
+    <header>
+        <nav>
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" class="logo-img">
+            <ul class="nav-links">
+                <li><a href="#opportunity">Opportunity</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#preview">Preview</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Prepared exclusively for Bright Starz Learning Center</h1>
+        <p>A web presence that captures the warmth, community trust, and heart that makes Bright Starz beloved.</p>
+    </section>
+
+    <section class="letter-section">
+        <div class="letter-header">Dear Kim,</div>
+        <div class="letter-content">
+            <p>Bright Starz Learning Center is special. Parents don't just say their kids are happy there—they say "Thank God for this place and Ms. Kim!" That kind of trust and love is rare in early childcare, and it's your competitive advantage.</p>
+            <p>Right now, families searching online don't see that. They see competitors' websites, but they don't find the heart of Bright Starz. A custom web presence brings your warmth, community focus, and Ms. Kim's vision into the digital space where families make enrollment decisions.</p>
+            <p>We've prepared a proposal for a website that tells your story, builds trust, and fills your enrollment pipeline with families who are already looking for exactly what you offer.</p>
+            <div class="letter-signature">from our team at White Haus Media</div>
+        </div>
+    </section>
+
+    <section class="opportunity-section" id="opportunity">
+        <h2 class="section-title">The Opportunity</h2>
+        <div class="cards-grid">
+            <div class="opportunity-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div class="card-title">Capture Intent</div>
+                <div class="card-text">Families searching "daycare in Burlington" and "preschool near 421 Fulton" need to find you. A site makes you visible when it matters.</div>
+            </div>
+            <div class="opportunity-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <div class="card-title">Showcase Your Heart</div>
+                <div class="card-text">A website tells the Bright Starz story—Ms. Kim's vision, your community focus, the genuine care families feel. Trust begins online.</div>
+            </div>
+            <div class="opportunity-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <div class="card-title">Convert Interested Families</div>
+                <div class="card-text">Built-in contact forms and enrollment tools turn website visitors into families joining your learning center.</div>
+            </div>
+            <div class="opportunity-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.5"/></svg>
+                </div>
+                <div class="card-title">Stand Out Locally</div>
+                <div class="card-text">Most daycare centers lack professional websites. Bright Starz with a beautiful, responsive site becomes the obvious choice for discerning families.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-section" id="solution">
+        <h2 class="section-title">Our Solution</h2>
+        <p style="text-align: center; color: #AAA; margin-bottom: 2rem;">A fully custom website built for Bright Starz—designed to reflect your warmth, showcase your programs, and bring enrollment inquiries to your door.</p>
+        <div class="deliverables-grid">
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Custom Homepage & Brand Design</h3>
+                    <p>Yellow, blue, and warm gray color palette reflecting Bright Starz energy. Messaging that highlights Ms. Kim, community trust, and family-centered care.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Program Pages</h3>
+                    <p>Individual pages for Infant, Toddler, Preschool, Pre-K, and Before/After School—each showing what families will experience.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Mobile-Responsive Design</h3>
+                    <p>Looks stunning on phones, tablets, and desktops—because parents explore on mobile while juggling life.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Enrollment Contact Form</h3>
+                    <p>Simple, friendly form captures interested families—parent name, child age, program interest, and message—sent directly to you.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Local SEO Foundation</h3>
+                    <p>Optimized to rank for "daycare Burlington" and "preschool near me"—so families find you when actively searching.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Secure Hosting & SSL</h3>
+                    <p>Enterprise-grade infrastructure, automatic backups, security patches, and 99.9% uptime—your site always available.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Easy Content Management</h3>
+                    <p>Update text, photos, hours, and enrollment details without technical skills—changes live in minutes.</p>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <div class="deliverable-number">✦</div>
+                <div class="deliverable-content">
+                    <h3>Optional Growth Features</h3>
+                    <p>Parent portal, staff directory, event calendar, email newsletters—add these over time as you grow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-section" id="preview">
+        <div class="preview-label">Website Preview</div>
+        <iframe class="preview-frame" src="preview.html"></iframe>
+    </section>
+
+    <section class="process-section">
+        <h2 class="section-title">Our Process</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Discovery</div>
+                <div class="step-desc">We learn your mission, values, programs, and vision. You share what success looks like for Bright Starz.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Design & Build</div>
+                <div class="step-desc">Custom design, responsive code, SEO optimization, secure hosting—all built and managed by us.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Review & Launch</div>
+                <div class="step-desc">You review, we refine, and we launch when you're thrilled with the result.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-title">Support & Growth</div>
+                <div class="step-desc">Monthly updates, security, responsive support, and help adding features as Bright Starz grows.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <h2 class="section-title">Investment</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Recommended</div>
+                <div class="pricing-title">Website Build</div>
+                <div class="pricing-amount">$600</div>
+                <div class="pricing-description">Two payments of $300</div>
+                <ul class="pricing-features">
+                    <li>Custom responsive design</li>
+                    <li>5-6 core pages</li>
+                    <li>Enrollment form</li>
+                    <li>Mobile optimized</li>
+                    <li>SEO foundation</li>
+                    <li>SSL & hosting included</li>
+                    <li>Launch & training</li>
+                </ul>
+                <a href="mailto:hello@whitehausmedia.com" class="cta-button">Book a Free Consultation</a>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="add-on-card">
+                    <div class="add-on-title">Core Care</div>
+                    <div class="add-on-price">$47/month</div>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">Monthly updates, 2 content edits, security patches, and standard support.</p>
+                </div>
+                <div class="add-on-card">
+                    <div class="add-on-title">Full Care</div>
+                    <div class="add-on-price">$97/month</div>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">Everything in Core Care plus advanced security, uptime monitoring, monthly performance report, and priority support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <h2>Let's Bring Bright Starz Online</h2>
+        <p>Build a web presence that matches the warmth and community you've built at 421 Fulton.</p>
+        <a href="mailto:hello@whitehausmedia.com?subject=Bright%20Starz%20Web%20Presence%20-%20Let%27s%20Talk" class="cta-button">Book a Free Consultation</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 White Haus Media. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Crafted in Wake Forest, NC for the Triangle and beyond.</p>
+    </footer>
+
+    <script>
+        // Progress bar scroll tracking
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

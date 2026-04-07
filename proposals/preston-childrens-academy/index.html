@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preston Children's Academy – White Haus Media Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #080808;
+            color: #e8e8e8;
+            line-height: 1.7;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #C9A84C;
+            width: 0%;
+            z-index: 2000;
+            transition: width 0.2s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            margin-top: 4px;
+        }
+
+        .nav-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #C9A84C;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #C9A84C;
+        }
+
+        .nav-cta {
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.7rem 1.6rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #e8e8e8;
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 80px;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #C9A84C;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #e8e8e8;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-intro {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-dot {
+            color: #C9A84C;
+            font-size: 1.2rem;
+        }
+
+        /* Letter Section */
+        .letter {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 3rem;
+            border-left: 4px solid #C9A84C;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .letter h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #e8e8e8;
+            margin-bottom: 1.5rem;
+        }
+
+        .letter p {
+            margin-bottom: 1.5rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .letter-signature {
+            margin-top: 2rem;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .letter-signature-name {
+            color: #C9A84C;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Opportunity Section */
+        .opportunity {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: #e8e8e8;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #C9A84C;
+        }
+
+        .opp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .opp-card {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 2rem;
+            border-radius: 4px;
+            border-top: 2px solid #C9A84C;
+            transition: all 0.3s ease;
+        }
+
+        .opp-card:hover {
+            background: rgba(30, 30, 30, 0.9);
+            transform: translateY(-4px);
+        }
+
+        .opp-card h3 {
+            color: #C9A84C;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .opp-card p {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution {
+            margin: 3rem 0;
+        }
+
+        .deliverables {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 1.8rem;
+            border-radius: 4px;
+            border-left: 3px solid #C9A84C;
+        }
+
+        .deliverable h3 {
+            color: #e8e8e8;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .deliverable-icon {
+            color: #C9A84C;
+            font-size: 1.4rem;
+        }
+
+        .deliverable p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        /* Preview Section */
+        .preview-section {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 3rem;
+            border-radius: 4px;
+            margin: 3rem 0;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .preview-label {
+            color: #C9A84C;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .preview-frame {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            height: 600px;
+        }
+
+        .preview-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Process Section */
+        .process {
+            margin: 3rem 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .process-step {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #C9A84C;
+            color: #080808;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            color: #e8e8e8;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .process-step p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            margin: 3rem 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 2.5rem;
+            border-radius: 4px;
+            border: 2px solid #C9A84C;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #C9A84C;
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 2rem;
+            background: #C9A84C;
+            color: #080808;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #e8e8e8;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .pricing-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #C9A84C;
+            margin: 1rem 0;
+            font-weight: 700;
+        }
+
+        .pricing-detail {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-includes {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-includes li {
+            color: #b0b0b0;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-includes li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #C9A84C;
+        }
+
+        .upsells {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+        }
+
+        .upsells h4 {
+            color: #e8e8e8;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .upsell-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .upsell-item:last-child {
+            border-bottom: none;
+        }
+
+        .upsell-price {
+            color: #C9A84C;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, rgba(201, 168, 76, 0.05) 100%);
+            padding: 3rem 2rem;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 4px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #e8e8e8;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .cta-button {
+            background: #C9A84C;
+            color: #080808;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #e8e8e8;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            color: #C9A84C;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-intro {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .opp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .deliverables {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-frame {
+                height: 400px;
+            }
+
+            .pricing-main {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .letter {
+                padding: 2rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pricing-main {
+                font-size: 1.8rem;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo-area">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" class="nav-logo">
+            <span class="nav-brand">Haus</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#preview">Preview</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+        <a href="mailto:hello@whitehausmedia.com" class="nav-cta">Book a Consultation</a>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-subtitle">Proposal</div>
+            <h1>Prepared exclusively for Preston Children's Academy</h1>
+            <p class="hero-intro">A modern, responsive website designed to showcase your NAEYC-accredited programs, build trust with families in Cary, and streamline enrollment.</p>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="meta-dot">◆</span>
+                    Prepared for <strong>Pam Holt</strong>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-dot">◆</span>
+                    <strong>White Haus Media</strong>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-dot">◆</span>
+                    <strong>April 2026</strong>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-dot">◆</span>
+                    Delivery: <strong>Under 2 Weeks</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letter -->
+        <section class="letter reveal">
+            <h2>Dear Pam,</h2>
+            <p>Preston Children's Academy is Cary's trusted choice for early childhood care and education. Your NAEYC accreditation, Five-Star rating, and commitment to low teacher-to-child ratios speak volumes. Yet your current website doesn't fully tell that story. Families seeking premium daycare providers browse online first—they want to see your credentials, understand your programs, and enroll with confidence. Your site is missing that opportunity.</p>
+            <p>We've prepared this proposal because we believe Preston deserves a digital presence that matches the quality of your care. A modern, responsive website that showcases your mission, builds trust, and makes enrollment simple. We've designed both—and included a full preview below so you can see the vision before making any decision.</p>
+            <p>This is not a generic template. Every element is custom-built for Preston: your brand colors, your story, your programs, and your values. From the moment a family lands on your site, they should feel the warmth and professionalism that defines Preston Children's Academy.</p>
+            <div class="letter-signature">
+                Looking forward to partnering with you.
+                <div class="letter-signature-name">The White Haus Media Team</div>
+            </div>
+        </section>
+
+        <!-- Opportunity -->
+        <section class="opportunity" id="opportunity">
+            <h2 class="section-title">The Opportunity</h2>
+            <p style="color: #b0b0b0; margin-bottom: 2rem;">Preston's website is functional—but it's not working as hard as you are. Here's why families will benefit from an upgrade:</p>
+            <div class="opp-grid">
+                <div class="opp-card reveal">
+                    <h3>Basic Layout, Modern Expectations</h3>
+                    <p>Your current site uses a dated layout. Families expect responsive design, clear navigation, and visual hierarchy. Modern = trust.</p>
+                </div>
+                <div class="opp-card reveal">
+                    <h3>No Online Enrollment Path</h3>
+                    <p>Interested families must email or call. A streamlined enrollment form converts interest into action—and removes friction from your process.</p>
+                </div>
+                <div class="opp-card reveal">
+                    <h3>Programs Lack Detail Pages</h3>
+                    <p>Your Infant, Toddler, Preschool, and Pre-K programs deserve dedicated pages that highlight age-specific curriculum, safety, and outcomes.</p>
+                </div>
+                <div class="opp-card reveal">
+                    <h3>Missing Trust Signals</h3>
+                    <p>Your NAEYC accreditation, Five-Star rating, and degreed staff are competitive advantages. They need visual prominence on every page.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution -->
+        <section class="solution" id="solution">
+            <h2 class="section-title">Our Solution</h2>
+            <p style="color: #b0b0b0; margin-bottom: 2rem;">A custom-built, fully responsive website that positions Preston as Cary's premium early childhood provider. Here's what you'll receive:</p>
+            <div class="deliverables">
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Responsive Design
+                    </h3>
+                    <p>Optimized for desktop, tablet, and mobile. Your site will load fast, feel premium, and drive conversions.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Brand-Aligned Layout
+                    </h3>
+                    <p>Custom colors, typography, and design system built around Preston's identity. Your brand, beautifully executed.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Program Pages
+                    </h3>
+                    <p>Infant, Toddler, Early Preschool, and Pre-K programs each with curriculum highlights, safety details, and enrollment CTAs.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Enrollment Form
+                    </h3>
+                    <p>Streamlined intake form that captures parent & child info, program interest, and contact details. Leads sent directly to your inbox.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Trust & Social Proof
+                    </h3>
+                    <p>Prominent display of NAEYC badge, Five-Star rating, parent testimonials, and your "Your Child Is Our Child™" tagline.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        SEO Foundation
+                    </h3>
+                    <p>Structured content and technical SEO so families searching for "daycare in Cary" find you. Local visibility from day one.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Fast, Secure Hosting
+                    </h3>
+                    <p>Deployed on Vercel—the fastest infrastructure available. Auto SSL, CDN delivery, 99.95% uptime guaranteed.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h3>
+                        <span class="deliverable-icon">✦</span>
+                        Ongoing Support
+                    </h3>
+                    <p>Choose our Core Care ($47/mo) for 2 content edits monthly, or Full Care ($97/mo) for security, updates, and a monthly report.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview -->
+        <section class="preview-section" id="preview">
+            <div class="preview-label">Live Preview</div>
+            <h2 class="section-title" style="margin-bottom: 1rem; padding-bottom: 0;">See the Design in Action</h2>
+            <p style="color: #b0b0b0; margin-bottom: 2rem;">Below is a fully functional preview of your new Preston Children's Academy website. Scroll through to explore the hero, programs, testimonials, and enrollment form.</p>
+            <div class="preview-frame reveal">
+                <iframe src="preview.html"></iframe>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="process" id="process">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-number">1</div>
+                    <h3>Kickoff & Discovery</h3>
+                    <p>We learn your mission, review your programs, and gather all content. Typically 2-3 days.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">2</div>
+                    <h3>Design & Build</h3>
+                    <p>Our team designs and develops your site in parallel. Responsive code, pixel-perfect design. 5-7 business days.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">3</div>
+                    <h3>Review & Revisions</h3>
+                    <p>You review live, we incorporate feedback. Unlimited revisions until you're happy.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">4</div>
+                    <h3>Deploy & Launch</h3>
+                    <p>Live on your domain. We handle DNS, SSL, monitoring, and ongoing support. You're done.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="pricing" id="pricing">
+            <h2 class="section-title">Investment & Support</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card featured reveal">
+                    <div class="pricing-badge">Recommended</div>
+                    <div class="pricing-title">Website Build</div>
+                    <div class="pricing-main">$600</div>
+                    <div class="pricing-detail">One-time investment. Launch in under 2 weeks.</div>
+                    <div class="pricing-detail" style="color: #C9A84C; font-weight: 600;">Two payments of $300</div>
+                    <ul class="pricing-includes">
+                        <li>Fully responsive, custom website</li>
+                        <li>5 program pages + enrollment form</li>
+                        <li>Mobile-optimized for families on-the-go</li>
+                        <li>Fast hosting on Vercel CDN</li>
+                        <li>SEO foundation for local search</li>
+                        <li>Unlimited revision rounds</li>
+                    </ul>
+
+                    <div class="upsells">
+                        <h4>Add Ongoing Care (Launch + First Month)</h4>
+                        <div class="upsell-item">
+                            <span>Core Care — Updates & Content Edits</span>
+                            <span class="upsell-price">$47/mo</span>
+                        </div>
+                        <div class="upsell-item">
+                            <span>Full Care — Security, Updates & Reports</span>
+                            <span class="upsell-price">$97/mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section reveal">
+            <h2>Ready to Build Preston's Digital Home?</h2>
+            <p>Let's schedule a brief call to answer questions and discuss timeline. No pressure, no pressure tactics. Just a conversation about what's best for your families.</p>
+            <a href="mailto:hello@whitehausmedia.com?subject=Preston%20Children%27s%20Academy%20Website%20Inquiry" class="cta-button">Book a Free Consultation</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 White Haus Media. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrollPercentage + '%';
+        });
+
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

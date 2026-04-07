@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holly Springs Learning Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: #333;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #315a9c;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #315a9c;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #315a9c 0%, #2d4f8a 100%);
+            color: white !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #315a9c;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: #315a9c;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            background: linear-gradient(135deg, #46ae4c 0%, #3a9440 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(70, 174, 76, 0.3);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 400px;
+        }
+
+        .visual-shape {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #315a9c 0%, #46ae4c 50%, #f3c121 100%);
+            border-radius: 20px;
+            opacity: 0.1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: #f9f9f9;
+            border-left: 4px solid #f3c121;
+            border-radius: 4px;
+        }
+
+        .badge-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .badge-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #315a9c;
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: linear-gradient(135deg, #315a9c 0%, #2d4f8a 100%);
+            color: white;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #315a9c;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #46ae4c;
+            transition: transform 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateX(5px);
+        }
+
+        .highlight-card h4 {
+            color: #315a9c;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 350px;
+        }
+
+        .visual-accent {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(49, 90, 156, 0.1) 0%, rgba(70, 174, 76, 0.1) 100%);
+            border-radius: 12px;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 4rem 2rem;
+            background: #fafafa;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #f3c121;
+        }
+
+        .program-card:nth-child(2) {
+            border-top-color: #315a9c;
+        }
+
+        .program-card:nth-child(3) {
+            border-top-color: #46ae4c;
+        }
+
+        .program-card:nth-child(4) {
+            border-top-color: #f3c121;
+        }
+
+        .program-card:nth-child(5) {
+            border-top-color: #315a9c;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-card h3 {
+            color: #315a9c;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-choose-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose .section-title {
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .why-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #f3c121;
+            font-weight: 700;
+            min-width: 50px;
+        }
+
+        .why-content h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .why-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #315a9c;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .testimonial-role {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #f3c121 0%, #46ae4c 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-banner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #315a9c;
+        }
+
+        /* Enrollment Form */
+        .enrollment {
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enrollment .section-title {
+            margin-bottom: 2rem;
+        }
+
+        .form-wrapper {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #315a9c;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #315a9c;
+            box-shadow: 0 0 0 3px rgba(49, 90, 156, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #315a9c 0%, #46ae4c 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(49, 90, 156, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #f3c121;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: #f3c121;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .visual-shape {
+                width: 280px;
+                height: 280px;
+            }
+
+            .trust-badges {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 2rem 1rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+
+            .about,
+            .programs,
+            .enrollment {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-banner {
+                padding: 2rem 1rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 1.5rem 1rem;
+                margin-top: 50px;
+                gap: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .hero-visual {
+                height: 250px;
+            }
+
+            .visual-shape {
+                width: 220px;
+                height: 220px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .program-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .form-wrapper {
+                padding: 2rem 1rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Holly Springs LC</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why">Why Choose</a></li>
+            <li><a href="#contact" class="nav-cta">Enroll</a></li>
+        </ul>
+        <button class="menu-toggle">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nurturing Bright Futures</h1>
+            <p>Welcome to Holly Springs Learning Center, where every child thrives through quality education and compassionate care.</p>
+            <button class="hero-cta">Schedule a Tour</button>
+
+            <div class="trust-badges">
+                <div class="badge">
+                    <div class="badge-icon">★</div>
+                    <div class="badge-text">5-Star Facility</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">✓</div>
+                    <div class="badge-text">Holly Springs, NC</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">🎓</div>
+                    <div class="badge-text">Degreed Teachers</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">✦</div>
+                    <div class="badge-text">Est. Facility</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="visual-shape"></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>20+</h3>
+            <p>Years of Excellence</p>
+        </div>
+        <div class="stat-item">
+            <h3>150+</h3>
+            <p>Families Served</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Degreed Staff</p>
+        </div>
+        <div class="stat-item">
+            <h3>5★</h3>
+            <p>Licensed Facility</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Holly Springs LC</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Holly Springs Learning Center has been a trusted partner for families in the Triangle area for over two decades. We provide comprehensive educational programs from infant care through pre-kindergarten, with a focus on developmentally appropriate instruction and child-centered learning.</p>
+                <p>Our dedicated team of degreed teachers creates nurturing environments where children develop social, emotional, and academic skills. We believe that quality early childhood education sets the foundation for lifelong learning and success.</p>
+            </div>
+            <div class="about-visual">
+                <div class="visual-accent"></div>
+            </div>
+        </div>
+
+        <div class="highlights-grid">
+            <div class="highlight-card reveal">
+                <h4>Developmental Excellence</h4>
+                <p>Research-based curriculum designed for each developmental stage</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h4>Safe & Secure</h4>
+                <p>State-of-the-art facilities with advanced security monitoring</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h4>Parent Partnership</h4>
+                <p>Regular communication and involvement in your child's journey</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h4>Experienced Staff</h4>
+                <p>All lead teachers hold bachelor's degrees in early childhood education</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22.5" cy="22.5" r="20" stroke="#315a9c" stroke-width="1.5"/>
+                        <path d="M18 20C18 18.9 18.9 18 20 18C21.1 18 22 18.9 22 20V25H18V20Z" stroke="#315a9c" stroke-width="1.5" fill="none"/>
+                        <path d="M23 20C23 18.9 23.9 18 25 18C26.1 18 27 18.9 27 20V25H23V20Z" stroke="#315a9c" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+                <h3>Infant Care</h3>
+                <p>Nurturing care for newborns through 12 months with personalized attention and developmental milestones</p>
+            </div>
+
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22.5" cy="22.5" r="20" stroke="#315a9c" stroke-width="1.5"/>
+                        <path d="M20 28H25V20H20V28Z" stroke="#315a9c" stroke-width="1.5" fill="none"/>
+                        <path d="M18 20H27" stroke="#315a9c" stroke-width="1.5"/>
+                        <circle cx="18.5" cy="18" r="1.5" stroke="#315a9c" stroke-width="1.5" fill="none"/>
+                        <circle cx="26.5" cy="18" r="1.5" stroke="#315a9c" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+                <h3>Toddler Program</h3>
+                <p>Active learning for ages 12-24 months focused on language, motor skills, and social development</p>
+            </div>
+
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22.5" cy="22.5" r="20" stroke="#46ae4c" stroke-width="1.5"/>
+                        <path d="M19 15H26V27H19V15Z" stroke="#46ae4c" stroke-width="1.5" fill="none"/>
+                        <line x1="22.5" y1="15" x2="22.5" y2="27" stroke="#46ae4c" stroke-width="1"/>
+                        <line x1="19" y1="21" x2="26" y2="21" stroke="#46ae4c" stroke-width="1"/>
+                    </svg>
+                </div>
+                <h3>Young Preschool</h3>
+                <p>Ages 24-36 months exploring creativity, problem-solving, and early academic concepts</p>
+            </div>
+
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22.5" cy="22.5" r="20" stroke="#f3c121" stroke-width="1.5"/>
+                        <path d="M17 25C17 22 19.5 20 22.5 20C25.5 20 28 22 28 25" stroke="#f3c121" stroke-width="1.5" fill="none"/>
+                        <circle cx="19.5" cy="18" r="1" stroke="#f3c121" stroke-width="1.5" fill="none"/>
+                        <circle cx="25.5" cy="18" r="1" stroke="#f3c121" stroke-width="1.5" fill="none"/>
+                        <line x1="17" y1="28" x2="28" y2="28" stroke="#f3c121" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3>Preschool</h3>
+                <p>Ages 3-4 with structured learning, pre-literacy, and social-emotional foundations</p>
+            </div>
+
+            <div class="program-card reveal">
+                <div class="program-icon">
+                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22.5" cy="22.5" r="20" stroke="#315a9c" stroke-width="1.5"/>
+                        <path d="M19 14L22.5 18L26 14M19 20H26M20 24H25M20 27H25" stroke="#315a9c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3>Pre-K</h3>
+                <p>Ages 4-5 preparing for kindergarten with advanced academics and independence skills</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why">
+        <div class="why-choose-container">
+            <h2 class="section-title">Why Choose Holly Springs Learning Center</h2>
+            <div class="why-choose-grid">
+                <div class="why-item reveal">
+                    <div class="why-number">1</div>
+                    <div class="why-content">
+                        <h4>Expert Educators</h4>
+                        <p>Every lead teacher holds a bachelor's degree in early childhood education or related field</p>
+                    </div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="why-number">2</div>
+                    <div class="why-content">
+                        <h4>Research-Based Curriculum</h4>
+                        <p>Programs grounded in developmental psychology and proven educational methodologies</p>
+                    </div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="why-number">3</div>
+                    <div class="why-content">
+                        <h4>Safety First</h4>
+                        <p>State-licensed facility with comprehensive security, health, and safety protocols</p>
+                    </div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="why-number">4</div>
+                    <div class="why-content">
+                        <h4>Community Connection</h4>
+                        <p>Established relationships with families and community partners throughout Holly Springs and the Triangle</p>
+                    </div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="why-number">5</div>
+                    <div class="why-content">
+                        <h4>Flexible Scheduling</h4>
+                        <p>Full-time and part-time enrollment options to fit your family's unique needs</p>
+                    </div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="why-number">6</div>
+                    <div class="why-content">
+                        <h4>Parent Involvement</h4>
+                        <p>Regular updates, conferences, and opportunities to participate in your child's learning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial reveal">
+        <p class="testimonial-text">"Holly Springs Learning Center has been wonderful for our family. The staff is caring, professional, and genuinely invested in our child's growth. We couldn't be happier."</p>
+        <div class="testimonial-author">Sarah & Michael Patterson</div>
+        <div class="testimonial-role">Parents of two students</div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Give Your Child the Holly Springs Advantage?</h2>
+        <p>Schedule your facility tour today and see why families trust us for their early childhood education</p>
+        <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView()">Schedule a Tour</button>
+    </section>
+
+    <!-- Enrollment Form -->
+    <section class="enrollment" id="contact">
+        <h2 class="section-title">Start Your Child's Journey</h2>
+        <div class="form-wrapper">
+            <form onsubmit="event.preventDefault(); alert('Thank you for your inquiry! We will contact you soon.');">
+                <div class="form-group">
+                    <label for="parent-name">Parent/Guardian Name</label>
+                    <input type="text" id="parent-name" name="parent-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="child-name">Child's Name</label>
+                    <input type="text" id="child-name" name="child-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="child-dob">Child's Date of Birth</label>
+                    <input type="date" id="child-dob" name="child-dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="program">Program of Interest</label>
+                    <select id="program" name="program" required>
+                        <option value="">Select a program</option>
+                        <option value="infant">Infant Care (0-12 months)</option>
+                        <option value="toddler">Toddler Program (12-24 months)</option>
+                        <option value="young-preschool">Young Preschool (24-36 months)</option>
+                        <option value="preschool">Preschool (3-4 years)</option>
+                        <option value="prek">Pre-K (4-5 years)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Request Information</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#about">Our Facility</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#why">Why Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#">Infant Care</a></li>
+                    <li><a href="#">Toddler</a></li>
+                    <li><a href="#">Preschool</a></li>
+                    <li><a href="#">Pre-K</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="tel:9195776119">(919) 577-6119</a></li>
+                    <li><a href="mailto:jcua@hollyspringslc.com">jcua@hollyspringslc.com</a></li>
+                    <li><a href="#">1180 Holly Springs Road</a></li>
+                    <li><a href="#">Holly Springs, NC 27540</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Hours</h4>
+                <ul>
+                    <li><a href="#">Monday - Friday</a></li>
+                    <li><a href="#">7:00 AM - 6:00 PM</a></li>
+                    <li><a href="#">Licensed & Insured</a></li>
+                    <li><a href="#">5-Star Facility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Holly Springs Learning Center. All rights reserved.</p>
+            <p class="footer-credit">Site by White Haus Media</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'white';
+            navLinks.style.padding = '1rem';
+            navLinks.style.gap = '1rem';
+        });
+
+        // Scroll reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

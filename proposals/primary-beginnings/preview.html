@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Beginnings - Premium Child Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: #1a1a1a;
+            background: #f9f8f6;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0eac15;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0eac15;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: #003584;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: #f0f9f1;
+            border-left: 3px solid #0eac15;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #003584;
+        }
+
+        .badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: #0eac15;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0eac15;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #003584;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 172, 21, 0.3);
+        }
+
+        .hero-art {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .art-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+
+        .art-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #0eac15, #003584);
+            top: 20px;
+            right: 0;
+        }
+
+        .art-2 {
+            width: 200px;
+            height: 200px;
+            background: #cc0000;
+            bottom: 40px;
+            left: 20px;
+        }
+
+        .art-3 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #cc0000, #0eac15);
+            top: 100px;
+            left: 50px;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(90deg, #003584 0%, #0eac15 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            color: #003584;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border-top: 3px solid #0eac15;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-card h3 {
+            color: #003584;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .highlight-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 5rem 2rem;
+            background: #f0f9f1;
+        }
+
+        .programs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid #cc0000;
+        }
+
+        .program-card:nth-child(2n) {
+            border-left-color: #0eac15;
+        }
+
+        .program-card:nth-child(3n) {
+            border-left-color: #003584;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .program-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #0eac15;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .program-card h3 {
+            color: #003584;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: #003584;
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .why-choose .section-title {
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .why-number {
+            background: #0eac15;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .why-content h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
+        }
+
+        .why-content p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* Testimonial Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: #f0f9f1;
+            padding: 3rem;
+            border-radius: 8px;
+            border-left: 5px solid #0eac15;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #003584;
+            font-size: 1rem;
+        }
+
+        .testimonial-role {
+            color: #0eac15;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .stars {
+            color: #0eac15;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #0eac15 0%, #003584 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .contact-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: #003584;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #003584;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            color: #1a1a1a;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0eac15;
+            box-shadow: 0 0 0 3px rgba(14, 172, 21, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            background: #0eac15;
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: #003584;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 172, 21, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: #0eac15;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #0eac15;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .site-credit {
+            color: #0eac15;
+            font-weight: 600;
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-art {
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+
+            .hero {
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .badge {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .trust-badges {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Primary Beginnings</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why-choose">Why Us</a></li>
+            <li><a href="#contact">Enroll</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content reveal">
+            <h1>Create a nurturing environment where children thrive through play-based learning</h1>
+            <p>Welcome to Primary Beginnings, where 30+ years of early childhood expertise meets innovative, play-based pedagogy. Discover the difference a truly supportive environment makes.</p>
+
+            <div class="trust-badges">
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26H22L16.46 12.91L18.54 19.16L12 14.5L5.46 19.16L7.54 12.91L2 8.26H8.91L12 2Z"/></svg>
+                    <span>5-Star Accredited</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                    <span>3 Locations</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span>Play-Based Learning</span>
+                </div>
+                <div class="badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26H22L16.46 12.91L18.54 19.16L12 14.5L5.46 19.16L7.54 12.91L2 8.26H8.91L12 2Z"/></svg>
+                    <span>4.7 Google Rating</span>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Start Enrollment</button>
+        </div>
+
+        <div class="hero-art">
+            <div class="art-circle art-1"></div>
+            <div class="art-circle art-2"></div>
+            <div class="art-circle art-3"></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar reveal">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>30+</h3>
+                <p>Years of Combined Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>350+</h3>
+                <p>Children Thriving in Our Care</p>
+            </div>
+            <div class="stat-item">
+                <h3>6</h3>
+                <p>Comprehensive Programs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title reveal">Why Families Choose Primary Beginnings</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card reveal">
+                <h3>Play-Based Philosophy</h3>
+                <p>Research shows children learn best through play. Our curriculum is built on this foundation, balancing exploration with guided learning.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Small Class Sizes</h3>
+                <p>We maintain low student-to-teacher ratios, ensuring every child receives individualized attention and support throughout their day.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Experienced Staff</h3>
+                <p>Our team brings decades of early childhood expertise. Every educator is certified and passionate about child development.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>5-Star Accreditation</h3>
+                <p>We've earned North Carolina's highest accreditation status, demonstrating our commitment to excellence and quality care.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Safe & Secure</h3>
+                <p>State-of-the-art facilities across all three locations, with secure entry systems, updated equipment, and rigorous health protocols.</p>
+            </div>
+            <div class="highlight-card reveal">
+                <h3>Community Focus</h3>
+                <p>We foster strong connections between families and staff, creating a supportive community that extends beyond classroom walls.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="programs-container">
+            <h2 class="section-title reveal">Our Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card reveal">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Infant Care</h3>
+                    <p>Nurturing care for our youngest learners (6 weeks - 12 months), with structured routines, sensory exploration, and loving guidance.</p>
+                </div>
+                <div class="program-card reveal">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Toddler Care</h3>
+                    <p>Ages 1-2: Hands-on learning, language development, and social skills through music, art, and interactive play.</p>
+                </div>
+                <div class="program-card reveal">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Preschool</h3>
+                    <p>Ages 2-3: Creative problem-solving, early academics, and social-emotional development in a play-based setting.</p>
+                </div>
+                <div class="program-card reveal">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Pre-K</h3>
+                    <p>Ages 3-5: School readiness skills combined with discovery learning to build confidence and curiosity.</p>
+                </div>
+                <div class="program-card reveal">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Before & After School</h3>
+                    <p>Extended hours for school-age children, with homework support and enrichment activities in a safe, welcoming environment.</p>
+                </div>
+                <div class="program-card reveal">
+                    <div class="program-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>Extracurriculars</h3>
+                    <p>Enrichment classes in music, art, movement, and STEM—designed to inspire and develop well-rounded learners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose" id="why-choose">
+        <h2 class="section-title reveal">What Sets Us Apart</h2>
+        <div class="why-grid">
+            <div class="why-item reveal">
+                <div class="why-number">1</div>
+                <div class="why-content">
+                    <h3>Evidence-Based Approach</h3>
+                    <p>Our curriculum is grounded in the latest early childhood development research, ensuring every activity supports learning and growth.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">2</div>
+                <div class="why-content">
+                    <h3>Parent Partnership</h3>
+                    <p>We believe families are partners in their child's development. Regular updates, open communication, and involvement opportunities are standard.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">3</div>
+                <div class="why-content">
+                    <h3>Health & Safety First</h3>
+                    <p>Rigorous health protocols, secure facilities, and continuous staff training keep every child safe and secure every single day.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">4</div>
+                <div class="why-content">
+                    <h3>Inclusive Community</h3>
+                    <p>We celebrate diversity and create an environment where every child feels valued, respected, and celebrated for who they are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials reveal">
+        <div class="testimonials-container">
+            <h2 class="section-title">What Parents Say</h2>
+            <div class="testimonial">
+                <div class="stars">★ ★ ★ ★ ★</div>
+                <p class="testimonial-text">"Our daughter has flourished at Primary Beginnings. The play-based learning approach is exactly what we wanted, and the staff genuinely cares about each child's development. Highly recommended!"</p>
+                <div class="testimonial-author">Sarah Martinez</div>
+                <div class="testimonial-role">Parent, age 3 student</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner reveal">
+        <h2>Ready to Join Our Community?</h2>
+        <p>Give your child the gift of play-based learning in a nurturing, safe environment</p>
+        <button class="cta-button" style="background: white; color: #003584;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Enroll Today</button>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2>Start Your Child's Journey</h2>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="parent-name">Parent/Guardian Name</label>
+                    <input type="text" id="parent-name" name="parent-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="child-name">Child's Name</label>
+                    <input type="text" id="child-name" name="child-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="child-age">Child's Age</label>
+                    <select id="child-age" name="child-age" required>
+                        <option value="">Select age range</option>
+                        <option value="6-12-months">6-12 months</option>
+                        <option value="1-2-years">1-2 years</option>
+                        <option value="2-3-years">2-3 years</option>
+                        <option value="3-5-years">3-5 years</option>
+                        <option value="5-plus">5+ years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="program">Program Interest</label>
+                    <select id="program" name="program" required>
+                        <option value="">Select a program</option>
+                        <option value="infant">Infant Care</option>
+                        <option value="toddler">Toddler Care</option>
+                        <option value="preschool">Preschool</option>
+                        <option value="prek">Pre-K</option>
+                        <option value="afterschool">Before & After School</option>
+                        <option value="extracurriculars">Extracurriculars</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your family and any questions you have..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Schedule a Tour</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Phone: (919) 790-6888</li>
+                    <li>Email: mbaker@primarybeginnings.com</li>
+                    <li>Hours: Mon-Fri 7:00 AM - 6:00 PM</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Our Locations</h3>
+                <ul>
+                    <li>4001 Spring Forest Rd</li>
+                    <li>6840 Falls of Neuse Rd</li>
+                    <li>2100 North Hills Dr</li>
+                    <li>Raleigh, NC</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#why-choose">Why Us</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Enroll</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Site by <span class="site-credit">White Haus Media</span> | Copyright 2026 Primary Beginnings</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            console.log('Form submitted:', data);
+            alert('Thank you for your interest! We\'ll contact you soon to schedule a tour.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

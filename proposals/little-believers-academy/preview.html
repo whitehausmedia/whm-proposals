@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Believer's Academy | Web Design Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E8F4FD 0%, #FFFFFF 100%);
+            color: #2C3E50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle svg {
+            width: 100%;
+            height: 100%;
+            stroke: #1863DC;
+            stroke-width: 2;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(24, 99, 220, 0.08);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 18px;
+            color: #1863DC;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2C3E50;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #1863DC;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1863DC;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #0056A7;
+        }
+
+        .badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: #0056A7;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hero-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card-visual {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(24, 99, 220, 0.12);
+            text-align: center;
+        }
+
+        .card-visual h3 {
+            color: #1863DC;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .icon-placeholder {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E8F4FD 0%, #D4E7F8 100%);
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-visual p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .stats-bar {
+            background: linear-gradient(135deg, #1863DC 0%, #0056A7 100%);
+            color: white;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .about-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            color: #1863DC;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: #E8F4FD;
+            border-left: 4px solid #1863DC;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            color: #2C3E50;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .about-visual {
+            background: linear-gradient(135deg, #1863DC 0%, #0056A7 100%);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .programs-grid {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: #1863DC;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .programs-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 24px rgba(24, 99, 220, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 36px rgba(24, 99, 220, 0.15);
+        }
+
+        .program-card h3 {
+            color: #1863DC;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .why-choose {
+            background: #080808;
+            color: white;
+            padding: 60px 40px;
+            margin-top: 60px;
+        }
+
+        .why-choose-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose h2 {
+            font-size: 42px;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .why-card {
+            text-align: center;
+        }
+
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: rgba(198, 164, 76, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: #C6A44C;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .why-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .why-card p {
+            font-size: 13px;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .testimonial {
+            padding: 60px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 24px;
+            font-style: italic;
+            color: #1863DC;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #1863DC 0%, #0056A7 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-banner h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-banner p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1863DC;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .enrollment-form {
+            padding: 60px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #E8F4FD;
+            border-radius: 12px;
+        }
+
+        .enrollment-form h2 {
+            font-size: 32px;
+            color: #1863DC;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2C3E50;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #1863DC;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0056A7;
+            box-shadow: 0 0 0 3px rgba(24, 99, 220, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #1863DC 0%, #0056A7 100%);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(24, 99, 220, 0.3);
+        }
+
+        footer {
+            background: #2C3E50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #1863DC;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            main {
+                margin-top: 70px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 30px 20px;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+
+            .about-section h2 {
+                font-size: 28px;
+            }
+
+            .about-visual {
+                height: 250px;
+            }
+
+            .programs-container {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                padding: 0 20px;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 40px 20px;
+                gap: 20px;
+            }
+
+            .why-choose h2 {
+                font-size: 28px;
+                padding: 0 20px;
+            }
+
+            .testimonial {
+                padding: 40px 20px;
+            }
+
+            .testimonial-text {
+                font-size: 18px;
+            }
+
+            .cta-banner {
+                padding: 40px 20px;
+            }
+
+            .cta-banner h2 {
+                font-size: 24px;
+            }
+
+            .enrollment-form {
+                padding: 40px 20px;
+            }
+
+            .enrollment-form h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+            }
+
+            .nav-logo {
+                font-size: 16px;
+            }
+
+            .hero-content h1 {
+                font-size: 24px;
+            }
+
+            .hero-content p {
+                font-size: 15px;
+            }
+
+            .badge {
+                font-size: 12px;
+            }
+
+            .stats-bar {
+                padding: 20px 15px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .about-content h2 {
+                font-size: 22px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-card h3 {
+                font-size: 14px;
+            }
+
+            .why-card p {
+                font-size: 12px;
+            }
+
+            .testimonial-text {
+                font-size: 16px;
+            }
+
+            .cta-banner h2 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .program-card h3 {
+                font-size: 16px;
+            }
+
+            .program-card p {
+                font-size: 13px;
+            }
+
+            .enrollment-form h2 {
+                font-size: 20px;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">Little Believer's Academy</div>
+        <button class="mobile-menu-toggle" onclick="toggleMenu()">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor"/>
+            </svg>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#why">Why Choose</a></li>
+            <li><a href="#enrollment">Enroll</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content scroll-reveal">
+                <h1>Premium Childcare Built on Faith & STEM</h1>
+                <p>Where Christian values meet innovative learning. Multiple locations, infant to school-age, with a focus on whole-child development.</p>
+                <div class="trust-badges">
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L15 10H23L17 16L19 24L12 19L5 24L7 16L1 10H9L12 2Z"/>
+                        </svg>
+                        Faith-Centered
+                    </div>
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L15 10H23L17 16L19 24L12 19L5 24L7 16L1 10H9L12 2Z"/>
+                        </svg>
+                        STEM-Focused
+                    </div>
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L15 10H23L17 16L19 24L12 19L5 24L7 16L1 10H9L12 2Z"/>
+                        </svg>
+                        Two Locations
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="card-visual scroll-reveal stagger-1">
+                    <div class="icon-placeholder"></div>
+                    <h3>Infant to Pre-K</h3>
+                    <p>Comprehensive care and learning from 6 weeks through pre-kindergarten.</p>
+                </div>
+                <div class="card-visual scroll-reveal stagger-2">
+                    <div class="icon-placeholder"></div>
+                    <h3>Biblical Foundation</h3>
+                    <p>Christian principles woven through all curriculum and activities.</p>
+                </div>
+                <div class="card-visual scroll-reveal stagger-3">
+                    <div class="icon-placeholder"></div>
+                    <h3>STEM Learning</h3>
+                    <p>Science, technology, engineering, and math integrated daily.</p>
+                </div>
+                <div class="card-visual scroll-reveal stagger-4">
+                    <div class="icon-placeholder"></div>
+                    <h3>Indoor & Outdoor</h3>
+                    <p>Balanced playtime in safe, modern facilities at both campuses.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Convenient Locations</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Program Levels</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Parent Support</div>
+            </div>
+        </div>
+
+        <section class="about-section" id="about">
+            <div class="about-content scroll-reveal">
+                <h2>Who We Are</h2>
+                <div class="highlight-box">
+                    <p>Little Believer's Academy combines Christian education with cutting-edge STEM programming, creating an environment where children grow intellectually, spiritually, and socially.</p>
+                </div>
+                <div class="highlight-box">
+                    <p>With two locations serving the Clayton and Raleigh communities, we offer flexible before/after school and summer camp programs alongside our core infant through pre-K curriculum.</p>
+                </div>
+                <div class="highlight-box">
+                    <p>Every child receives personalized attention in a nurturing environment that celebrates faith, fosters curiosity, and builds confidence.</p>
+                </div>
+            </div>
+            <div class="about-visual scroll-reveal">
+                [Visual: Two-location advantage, faith + STEM integration]
+            </div>
+        </section>
+
+        <section class="programs-grid" id="programs">
+            <h2 class="section-title scroll-reveal">Our Programs</h2>
+            <div class="programs-container">
+                <div class="program-card scroll-reveal stagger-1">
+                    <h3>Infant (6 Weeks+)</h3>
+                    <p>Nurturing care with developmental milestones, gentle learning through play, and consistent communication with families.</p>
+                </div>
+                <div class="program-card scroll-reveal stagger-2">
+                    <h3>Toddler</h3>
+                    <p>Interactive exploration, language development, sensory activities, and early social skills in a safe, Christian environment.</p>
+                </div>
+                <div class="program-card scroll-reveal stagger-3">
+                    <h3>Preschool</h3>
+                    <p>Pre-academic skills, STEM foundations, Biblical stories, arts & crafts, outdoor discovery, and peer interaction.</p>
+                </div>
+                <div class="program-card scroll-reveal stagger-1">
+                    <h3>Pre-K</h3>
+                    <p>School readiness skills, academic foundations, advanced STEM projects, fine motor development, and leadership activities.</p>
+                </div>
+                <div class="program-card scroll-reveal stagger-2">
+                    <h3>Before/After School</h3>
+                    <p>Flexible care before and after school hours with homework support, enrichment activities, and recreational play.</p>
+                </div>
+                <div class="program-card scroll-reveal stagger-3">
+                    <h3>Summer Camp</h3>
+                    <p>Full-day summer adventures with themed weekly activities, STEM experiments, field trips, and building friendships.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose" id="why">
+            <div class="why-choose-content">
+                <h2 class="scroll-reveal">Why Choose Little Believer's Academy</h2>
+                <div class="why-grid">
+                    <div class="why-card scroll-reveal stagger-1">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3>Trusted Since Day One</h3>
+                        <p>Family-owned Christian daycare with deep roots in the Clayton and Raleigh communities.</p>
+                    </div>
+                    <div class="why-card scroll-reveal stagger-2">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3>Expert Staff</h3>
+                        <p>Trained, caring educators passionate about child development and Christian education.</p>
+                    </div>
+                    <div class="why-card scroll-reveal stagger-3">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3>Safe & Modern</h3>
+                        <p>State-of-the-art facilities with secure entry, updated equipment, and outdoor learning spaces.</p>
+                    </div>
+                    <div class="why-card scroll-reveal stagger-4">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3>Flexible Options</h3>
+                        <p>Multiple programs from infant care through summer camp, designed around your family's needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial scroll-reveal">
+            <p class="testimonial-text">"Our daughter loves going to Little Believer's. She's learned so much about faith and building blocks—literally! The teachers are amazing."</p>
+            <p class="testimonial-author">— Parent, Raleigh Location</p>
+        </section>
+
+        <section class="cta-banner scroll-reveal">
+            <h2>Ready for Excellence in Childcare?</h2>
+            <p>Join families across Clayton and Raleigh who trust us with their most precious treasures.</p>
+            <button class="cta-button" onclick="document.getElementById('enrollment').scrollIntoView({ behavior: 'smooth' })">Start Enrollment</button>
+        </section>
+
+        <section class="enrollment-form scroll-reveal" id="enrollment">
+            <h2>Enrollment Inquiry</h2>
+            <form onsubmit="handleEnrollment(event)">
+                <div class="form-group">
+                    <label for="parentName">Parent/Guardian Name *</label>
+                    <input type="text" id="parentName" name="parentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="childName">Child's Name *</label>
+                    <input type="text" id="childName" name="childName" required>
+                </div>
+                <div class="form-group">
+                    <label for="childAge">Child's Age *</label>
+                    <input type="text" id="childAge" name="childAge" placeholder="e.g., 3 years" required>
+                </div>
+                <div class="form-group">
+                    <label for="program">Interested Program *</label>
+                    <select id="program" name="program" required>
+                        <option value="">-- Select a Program --</option>
+                        <option value="infant">Infant (6 Weeks+)</option>
+                        <option value="toddler">Toddler</option>
+                        <option value="preschool">Preschool</option>
+                        <option value="prek">Pre-K</option>
+                        <option value="beforeafter">Before/After School</option>
+                        <option value="summer">Summer Camp</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Questions</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your family..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Submit Inquiry</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Little Believer's Academy. Nurturing minds. Growing faith.</p>
+        <p>Site by <a href="https://whitehausmedia.com">White Haus Media</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleEnrollment(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            console.log('Enrollment Inquiry:', data);
+            alert(`Thank you for your interest! We'll contact you at ${data.email} soon.`);
+            e.target.reset();
+        }
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+
+        function revealOnScroll() {
+            revealElements.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Smooth link navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#enrollment') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        document.getElementById('navLinks').classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

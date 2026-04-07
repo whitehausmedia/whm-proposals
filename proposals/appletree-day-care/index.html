@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Proposal - Appletree Day Care | White Haus Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #080808;
+            --gold: #C9A84C;
+            --cream: #F4EFE6;
+            --light-gray: #2a2a2a;
+            --text-light: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* PROGRESS BAR */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold);
+            width: 0%;
+            z-index: 2000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(8, 8, 8, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 4rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 3px;
+        }
+
+        nav.scrolled {
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        .nav-logo-text em {
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-pill {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.65rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+
+        .cta-pill:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.2);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding: 150px 4rem 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            color: var(--gold);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            max-width: 650px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2.5rem;
+            background: rgba(201, 168, 76, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            margin-top: 3rem;
+        }
+
+        .metadata-item {
+            text-align: center;
+        }
+
+        .metadata-label {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .metadata-value {
+            font-size: 1rem;
+            color: var(--cream);
+            font-weight: 500;
+        }
+
+        /* LETTER SECTION */
+        .letter-section {
+            padding: 6rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(201, 168, 76, 0.03);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            border-radius: 15px;
+            margin-top: -5rem;
+            margin-bottom: 6rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .letter-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .letter-section p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: #c0c0c0;
+            line-height: 1.8;
+        }
+
+        .letter-section p strong {
+            color: var(--gold);
+        }
+
+        .letter-signature {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .signature-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signature-text .from {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-bottom: 0.25rem;
+        }
+
+        .signature-text .name {
+            font-size: 1.1rem;
+            color: var(--cream);
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .signature-logo {
+            width: 50px;
+            height: 50px;
+            opacity: 0.7;
+        }
+
+        /* OPPORTUNITY SECTION */
+        .opportunity {
+            padding: 6rem 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: #a0a0a0;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .opportunity-card {
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-top: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .opportunity-card:hover {
+            background: rgba(201, 168, 76, 0.08);
+            border-top-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(201, 168, 76, 0.1);
+        }
+
+        .opportunity-card h3 {
+            font-size: 1.25rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .opportunity-card p {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            line-height: 1.7;
+        }
+
+        /* SOLUTION SECTION */
+        .solution {
+            padding: 6rem 4rem;
+            background: rgba(201, 168, 76, 0.02);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .deliverable-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .deliverable-check {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: 700;
+            min-width: 30px;
+            margin-top: 0.2rem;
+        }
+
+        .deliverable-content h3 {
+            font-size: 1.1rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .deliverable-content p {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+
+        /* PREVIEW SECTION */
+        .preview {
+            padding: 6rem 4rem;
+        }
+
+        .preview-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .browser-frame {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            margin-top: 3rem;
+        }
+
+        .browser-chrome {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .browser-dot.red { background: #FF5F57; }
+        .browser-dot.yellow { background: #FFBD2E; }
+        .browser-dot.green { background: #28C840; }
+
+        .browser-address {
+            flex: 1;
+            margin-left: 1rem;
+            background: rgba(201, 168, 76, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #808080;
+            font-family: monospace;
+            border: 1px solid rgba(201, 168, 76, 0.05);
+        }
+
+        .browser-content {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: white;
+        }
+
+        .browser-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .preview-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .preview-link:hover {
+            gap: 0.5rem;
+            color: var(--cream);
+        }
+
+        /* PROCESS SECTION */
+        .process {
+            padding: 6rem 4rem;
+            background: rgba(201, 168, 76, 0.02);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            background: rgba(201, 168, 76, 0.08);
+            border-color: var(--gold);
+        }
+
+        .process-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .process-step h3 {
+            font-size: 1.15rem;
+            color: var(--cream);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            padding: 6rem 4rem;
+        }
+
+        .pricing-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-intro h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-intro p {
+            font-size: 1.05rem;
+            color: #a0a0a0;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-top: 4rem;
+        }
+
+        .build-card {
+            background: rgba(201, 168, 76, 0.08);
+            border: 2px solid var(--gold);
+            padding: 3rem;
+            border-radius: 15px;
+            position: relative;
+            grid-column: 1 / 3;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .build-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .price-label {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-split {
+            background: rgba(201, 168, 76, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: #c0c0c0;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .inclusions {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .inclusions li {
+            padding: 0.75rem 0;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .inclusions li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 700;
+            min-width: 20px;
+        }
+
+        .inclusions li:last-child {
+            border-bottom: none;
+        }
+
+        .care-plans {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .care-plan {
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .care-plan.featured {
+            background: rgba(201, 168, 76, 0.08);
+            border: 2px solid var(--gold);
+        }
+
+        .care-plan h4 {
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .care-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .care-price span {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+        }
+
+        .care-detail {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+        }
+
+        .care-features {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .care-features li {
+            color: #b0b0b0;
+            padding: 0.5rem 0;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .care-features li::before {
+            content: '→';
+            color: var(--gold);
+            font-weight: 700;
+            min-width: 20px;
+        }
+
+        /* CTA SECTION */
+        .cta-final {
+            padding: 6rem 4rem;
+            background: rgba(201, 168, 76, 0.04);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: 15px;
+            text-align: center;
+            margin: 6rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        .cta-final-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-final h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .cta-final-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-final-button:hover {
+            background: var(--cream);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(201, 168, 76, 0.3);
+        }
+
+        .cta-email {
+            display: block;
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .cta-email:hover {
+            color: var(--gold);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            text-align: center;
+        }
+
+        footer img {
+            height: 40px;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #808080;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 120px 2rem 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .metadata-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .letter-section {
+                padding: 3rem 2rem;
+                margin: 0 2rem 4rem;
+            }
+
+            .opportunity, .solution, .preview, .process, .pricing {
+                padding: 4rem 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .opportunity-grid,
+            .deliverables-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .build-card {
+                grid-column: 1;
+                max-width: 100%;
+            }
+
+            .care-plans {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-final {
+                margin: 4rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .metadata-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .opportunity-card,
+            .process-step,
+            .deliverable-item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#hero" class="nav-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+            <div class="nav-logo-text">White Haus <em>Media</em></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#preview">Preview</a></li>
+            <li><a href="#pricing">Investment</a></li>
+            <li><a href="#cta" class="cta-pill">Let's Talk</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-content reveal">
+            <div class="eyebrow">Proposal for Appletree Day Care</div>
+            <h1>A <em>modern</em> web presence for 30+ years of trust.</h1>
+            <p class="hero-desc">Appletree Day Care has built an extraordinary reputation across four Raleigh locations. Your website should reflect that legacy—with a custom-designed experience that converts families, showcases your programs, and puts enrollment directly in your hands.</p>
+            <div class="metadata-grid reveal">
+                <div class="metadata-item">
+                    <div class="metadata-label">Prepared For</div>
+                    <div class="metadata-value">Carolyn Driggers</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Prepared By</div>
+                    <div class="metadata-value">White Haus Media</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Date</div>
+                    <div class="metadata-value">April 2026</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Delivery</div>
+                    <div class="metadata-value">Under 2 weeks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LETTER SECTION -->
+    <section class="letter-section reveal">
+        <h2>Dear Carolyn,</h2>
+        <p>Your current website doesn't capture the depth of what Appletree represents. Families searching for childcare want reassurance, clarity, and a sense of trust—all things your brand delivers, but your online presence doesn't fully convey. Every element from your color palette to your 30-year legacy deserves a digital home that matches the excellence families experience when they walk through your doors.</p>
+        <p>This proposal outlines a custom website built specifically for Appletree Day Care. It's designed to address the gaps we've identified, streamline enrollment, and position you as the premium choice among Raleigh daycare providers. We've included everything needed to launch a site that works as hard as your team does.</p>
+        <p>We're excited to partner with you on this, and we believe the investment will pay dividends in inquiries, enrollment, and brand confidence. Let's build something that Appletree can be proud of.</p>
+        <div class="letter-signature">
+            <div class="signature-text">
+                <span class="from">from our team</span>
+                <span class="name">White Haus Media</span>
+            </div>
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" class="signature-logo">
+        </div>
+    </section>
+
+    <!-- OPPORTUNITY SECTION -->
+    <section class="opportunity" id="opportunity">
+        <div class="section-header reveal">
+            <h2>The Opportunity</h2>
+            <p>Four gaps in your current digital presence—and four reasons a modern website moves the needle.</p>
+        </div>
+        <div class="opportunity-grid">
+            <div class="opportunity-card reveal">
+                <h3>Outdated Design</h3>
+                <p>Your current site hasn't been refreshed in several years. Parents searching for childcare expect modern, clean design. A dated look signals outdated practices—even if that's not true.</p>
+            </div>
+            <div class="opportunity-card reveal">
+                <h3>No Mobile Optimization</h3>
+                <p>80% of childcare searches happen on mobile devices. Your site isn't optimized for phone users, meaning prospects bounce before learning what Appletree offers.</p>
+            </div>
+            <div class="opportunity-card reveal">
+                <h3>Missing Enrollment Tool</h3>
+                <p>Interested families have no way to begin enrollment online. They must call or email, creating friction and friction kills conversions. You're leaving opportunities on the table.</p>
+            </div>
+            <div class="opportunity-card reveal">
+                <h3>Weak Search Visibility</h3>
+                <p>Your site doesn't rank well for local searches ("daycare near me," "childcare Raleigh"). Families looking for you may never find you. SEO-optimized content changes that.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="solution" id="solution">
+        <div class="section-header reveal">
+            <h2>The Solution</h2>
+            <p>A custom website purpose-built for Appletree, with every feature designed to convert families into enrolled students.</p>
+        </div>
+        <div class="deliverables-grid">
+            <div class="deliverable-item reveal">
+                <div class="deliverable-check">✦</div>
+                <div class="deliverable-content">
+                    <h3>Responsive Design</h3>
+                    <p>Beautiful on all devices—desktop, tablet, mobile. Built for speed and optimized for user experience.</p>
+                </div>
+            </div>
+            <div class="deliverable-item reveal">
+                <div class="deliverable-check">✦</div>
+                <div class="deliverable-content">
+                    <h3>Program Showcase</h3>
+                    <p>Dedicated sections for Infant Care, Toddler, Preschool, Pre-K, Before & After School, and Summer Camp with clear age ranges and descriptions.</p>
+                </div>
+            </div>
+            <div class="deliverable-item reveal">
+                <div class="deliverable-check">✦</div>
+                <div class="deliverable-content">
+                    <h3>Online Enrollment Form</h3>
+                    <p>Fully integrated contact form allowing families to start the enrollment process directly. Leads go straight to your inbox.</p>
+                </div>
+            </div>
+            <div class="deliverable-item reveal">
+                <div class="deliverable-check">✦</div>
+                <div class="deliverable-content">
+                    <h3>Location & Hours</h3>
+                    <p>Clear display of all four Raleigh centers with addresses, directions, phone numbers, and hours. No confusion, no lost leads.</p>
+                </div>
+            </div>
+            <div class="deliverable-item reveal">
+                <div class="deliverable-check">✦</div>
+                <div class="deliverable-content">
+                    <h3>SEO Optimization</h3>
+                    <p>Keyword-optimized content, meta tags, and structure so families searching "childcare Raleigh" find Appletree.</p>
+                </div>
+            </div>
+            <div class="deliverable-item reveal">
+                <div class="deliverable-check">✦</div>
+                <div class="deliverable-content">
+                    <h3>Brand Showcase</h3>
+                    <p>Your logo, colors, values, and 30-year legacy woven throughout. A site that feels like Appletree.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREVIEW SECTION -->
+    <section class="preview" id="preview">
+        <div class="section-header reveal">
+            <h2>Website Preview</h2>
+            <p>This is a fully functional mockup of what your new site will look and feel like.</p>
+        </div>
+        <div class="preview-wrapper">
+            <div class="browser-frame reveal">
+                <div class="browser-chrome">
+                    <div class="browser-dot red"></div>
+                    <div class="browser-dot yellow"></div>
+                    <div class="browser-dot green"></div>
+                    <div class="browser-address">appletreenc.com</div>
+                </div>
+                <div class="browser-content">
+                    <iframe src="preview.html" title="Appletree Day Care Website Preview"></iframe>
+                </div>
+            </div>
+            <a href="preview.html" target="_blank" class="preview-link reveal">Open full screen →</a>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process" id="process">
+        <div class="section-header reveal">
+            <h2>Our Process</h2>
+            <p>From kickoff to launch, here's exactly how we'll deliver your site.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <div class="process-number">1</div>
+                <h3>Discovery Call</h3>
+                <p>We chat with you about your goals, vision, and any specific requirements. This call shapes everything.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="process-number">2</div>
+                <h3>Design & Build</h3>
+                <p>Our team designs and develops your custom site. You'll see progress updates throughout. Typically 7–10 days.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="process-number">3</div>
+                <h3>Review & Refine</h3>
+                <p>We show you the finished site. You provide feedback and we make revisions. Usually one round of edits.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="process-number">4</div>
+                <h3>Launch & Support</h3>
+                <p>Your site goes live. We handle hosting, SSL, and answer any questions. You're live within 2 weeks of kickoff.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-intro reveal">
+            <div class="eyebrow">Preliminary Pricing</div>
+            <h2>An investment in where your business is headed.</h2>
+            <p>One-time build investment includes design, development, mobile optimization, enrollment form, and launch support.</p>
+        </div>
+
+        <div class="pricing-cards">
+            <div class="build-card reveal">
+                <div class="recommended-badge">Recommended</div>
+                <h3>Website Build</h3>
+                <div class="price-amount">$600</div>
+                <div class="price-label">One-time investment</div>
+                <div class="payment-split">Two payments of $300 • First 50% upfront, balance on launch</div>
+                <ul class="inclusions">
+                    <li>Custom responsive design</li>
+                    <li>Six program pages with descriptions</li>
+                    <li>Online enrollment form</li>
+                    <li>All four location info pages</li>
+                    <li>SEO optimization</li>
+                    <li>Mobile-first development</li>
+                    <li>SSL security</li>
+                    <li>Vercel hosting (fast + reliable)</li>
+                    <li>Launch support & testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="care-plans reveal">
+            <div class="care-plan">
+                <h4>Core Care</h4>
+                <div class="care-price">$47<span>/month</span></div>
+                <div class="care-detail">Perfect for getting started</div>
+                <ul class="care-features">
+                    <li>Monthly updates & maintenance</li>
+                    <li>Two content edits per month</li>
+                    <li>Email support</li>
+                </ul>
+            </div>
+            <div class="care-plan featured">
+                <h4>Full Care</h4>
+                <div class="care-price">$97<span>/month</span></div>
+                <div class="care-detail">Recommended for growth</div>
+                <ul class="care-features">
+                    <li>Everything in Core Care</li>
+                    <li>Security patches & SSL</li>
+                    <li>Uptime monitoring</li>
+                    <li>Monthly performance report</li>
+                    <li>Priority support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-final" id="cta">
+        <div class="cta-final-content reveal">
+            <h2>Ready to move forward?</h2>
+            <button class="cta-final-button" onclick="window.location.href='mailto:hello@whitehausmedia.com?subject=Appletree%20Day%20Care%20Website%20Proposal'">Book a Free Consultation</button>
+            <a href="mailto:hello@whitehausmedia.com" class="cta-email">Or email us at hello@whitehausmedia.com</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media Logo">
+        <p>&copy; 2026 White Haus Media. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercentage + '%';
+
+            // Nav scrolled state
+            if (window.scrollY > 50) {
+                document.querySelector('nav').classList.add('scrolled');
+            } else {
+                document.querySelector('nav').classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

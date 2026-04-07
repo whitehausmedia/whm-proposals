@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal: Preschool at Woodland</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #080808;
+            --gold: #C9A84C;
+            --cream: #F4EFE6;
+            --light-gray: #f9f9f9;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 0;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold);
+            width: 0%;
+            z-index: 999;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 8rem;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+            color: var(--cream);
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            font-weight: 300;
+        }
+
+        .metadata {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            color: #aaa;
+            margin-top: 2rem;
+        }
+
+        /* Letter Section */
+        .letter {
+            background: white;
+            padding: 4rem;
+            margin: 3rem auto;
+            max-width: 850px;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .letter h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .letter p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .letter-signature {
+            margin-top: 3rem;
+            border-top: 1px solid #ddd;
+            padding-top: 1.5rem;
+        }
+
+        .signature-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-title {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Opportunity Section */
+        .opportunity {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+            padding: 5rem 2rem;
+            color: var(--cream);
+        }
+
+        .opportunity-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .opportunity h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .opp-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .opp-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .opp-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .solution-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .solution h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .solution-item {
+            padding: 2rem;
+            background: var(--light-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .solution-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .solution-item::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .solution-item p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Preview */
+        .preview {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+        }
+
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+
+        .preview-frame {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .preview-frame iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
+        }
+
+        /* Process */
+        .process {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .process-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .process-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+            padding: 5rem 2rem;
+        }
+
+        .pricing-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(201, 168, 76, 0.3);
+            padding: 2.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            color: var(--cream);
+            position: relative;
+        }
+
+        .price-card.primary {
+            border: 2px solid var(--gold);
+            background: rgba(201, 168, 76, 0.1);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .price-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+        }
+
+        .price-description {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            color: #ddd;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .monthly-plans {
+            background: rgba(0,0,0,0.3);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .monthly-plans h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .plan-box {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .plan-box h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 0.8rem;
+        }
+
+        .plan-box p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .cta p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--dark);
+            color: var(--cream);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--dark);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo {
+            margin: 1.5rem 0;
+        }
+
+        .footer-logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .letter {
+                padding: 2rem;
+            }
+
+            .opportunity-grid,
+            .solution-grid,
+            .process-grid,
+            .pricing-grid,
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-frame iframe {
+                height: 600px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .metadata {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 5rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .letter {
+                padding: 1.5rem;
+            }
+
+            .solution-grid,
+            .process-grid {
+                gap: 1rem;
+            }
+
+            .solution-item,
+            .process-step {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+        </div>
+        <ul>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#preview">Preview</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Prepared exclusively for Preschool at Woodland</h1>
+        <div class="metadata">
+            <span>Website Proposal</span>
+            <span>•</span>
+            <span>April 2026</span>
+            <span>•</span>
+            <span>Wake Forest, NC</span>
+        </div>
+    </section>
+
+    <!-- Letter -->
+    <section class="letter">
+        <h2>Dear Peggy,</h2>
+        <p>Thank you for the opportunity to understand Preschool at Woodland. Your faith-centered approach, warm community culture, and dedication to child development represent the best of early childhood education.</p>
+        <p>A stronger digital presence transforms how families find and connect with you. Right now, prospective parents are searching for preschools in Wake Forest—but they're not finding the full story of what makes Woodland special. A modern, mobile-friendly website becomes your front-door presence, showcasing your programs, values, and the real testimonials that drive enrollment decisions.</p>
+        <p>From our team at White Haus Media, here's what we've identified as your key opportunities and the solution we recommend.</p>
+        <div class="letter-signature">
+            <div class="signature-name">White Haus Media</div>
+            <div class="signature-title">Wake Forest, NC</div>
+        </div>
+    </section>
+
+    <!-- Opportunity -->
+    <section class="opportunity">
+        <div class="opportunity-container">
+            <h2>Your Opportunity</h2>
+            <div class="opportunity-grid">
+                <div class="opp-card">
+                    <h3>1. Enrollment Growth</h3>
+                    <p>Families choose preschools based on first impressions—and 80% of that search now begins online. A professional website positions Woodland as the premium choice in Wake County.</p>
+                </div>
+                <div class="opp-card">
+                    <h3>2. Digital Storytelling</h3>
+                    <p>Your community, values, and programs deserve to be seen. A modern site showcases faith-based curriculum, small class sizes, and family connection in ways that build trust instantly.</p>
+                </div>
+                <div class="opp-card">
+                    <h3>3. Mobile Accessibility</h3>
+                    <p>Busy parents research on-the-go. A responsive, fast-loading website makes it effortless to learn programs, request tours, and enroll—exactly when and how they search.</p>
+                </div>
+                <div class="opp-card">
+                    <h3>4. Local Authority</h3>
+                    <p>A dedicated website with structured content helps you rank for "preschool near me," "faith-based preschool Wake Forest," and other searches where new families are looking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution" id="solution">
+        <div class="solution-container">
+            <h2>Our Recommendation</h2>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <h3>Hero Landing</h3>
+                    <p>Compelling above-the-fold message with trust badges and clear call-to-action to schedule tours or enroll.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Program Showcase</h3>
+                    <p>Age-specific program cards (2–5 year-olds) with curriculum highlights and enrollment details.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>About & Values</h3>
+                    <p>Story-driven section highlighting Woodland's faith foundation, teaching philosophy, and community impact.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Parent Testimonials</h3>
+                    <p>Real quotes and stories from families—social proof that builds confidence in prospective parents.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Tour Booking</h3>
+                    <p>Integrated form for parents to request tours, ask questions, and begin the enrollment conversation.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Mobile Responsive</h3>
+                    <p>Fully optimized for phones and tablets—because most families will discover you on mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview -->
+    <section class="preview" id="preview">
+        <div class="preview-container">
+            <h2>Live Preview</h2>
+            <div class="preview-frame">
+                <iframe src="preview.html"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <div class="process-container">
+            <h2>Our Process</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>Discovery</h3>
+                    <p>We learn your story, values, programs, and enrollment goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Design</h3>
+                    <p>Custom website built around your brand, fully responsive, optimized for conversions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Content</h3>
+                    <p>Compelling copy, program details, testimonials, and forms integrated seamlessly.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3>Launch</h3>
+                    <p>We deploy, test, and support your site—you start attracting families immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-container">
+            <h2>Investment</h2>
+            <div class="pricing-grid">
+                <div class="price-card primary">
+                    <div class="price-badge">Recommended</div>
+                    <h3>Website Build</h3>
+                    <p class="price-amount">$600</p>
+                    <p class="price-description">One-time investment for your custom website</p>
+                    <ul class="price-features">
+                        <li>Mobile-responsive design</li>
+                        <li>Program showcase & enrollment forms</li>
+                        <li>Parent testimonials section</li>
+                        <li>Tour booking integration</li>
+                        <li>Fast loading & optimized</li>
+                        <li>Deployed & live</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>Or as two payments</h3>
+                    <p class="price-amount">$300</p>
+                    <p class="price-description">Split into two payments of $300 each</p>
+                    <ul class="price-features">
+                        <li>Same custom website included</li>
+                        <li>First payment to start build</li>
+                        <li>Second payment at launch</li>
+                        <li>No additional fees</li>
+                        <li>Flexible payment schedule</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="monthly-plans">
+                <h3>Ongoing Care (Optional)</h3>
+                <div class="plans-grid">
+                    <div class="plan-box">
+                        <h4>Core Care</h4>
+                        <div class="plan-price">$47<span style="font-size: 1rem;">/mo</span></div>
+                        <p>Updates, 2 content edits per month, uptime monitoring</p>
+                    </div>
+                    <div class="plan-box" style="border: 2px solid var(--gold);">
+                        <h4>Full Care</h4>
+                        <div class="plan-price">$97<span style="font-size: 1rem;">/mo</span></div>
+                        <p>Core Care + security patches, monthly performance report, priority support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Ready to Grow?</h2>
+            <p>A modern website isn't just an expense—it's the most effective way to connect with families in your community and grow enrollment.</p>
+            <a href="mailto:hello@whitehausmedia.com?subject=Preschool%20at%20Woodland%20Website%20Proposal" class="cta-button">Book a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 White Haus Media</p>
+        <div class="footer-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+        </div>
+        <p>Wake Forest, NC</p>
+    </footer>
+
+    <script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holly Springs Learning Center Proposal | White Haus Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #080808;
+            color: #e8e8e8;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(198, 164, 76, 0.2);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #c9a84c;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .progress-container {
+            flex: 1;
+            margin: 0 3rem;
+        }
+
+        .progress-bar {
+            height: 2px;
+            background: rgba(201, 168, 76, 0.2);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #c9a84c 0%, #8b7d3f 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .nav-button {
+            background: rgba(201, 168, 76, 0.15);
+            border: 1px solid #c9a84c;
+            color: #c9a84c;
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #c9a84c;
+            color: #080808;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            color: #c9a84c;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-meta-item {
+            font-size: 0.95rem;
+            color: #999;
+        }
+
+        .hero-meta-item strong {
+            color: #c9a84c;
+            font-weight: 600;
+        }
+
+        .hero p {
+            color: #bbb;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Letter Section */
+        .letter {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .letter-salutation {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #c9a84c;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .letter-content {
+            display: grid;
+            gap: 1.5rem;
+            color: #bbb;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .letter-content p {
+            text-align: justify;
+        }
+
+        .letter-signature {
+            margin-top: 2.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .letter-signature-name {
+            font-size: 1.1rem;
+            color: #c9a84c;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .letter-signature-title {
+            font-size: 0.95rem;
+            color: #999;
+        }
+
+        /* Section */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: #c9a84c;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, rgba(201, 168, 76, 0.02) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 2rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, rgba(201, 168, 76, 0.04) 100%);
+            border-color: rgba(201, 168, 76, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #c9a84c;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Solution */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(201, 168, 76, 0.05);
+            border-left: 3px solid #c9a84c;
+            border-radius: 4px;
+        }
+
+        .deliverable-icon {
+            color: #c9a84c;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            line-height: 1.2;
+        }
+
+        .deliverable-content h4 {
+            color: #c9a84c;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .deliverable-content p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Preview Section */
+        .preview {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 6px;
+        }
+
+        .preview-label {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .browser-frame {
+            background: #1a1a1a;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .browser-header {
+            background: linear-gradient(90deg, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.3);
+        }
+
+        .browser-dot:nth-child(1) {
+            background: #c9a84c;
+        }
+
+        .browser-url {
+            flex: 1;
+            margin-left: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .browser-content {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: block;
+        }
+
+        /* Process Section */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 168, 76, 0.15);
+            border: 2px solid #c9a84c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #c9a84c;
+        }
+
+        .process-step h4 {
+            color: #c9a84c;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .process-step p {
+            color: #999;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Pricing Section */
+        .pricing {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, rgba(201, 168, 76, 0.04) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(201, 168, 76, 0.08) 100%);
+            border: 2px solid #c9a84c;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured .badge {
+            display: inline-block;
+            background: #c9a84c;
+            color: #080808;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #c9a84c;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .pricing-label {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-details {
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .pricing-details li {
+            list-style: none;
+            color: #bbb;
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .pricing-details li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-details li strong {
+            color: #c9a84c;
+        }
+
+        .pricing-card h3 {
+            color: #c9a84c;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .pricing-note {
+            color: #777;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, rgba(201, 168, 76, 0.04) 100%);
+            border: 2px solid #c9a84c;
+            padding: 3rem;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #c9a84c;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            color: #bbb;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #c9a84c 0%, #a68a3a 100%);
+            color: #080808;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: #c9a84c;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .progress-container {
+                width: 100%;
+                margin: 0;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                margin-top: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .letter {
+                padding: 2rem 1rem;
+            }
+
+            section {
+                padding: 2.5rem 1rem;
+            }
+
+            .opportunity {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            iframe {
+                height: 350px;
+            }
+
+            .browser-content {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+            }
+
+            .nav-text {
+                font-size: 1.1rem;
+            }
+
+            .nav-logo img {
+                height: 28px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-amount {
+                font-size: 2rem;
+            }
+
+            iframe {
+                height: 280px;
+            }
+
+            .browser-content {
+                height: 280px;
+            }
+
+            .letter-content {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Scroll Progress */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(201, 168, 76, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(201, 168, 76, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+            <div class="nav-text">White Haus Media</div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        <button class="nav-button" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Book Consultation</button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Holly Springs Learning Center</h1>
+        <div class="hero-meta">
+            <div class="hero-meta-item">Prepared exclusively for <strong>Holly Springs Learning Center</strong></div>
+            <div class="hero-meta-item">Contact: <strong>Jennifer Cua, Director</strong></div>
+            <div class="hero-meta-item">Date: <strong>April 2026</strong></div>
+        </div>
+        <p>A premium website proposal for educational excellence and enrollment growth.</p>
+    </section>
+
+    <!-- Letter -->
+    <section class="letter">
+        <div class="letter-salutation">Dear Jennifer,</div>
+        <div class="letter-content">
+            <p>Thank you for reaching out to our team at White Haus Media. After learning about Holly Springs Learning Center's commitment to educational excellence, degreed teachers, and five-star facility standards, we're excited to present a custom website solution designed specifically for your mission and your families.</p>
+
+            <p>Holly Springs Learning Center has built a reputation for quality over two decades. Your facility, programs, and team represent the gold standard in early childhood education across the Triangle. However, many prospective families discover you through limited online channels, and your current web presence doesn't fully convey the depth of your expertise, the credentials of your teachers, or the breadth of your programs. A premium website changes that—it becomes your strongest recruitment tool and your first impression.</p>
+
+            <p>From our team at White Haus Media, we've designed a solution that elevates your brand, showcases your programs with confidence, and makes enrollment seamless for families. Let's talk about what this means for Holly Springs Learning Center.</p>
+
+            <div class="letter-signature">
+                <div class="letter-signature-name">White Haus Media</div>
+                <div class="letter-signature-title">Proposal Team</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opportunity Section -->
+    <section>
+        <h2 class="section-title">The Current Opportunity</h2>
+        <div class="opportunity">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Limited Online Discovery</h3>
+                <p>Prospective families search for daycares and preschools online first. A basic or outdated web presence costs you qualified leads before conversation begins.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">✦</div>
+                <h3>Credentials Not Displayed</h3>
+                <p>Your team's degreed qualifications, facility certifications, and five-star status deserve prominent showcase. Current channels bury these trust factors.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h3>No Enrollment Path</h3>
+                <p>Without interactive enrollment or inquiry forms, interested families must call, email, or visit. Friction at every step reduces conversions.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔍</div>
+                <h3>Local Search Weakness</h3>
+                <p>Holly Springs families rely on local search and social proof. A premium site with proper SEO foundation captures high-intent local traffic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section>
+        <h2 class="section-title">Our Solution</h2>
+        <p style="color: #bbb; margin-bottom: 2rem;">A premium custom website built on modern technology, optimized for conversion, and designed to reflect Holly Springs Learning Center's excellence. Every element serves your mission and your families.</p>
+
+        <div class="solution-grid">
+            <div class="deliverable">
+                <div class="deliverable-icon">✦</div>
+                <div class="deliverable-content">
+                    <h4>Custom Website Design</h4>
+                    <p>Premium design reflecting your brand identity and values, fully responsive across all devices</p>
+                </div>
+            </div>
+
+            <div class="deliverable">
+                <div class="deliverable-icon">✦</div>
+                <div class="deliverable-content">
+                    <h4>Program Showcase</h4>
+                    <p>Dedicated sections highlighting infant care through pre-K, with visual program details and philosophy</p>
+                </div>
+            </div>
+
+            <div class="deliverable">
+                <div class="deliverable-icon">✦</div>
+                <div class="deliverable-content">
+                    <h4>Trust & Credentials</h4>
+                    <p>Prominent display of five-star rating, degreed staff, facility age, and certifications</p>
+                </div>
+            </div>
+
+            <div class="deliverable">
+                <div class="deliverable-icon">✦</div>
+                <div class="deliverable-content">
+                    <h4>Enrollment Form Integration</h4>
+                    <p>Streamlined inquiry form with program selection, contact capture, and automated response</p>
+                </div>
+            </div>
+
+            <div class="deliverable">
+                <div class="deliverable-icon">✦</div>
+                <div class="deliverable-content">
+                    <h4>Mobile Optimization</h4>
+                    <p>Fully optimized for smartphones and tablets—where most family searches happen</p>
+                </div>
+            </div>
+
+            <div class="deliverable">
+                <div class="deliverable-icon">✦</div>
+                <div class="deliverable-content">
+                    <h4>Local SEO Foundation</h4>
+                    <p>Technical optimization for search visibility in Holly Springs and Triangle area searches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section>
+        <h2 class="section-title">Website Preview</h2>
+        <p style="color: #bbb; margin-bottom: 2rem;">Below is an interactive preview of your custom website. Scroll, explore, and imagine this as your online home for enrollment and family communication.</p>
+
+        <div class="preview">
+            <div class="preview-label">Live Preview</div>
+            <div class="browser-frame">
+                <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-url">hollyspringslc.com</div>
+                </div>
+                <div class="browser-content">
+                    <iframe src="preview.html" title="Holly Springs Learning Center Website Preview"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section>
+        <h2 class="section-title">Our Process</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Discovery & Strategy</h4>
+                <p>We learn about your programs, values, and enrollment goals. We review your brand identity and define the website's core purpose.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Design & Build</h4>
+                <p>Our team designs and develops your custom site with premium visuals, seamless navigation, and enrollment integration.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Content & Launch</h4>
+                <p>We finalize copy, images, and forms. Your site launches and is integrated with your email and communication systems.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Support & Growth</h4>
+                <p>We provide ongoing updates, technical support, and content management through our Core or Full Care plans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section>
+        <h2 class="section-title">Investment & Support</h2>
+        <div class="pricing">
+            <div class="pricing-card">
+                <h3>Build</h3>
+                <div class="pricing-amount">$300</div>
+                <div class="pricing-label">Project Phase</div>
+                <ul class="pricing-details">
+                    <li>Custom design & development</li>
+                    <li>Responsive layout</li>
+                    <li>Enrollment form</li>
+                    <li>Initial content setup</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="badge">Recommended</div>
+                <h3>Launch + Year 1 Care</h3>
+                <div class="pricing-amount">$600</div>
+                <div class="pricing-label">Complete Investment</div>
+                <ul class="pricing-details">
+                    <li><strong>Build</strong> – Full custom site</li>
+                    <li><strong>First 3 Months</strong> – Core Care included</li>
+                    <li>Updates & content edits</li>
+                    <li>Ongoing technical support</li>
+                    <li>Email integration</li>
+                    <li>Enrollment form management</li>
+                </ul>
+                <div class="pricing-note">Best value for launch + support</div>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Ongoing Care</h3>
+                <div class="pricing-amount">$47</div>
+                <div class="pricing-label">/month after Year 1</div>
+                <ul class="pricing-details">
+                    <li><strong>Core Care:</strong> Monthly updates</li>
+                    <li>2 content edits/month</li>
+                    <li>Technical maintenance</li>
+                    <li>Email support</li>
+                </ul>
+                <div class="pricing-note">or Full Care at $97/mo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta">
+        <div class="cta-section">
+            <h2>Ready to Elevate Holly Springs Learning Center Online?</h2>
+            <p>Let's schedule a no-pressure consultation to discuss your vision, answer questions, and explore next steps.</p>
+            <a href="https://calendly.com/whitehausmedia/consultation" target="_blank"><button class="cta-button">Book Your Free Consultation</button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 White Haus Media. All rights reserved.</p>
+        <p>Wake Forest, NC | <a href="mailto:hello@whitehausmedia.com" style="color: #c9a84c; text-decoration: none;">hello@whitehausmedia.com</a></p>
+        <div class="footer-credit">Proposal design created with care for Holly Springs Learning Center</div>
+    </footer>
+
+    <script>
+        // Update progress bar on scroll
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (scrollTop / docHeight) * 100;
+            document.getElementById('progressFill').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>

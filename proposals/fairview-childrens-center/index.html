@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairview Children's Center - Web Proposal | White Haus Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #080808;
+            --gold: #C9A84C;
+            --light: #f5f5f5;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --accent-blue: #264A84;
+            --accent-green: #5B9B6D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            background: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* SCROLL PROGRESS BAR */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--accent-green));
+            width: 0%;
+            z-index: 999;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+        }
+
+        .nav-logo-haus {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: rgba(201, 168, 76, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--dark) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(91, 155, 109, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-eyebrow {
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .hero h1 .italic-gold {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-body {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-meta span {
+            border-right: 1px solid rgba(201, 168, 76, 0.3);
+            padding-right: 30px;
+        }
+
+        .hero-meta span:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        /* LETTER SECTION */
+        .letter {
+            padding: 80px 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .letter-greeting {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .letter-body {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .letter-signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        /* OPPORTUNITY SECTION */
+        .opportunity {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, rgba(38, 74, 132, 0.08) 0%, rgba(91, 155, 109, 0.08) 100%);
+        }
+
+        .opportunity-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .opportunity-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s;
+        }
+
+        .opportunity-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(201, 168, 76, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .opportunity-card h4 {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .opportunity-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* SOLUTION SECTION */
+        .solution {
+            padding: 100px 50px;
+        }
+
+        .solution-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .deliverable {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .deliverable:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .deliverable-number {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .deliverable h4 {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .deliverable p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* PREVIEW SECTION */
+        .preview {
+            padding: 100px 50px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: white;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .preview-iframe-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 62.5%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(201, 168, 76, 0.15);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .preview-iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* PROCESS SECTION */
+        .process {
+            padding: 100px 50px;
+        }
+
+        .process-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold), #d4a760);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 auto 20px;
+        }
+
+        .process-step h4 {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            padding: 100px 50px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .pricing-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(38, 74, 132, 0.1) 0%, rgba(91, 155, 109, 0.1) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 15px;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .pricing-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .pricing-features li::before {
+            content: '✦ ';
+            color: var(--gold);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .care-plans {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .care-plan-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .care-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .care-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .care-option.premium {
+            border: 2px solid var(--gold);
+            background: rgba(201, 168, 76, 0.08);
+        }
+
+        .care-option h5 {
+            font-size: 15px;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .care-option p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .care-price {
+            font-size: 16px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #d4a760);
+            color: var(--dark);
+            padding: 16px 45px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 50px;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 25px;
+                height: 60px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(8, 8, 8, 0.98);
+                gap: 0;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 15px 25px;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 50px 25px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-meta {
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .hero-meta span {
+                padding-right: 15px;
+            }
+
+            .letter,
+            .opportunity,
+            .solution,
+            .preview,
+            .process,
+            .pricing,
+            .cta {
+                padding: 60px 25px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .preview-title {
+                font-size: 36px;
+            }
+
+            .opportunity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .care-options {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 15px;
+                height: 55px;
+            }
+
+            .nav-logo img {
+                height: 35px;
+            }
+
+            .nav-logo-text {
+                font-size: 16px;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero-body {
+                font-size: 16px;
+            }
+
+            .letter,
+            .opportunity,
+            .solution,
+            .preview,
+            .process,
+            .pricing,
+            .cta {
+                padding: 50px 15px;
+            }
+
+            .section-title,
+            .preview-title {
+                font-size: 28px;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-meta span {
+                border-right: none;
+                padding-right: 0;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-amount {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+            <span class="nav-logo-text">White Haus <span class="nav-logo-haus">Media</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#preview">Preview</a></li>
+            <li><a href="#investment">Investment</a></li>
+            <li><a href="#cta" class="nav-cta">Let's Talk</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Prepared exclusively for Fairview Children's Center</div>
+            <h1>Designing <span class="italic-gold">digital presence</span> that reflects your legacy of care</h1>
+            <p class="hero-body">Your 30+ year heritage and 5-star reputation deserve a website that inspires trust, streamlines enrollment, and showcases what makes Fairview exceptional.</p>
+            <div class="hero-meta">
+                <span>Prepared for Melissa Butler</span>
+                <span>White Haus Media</span>
+                <span>April 2026</span>
+                <span>Delivery in under 2 weeks</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LETTER SECTION -->
+    <section class="letter">
+        <p class="letter-greeting">Dear Melissa,</p>
+        <p class="letter-body">
+            Your website is often a family's first impression of Fairview. Right now, that first impression is leaving opportunities on the table—families are bouncing away without learning about your low ratios, certified staff, and comprehensive programs.
+        </p>
+        <p class="letter-body">
+            We've spent the last week analyzing your current site, understanding Fairview's unique value, and designing a solution that converts visits into inquiries. What follows is our proposal to build the digital presence your legacy deserves.
+        </p>
+        <p class="letter-body">
+            We believe the best partnerships start with transparency and evidence. That's why we've built this proposal on real data about what's working and what isn't. Let's talk soon.
+        </p>
+        <p class="letter-signature">From our team at White Haus Media</p>
+    </section>
+
+    <!-- OPPORTUNITY SECTION -->
+    <section class="opportunity" id="opportunity">
+        <div class="opportunity-container">
+            <div class="section-header">
+                <div class="section-label">Current State Analysis</div>
+                <h2 class="section-title">Four Evidence-Based Gaps</h2>
+            </div>
+            <div class="opportunity-grid">
+                <div class="opportunity-card reveal">
+                    <h4>Outdated Design Language</h4>
+                    <p>Your current site uses generic layouts that don't reflect the quality, professionalism, and warmth of Fairview's actual environment. Families expect modern design that matches your reputation.</p>
+                </div>
+                <div class="opportunity-card reveal">
+                    <h4>No Online Enrollment Path</h4>
+                    <p>Interested families must call or email to start the enrollment process. This friction loses inquiries. A digital enrollment form captures interest in the moment.</p>
+                </div>
+                <div class="opportunity-card reveal">
+                    <h4>Limited Program Information</h4>
+                    <p>Your six distinct programs (Infant & Toddler, Pre-K, Before/After School, Summer Camp, etc.) aren't clearly highlighted. Families can't easily find the right fit.</p>
+                </div>
+                <div class="opportunity-card reveal">
+                    <h4>Weak Search Visibility</h4>
+                    <p>Families searching "childcare Apex NC" or "preschool near me" aren't finding Fairview. Better SEO and modern site architecture will increase organic visibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="solution" id="solution">
+        <div class="solution-container">
+            <div class="section-header">
+                <div class="section-label">Our Approach</div>
+                <h2 class="section-title">Six Core Deliverables</h2>
+            </div>
+            <div class="solution-grid">
+                <div class="deliverable reveal">
+                    <div class="deliverable-number">✦</div>
+                    <h4>Premium Custom Design</h4>
+                    <p>Modern, warm aesthetic using Fairview's brand colors and imagery that reflects your actual classrooms and values.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <h4>Online Enrollment Form</h4>
+                    <p>Capture parent inquiries directly. Form integrates with your operations to streamline follow-up.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <div class="deliverable-number">✦</div>
+                    <h4>Program-Focused Architecture</h4>
+                    <p>Each program gets dedicated space highlighting age groups, ratios, curriculum, and unique features.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <div class="deliverable-number">✦</div>
+                    <h4>Mobile-First Responsive</h4>
+                    <p>70% of your traffic comes from mobile. The site is designed for phones first, then scaled up.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <div class="deliverable-number">✦</div>
+                    <h4>SEO Foundation</h4>
+                    <p>Technical SEO, keyword optimization, and structured data to improve search ranking for local childcare searches.</p>
+                </div>
+                <div class="deliverable reveal">
+                    <div class="deliverable-number">✦</div>
+                    <h4>Trust & Conversion Elements</h4>
+                    <p>Staff bios, parent testimonials, ratings, and clear CTAs that build confidence and drive enrollment inquiries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREVIEW SECTION -->
+    <section class="preview" id="preview">
+        <div class="preview-container">
+            <h2 class="preview-title">Live Site Preview</h2>
+            <div class="preview-iframe-wrapper">
+                <iframe src="preview.html"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process">
+        <div class="process-container">
+            <div class="section-header">
+                <div class="section-label">Timeline & Process</div>
+                <h2 class="section-title">Four-Step Build</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-number">1</div>
+                    <h4>Discovery & Content</h4>
+                    <p>We gather photos, copy, staff bios, and your preferences. Turnaround: 2-3 days.</p>
+                </div>
+                <div class="process-step reveal">
+                    <h4>Design & Approval</h4>
+                    <p>We build and share mockups. One revision round included. Turnaround: 3-4 days.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">3</div>
+                    <h4>Development & Deployment</h4>
+                    <p>We code the site, test across devices, and deploy to your domain. Turnaround: 2-3 days.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">4</div>
+                    <h4>Handoff & Support</h4>
+                    <p>Site goes live. We provide 30 days of free support and training on maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="investment">
+        <div class="pricing-container">
+            <div class="section-header">
+                <div class="section-label">Investment</div>
+                <h2 class="section-title" style="text-align: center;">Site Build + First Year Care</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-badge">Recommended</div>
+                    <div class="pricing-amount">$600</div>
+                    <p class="pricing-description">Website build<br>Two payments of $300</p>
+                    <ul class="pricing-features">
+                        <li>Custom design & development</li>
+                        <li>Mobile-responsive</li>
+                        <li>SEO foundation</li>
+                        <li>Enrollment form integration</li>
+                        <li>30 days post-launch support</li>
+                        <li>Annual domain & hosting</li>
+                    </ul>
+                    <div class="care-plans">
+                        <div class="care-plan-title">Add monthly care plan</div>
+                        <div class="care-options">
+                            <div class="care-option">
+                                <h5>Core Care</h5>
+                                <p>Updates & edits (2/mo), basic reporting</p>
+                                <p class="care-price">$47/mo</p>
+                            </div>
+                            <div class="care-option premium">
+                                <h5>Full Care</h5>
+                                <p>Everything in Core, plus security, uptime monitoring & monthly reports</p>
+                                <p class="care-price">$97/mo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta" id="cta">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: white; margin-bottom: 30px;">Ready to upgrade Fairview's digital presence?</h2>
+        <a href="mailto:hello@whitehausmedia.com" class="cta-button">Book a Free Consultation</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 White Haus Media. All rights reserved. <a href="https://whitehausmedia.com">whitehausmedia.com</a></p>
+    </footer>
+
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.scroll-progress').style.width = progress + '%';
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Scroll reveal animations
+        const reveals = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 80) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
+    </script>
+</body>
+</html>
