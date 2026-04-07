@@ -2279,7 +2279,7 @@ document.addEventListener('keydown', e => {
     <div class="chat-msg bot">Hey love! 🌸 Welcome to ByLeCrème. I'm here to help you find your signature scent. What can I help you with today?</div>
   </div>
   <div class="chat-quick-btns" id="chatQuickBtns">
-    <button class="chat-quick-btn" onclick="chatQuick(this)">When is the next fragrance releasing?</button>
+    <button class="chat-quick-btn" onclick="chatQuick(this)">Tell me about Give Me Flowers</button>
     <button class="chat-quick-btn" onclick="chatQuick(this)">What scent is best for date night?</button>
     <button class="chat-quick-btn" onclick="chatQuick(this)">Tell me about the Discovery Set</button>
   </div>
@@ -2329,6 +2329,21 @@ function showTyping(cb) {
 }
 function getChatReply(text) {
   var t = text.toLowerCase();
+  if (t.includes('event') || t.includes('give me flowers') || t.includes('flowers') || t.includes('raleigh') || t.includes('june 27') || t.includes('the district')) {
+    if (t.includes('direction') || t.includes('where') || t.includes('location') || t.includes('address') || t.includes('parking')) {
+      return "Give Me Flowers is at The District in Raleigh, NC! It\u2019s a gorgeous venue right in the heart of downtown. For exact directions and parking info, check the event page\u2014tap EVENT in the menu above or visit whitehausmedia.com/give-me-flowers/ for all the details!";
+    }
+    if (t.includes('cost') || t.includes('price') || t.includes('ticket') || t.includes('how much') || t.includes('pay') || t.includes('reserve') || t.includes('seat') || t.includes('book')) {
+      return "Seats for Give Me Flowers are $115 per person! That includes the full luxury fragrance experience with five amazing brands. You can reserve your spot right now\u2014tap EVENT in the menu or head to whitehausmedia.com/give-me-flowers/ and hit Reserve Your Seat!";
+    }
+    if (t.includes('time') || t.includes('when') || t.includes('start') || t.includes('end') || t.includes('long') || t.includes('hour')) {
+      return "Give Me Flowers is Saturday, June 27th, 2026 from 6:00 PM to 8:00 PM! Two hours of luxury fragrances, amazing brands, and an unforgettable vibe. Tap EVENT in the menu to reserve your seat!";
+    }
+    if (t.includes('what') || t.includes('about') || t.includes('tell me') || t.includes('info') || t.includes('detail')) {
+      return "Give Me Flowers is an exclusive luxury fragrance experience hosted by ByLeCr\u00e8me Parfums! It\u2019s happening Saturday, June 27th from 6\u20138 PM at The District in Raleigh. Five incredible fragrance brands, one unforgettable night\u2014seats are $115 per person. Tap EVENT in the menu to get all the details and reserve your spot!";
+    }
+    return "Yes! Give Me Flowers is our exclusive fragrance event\u2014Saturday, June 27th, 6\u20138 PM at The District in Raleigh. Seats are $115 and it\u2019s going to be an incredible night with five luxury fragrance brands. Tap EVENT in the menu above to reserve your seat!";
+  }
   if (t.includes('next fragrance') || t.includes('new fragrance') || t.includes('releasing') || t.includes('release') || t.includes('new scent') || t.includes('upcoming')) {
     return "Ooh great question babe! We\'ve got something special in the works and trust me, you don\'t wanna miss it. Subscribe to LeCr\u00e8me Insiders for priority access to new fragrances, exclusive drops, and all the perks! You\'ll be the first to know \u2728";
   }
