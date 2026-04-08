@@ -608,7 +608,8 @@ nav.scrolled .logo-img{height:56px}
 .roi-s label{font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em}
 .roi-s select,.roi-s input[type=range]{width:100%;padding:10px;background:var(--b);border:1px solid var(--bd);border-radius:var(--r);color:var(--t1);font-family:var(--font);font-size:13px;appearance:none;-webkit-appearance:none;transition:all .3s}
 .roi-s select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23C6A44C' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
-.roi-s select option{background:var(--b)}
+.roi-s select option{background:var(--b);padding:4px 8px}
+.roi-s select optgroup{color:var(--g);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:8px 0 4px}
 .roi-s input[type=range]{padding:0;height:6px;border-radius:3px;cursor:pointer;border:none;accent-color:var(--g);background:linear-gradient(to right, var(--g) 0%, var(--g) var(--value, 50%), var(--bd) var(--value, 50%), var(--bd) 100%)}
 .roi-s input[type=range]:hover{box-shadow:0 0 16px rgba(198,164,76,.2)}
 .roi-val{font-size:13px;color:var(--g);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
@@ -1406,26 +1407,88 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="rv">
     <div class="ey">Your Website ROI</div>
     <h2 class="sh">See what <span class="gl">your investment returns.</span></h2>
-    <p class="sp">Use the calculator below to estimate the revenue impact of a custom website.</p>
+    <p class="sp">Select your industry and adjust the sliders to match your business. The calculator shows the revenue impact of upgrading to a professional, conversion-optimized website.</p>
   </div>
   <div class="roi-card rv">
     <div class="roi-sg">
-      <div class="roi-s"><label>Industry</label><select id="roiIndustry" onchange="calcROI()"><option>Self-Employed Professionals</option><option>Professional Services</option><option>Retail & Hospitality</option><option>Home & Trade Services</option><option>Community & Education</option></select></div>
-      <div class="roi-s"><label><span id="roiAovLabel">Avg Client Value</span>: <span class="roi-val" id="roiAovVal">$500</span></label><input type="range" id="roiAov" min="50" max="5000" value="500" step="50" oninput="calcROI()"></div>
-      <div class="roi-s" id="roiS2Wrap"><label><span id="roiS2Label">Repeat Visits / Year</span>: <span class="roi-val" id="roiS2Val">6</span></label><input type="range" id="roiS2" min="1" max="52" value="6" step="1" oninput="calcROI()"></div>
-      <div class="roi-s big"><label>Monthly Website Visitors: <span class="roi-val" id="roiVisVal">1,000</span></label><input type="range" id="roiVisitors" min="100" max="20000" value="1000" step="100" oninput="calcROI()"></div>
-      <div class="roi-s" id="roiS3Wrap"><label><span id="roiS3Label">Close Rate (of leads)</span>: <span class="roi-val" id="roiS3Val">40%</span></label><input type="range" id="roiS3" min="10" max="90" value="40" step="5" oninput="calcROI()"></div>
-      <div class="roi-s" id="roiS4Wrap"><label><span id="roiS4Label">Website Investment</span>: <span class="roi-val" id="roiS4Val">$800</span></label><input type="range" id="roiS4" min="600" max="3000" value="800" step="50" oninput="calcROI()"></div>
+      <div class="roi-s big"><label>Your Industry</label>
+        <select id="roiIndustry" onchange="calcROI(true)">
+          <optgroup label="Childcare &amp; Education">
+            <option value="daycare">Daycares &amp; Childcare Centers</option>
+            <option value="preschool">Preschools &amp; Early Learning</option>
+            <option value="private-school">Private Schools &amp; Tutoring</option>
+            <option value="dance-music">Dance Studios &amp; Music Schools</option>
+          </optgroup>
+          <optgroup label="Home &amp; Trade Services">
+            <option value="hvac">HVAC &amp; Plumbing</option>
+            <option value="contractor">General Contractors &amp; Remodeling</option>
+            <option value="roofing">Roofing &amp; Exteriors</option>
+            <option value="landscaping">Landscaping &amp; Lawn Care</option>
+            <option value="cleaning">Cleaning Services</option>
+            <option value="electrician">Electricians</option>
+            <option value="pest">Pest Control</option>
+            <option value="painting">Painting &amp; Drywall</option>
+          </optgroup>
+          <optgroup label="Health &amp; Wellness">
+            <option value="medical">Medical Practices &amp; Clinics</option>
+            <option value="dental">Dental Offices</option>
+            <option value="chiro">Chiropractors &amp; Physical Therapy</option>
+            <option value="medspa">Med Spas &amp; Aesthetics</option>
+            <option value="vet">Veterinary Clinics</option>
+            <option value="mental-health">Therapists &amp; Counselors</option>
+          </optgroup>
+          <optgroup label="Personal Services">
+            <option value="salon">Barbers &amp; Hair Salons</option>
+            <option value="trainer">Personal Trainers &amp; Fitness</option>
+            <option value="photographer">Photographers &amp; Videographers</option>
+            <option value="beauty">Nail Techs, Lash &amp; Esthetics</option>
+            <option value="wedding">Wedding &amp; Event Planners</option>
+          </optgroup>
+          <optgroup label="Professional Services">
+            <option value="attorney">Attorneys &amp; Law Firms</option>
+            <option value="accountant">Accountants &amp; CPAs</option>
+            <option value="financial">Financial Advisors</option>
+            <option value="consultant">Business Consultants</option>
+            <option value="architect">Architects &amp; Engineers</option>
+            <option value="insurance">Insurance Agents</option>
+            <option value="realtor">Real Estate Agents</option>
+            <option value="property-mgmt">Property Management</option>
+          </optgroup>
+          <optgroup label="Retail &amp; Food">
+            <option value="restaurant">Restaurants &amp; Cafes</option>
+            <option value="bar">Bars &amp; Breweries</option>
+            <option value="bakery">Bakeries &amp; Food Trucks</option>
+            <option value="retail">Retail Shops &amp; Boutiques</option>
+            <option value="ecommerce">E-Commerce &amp; Online Stores</option>
+          </optgroup>
+          <optgroup label="Auto &amp; Recreation">
+            <option value="auto-repair">Auto Repair &amp; Detailing</option>
+            <option value="dealer">Car Dealerships</option>
+            <option value="gym">Gyms &amp; Fitness Studios</option>
+            <option value="outdoor">Outdoor &amp; Recreation Businesses</option>
+          </optgroup>
+          <optgroup label="Community &amp; Nonprofit">
+            <option value="church">Churches &amp; Religious Orgs</option>
+            <option value="nonprofit">Nonprofits &amp; Charities</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="roi-s"><label><span id="roiAovLabel">Avg Service Price</span>: <span class="roi-val" id="roiAovVal">$900</span></label><input type="range" id="roiAov" min="50" max="5000" value="900" step="25" oninput="calcROI()"></div>
+      <div class="roi-s"><label><span id="roiS2Label">Avg Enrollment Length</span>: <span class="roi-val" id="roiS2Val">18 mo</span></label><input type="range" id="roiS2" min="1" max="60" value="18" step="1" oninput="calcROI()"></div>
+      <div class="roi-s big"><label>Monthly Website Visitors: <span class="roi-val" id="roiVisVal">800</span></label><input type="range" id="roiVisitors" min="100" max="20000" value="800" step="50" oninput="calcROI()"></div>
+      <div class="roi-s"><label><span id="roiS3Label">Tour-to-Enroll Rate</span>: <span class="roi-val" id="roiS3Val">60%</span></label><input type="range" id="roiS3" min="5" max="95" value="60" step="5" oninput="calcROI()"></div>
+      <div class="roi-s"><label>Website Investment: <span class="roi-val" id="roiS4Val">$800</span></label><input type="range" id="roiS4" min="600" max="3000" value="800" step="50" oninput="calcROI()"></div>
     </div>
+    <div id="roiScenario" style="font-size:13px;color:var(--t2);line-height:1.6;padding:16px;background:rgba(198,164,76,.03);border-radius:var(--r);margin-bottom:20px;border:1px solid var(--bd)"></div>
     <div class="roi-results">
-      <div class="roi-r"><div class="rv-num" id="roiR1">20</div><div class="rv-lbl" id="roiR1L">Current monthly leads</div></div>
-      <div class="roi-r"><div class="rv-num" id="roiR2">45</div><div class="rv-lbl" id="roiR2L">Optimized monthly leads</div></div>
-      <div class="roi-r"><div class="rv-num" id="roiR3">10</div><div class="rv-lbl" id="roiR3L">New clients won / month</div></div>
-      <div class="roi-r"><div class="rv-num" id="roiR4">$5,000</div><div class="rv-lbl" id="roiR4L">Additional monthly revenue</div></div>
-      <div class="roi-r big"><div class="rv-num" id="roiAnn">$60,000</div><div class="rv-lbl">Estimated additional annual revenue</div></div>
-      <div class="roi-payback" id="roiPayback">Your website pays for itself in <strong>5 days</strong></div>
+      <div class="roi-r"><div class="rv-num" id="roiR1">10</div><div class="rv-lbl" id="roiR1L">Current monthly inquiries</div></div>
+      <div class="roi-r"><div class="rv-num" id="roiR2">24</div><div class="rv-lbl" id="roiR2L">With an optimized site</div></div>
+      <div class="roi-r"><div class="rv-num" id="roiR3">8</div><div class="rv-lbl" id="roiR3L">New families enrolled / month</div></div>
+      <div class="roi-r"><div class="rv-num" id="roiR4">$7,200</div><div class="rv-lbl" id="roiR4L">Additional monthly revenue</div></div>
+      <div class="roi-r big"><div class="rv-num" id="roiAnn">$86,400</div><div class="rv-lbl" id="roiAnnL">Estimated additional annual revenue</div></div>
+      <div class="roi-payback" id="roiPayback">Your website pays for itself in <strong>4 days</strong> &mdash; then it's pure profit.</div>
     </div>
-    <div class="roi-tip" id="roiTip">A polished personal brand site with clear CTAs and booking integration converts referrals into paying business before the first call.</div>
+    <div class="roi-tip" id="roiTip"></div>
   </div>
 </div>
 </section>
@@ -1789,127 +1852,574 @@ function toggleVertAcc(button) {
   item.classList.toggle('open');
 }
 
-// ROI Calculator — industry-tailored with extensive inputs
-function calcROI(){
-  var ind=document.getElementById('roiIndustry').value;
-  var cfg={
-    'Self-Employed Professionals':{
-      aovLabel:'Avg Service Price',aovMin:25,aovMax:2000,aovStep:25,aovDef:150,
-      s2Label:'Repeat Visits / Year per Client',s2Min:1,s2Max:52,s2Step:1,s2Def:12,s2Unit:'',
-      s3Label:'Booking Rate (of inquiries)',s3Min:10,s3Max:90,s3Step:5,s3Def:50,s3Unit:'%',
-      cr:0.02,opt:0.05,
-      r1L:'Current monthly inquiries',r2L:'Optimized monthly inquiries',
-      r3L:'New clients booked / month',r4L:'Additional monthly revenue',
-      tip:'Online booking, a polished portfolio, and clear pricing turn website visitors into booked clients — before they ever call. Most solo professionals see 2-3x more bookings within 60 days of launching a custom site.'
-    },
-    'Professional Services':{
-      aovLabel:'Avg Engagement Value',aovMin:500,aovMax:25000,aovStep:250,aovDef:3000,
-      s2Label:'Avg Client Lifetime (months)',s2Min:1,s2Max:36,s2Step:1,s2Def:8,s2Unit:' mo',
-      s3Label:'Close Rate (of consultations)',s3Min:10,s3Max:80,s3Step:5,s3Def:35,s3Unit:'%',
-      cr:0.015,opt:0.035,
-      r1L:'Current monthly consultations',r2L:'Optimized monthly consultations',
-      r3L:'New clients signed / month',r4L:'Lifetime value of new clients / mo',
-      tip:'Case studies, credential displays, and streamlined intake forms build trust before the first meeting. Firms with professional sites close 40% more consultations because prospects arrive pre-sold on credibility.'
-    },
-    'Retail & Hospitality':{
-      aovLabel:'Avg Order / Check Value',aovMin:10,aovMax:500,aovStep:5,aovDef:45,
-      s2Label:'Avg Monthly Visits per Customer',s2Min:1,s2Max:20,s2Step:1,s2Def:3,s2Unit:'x',
-      s3Label:'Online Order Conversion Rate',s3Min:5,s3Max:60,s3Step:5,s3Def:25,s3Unit:'%',
-      cr:0.02,opt:0.055,
-      r1L:'Current monthly online orders',r2L:'Optimized monthly orders',
-      r3L:'New customers converting / month',r4L:'Additional monthly revenue',
-      tip:'Menus with professional photography, one-tap online ordering, and mobile-first design reduce bounce rates by 40%. Restaurants and retailers with custom sites see higher average order values because the experience builds appetite and trust.'
-    },
-    'Home & Trade Services':{
-      aovLabel:'Avg Job Value',aovMin:100,aovMax:15000,aovStep:100,aovDef:1200,
-      s2Label:'Jobs per Customer / Year',s2Min:1,s2Max:12,s2Step:1,s2Def:2,s2Unit:'',
-      s3Label:'Close Rate (of quote requests)',s3Min:10,s3Max:80,s3Step:5,s3Def:40,s3Unit:'%',
-      cr:0.02,opt:0.05,
-      r1L:'Current monthly quote requests',r2L:'Optimized monthly quote requests',
-      r3L:'New jobs booked / month',r4L:'Additional monthly revenue',
-      tip:'Before/after galleries, service area maps, instant quote request forms, and visible licensing convert 3x better than a generic contact page. Emergency service buttons with click-to-call drive immediate conversions from mobile.'
-    },
-    'Community & Education':{
-      aovLabel:'Monthly Tuition / Giving / Fee',aovMin:50,aovMax:3000,aovStep:25,aovDef:900,
-      s2Label:'Avg Retention (months)',s2Min:3,s2Max:60,s2Step:3,s2Def:18,s2Unit:' mo',
-      s3Label:'Enrollment / Signup Rate',s3Min:5,s3Max:60,s3Step:5,s3Def:20,s3Unit:'%',
-      cr:0.012,opt:0.03,
-      r1L:'Current monthly inquiries',r2L:'Optimized monthly inquiries',
-      r3L:'New enrollments / members / month',r4L:'Lifetime value of new members / mo',
-      tip:'Virtual tours, transparent tuition pages, parent testimonials, and easy enrollment forms are the top decision-drivers for families. Daycares with professional sites fill waitlists 60% faster because parents trust what looks established.'
-    }
-  };
-  var c=cfg[ind]||cfg['Self-Employed Professionals'];
-
-  // Update slider 1 (AOV)
-  var s1=document.getElementById('roiAov');
-  document.getElementById('roiAovLabel').textContent=c.aovLabel;
-  if(parseInt(s1.min)!=c.aovMin||parseInt(s1.max)!=c.aovMax){
-    s1.min=c.aovMin;s1.max=c.aovMax;s1.step=c.aovStep;s1.value=c.aovDef;
+// ROI Calculator — comprehensive industry-specific engine
+var roiCfg={
+  // ── CHILDCARE & EDUCATION ──
+  'daycare':{
+    aovL:'Monthly Tuition',aovMin:400,aovMax:2500,aovS:25,aovD:1050,
+    s2L:'Avg Enrollment Length',s2Min:6,s2Max:60,s2S:3,s2D:24,s2U:' mo',
+    s3L:'Tour-to-Enroll Rate',s3Min:20,s3Max:80,s3S:5,s3D:60,
+    cr:.012,opt:.032,visD:800,
+    r1L:'Monthly tour requests now',r2L:'With optimized site',r3L:'New families enrolled / mo',r4L:'Added monthly tuition revenue',
+    annL:'Additional annual tuition revenue (first-year value of new enrollments)',
+    math:'recurring', // monthly_fee * new_clients (monthly tuition directly)
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+'/mo tuition with '+d.s2v+'-month avg enrollment, each new family is worth <strong>$'+d.ltv.toLocaleString()+'</strong> in lifetime revenue. Your optimized site would generate <strong>'+d.gap+'</strong> more tour requests monthly.'},
+    tip:'Virtual tours, transparent tuition, parent testimonials, staff bios, and one-click tour scheduling are the top conversion drivers. Daycares with professional sites fill waitlists 60% faster because parents trust what looks established and organized.'
+  },
+  'preschool':{
+    aovL:'Monthly Tuition',aovMin:300,aovMax:2000,aovS:25,aovD:800,
+    s2L:'Avg Enrollment (months)',s2Min:6,s2Max:36,s2S:3,s2D:18,s2U:' mo',
+    s3L:'Tour-to-Enroll Rate',s3Min:20,s3Max:80,s3S:5,s3D:55,
+    cr:.012,opt:.03,visD:600,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New enrollments / mo',r4L:'Added monthly tuition',
+    annL:'Additional annual tuition revenue',
+    math:'recurring',
+    scenario:function(d){return 'Each enrolled child at $'+d.aov.toLocaleString()+'/mo staying '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. A professional site with curriculum pages and parent resources generates more qualified tours.'},
+    tip:'Curriculum highlights, daily schedule transparency, staff credentials, and parent portal previews differentiate your program. Parents choose the preschool that looks most organized and communicative online.'
+  },
+  'private-school':{
+    aovL:'Annual Tuition',aovMin:3000,aovMax:30000,aovS:500,aovD:12000,
+    s2L:'Avg Years Enrolled',s2Min:1,s2Max:12,s2S:1,s2D:4,s2U:' yr',
+    s3L:'Application-to-Enroll Rate',s3Min:15,s3Max:70,s3S:5,s3D:45,
+    cr:.01,opt:.025,visD:1200,
+    r1L:'Monthly applications now',r2L:'With optimized site',r3L:'New students / mo',r4L:'Annual tuition per new student',
+    annL:'Total new tuition revenue (annual value of all new enrollments)',
+    math:'annual-ltv',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+'/yr for an avg of '+d.s2v+' years, each new student represents <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> in lifetime tuition. Even 1 additional enrollment per month changes your financials.'},
+    tip:'Academic results, campus virtual tours, alumni success stories, and streamlined application portals drive enrollment decisions. Schools that present data-backed outcomes online attract families willing to invest in quality education.'
+  },
+  'dance-music':{
+    aovL:'Monthly Lesson Fee',aovMin:50,aovMax:500,aovS:10,aovD:150,
+    s2L:'Avg Student Retention',s2Min:3,s2Max:48,s2S:3,s2D:18,s2U:' mo',
+    s3L:'Trial-to-Enroll Rate',s3Min:20,s3Max:80,s3S:5,s3D:55,
+    cr:.018,opt:.04,visD:600,
+    r1L:'Monthly trial signups now',r2L:'With optimized site',r3L:'New students enrolled / mo',r4L:'Added monthly lesson revenue',
+    annL:'Additional annual revenue',
+    math:'recurring',
+    scenario:function(d){return 'Each new student at $'+d.aov.toLocaleString()+'/mo staying '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Recital videos and instructor bios on your site convert curious parents into committed families.'},
+    tip:'Class schedules, recital/performance videos, instructor bios, and easy trial sign-up forms turn browsing parents into enrolled students. Studios with polished sites fill classes faster because they look established and professional.'
+  },
+  // ── HOME & TRADE SERVICES ──
+  'hvac':{
+    aovL:'Avg Job Value',aovMin:150,aovMax:12000,aovS:50,aovD:1800,
+    s2L:'Service Calls / Customer / Year',s2Min:1,s2Max:4,s2S:1,s2D:2,s2U:'x',
+    s3L:'Quote-to-Close Rate',s3Min:15,s3Max:70,s3S:5,s3D:40,
+    cr:.02,opt:.05,visD:1000,
+    r1L:'Monthly quote requests now',r2L:'With optimized site',r3L:'New jobs booked / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'job-repeat',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' avg job with '+d.s2v+' service calls per year, each customer generates <strong>$'+(d.aov*d.s2v).toLocaleString()+'/yr</strong>. Emergency click-to-call buttons and instant quote forms drive immediate conversions.'},
+    tip:'Emergency service buttons, service area maps, before/after galleries, licensing badges, and instant quote forms convert 3x better than generic contact pages. HVAC customers search on mobile in a crisis — speed and trust win.'
+  },
+  'contractor':{
+    aovL:'Avg Project Value',aovMin:1000,aovMax:50000,aovS:500,aovD:8000,
+    s2L:'Referral Projects / Customer',s2Min:1,s2Max:5,s2S:1,s2D:2,s2U:'',
+    s3L:'Estimate-to-Close Rate',s3Min:10,s3Max:60,s3S:5,s3D:30,
+    cr:.015,opt:.04,visD:800,
+    r1L:'Monthly estimate requests now',r2L:'With optimized site',r3L:'New projects won / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'job-repeat',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' avg project, every additional project won is meaningful. A portfolio of before/after photos and testimonials builds enough trust that homeowners request estimates without shopping around.'},
+    tip:'Project galleries, detailed service pages, licensing/insurance display, and financing options convert browsers into estimate requests. Contractors with professional sites close at higher rates because homeowners arrive pre-qualified.'
+  },
+  'roofing':{
+    aovL:'Avg Roof Job Value',aovMin:2000,aovMax:25000,aovS:500,aovD:9000,
+    s2L:'Insurance Claims %',s2Min:10,s2Max:80,s2S:5,s2D:40,s2U:'%',
+    s3L:'Inspection-to-Close Rate',s3Min:15,s3Max:60,s3S:5,s3D:35,
+    cr:.018,opt:.045,visD:900,
+    r1L:'Monthly inspection requests now',r2L:'With optimized site',r3L:'New jobs closed / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' per roof, a single extra job per month adds <strong>$'+(d.aov*12).toLocaleString()+'</strong>/yr. Storm damage galleries and insurance guidance pages convert homeowners searching in urgency.'},
+    tip:'Storm damage galleries, free inspection CTAs, insurance process guides, and financing options are the highest-converting elements for roofing sites. Homeowners need to trust you before letting anyone on their roof.'
+  },
+  'landscaping':{
+    aovL:'Avg Monthly Contract',aovMin:100,aovMax:2000,aovS:25,aovD:350,
+    s2L:'Avg Contract Length',s2Min:3,s2Max:24,s2S:1,s2D:9,s2U:' mo',
+    s3L:'Quote-to-Close Rate',s3Min:20,s3Max:70,s3S:5,s3D:45,
+    cr:.02,opt:.05,visD:700,
+    r1L:'Monthly quote requests now',r2L:'With optimized site',r3L:'New contracts / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual contract value',
+    math:'recurring',
+    scenario:function(d){return 'Each new contract at $'+d.aov.toLocaleString()+'/mo for '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Seasonal project galleries and service area pages rank you in local search.'},
+    tip:'Seasonal project galleries, service area maps, and clear service packages with pricing convert visitors into recurring contracts. Landscapers who show their work professionally online win over neighbors who see the yard.'
+  },
+  'cleaning':{
+    aovL:'Avg Monthly Service Fee',aovMin:80,aovMax:1000,aovS:20,aovD:250,
+    s2L:'Avg Client Retention',s2Min:3,s2Max:36,s2S:3,s2D:12,s2U:' mo',
+    s3L:'Quote-to-Close Rate',s3Min:25,s3Max:80,s3S:5,s3D:50,
+    cr:.02,opt:.055,visD:800,
+    r1L:'Monthly quote requests now',r2L:'With optimized site',r3L:'New recurring clients / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'recurring',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+'/mo with '+d.s2v+'-month avg retention, each new client = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Trust signals and easy instant-quote forms are everything for letting someone into your home.'},
+    tip:'Trust badges, background check verification, before/after photos, and instant online quotes drive conversions. Cleaning clients need to trust you in their space — a professional site builds that trust before the first visit.'
+  },
+  'electrician':{
+    aovL:'Avg Service Call Value',aovMin:100,aovMax:5000,aovS:50,aovD:600,
+    s2L:'Return Calls / Customer / Year',s2Min:1,s2Max:4,s2S:1,s2D:2,s2U:'x',
+    s3L:'Call-to-Book Rate',s3Min:25,s3Max:80,s3S:5,s3D:50,
+    cr:.02,opt:.05,visD:700,
+    r1L:'Monthly service requests now',r2L:'With optimized site',r3L:'New jobs booked / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'job-repeat',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' per call with '+d.s2v+' visits per customer per year, each new customer = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Click-to-call and emergency CTAs convert mobile searchers instantly.'},
+    tip:'Emergency service prominently displayed, licensing/insurance badges, service area maps, and click-to-call buttons are essential. Most electrical customers search on mobile in a time-sensitive situation.'
+  },
+  'pest':{
+    aovL:'Avg Monthly Service',aovMin:30,aovMax:300,aovS:10,aovD:75,
+    s2L:'Avg Service Contract',s2Min:3,s2Max:24,s2S:3,s2D:12,s2U:' mo',
+    s3L:'Quote-to-Close Rate',s3Min:25,s3Max:80,s3S:5,s3D:50,
+    cr:.02,opt:.05,visD:800,
+    r1L:'Monthly quote requests now',r2L:'With optimized site',r3L:'New contracts / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual contract value',
+    math:'recurring',
+    scenario:function(d){return 'Each new contract at $'+d.aov.toLocaleString()+'/mo for '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong>. Pest issues are urgent — fast-loading mobile sites with instant booking win.'},
+    tip:'Pest identification guides, treatment descriptions, and instant quote forms convert anxious homeowners. People searching for pest control want immediate solutions — your site needs to load fast and offer one-tap booking.'
+  },
+  'painting':{
+    aovL:'Avg Project Value',aovMin:500,aovMax:15000,aovS:250,aovD:3500,
+    s2L:'Return Projects / Customer',s2Min:1,s2Max:4,s2S:1,s2D:1,s2U:'',
+    s3L:'Estimate-to-Close Rate',s3Min:15,s3Max:60,s3S:5,s3D:35,
+    cr:.018,opt:.045,visD:600,
+    r1L:'Monthly estimate requests now',r2L:'With optimized site',r3L:'New projects / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'job-repeat',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' avg project, even 2-3 extra projects per month makes a major impact. Color consultation tools and before/after galleries showcase quality that justifies premium pricing.'},
+    tip:'Before/after galleries organized by room type, color consultation tools, and clear pricing tiers convert browsers into estimate requests. Painting is visual — show your work and let the photos sell.'
+  },
+  // ── HEALTH & WELLNESS ──
+  'medical':{
+    aovL:'Avg Patient Revenue / Year',aovMin:200,aovMax:5000,aovS:100,aovD:1200,
+    s2L:'Avg Patient Retention',s2Min:1,s2Max:20,s2S:1,s2D:5,s2U:' yr',
+    s3L:'Appointment Booking Rate',s3Min:15,s3Max:60,s3S:5,s3D:35,
+    cr:.012,opt:.03,visD:1500,
+    r1L:'Monthly new patient inquiries now',r2L:'With optimized site',r3L:'New patients / mo',r4L:'Annual value of new patients / mo',
+    annL:'Total new patient value (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each new patient generating $'+d.aov.toLocaleString()+'/yr over '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. Online scheduling and provider bios are now table stakes — patients skip practices without them.'},
+    tip:'Online scheduling, provider bios with credentials, patient portal access, insurance lists, and telehealth options are now expected. Practices without these features lose patients to competitors who make booking effortless.'
+  },
+  'dental':{
+    aovL:'Avg Patient Revenue / Year',aovMin:300,aovMax:4000,aovS:100,aovD:1400,
+    s2L:'Avg Patient Retention',s2Min:1,s2Max:15,s2S:1,s2D:6,s2U:' yr',
+    s3L:'Website-to-Appointment Rate',s3Min:10,s3Max:50,s3S:5,s3D:30,
+    cr:.015,opt:.035,visD:1200,
+    r1L:'Monthly new patient inquiries now',r2L:'With optimized site',r3L:'New patients / mo',r4L:'Annual value of new patients / mo',
+    annL:'Total new patient value (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each new patient at $'+d.aov.toLocaleString()+'/yr for '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. New patient specials and online scheduling directly from your site are the biggest conversion levers.'},
+    tip:'New patient specials, insurance accepted lists, provider profiles, and online scheduling are the top conversion drivers for dental practices. Patients choose the office that makes it easiest to book — not necessarily the closest one.'
+  },
+  'chiro':{
+    aovL:'Avg Visit Fee',aovMin:40,aovMax:300,aovS:10,aovD:75,
+    s2L:'Avg Visits / Patient / Year',s2Min:4,s2Max:52,s2S:2,s2D:24,s2U:'',
+    s3L:'Booking Rate (of inquiries)',s3Min:20,s3Max:70,s3S:5,s3D:45,
+    cr:.015,opt:.04,visD:800,
+    r1L:'Monthly new patient inquiries now',r2L:'With optimized site',r3L:'New patients / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-based',
+    scenario:function(d){return 'At $'+d.aov+'/visit with '+d.s2v+' visits/yr per patient, each new patient = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Condition-specific pages and online booking capture patients searching for pain relief solutions.'},
+    tip:'Condition-specific pages (back pain, sports injuries, etc.), technique explanations, patient testimonials, and frictionless online booking convert searchers who are actively in pain and looking for solutions.'
+  },
+  'medspa':{
+    aovL:'Avg Treatment Value',aovMin:100,aovMax:3000,aovS:50,aovD:450,
+    s2L:'Treatments / Client / Year',s2Min:2,s2Max:24,s2S:1,s2D:6,s2U:'',
+    s3L:'Consultation Booking Rate',s3Min:10,s3Max:50,s3S:5,s3D:25,
+    cr:.015,opt:.04,visD:1000,
+    r1L:'Monthly consultation requests now',r2L:'With optimized site',r3L:'New clients / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-based',
+    scenario:function(d){return 'At $'+d.aov+'/treatment with '+d.s2v+' treatments/yr, each new client = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Before/after galleries and treatment menus sell the results before the first consultation.'},
+    tip:'Before/after galleries, treatment menus with clear pricing, provider credentials, and online consultation booking are non-negotiable. Med spa clients research extensively — your site is your showroom.'
+  },
+  'vet':{
+    aovL:'Avg Annual Spend / Pet Owner',aovMin:200,aovMax:3000,aovS:50,aovD:700,
+    s2L:'Avg Client Retention',s2Min:2,s2Max:15,s2S:1,s2D:7,s2U:' yr',
+    s3L:'Appointment Booking Rate',s3Min:20,s3Max:70,s3S:5,s3D:45,
+    cr:.015,opt:.04,visD:800,
+    r1L:'Monthly new client inquiries now',r2L:'With optimized site',r3L:'New pet owners / mo',r4L:'Annual value of new clients / mo',
+    annL:'Total new client lifetime value (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each pet owner spending $'+d.aov.toLocaleString()+'/yr for '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. Pet parents choose vets based on warmth, transparency, and ease of booking online.'},
+    tip:'Team photos, service menus, emergency info, pet health resources, and online appointment booking win pet parents. People choose vets they feel emotionally connected to — your site needs to feel warm and trustworthy.'
+  },
+  'mental-health':{
+    aovL:'Avg Session Fee',aovMin:75,aovMax:300,aovS:10,aovD:150,
+    s2L:'Avg Sessions / Client / Year',s2Min:8,s2Max:52,s2S:4,s2D:36,s2U:'',
+    s3L:'Inquiry-to-Client Rate',s3Min:20,s3Max:70,s3S:5,s3D:40,
+    cr:.012,opt:.03,visD:600,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New clients / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-based',
+    scenario:function(d){return 'At $'+d.aov+'/session with '+d.s2v+' sessions/yr, each client = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Specialization pages and a warm, approachable design help clients feel safe reaching out.'},
+    tip:'Specialization pages, therapist bios with warm photography, insurance/rates transparency, and easy contact forms reduce the friction of reaching out. People searching for therapy need to feel safe before they ever book.'
+  },
+  // ── PERSONAL SERVICES ──
+  'salon':{
+    aovL:'Avg Service Price',aovMin:15,aovMax:200,aovS:5,aovD:45,
+    s2L:'Visits per Client / Year',s2Min:4,s2Max:24,s2S:1,s2D:12,s2U:'',
+    s3L:'Booking Rate',s3Min:25,s3Max:80,s3S:5,s3D:55,
+    cr:.02,opt:.055,visD:800,
+    r1L:'Monthly new client inquiries now',r2L:'With optimized site',r3L:'New clients booked / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-based',
+    scenario:function(d){return 'At $'+d.aov+'/service with '+d.s2v+' visits/yr, each new regular client = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Online booking and a portfolio of your best cuts convert scrollers into booked appointments.'},
+    tip:'Portfolio galleries, online booking integration, service menus with pricing, and stylist/barber bios turn Instagram followers into booked clients. Salons with professional sites fill chairs faster because the experience starts online.'
+  },
+  'trainer':{
+    aovL:'Monthly Package Price',aovMin:100,aovMax:1500,aovS:25,aovD:400,
+    s2L:'Avg Client Retention',s2Min:2,s2Max:24,s2S:1,s2D:8,s2U:' mo',
+    s3L:'Consultation-to-Sign Rate',s3Min:20,s3Max:70,s3S:5,s3D:45,
+    cr:.02,opt:.05,visD:600,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New clients signed / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'recurring',
+    scenario:function(d){return 'Each client at $'+d.aov.toLocaleString()+'/mo for '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Transformation galleries and program breakdowns sell results over promises.'},
+    tip:'Transformation galleries, program breakdowns, trainer credentials, and online consultation booking convert visitors. Trainers who show client results and make the first step easy consistently outperform word-of-mouth alone.'
+  },
+  'photographer':{
+    aovL:'Avg Booking Value',aovMin:200,aovMax:8000,aovS:100,aovD:1500,
+    s2L:'Repeat/Referral Rate',s2Min:10,s2Max:60,s2S:5,s2D:25,s2U:'%',
+    s3L:'Inquiry-to-Book Rate',s3Min:15,s3Max:60,s3S:5,s3D:35,
+    cr:.015,opt:.04,visD:800,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New bookings / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' per booking, even 2-3 additional bookings per month = <strong>$'+(d.aov*3).toLocaleString()+'</strong>+/mo. Your portfolio IS your sales pitch — it needs to load fast, look stunning, and make booking effortless.'},
+    tip:'Full-screen portfolio galleries, package pricing, client testimonials, and seamless booking forms are essential. Photographers are judged entirely on visual presentation — your website IS your portfolio and it needs to be flawless.'
+  },
+  'beauty':{
+    aovL:'Avg Service Price',aovMin:20,aovMax:300,aovS:5,aovD:65,
+    s2L:'Visits per Client / Year',s2Min:4,s2Max:26,s2S:1,s2D:12,s2U:'',
+    s3L:'Booking Rate',s3Min:25,s3Max:80,s3S:5,s3D:50,
+    cr:.02,opt:.05,visD:600,
+    r1L:'Monthly new client inquiries now',r2L:'With optimized site',r3L:'New clients booked / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-based',
+    scenario:function(d){return 'At $'+d.aov+'/service with '+d.s2v+' visits/yr, each new regular = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Service galleries and instant booking move you off Instagram DMs and into a professional pipeline.'},
+    tip:'Service galleries, online booking, pricing transparency, and a clean brand presence elevate you beyond the Instagram DM hustle. Clients want to see your work AND book easily — your site should do both in under 30 seconds.'
+  },
+  'wedding':{
+    aovL:'Avg Package Value',aovMin:1000,aovMax:20000,aovS:500,aovD:5000,
+    s2L:'Peak Season (months)',s2Min:3,s2Max:10,s2S:1,s2D:7,s2U:' mo',
+    s3L:'Inquiry-to-Book Rate',s3Min:10,s3Max:50,s3S:5,s3D:25,
+    cr:.01,opt:.03,visD:1000,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New bookings / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+'/wedding across '+d.s2v+' peak months, each additional booking = major revenue. Couples compare 5-10 planners online before reaching out — your site needs to be the one they remember.'},
+    tip:'Past wedding galleries, vendor partnerships, package tiers, testimonials from couples, and a seamless inquiry form are essential. Brides and grooms spend weeks researching online — your site needs to feel aspirational and easy to navigate.'
+  },
+  // ── PROFESSIONAL SERVICES ──
+  'attorney':{
+    aovL:'Avg Case/Engagement Value',aovMin:1000,aovMax:50000,aovS:500,aovD:5000,
+    s2L:'Avg Client Lifetime',s2Min:1,s2Max:10,s2S:1,s2D:3,s2U:' yr',
+    s3L:'Consultation-to-Retain Rate',s3Min:10,s3Max:60,s3S:5,s3D:30,
+    cr:.012,opt:.028,visD:1500,
+    r1L:'Monthly consultations now',r2L:'With optimized site',r3L:'New clients retained / mo',r4L:'Engagement value / mo',
+    annL:'Total new client value (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each client worth $'+d.aov.toLocaleString()+'/yr over '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. Practice area pages and attorney bios with credentials convert researchers into consultations.'},
+    tip:'Practice area pages, attorney bios with credentials, case results (where allowed), and clear consultation CTAs build the credibility that converts. People hiring an attorney need to feel confident before the first call.'
+  },
+  'accountant':{
+    aovL:'Avg Annual Client Fee',aovMin:500,aovMax:10000,aovS:250,aovD:2500,
+    s2L:'Avg Client Retention',s2Min:2,s2Max:15,s2S:1,s2D:7,s2U:' yr',
+    s3L:'Consultation-to-Client Rate',s3Min:15,s3Max:60,s3S:5,s3D:40,
+    cr:.012,opt:.03,visD:800,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New clients / mo',r4L:'Annual value of new clients / mo',
+    annL:'Total new client lifetime value (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each client at $'+d.aov.toLocaleString()+'/yr for '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. Service packages and industry-specific expertise pages attract higher-value clients.'},
+    tip:'Service tiers, industry specialization pages, secure client portals, and tax deadline resources establish authority. Businesses hiring accountants want expertise and reliability — your site needs to demonstrate both immediately.'
+  },
+  'financial':{
+    aovL:'Avg Annual Advisory Fee',aovMin:1000,aovMax:15000,aovS:500,aovD:4000,
+    s2L:'Avg Client Retention',s2Min:3,s2Max:20,s2S:1,s2D:10,s2U:' yr',
+    s3L:'Meeting-to-Client Rate',s3Min:10,s3Max:50,s3S:5,s3D:30,
+    cr:.01,opt:.025,visD:1000,
+    r1L:'Monthly meeting requests now',r2L:'With optimized site',r3L:'New clients / mo',r4L:'Annual fee of new clients / mo',
+    annL:'Total new client lifetime value (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each client at $'+d.aov.toLocaleString()+'/yr for '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. Compliance-friendly content, credentials, and a professional first impression are everything.'},
+    tip:'Credentials display, fiduciary statement, educational content, client testimonials (where allowed), and a professional intake process convert prospects who are trusting you with their financial future.'
+  },
+  'consultant':{
+    aovL:'Avg Engagement Value',aovMin:1000,aovMax:30000,aovS:500,aovD:5000,
+    s2L:'Avg Engagement Length',s2Min:1,s2Max:12,s2S:1,s2D:4,s2U:' mo',
+    s3L:'Proposal-to-Close Rate',s3Min:10,s3Max:50,s3S:5,s3D:30,
+    cr:.012,opt:.03,visD:800,
+    r1L:'Monthly inquiries now',r2L:'With optimized site',r3L:'New clients signed / mo',r4L:'Added monthly engagement value',
+    annL:'Additional annual revenue',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' per engagement, each new client is significant. Thought leadership content and case studies pre-qualify prospects so they arrive ready to buy, not research.'},
+    tip:'Case studies with measurable results, thought leadership content, speaking/media features, and a clear engagement process build authority. Consultants who demonstrate expertise online command premium fees.'
+  },
+  'architect':{
+    aovL:'Avg Project Fee',aovMin:5000,aovMax:100000,aovS:2500,aovD:25000,
+    s2L:'Projects per Client',s2Min:1,s2Max:5,s2S:1,s2D:1,s2U:'',
+    s3L:'Inquiry-to-Award Rate',s3Min:10,s3Max:40,s3S:5,s3D:20,
+    cr:.01,opt:.025,visD:600,
+    r1L:'Monthly project inquiries now',r2L:'With optimized site',r3L:'New projects won / mo',r4L:'Added monthly fee revenue',
+    annL:'Additional annual fee revenue',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' per project, even 1 additional project per quarter is transformative. A stunning portfolio is your single most powerful business development tool.'},
+    tip:'Portfolio galleries organized by project type, design process explanation, awards/publications, and a clear inquiry process convert visitors. Architects are hired on visual impact and reputation — your site IS your pitch.'
+  },
+  'insurance':{
+    aovL:'Avg Annual Premium Commission',aovMin:200,aovMax:3000,aovS:50,aovD:800,
+    s2L:'Avg Policy Retention',s2Min:2,s2Max:15,s2S:1,s2D:6,s2U:' yr',
+    s3L:'Quote-to-Close Rate',s3Min:15,s3Max:50,s3S:5,s3D:30,
+    cr:.015,opt:.035,visD:1000,
+    r1L:'Monthly quote requests now',r2L:'With optimized site',r3L:'New policies / mo',r4L:'Annual commission of new policies / mo',
+    annL:'Total new policy lifetime commission (annual)',
+    math:'annual-ltv',
+    scenario:function(d){return 'Each policy generating $'+d.aov.toLocaleString()+'/yr in commission for '+d.s2v+' years = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong> lifetime value. Coverage comparison tools and easy quote forms out-convert every competitor still using a template.'},
+    tip:'Coverage comparisons, instant quote forms, carrier logos, client testimonials, and local community involvement build trust. Insurance is about relationships — your site should feel personal and reliable.'
+  },
+  'realtor':{
+    aovL:'Avg Commission per Sale',aovMin:2000,aovMax:25000,aovS:500,aovD:8000,
+    s2L:'Deals Closed / Year',s2Min:4,s2Max:50,s2S:2,s2D:12,s2U:'',
+    s3L:'Lead-to-Close Rate',s3Min:5,s3Max:30,s3S:5,s3D:10,
+    cr:.012,opt:.03,visD:1500,
+    r1L:'Monthly leads now',r2L:'With optimized site',r3L:'Additional closings / mo',r4L:'Added monthly commission',
+    annL:'Additional annual commission',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' per closing, 1-2 additional deals per month = <strong>$'+(d.aov*2).toLocaleString()+'</strong>+/mo. A personal brand site with neighborhood guides and market reports outperforms any portal profile.'},
+    tip:'Neighborhood guides, market reports, featured listings, client video testimonials, and a prominent personal brand differentiate you from every other agent on Zillow. Your own site is the asset that no platform can take away.'
+  },
+  'property-mgmt':{
+    aovL:'Avg Monthly Management Fee',aovMin:50,aovMax:500,aovS:25,aovD:150,
+    s2L:'Avg Contract Length',s2Min:6,s2Max:60,s2S:6,s2D:24,s2U:' mo',
+    s3L:'Owner Signup Rate',s3Min:15,s3Max:50,s3S:5,s3D:30,
+    cr:.012,opt:.03,visD:800,
+    r1L:'Monthly owner inquiries now',r2L:'With optimized site',r3L:'New contracts / mo',r4L:'Added monthly management fees',
+    annL:'Additional annual management fee revenue',
+    math:'recurring',
+    scenario:function(d){return 'Each property at $'+d.aov.toLocaleString()+'/mo for '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Owner-focused content explaining your value proposition converts skeptical landlords into long-term clients.'},
+    tip:'Owner-focused ROI content, property marketing samples, tenant screening process, maintenance reporting examples, and clear fee structures convert property owners who are comparison-shopping management companies.'
+  },
+  // ── RETAIL & FOOD ──
+  'restaurant':{
+    aovL:'Avg Check Value',aovMin:10,aovMax:150,aovS:5,aovD:35,
+    s2L:'Monthly Visits per Regular',s2Min:1,s2Max:12,s2S:1,s2D:3,s2U:'x/mo',
+    s3L:'Site-to-Visit Rate',s3Min:10,s3Max:50,s3S:5,s3D:25,
+    cr:.025,opt:.06,visD:2000,
+    r1L:'Monthly online-driven visits now',r2L:'With optimized site',r3L:'New customers / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'repeat-monthly',
+    scenario:function(d){return 'At $'+d.aov+' avg check with regulars coming '+d.s2v+'x/mo, each new regular = <strong>$'+(d.aov*d.s2v*12).toLocaleString()+'</strong>/yr. Menu photography, online ordering, and reservation links turn searches into seats.'},
+    tip:'Professional menu photography, online ordering integration, reservation links, hours/location prominently displayed, and Google Business optimization drive foot traffic. People decide where to eat based on how the food looks online.'
+  },
+  'bar':{
+    aovL:'Avg Tab Value',aovMin:15,aovMax:100,aovS:5,aovD:40,
+    s2L:'Monthly Visits per Regular',s2Min:2,s2Max:16,s2S:1,s2D:4,s2U:'x/mo',
+    s3L:'Site-to-Visit Rate',s3Min:10,s3Max:40,s3S:5,s3D:20,
+    cr:.025,opt:.055,visD:1500,
+    r1L:'Monthly online-driven visits now',r2L:'With optimized site',r3L:'New regulars / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'repeat-monthly',
+    scenario:function(d){return 'At $'+d.aov+' avg tab with regulars visiting '+d.s2v+'x/mo, each new regular = <strong>$'+(d.aov*d.s2v*12).toLocaleString()+'</strong>/yr. Event calendars and vibe-focused photography bring people through the door.'},
+    tip:'Event calendars, atmosphere photography, drink menus, live music schedules, and hours/location convert browsers into visitors. Bars and breweries sell an experience — your site needs to communicate the vibe.'
+  },
+  'bakery':{
+    aovL:'Avg Order Value',aovMin:5,aovMax:200,aovS:5,aovD:25,
+    s2L:'Orders per Customer / Month',s2Min:1,s2Max:12,s2S:1,s2D:2,s2U:'x/mo',
+    s3L:'Site-to-Order Rate',s3Min:15,s3Max:50,s3S:5,s3D:30,
+    cr:.025,opt:.06,visD:800,
+    r1L:'Monthly online orders now',r2L:'With optimized site',r3L:'New customers / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'repeat-monthly',
+    scenario:function(d){return 'At $'+d.aov+' avg with customers ordering '+d.s2v+'x/mo, each new regular = <strong>$'+(d.aov*d.s2v*12).toLocaleString()+'</strong>/yr. Product photography and online ordering make it effortless to buy.'},
+    tip:'Product photography, online ordering for pickup/delivery, catering menus, custom order forms, and seasonal specials drive orders. Food businesses live and die by how appetizing their products look online.'
+  },
+  'retail':{
+    aovL:'Avg Transaction Value',aovMin:15,aovMax:500,aovS:5,aovD:65,
+    s2L:'Purchases per Customer / Year',s2Min:1,s2Max:12,s2S:1,s2D:4,s2U:'x/yr',
+    s3L:'Site-to-Store Rate',s3Min:10,s3Max:40,s3S:5,s3D:20,
+    cr:.02,opt:.045,visD:1000,
+    r1L:'Monthly online-driven visits now',r2L:'With optimized site',r3L:'New customers / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-annual',
+    scenario:function(d){return 'At $'+d.aov+' avg with '+d.s2v+' purchases/yr per customer, each new regular = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Product showcases and local SEO drive foot traffic from online research.'},
+    tip:'Product showcases, store hours/location, new arrival features, loyalty program info, and local SEO drive foot traffic. Retail shoppers research online before visiting in person — your site needs to make them want to come in.'
+  },
+  'ecommerce':{
+    aovL:'Avg Order Value',aovMin:20,aovMax:500,aovS:5,aovD:75,
+    s2L:'Orders per Customer / Year',s2Min:1,s2Max:12,s2S:1,s2D:3,s2U:'x/yr',
+    s3L:'Cart Conversion Rate',s3Min:1,s3Max:10,s3S:1,s3D:3,
+    cr:.015,opt:.035,visD:3000,
+    r1L:'Monthly orders now',r2L:'With optimized site',r3L:'Additional orders / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-annual',
+    scenario:function(d){return 'At $'+d.aov+' AOV with '+d.s2v+' orders/yr per customer = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr per customer. Faster load times and optimized checkout flows alone can increase conversions 20-30%.'},
+    tip:'Product photography, one-page checkout, trust badges, abandoned cart recovery, and fast load times (under 2 seconds) are the highest-leverage improvements for e-commerce. Every 100ms of load time costs conversions.'
+  },
+  // ── AUTO & RECREATION ──
+  'auto-repair':{
+    aovL:'Avg Repair Value',aovMin:100,aovMax:3000,aovS:50,aovD:450,
+    s2L:'Visits per Customer / Year',s2Min:1,s2Max:6,s2S:1,s2D:3,s2U:'x',
+    s3L:'Quote-to-Approve Rate',s3Min:25,s3Max:80,s3S:5,s3D:50,
+    cr:.02,opt:.05,visD:800,
+    r1L:'Monthly quote/appointment requests now',r2L:'With optimized site',r3L:'New customers / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'job-repeat',
+    scenario:function(d){return 'At $'+d.aov+'/visit with '+d.s2v+' visits/yr, each new regular = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr. Transparent pricing and online appointment scheduling build the trust that gets customers off Yelp and onto your site.'},
+    tip:'Service menus with transparent pricing, online appointment scheduling, certifications displayed, and customer reviews convert car owners searching for a trustworthy shop. Trust is everything in auto repair.'
+  },
+  'dealer':{
+    aovL:'Avg Vehicle Profit',aovMin:1000,aovMax:10000,aovS:500,aovD:3500,
+    s2L:'Service Visits / Year Post-Sale',s2Min:1,s2Max:6,s2S:1,s2D:3,s2U:'x',
+    s3L:'Inquiry-to-Sale Rate',s3Min:5,s3Max:30,s3S:5,s3D:15,
+    cr:.01,opt:.025,visD:3000,
+    r1L:'Monthly online inquiries now',r2L:'With optimized site',r3L:'Additional sales / mo',r4L:'Added monthly profit',
+    annL:'Additional annual profit',
+    math:'onetimejob',
+    scenario:function(d){return 'At $'+d.aov.toLocaleString()+' profit per vehicle, every additional unit sold moves the bottom line significantly. Clean inventory displays with filtering and trade-in tools keep buyers on your site instead of Autotrader.'},
+    tip:'Inventory search with filters, trade-in value tools, financing calculators, and video walkarounds keep buyers on your site. Dealerships with great websites reduce their dependency on third-party listing fees.'
+  },
+  'gym':{
+    aovL:'Monthly Membership Fee',aovMin:20,aovMax:300,aovS:5,aovD:65,
+    s2L:'Avg Member Retention',s2Min:3,s2Max:36,s2S:3,s2D:12,s2U:' mo',
+    s3L:'Trial-to-Member Rate',s3Min:20,s3Max:70,s3S:5,s3D:45,
+    cr:.02,opt:.05,visD:1000,
+    r1L:'Monthly trial signups now',r2L:'With optimized site',r3L:'New members / mo',r4L:'Added monthly dues',
+    annL:'Additional annual membership revenue',
+    math:'recurring',
+    scenario:function(d){return 'Each member at $'+d.aov+'/mo for '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Class schedules, virtual tours, and free trial CTAs convert browsers into members.'},
+    tip:'Class schedules, facility photos/virtual tours, trainer bios, free trial CTAs, and member transformation stories convert visitors. People choosing a gym want to see the space, the community, and the results before committing.'
+  },
+  'outdoor':{
+    aovL:'Avg Booking/Sale Value',aovMin:50,aovMax:2000,aovS:25,aovD:200,
+    s2L:'Bookings per Customer / Year',s2Min:1,s2Max:12,s2S:1,s2D:3,s2U:'x',
+    s3L:'Booking Conversion Rate',s3Min:10,s3Max:50,s3S:5,s3D:25,
+    cr:.02,opt:.05,visD:1000,
+    r1L:'Monthly bookings now',r2L:'With optimized site',r3L:'Additional bookings / mo',r4L:'Added monthly revenue',
+    annL:'Additional annual revenue',
+    math:'visit-annual',
+    scenario:function(d){return 'At $'+d.aov+' per booking with '+d.s2v+' bookings/yr per customer = <strong>$'+(d.aov*d.s2v).toLocaleString()+'</strong>/yr per customer. Adventure photography and seamless booking drive action.'},
+    tip:'Experience photography, availability calendars, group booking options, weather/season guides, and one-click reservation convert adventure seekers. Outdoor businesses sell excitement — your site needs to capture that energy.'
+  },
+  // ── COMMUNITY & NONPROFIT ──
+  'church':{
+    aovL:'Avg Monthly Giving per Household',aovMin:50,aovMax:1000,aovS:25,aovD:200,
+    s2L:'Avg Engagement (years)',s2Min:1,s2Max:20,s2S:1,s2D:7,s2U:' yr',
+    s3L:'Visitor-to-Member Rate',s3Min:10,s3Max:50,s3S:5,s3D:25,
+    cr:.01,opt:.025,visD:600,
+    r1L:'Monthly new visitor contacts now',r2L:'With optimized site',r3L:'New households joining / mo',r4L:'Added monthly giving',
+    annL:'Additional annual giving',
+    math:'recurring',
+    scenario:function(d){return 'Each household giving $'+d.aov+'/mo for '+d.s2v+' years = <strong>$'+(d.aov*d.s2v*12).toLocaleString()+'</strong> lifetime impact. Service times, sermon archives, and a welcoming first impression bring new families through the doors.'},
+    tip:'Service times, sermon archives, ministry pages, events calendar, and online giving make it easy for new families to take the first step. Churches with warm, modern sites grow faster because the website is often the first visit.'
+  },
+  'nonprofit':{
+    aovL:'Avg Monthly Donation',aovMin:10,aovMax:500,aovS:10,aovD:50,
+    s2L:'Avg Donor Retention',s2Min:6,s2Max:60,s2S:6,s2D:24,s2U:' mo',
+    s3L:'Visitor-to-Donor Rate',s3Min:2,s3Max:20,s3S:1,s3D:5,
+    cr:.008,opt:.02,visD:1500,
+    r1L:'Monthly new donor contacts now',r2L:'With optimized site',r3L:'New recurring donors / mo',r4L:'Added monthly donations',
+    annL:'Additional annual donations',
+    math:'recurring',
+    scenario:function(d){return 'Each recurring donor at $'+d.aov+'/mo for '+d.s2v+' months = <strong>$'+d.ltv.toLocaleString()+'</strong> lifetime value. Impact stories and frictionless giving pages turn supporters into sustaining donors.'},
+    tip:'Impact metrics, beneficiary stories, transparent financials, easy recurring donation setup, and volunteer sign-up forms convert supporters. Nonprofits that show measurable impact raise more because donors trust where the money goes.'
   }
-  var aov=parseInt(s1.value)||c.aovDef;
+};
+
+function calcROI(industryChanged){
+  var ind=document.getElementById('roiIndustry').value;
+  var c=roiCfg[ind]||roiCfg['daycare'];
+
+  // Update slider configs
+  var s1=document.getElementById('roiAov');
+  document.getElementById('roiAovLabel').textContent=c.aovL;
+  if(industryChanged||parseInt(s1.min)!=c.aovMin){
+    s1.min=c.aovMin;s1.max=c.aovMax;s1.step=c.aovS;s1.value=c.aovD;
+  }
+  var aov=parseInt(s1.value)||c.aovD;
   document.getElementById('roiAovVal').textContent='$'+aov.toLocaleString();
 
-  // Update slider 2 (industry-specific)
   var s2=document.getElementById('roiS2');
-  document.getElementById('roiS2Label').textContent=c.s2Label;
-  if(parseInt(s2.min)!=c.s2Min||parseInt(s2.max)!=c.s2Max){
-    s2.min=c.s2Min;s2.max=c.s2Max;s2.step=c.s2Step;s2.value=c.s2Def;
+  document.getElementById('roiS2Label').textContent=c.s2L;
+  if(industryChanged||parseInt(s2.min)!=c.s2Min){
+    s2.min=c.s2Min;s2.max=c.s2Max;s2.step=c.s2S;s2.value=c.s2Def||c.s2D;
   }
-  var s2v=parseInt(s2.value)||c.s2Def;
-  document.getElementById('roiS2Val').textContent=s2v+c.s2Unit;
+  var s2v=parseInt(s2.value)||c.s2D;
+  document.getElementById('roiS2Val').textContent=s2v+(c.s2U||'');
 
-  // Update slider 3 (close/conversion rate)
   var s3=document.getElementById('roiS3');
-  document.getElementById('roiS3Label').textContent=c.s3Label;
-  if(parseInt(s3.min)!=c.s3Min||parseInt(s3.max)!=c.s3Max){
-    s3.min=c.s3Min;s3.max=c.s3Max;s3.step=c.s3Step;s3.value=c.s3Def;
+  document.getElementById('roiS3Label').textContent=c.s3L;
+  if(industryChanged||parseInt(s3.min)!=c.s3Min){
+    s3.min=c.s3Min;s3.max=c.s3Max;s3.step=c.s3S;s3.value=c.s3Def||c.s3D;
   }
-  var s3v=parseInt(s3.value)||c.s3Def;
-  document.getElementById('roiS3Val').textContent=s3v+c.s3Unit;
+  var s3v=parseInt(s3.value)||c.s3D;
+  document.getElementById('roiS3Val').textContent=s3v+'%';
 
-  // Visitors
-  var vis=parseInt(document.getElementById('roiVisitors').value)||1000;
+  var visEl=document.getElementById('roiVisitors');
+  if(industryChanged) visEl.value=c.visD||1000;
+  var vis=parseInt(visEl.value)||1000;
   document.getElementById('roiVisVal').textContent=vis.toLocaleString();
 
-  // Investment
   var inv=parseInt(document.getElementById('roiS4').value)||800;
   document.getElementById('roiS4Val').textContent='$'+inv.toLocaleString();
 
-  // Calculate
-  var curLeads=Math.round(vis*c.cr);
-  var optLeads=Math.round(vis*c.opt);
+  // Core calculation
+  var curLeads=Math.max(1,Math.round(vis*c.cr));
+  var optLeads=Math.max(curLeads+1,Math.round(vis*c.opt));
+  var gap=optLeads-curLeads;
   var closeRate=s3v/100;
-  var newClients=Math.round((optLeads-curLeads)*closeRate);
-  if(newClients<1)newClients=1;
+  var newClients=Math.max(1,Math.round(gap*closeRate));
 
-  // Revenue varies by industry logic
-  var monthlyRev,annualRev;
-  if(ind==='Professional Services'||ind==='Community & Education'){
-    // Lifetime value matters: engagement value * retention months
-    var ltv=aov*s2v;
-    monthlyRev=newClients*ltv;
-    annualRev=monthlyRev*12;
-  } else if(ind==='Retail & Hospitality'){
-    // Repeat visits per month * order value
-    monthlyRev=newClients*aov*s2v;
-    annualRev=monthlyRev*12;
-  } else {
-    // Self-employed & trades: service price * repeat visits/year, shown monthly
-    var yearlyPerClient=aov*s2v;
-    monthlyRev=Math.round(newClients*yearlyPerClient/12)*12; // normalize
-    monthlyRev=newClients*aov*s2v;
-    annualRev=monthlyRev*12;
+  // Revenue by math type
+  var monthlyRev=0,annualRev=0,ltv=0;
+  switch(c.math){
+    case 'recurring': // monthly_fee * new_clients (tuition, gym, management fees)
+      ltv=aov*s2v;
+      monthlyRev=newClients*aov;
+      annualRev=monthlyRev*12;
+      break;
+    case 'annual-ltv': // annual_value * retention_years (medical, legal, accounting)
+      ltv=aov*s2v;
+      monthlyRev=Math.round(newClients*aov/12);
+      annualRev=newClients*aov;
+      break;
+    case 'visit-based': // per_visit * visits_per_year / 12 (chiro, salon, beauty)
+      ltv=aov*s2v;
+      monthlyRev=Math.round(newClients*aov*s2v/12);
+      annualRev=newClients*aov*s2v;
+      break;
+    case 'repeat-monthly': // check * monthly_visits (restaurants, bars)
+      ltv=aov*s2v*12;
+      monthlyRev=newClients*aov*s2v;
+      annualRev=monthlyRev*12;
+      break;
+    case 'visit-annual': // value * annual_visits (retail, e-commerce, outdoor)
+      ltv=aov*s2v;
+      monthlyRev=Math.round(newClients*aov*s2v/12);
+      annualRev=newClients*aov*s2v;
+      break;
+    case 'job-repeat': // job_value * jobs_per_year (HVAC, electrician, auto)
+      ltv=aov*s2v;
+      monthlyRev=Math.round(newClients*aov*s2v/12);
+      annualRev=newClients*aov*s2v;
+      break;
+    case 'onetimejob': // single project value (contractor, photographer, wedding)
+      ltv=aov;
+      monthlyRev=newClients*aov;
+      annualRev=monthlyRev*12;
+      break;
   }
 
-  // Payback period
-  var dailyRev=monthlyRev/30;
+  // Payback
+  var dailyRev=annualRev/365;
   var paybackDays=dailyRev>0?Math.ceil(inv/dailyRev):999;
   var paybackText;
-  if(paybackDays<=1) paybackText='<strong>less than 1 day</strong>';
+  if(paybackDays<=1) paybackText='<strong>less than a day</strong>';
   else if(paybackDays<=30) paybackText='<strong>'+paybackDays+' days</strong>';
-  else if(paybackDays<=60) paybackText='<strong>'+Math.ceil(paybackDays/7)+' weeks</strong>';
-  else paybackText='<strong>'+Math.ceil(paybackDays/30)+' months</strong>';
+  else if(paybackDays<=90) paybackText='<strong>'+Math.ceil(paybackDays/7)+' weeks</strong>';
+  else paybackText='<strong>'+Math.round(paybackDays/30)+' months</strong>';
+
+  var roiMultiple=annualRev>0?Math.round(annualRev/inv):0;
 
   // Update UI
   document.getElementById('roiR1').textContent=curLeads;
@@ -1918,10 +2428,12 @@ function calcROI(){
   document.getElementById('roiR2L').textContent=c.r2L;
   document.getElementById('roiR3').textContent=newClients;
   document.getElementById('roiR3L').textContent=c.r3L;
-  document.getElementById('roiR4').textContent='$'+monthlyRev.toLocaleString();
+  document.getElementById('roiR4').textContent='$'+(c.math==='annual-ltv'?annualRev:monthlyRev).toLocaleString();
   document.getElementById('roiR4L').textContent=c.r4L;
   document.getElementById('roiAnn').textContent='$'+annualRev.toLocaleString();
-  document.getElementById('roiPayback').innerHTML='Your website pays for itself in '+paybackText;
+  document.getElementById('roiAnnL').textContent=c.annL||'Estimated additional annual revenue';
+  document.getElementById('roiPayback').innerHTML='Your website pays for itself in '+paybackText+(roiMultiple>1?' &mdash; that\'s a <strong>'+roiMultiple+'x return</strong> on your investment.':'');
+  document.getElementById('roiScenario').innerHTML=c.scenario({aov:aov,s2v:s2v,s3v:s3v,vis:vis,gap:gap,ltv:ltv,newClients:newClients});
   document.getElementById('roiTip').textContent=c.tip;
 }
 
