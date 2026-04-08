@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aesthetic Maven | Concierge MedSpa — Raleigh, NC</title>
+<meta name="description" content="Aesthetic injections, IV therapy, and advanced skincare by Shekeya Gipson, RN BSN. Raleigh's concierge MedSpa experience. Natural results. Clinical precision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F5EFE4;
+  --cream-warm:#FAF6EF;
+  --black:#0A0A0A;
+  --gold:#B8955A;
+  --gold-light:#D4B87A;
+  --gold-soft:#C9A96E;
+  --gold-dark:#9A7A48;
+  --taupe:#C4B09A;
+  --taupe-light:#D8CCBC;
+  --white:#FFFFFF;
+  --cream-dark:#E8DFD0;
+  --text-on-dark:#F5EFE4;
+  --text-on-light:#0A0A0A;
+  --text-body:#3A3530;
+  --text-muted:#7A7268;
+  --font-serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --font-sans:'DM Sans',system-ui,-apple-system,sans-serif;
+  --radius-soft:16px;
+  --radius-pill:100px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--text-body);background:var(--cream);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block;object-fit:cover}
+a{text-decoration:none;color:inherit;transition:all .3s}
+button{cursor:pointer;font-family:inherit}
+
+/* ========================================
+   GRAIN TEXTURE OVERLAY
+   ======================================== */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.nav.scrolled{background:rgba(245,239,228,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(184,149,90,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 48px;max-width:1400px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:14px}
+.nav-logo svg.am-logo{height:42px;width:auto}
+.nav-logo svg.am-logo .logo-fill{fill:var(--black)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-size:.72rem;font-weight:400;color:var(--text-muted);letter-spacing:.12em;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--black)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--white);padding:12px 32px;border-radius:var(--radius-pill);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:none;transition:all .4s;display:inline-flex;align-items:center;gap:8px}
+.nav-cta:hover{background:var(--gold-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(184,149,90,.2)}
+.menu-toggle{display:none;background:none;border:none;padding:8px}
+.menu-toggle span{display:block;width:24px;height:1px;background:var(--black);margin:6px 0;transition:all .4s}
+.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:999;padding:120px 48px 48px;flex-direction:column;align-items:center;gap:28px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{font-family:var(--font-serif);font-size:2.2rem;color:var(--black);font-weight:300;font-style:italic}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* ========================================
+   DECORATIVE ELEMENTS
+   ======================================== */
+.gold-rule{width:40px;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold-light));margin:16px 0}
+.gold-rule-center{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px auto}
+.section-eyebrow{font-size:.68rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-style:italic}
+.section-heading{font-family:var(--font-serif);font-size:clamp(2rem,3.6vw,3.2rem);font-weight:300;line-height:1.15;letter-spacing:-.01em}
+.section-heading em{font-style:italic;color:var(--gold)}
+
+/* Decorative flourish — thin curved lines */
+.flourish{display:block;margin:12px auto 20px;opacity:.35}
+
+/* ========================================
+   BUTTONS — rounded, feminine
+   ======================================== */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;border:none;transition:all .4s;cursor:pointer;font-family:var(--font-sans);border-radius:var(--radius-pill)}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-2px);box-shadow:0 12px 32px rgba(184,149,90,.2)}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:var(--white)}
+.btn-outline-cream{background:transparent;border:1px solid rgba(245,239,228,.25);color:var(--text-on-dark);border-radius:var(--radius-pill)}
+.btn-outline-cream:hover{background:var(--text-on-dark);color:var(--black)}
+.btn-white{background:var(--white);color:var(--black);border-radius:var(--radius-pill)}
+.btn-white:hover{background:var(--cream-warm);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+/* ========================================
+   SECTION 1 — HERO
+   ======================================== */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:var(--cream)}
+.hero::after{
+  content:'';position:absolute;top:50%;right:48%;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,149,90,.05) 0%,transparent 70%);
+  transform:translate(50%,-50%);pointer-events:none;
+}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:140px 64px 80px 80px;position:relative;z-index:2}
+.hero-tagline{font-family:var(--font-serif);font-size:.88rem;font-weight:300;font-style:italic;letter-spacing:.08em;color:var(--gold);margin-bottom:28px}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2.6rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;color:var(--black);margin-bottom:14px;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:.95rem;color:var(--text-muted);max-width:400px;margin-bottom:40px;line-height:1.85;font-weight:300}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+.hero-credential{display:flex;align-items:center;gap:10px;font-size:.74rem;color:var(--text-muted);letter-spacing:.03em;font-weight:300}
+.hero-credential svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.hero-media{position:relative;overflow:hidden}
+/* Hero image styles handled by .hero-media img */
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--cream) 0%,transparent 15%)}
+.hero-media::before{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,var(--cream),transparent);z-index:1}
+/* Soft decorative arc on the hero image side */
+.hero-arc{
+  position:absolute;bottom:-2px;left:-1px;right:-1px;height:60px;z-index:2;
+  background:var(--cream);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+
+/* ========================================
+   SECTION 2 — SERVICES
+   ======================================== */
+.services{background:var(--black);padding:110px 48px 100px;position:relative}
+.services::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 10%,var(--gold) 50%,transparent 90%);opacity:.4}
+.services .section-inner{max-width:1200px;margin:0 auto}
+.services-header{text-align:center;margin-bottom:72px}
+.services-header .section-heading{color:var(--text-on-dark)}
+.services-header .section-heading em{color:var(--gold)}
+.services-header p{color:rgba(245,239,228,.45);max-width:440px;margin:16px auto 0;font-size:.9rem;line-height:1.85;font-weight:300;font-style:italic;font-family:var(--font-serif)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.service-card{
+  background:rgba(245,239,228,.03);padding:36px 28px;position:relative;
+  transition:all .5s;overflow:hidden;border-radius:var(--radius-soft);
+  border:1px solid rgba(184,149,90,.08);
+}
+.service-card:hover{background:rgba(245,239,228,.06);border-color:rgba(184,149,90,.2);transform:translateY(-4px)}
+.service-card h3{font-family:var(--font-serif);font-size:1.2rem;font-weight:400;color:var(--text-on-dark);margin-bottom:10px;line-height:1.3}
+.service-card p{font-size:.8rem;color:rgba(245,239,228,.4);line-height:1.75;margin-bottom:18px;font-weight:300}
+.service-card .price{font-family:var(--font-serif);font-size:1.05rem;color:var(--gold);font-weight:400;margin-bottom:20px;display:block;font-style:italic}
+.service-card .card-link{font-size:.65rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:8px;transition:gap .3s}
+.service-card .card-link:hover{gap:12px}
+.service-card .card-link svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.5}
+/* Decorative gold dot on each card */
+.service-card::after{content:'';position:absolute;top:20px;right:20px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.3}
+
+/* ========================================
+   SECTION 3 — MAVEN MEMBERSHIP
+   ======================================== */
+.membership{background:var(--cream);padding:120px 48px;position:relative;overflow:hidden}
+.membership::before{
+  content:'';position:absolute;top:-150px;left:-150px;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,149,90,.04) 0%,transparent 70%);pointer-events:none;
+}
+.membership .section-inner{max-width:1100px;margin:0 auto;position:relative}
+.membership-header{text-align:center;margin-bottom:56px}
+.membership-header .section-heading{color:var(--black)}
+.membership-header p{color:var(--text-muted);max-width:480px;margin:16px auto 0;font-size:.9rem;line-height:1.85;font-weight:300}
+.membership-body{font-size:.9rem;color:var(--text-body);max-width:560px;margin:0 auto 56px;text-align:center;line-height:1.9;font-weight:300}
+.membership-tiers{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:860px;margin:0 auto}
+.tier-card{
+  background:var(--white);padding:48px 36px;position:relative;
+  border:1px solid rgba(184,149,90,.18);transition:all .5s;
+  border-radius:20px;text-align:center;
+  box-shadow:0 4px 24px rgba(184,149,90,.06);
+}
+.tier-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(184,149,90,.1)}
+.tier-card.featured{border-color:var(--gold);background:linear-gradient(180deg,var(--white) 0%,rgba(245,239,228,.3) 100%)}
+.tier-card.featured::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:2px}
+.tier-badge{
+  display:inline-block;background:var(--gold);color:var(--white);font-size:.58rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;padding:5px 16px;border-radius:var(--radius-pill);
+  margin-bottom:16px;
+}
+.tier-name{font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:var(--black);margin-bottom:4px;font-style:italic}
+.tier-price{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--gold);margin-bottom:4px}
+.tier-price span{font-size:.85rem;color:var(--text-muted);font-family:var(--font-sans);font-weight:300}
+.tier-divider{width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto;opacity:.5}
+.tier-features{list-style:none;margin-bottom:32px;text-align:left}
+.tier-features li{font-size:.84rem;color:var(--text-body);padding:8px 0;display:flex;align-items:flex-start;gap:12px;line-height:1.65;font-weight:300}
+.tier-features li svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:4px}
+
+/* ========================================
+   SECTION 4 — ABOUT
+   ======================================== */
+.about{background:var(--white);padding:120px 48px;position:relative;overflow:hidden}
+.about::after{
+  content:'';position:absolute;bottom:-100px;right:-100px;width:350px;height:350px;border-radius:50%;
+  border:1px solid rgba(184,149,90,.06);pointer-events:none;
+}
+.about .section-inner{max-width:1200px;margin:0 auto}
+.about-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+.about-image{position:relative}
+.about-image-main{
+  aspect-ratio:3/4;overflow:hidden;position:relative;border-radius:200px 200px 24px 24px;
+  background:var(--cream-dark);
+}
+.about-image-main img{width:100%;height:100%;object-fit:cover}
+/* Soft oval accent behind the image */
+.about-image::before{
+  content:'';position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;
+  border-radius:220px 220px 44px 44px;border:1px solid rgba(184,149,90,.1);pointer-events:none;
+}
+.about-text .section-eyebrow{margin-bottom:16px}
+.about-text .section-heading{margin-bottom:20px;color:var(--black)}
+.about-text .gold-rule{margin-bottom:24px}
+.about-body{font-size:.9rem;color:var(--text-body);line-height:1.95;margin-bottom:32px;font-weight:300}
+.credentials{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.credential{
+  display:flex;align-items:center;gap:10px;padding:10px 18px;
+  background:var(--cream-warm);font-size:.75rem;color:var(--text-body);font-weight:400;
+  letter-spacing:.02em;border-radius:var(--radius-pill);
+}
+.credential svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;flex-shrink:0}
+
+/* ========================================
+   SECTION 5 — CONCIERGE & EVENTS
+   ======================================== */
+.concierge{background:var(--black);padding:120px 48px;position:relative;overflow:hidden}
+.concierge::before{
+  content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,149,90,.03) 0%,transparent 70%);
+}
+.concierge::after{
+  content:'';position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,149,90,.04) 0%,transparent 70%);
+}
+.concierge .section-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.concierge-content{text-align:center}
+.concierge-content .section-eyebrow{color:var(--gold);margin-bottom:16px}
+.concierge-content .section-heading{color:var(--text-on-dark);margin-bottom:12px}
+.concierge-content .section-heading em{color:var(--gold)}
+.concierge-sub{font-family:var(--font-serif);font-size:1.15rem;color:var(--taupe-light);font-weight:300;font-style:italic;margin-bottom:20px}
+.concierge .gold-rule-center{margin-bottom:32px}
+.concierge-body{font-size:.9rem;color:rgba(245,239,228,.45);max-width:540px;margin:0 auto 48px;line-height:1.95;font-weight:300}
+.concierge-types{display:flex;justify-content:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+.concierge-type{
+  font-size:.66rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--taupe);padding:10px 22px;border:1px solid rgba(196,176,154,.12);
+  border-radius:var(--radius-pill);transition:all .3s;
+}
+.concierge-type:hover{border-color:var(--gold);color:var(--gold)}
+/* Concierge inquiry form */
+.concierge-form{max-width:520px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.concierge-form .full-width{grid-column:1/-1}
+.concierge-form input,.concierge-form select,.concierge-form textarea{
+  width:100%;padding:14px 20px;background:rgba(245,239,228,.04);
+  border:1px solid rgba(245,239,228,.08);border-radius:12px;
+  color:var(--text-on-dark);font-family:var(--font-sans);font-size:.84rem;font-weight:300;
+  transition:border-color .3s;outline:none;
+}
+.concierge-form input::placeholder,.concierge-form textarea::placeholder{color:rgba(245,239,228,.25)}
+.concierge-form input:focus,.concierge-form select:focus,.concierge-form textarea:focus{border-color:var(--gold)}
+.concierge-form select{
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23B8955A' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+}
+.concierge-form select option{background:var(--black);color:var(--text-on-dark)}
+.concierge-form textarea{resize:vertical;min-height:100px}
+.concierge-form .btn{justify-content:center;margin-top:8px}
+
+/* ========================================
+   SECTION 6 — SKINCARE SHOP
+   ======================================== */
+.skincare{background:var(--cream-warm);padding:120px 48px;position:relative;overflow:hidden}
+.skincare::before{
+  content:'';position:absolute;top:50%;right:-100px;width:300px;height:300px;border-radius:50%;
+  border:1px solid rgba(184,149,90,.06);transform:translateY(-50%);pointer-events:none;
+}
+.skincare .section-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.skincare-text .section-eyebrow{margin-bottom:16px}
+.skincare-text .section-heading{margin-bottom:12px;color:var(--black)}
+.skincare-sub{font-family:var(--font-serif);font-size:1.05rem;color:var(--gold);font-weight:300;font-style:italic;margin-bottom:20px}
+.skincare-text .gold-rule{margin-bottom:24px}
+.skincare-body{font-size:.9rem;color:var(--text-body);line-height:1.95;margin-bottom:36px;font-weight:300}
+.skincare-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.skincare-orb{
+  width:280px;height:280px;border-radius:50%;position:relative;
+  background:linear-gradient(135deg,var(--cream-dark) 0%,var(--cream) 50%,var(--taupe-light) 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.skincare-orb::before{
+  content:'';position:absolute;inset:-20px;border-radius:50%;
+  border:1px solid rgba(184,149,90,.12);
+}
+.skincare-orb::after{
+  content:'';position:absolute;inset:-44px;border-radius:50%;
+  border:1px solid rgba(184,149,90,.06);
+}
+.skincare-orb-icon{position:relative;z-index:1}
+.skincare-orb-icon svg{width:44px;height:44px;stroke:var(--gold);fill:none;stroke-width:.8}
+
+/* ========================================
+   SECTION 7 — BOOKING CTA + FOOTER
+   ======================================== */
+.cta-banner{
+  background:linear-gradient(135deg,var(--gold-dark) 0%,var(--gold) 40%,var(--gold-soft) 100%);
+  padding:100px 48px;text-align:center;position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;top:-100px;left:50%;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%);
+  transform:translateX(-50%);
+}
+.cta-banner .section-heading{color:var(--white);margin-bottom:10px}
+.cta-banner p{color:rgba(255,255,255,.7);font-size:.92rem;margin-bottom:40px;font-weight:300;font-family:var(--font-serif);font-style:italic;font-size:1.05rem}
+.footer{background:var(--black);padding:80px 48px 40px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(245,239,228,.06)}
+.footer-col h4{font-family:var(--font-serif);font-size:1rem;color:var(--cream);font-weight:400;margin-bottom:16px;font-style:italic}
+.footer-brand{display:flex;flex-direction:column;gap:16px}
+.footer-brand svg.am-logo{height:40px;width:auto}
+.footer-brand svg.am-logo .logo-fill{fill:var(--text-on-dark)}
+.footer-tagline{font-family:var(--font-serif);font-size:.88rem;color:var(--taupe);font-style:italic;font-weight:300;margin-top:8px}
+.footer-detail{font-size:.8rem;color:rgba(245,239,228,.35);line-height:1.8;font-weight:300}
+.footer-detail a{color:rgba(245,239,228,.5);transition:color .3s}
+.footer-detail a:hover{color:var(--gold)}
+.footer-hours{list-style:none}
+.footer-hours li{display:flex;justify-content:space-between;font-size:.78rem;color:rgba(245,239,228,.35);padding:4px 0;font-weight:300}
+.footer-hours li span:last-child{color:rgba(245,239,228,.5)}
+.footer-social{display:flex;gap:12px;margin-top:16px}
+.footer-social a{
+  display:flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border:1px solid rgba(245,239,228,.08);border-radius:50%;transition:all .3s;
+}
+.footer-social a:hover{border-color:var(--gold);background:rgba(184,149,90,.06)}
+.footer-social a svg{width:17px;height:17px;stroke:var(--taupe);fill:none;stroke-width:1.5;transition:stroke .3s}
+.footer-social a:hover svg{stroke:var(--gold)}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-top:24px}
+.footer-copy{font-size:.66rem;color:rgba(245,239,228,.2);letter-spacing:.06em}
+.footer-credit{font-size:.62rem;color:rgba(245,239,228,.18);letter-spacing:.06em}
+.footer-credit a{color:rgba(245,239,228,.3);transition:color .3s}
+.footer-credit a:hover{color:var(--gold)}
+
+/* ========================================
+   SCROLL REVEAL ANIMATIONS
+   ======================================== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+.reveal-delay-6{transition-delay:.6s}
+.reveal-delay-7{transition-delay:.7s}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+/* ---- TABLET ---- */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-content{padding:0 40px 60px;text-align:center;align-items:center;order:2}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-credential{justify-content:center}
+  .hero-media{height:60vh;order:1;min-height:400px}
+  .hero-media img{object-position:center 20%}
+  .hero-media::after{background:linear-gradient(to top,var(--cream) 0%,transparent 40%)}
+  .hero-media::before{display:none}
+  .hero-arc{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-layout{grid-template-columns:1fr;gap:48px;text-align:center}
+  .about-image{max-width:320px;margin:0 auto}
+  .about-image::before{display:none}
+  .about-text .gold-rule{margin:16px auto}
+  .credentials{justify-content:center}
+  .skincare .section-inner{grid-template-columns:1fr;text-align:center}
+  .skincare-text .gold-rule{margin:16px auto}
+  .skincare-visual{order:-1}
+  .skincare-orb{width:220px;height:220px}
+  .footer-grid{grid-template-columns:1fr;gap:36px;text-align:center}
+  .footer-hours li{justify-content:center;gap:16px}
+  .footer-social{justify-content:center}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+
+/* ---- MOBILE ---- */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-cta.desktop{display:none}
+  .menu-toggle{display:block}
+  .nav-inner{padding:14px 20px}
+  .nav-logo svg.am-logo{height:36px}
+
+  section,.services,.membership,.about,.concierge,.skincare{padding:64px 20px}
+
+  /* HERO — image-forward, stacked */
+  .hero{min-height:auto;display:flex;flex-direction:column}
+  .hero-content{padding:0 20px 48px;order:2}
+  .hero-media{height:50vh;min-height:340px;order:1}
+  .hero-tagline{font-size:.78rem;margin-bottom:20px}
+  .hero h1{font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.15}
+  .hero h1 br{display:none}
+  .hero-sub{font-size:.88rem;line-height:1.8;margin-bottom:32px}
+  .hero-actions{gap:12px}
+  .hero-credential{font-size:.68rem;flex-wrap:wrap}
+
+  /* SERVICES */
+  .services{padding:64px 20px}
+  .services-header{margin-bottom:48px}
+  .services-grid{grid-template-columns:1fr;gap:14px}
+  .service-card{padding:28px 24px}
+  .service-card h3{font-size:1.1rem}
+
+  /* MEMBERSHIP */
+  .membership{padding:64px 20px}
+  .membership-tiers{grid-template-columns:1fr;max-width:100%;gap:20px}
+  .tier-card{padding:36px 28px;border-radius:16px}
+  .tier-name{font-size:1.4rem}
+  .tier-price{font-size:2.2rem}
+  .membership-body{font-size:.86rem}
+
+  /* ABOUT */
+  .about{padding:64px 20px}
+  .about-image{max-width:260px}
+  .about-image-main{border-radius:140px 140px 20px 20px}
+  .about-image::before{border-radius:160px 160px 40px 40px}
+  .about-body{font-size:.86rem}
+  .credentials{flex-direction:column;align-items:center;gap:8px}
+  .credential{width:100%;justify-content:center;padding:10px 16px;font-size:.72rem}
+
+  /* CONCIERGE */
+  .concierge{padding:64px 20px}
+  .concierge-types{gap:8px}
+  .concierge-type{font-size:.58rem;padding:8px 14px}
+  .concierge-form{grid-template-columns:1fr}
+  .concierge-form .full-width{grid-column:1}
+  .concierge-form input,.concierge-form select,.concierge-form textarea{padding:14px 16px;font-size:.86rem}
+  .concierge-body{font-size:.86rem}
+
+  /* SKINCARE */
+  .skincare{padding:64px 20px}
+  .skincare-body{font-size:.86rem}
+  .skincare-orb{width:180px;height:180px}
+  .skincare-orb::before{inset:-16px}
+  .skincare-orb::after{inset:-36px}
+
+  /* CTA + FOOTER */
+  .cta-banner{padding:64px 20px}
+  .cta-banner p{font-size:.92rem}
+  .footer{padding:48px 20px 28px}
+  .footer-brand svg.am-logo{height:30px}
+
+  /* BUTTONS — touch-friendly min heights */
+  .btn{padding:14px 28px;font-size:.7rem;min-height:48px}
+  .nav-cta{min-height:44px}
+
+  /* SPEC BANNER — smaller on mobile, add bottom padding to body */
+  .spec-banner{padding:10px 16px;font-size:.58rem}
+  body{padding-bottom:40px}
+
+  /* Section headings */
+  .section-heading{font-size:clamp(1.6rem,6.5vw,2.2rem)}
+  .section-eyebrow{font-size:.62rem}
+}
+
+/* ---- SMALL PHONES ---- */
+@media(max-width:480px){
+  .hero-media{height:45vh;min-height:300px}
+  .hero-content{padding:0 16px 40px}
+  .hero h1{font-size:clamp(1.6rem,6.5vw,2.2rem)}
+  .hero-actions{flex-direction:column;width:100%}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .hero-tagline{font-size:.72rem}
+  .hero-sub{font-size:.84rem}
+
+  section,.services,.membership,.about,.concierge,.skincare{padding:52px 16px}
+
+  .service-card{padding:24px 20px}
+  .tier-card{padding:32px 24px}
+  .membership-body{font-size:.82rem;margin-bottom:40px}
+
+  .about-image{max-width:220px}
+  .about-image-main{border-radius:110px 110px 16px 16px}
+  .about-image::before{border-radius:130px 130px 36px 36px}
+  .about-body{font-size:.82rem}
+
+  .concierge-type{font-size:.54rem;padding:7px 12px}
+  .concierge-form input,.concierge-form select,.concierge-form textarea{padding:12px 14px}
+
+  .cta-banner{padding:52px 16px}
+  .footer{padding:40px 16px 24px}
+
+  .section-heading{font-size:clamp(1.4rem,6vw,1.9rem)}
+  .btn{padding:13px 24px;font-size:.66rem}
+
+  /* Skincare orb scales down further */
+  .skincare-orb{width:150px;height:150px}
+  .skincare-orb-icon svg{width:36px;height:36px}
+}
+
+/* ========================================
+   SPEC BANNER (for proposal embed)
+   ======================================== */
+.spec-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:9998;
+  background:var(--gold);padding:14px 24px;text-align:center;
+  font-size:.68rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--white);
+}
+.spec-banner a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
+.spec-banner a:hover{opacity:.8}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SPEC BANNER — Remove for production
+     ============================================================ -->
+<div class="spec-banner">
+  This is a complimentary preview from <a href="https://whitehausmedia.com" target="_blank">White Haus Media</a> &mdash; <a href="../">View Full Proposal</a>
+</div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <!-- Aesthetic Maven logo — inline SVG monogram -->
+      <svg class="am-logo" viewBox="0 0 120 170" xmlns="http://www.w3.org/2000/svg">
+        <g class="logo-fill">
+          <path d="M60 4C30 4 8 30 8 62v46c0 32 22 58 52 58s52-26 52-58V62C112 30 90 4 60 4zM60 8c27.6 0 48 24.2 48 54v46c0 29.8-20.4 54-48 54S12 137.8 12 108V62C12 32.2 32.4 8 60 8z" fill-rule="evenodd"/>
+          <path d="M60 12C35 12 16 34.5 16 62v46c0 27.5 19 50 44 50s44-22.5 44-50V62c0-27.5-19-50-44-50zM60 14.5c23.5 0 41.5 21.5 41.5 47.5v46c0 26-18 47.5-41.5 47.5S18.5 134 18.5 108V62c0-26 18-47.5 41.5-47.5z" fill-rule="evenodd" opacity=".3"/>
+          <path d="M60 34L44 78h4.5L53 66.5h14L71.5 78H76L60 34zM60 40l5.5 23h-11L60 40z"/>
+          <circle cx="60" cy="85" r="2.5"/>
+          <path d="M38 92h3.5v34l18-24 18.5 24V92H82v40h-4L60 108.5 42 132h-4V92z"/>
+          <text x="60" y="158" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" letter-spacing="3.2" font-weight="400">AESTHETIC MAVEN</text>
+        </g>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#concierge">Concierge</a></li>
+    </ul>
+    <!-- BookJune booking link -->
+    <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="nav-cta desktop" target="_blank">
+      Book Now
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#membership" onclick="closeMenu()">Membership</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#concierge" onclick="closeMenu()">Concierge</a>
+  <a href="#skincare" onclick="closeMenu()">Skincare</a>
+  <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="btn btn-gold" target="_blank" style="margin-top:24px;text-align:center;justify-content:center">Book Now</a>
+</div>
+
+<!-- ============================================================
+     SECTION 1 — HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="hero-tagline reveal">Natural Results. Clinical Precision. Concierge Care.</span>
+    <h1 class="reveal reveal-delay-1">Results That Feel<br>Like <em>You</em> &mdash; Only Better.</h1>
+    <div class="gold-rule reveal reveal-delay-2"></div>
+    <p class="hero-sub reveal reveal-delay-2">Aesthetic injections, IV therapy, and advanced skincare by Shekeya Gipson, RN BSN &mdash; Raleigh's concierge MedSpa experience.</p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="btn btn-gold" target="_blank">
+        Book a Treatment
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="btn btn-outline">View Services</a>
+    </div>
+    <div class="hero-credential reveal reveal-delay-4">
+      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span>Board-Certified RN, BSN &nbsp;|&nbsp; Fully Insured &nbsp;|&nbsp; Concierge Services</span>
+    </div>
+  </div>
+  <div class="hero-media">
+    <img src="https://WHMClients.b-cdn.net/download-1.jpg" alt="Shekeya Gipson, RN BSN — Aesthetic Maven">
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 — SERVICES
+     ============================================================ -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <span class="section-eyebrow reveal">Treatment Menu</span>
+      <h2 class="section-heading reveal reveal-delay-1">Precision Aesthetics, <em>Elevated</em></h2>
+      <!-- Decorative flourish -->
+      <svg class="flourish reveal reveal-delay-1" width="80" height="20" viewBox="0 0 80 20" fill="none">
+        <path d="M0 10C15 10 15 2 25 2S35 10 40 10 45 2 55 2 65 10 80 10" stroke="#B8955A" stroke-width=".75" opacity=".4"/>
+      </svg>
+      <p class="reveal reveal-delay-2">Every treatment is tailored to your anatomy, your goals, and your comfort level.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <h3>Wrinkle Relaxer / Tox</h3>
+        <p>Smooth fine lines and restore a naturally rested appearance with precision Xeomin injections.</p>
+        <span class="price">From $12/unit</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <h3>Dermal Filler</h3>
+        <p>Restore lost volume and soften facial contours for balanced, natural-looking enhancement.</p>
+        <span class="price">From $399/syringe</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <h3>IV Therapy</h3>
+        <p>Targeted vitamin and hydration infusions to restore energy, clarity, and radiance from within.</p>
+        <span class="price">From $199</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <h3>Chemical Peel</h3>
+        <p>Brighten, smooth, and refresh your complexion with a peel calibrated to your skin type.</p>
+        <span class="price">From $239</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-4">
+        <h3>Microneedling</h3>
+        <p>Stimulate your skin's natural collagen production for firmer, smoother, more even texture.</p>
+        <span class="price">$279</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-5">
+        <h3>PRP / PRF Therapy</h3>
+        <p>Harness your body's own healing platelets for skin rejuvenation and hair restoration.</p>
+        <span class="price">$399</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-6">
+        <h3>Rx Skincare &amp; Haircare</h3>
+        <p>Personalized prescription formulations designed specifically for your skin and hair goals.</p>
+        <span class="price">From $127</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-7">
+        <h3>Dissolve Filler</h3>
+        <p>Safely and precisely dissolve unwanted or migrated filler with expert technique.</p>
+        <span class="price">$199/vial</span>
+        <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="card-link" target="_blank">
+          Book Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — MAVEN MEMBERSHIP
+     ============================================================ -->
+<section class="membership" id="membership">
+  <div class="section-inner">
+    <div class="membership-header">
+      <span class="section-eyebrow reveal">Membership</span>
+      <h2 class="section-heading reveal reveal-delay-1">The Maven <em>Circle</em></h2>
+      <svg class="flourish reveal reveal-delay-1" width="80" height="20" viewBox="0 0 80 20" fill="none">
+        <path d="M0 10C15 10 15 2 25 2S35 10 40 10 45 2 55 2 65 10 80 10" stroke="#B8955A" stroke-width=".75" opacity=".35"/>
+      </svg>
+      <p class="reveal reveal-delay-2">Priority access. Monthly savings. Consistently beautiful results.</p>
+    </div>
+    <p class="membership-body reveal">Aesthetic results aren't a one-time event &mdash; they're a practice. The Maven Circle gives you priority booking, exclusive member pricing, and a dedicated relationship with Shekeya to keep your results consistent, natural, and evolving with you.</p>
+    <div class="membership-tiers">
+      <div class="tier-card reveal">
+        <h3 class="tier-name">Maven Essential</h3>
+        <div class="tier-price">$99<span>/month</span></div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            20% off all services
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority booking access
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Direct access to Shekeya
+          </li>
+        </ul>
+        <!-- CLIENT TO UPDATE: Replace # with actual membership signup link -->
+        <a href="#membership" class="btn btn-outline" style="width:100%;justify-content:center" onclick="alert('Membership signup coming soon!')">Join Essential</a>
+      </div>
+      <div class="tier-card featured reveal reveal-delay-1">
+        <span class="tier-badge">Recommended</span>
+        <h3 class="tier-name">Maven Elite</h3>
+        <div class="tier-price">$199<span>/month</span></div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            20% off all services
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority booking access
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Complimentary Tox touch-up each quarter
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Personalized skincare consultation
+          </li>
+        </ul>
+        <!-- CLIENT TO UPDATE: Replace # with actual membership signup link -->
+        <a href="#membership" class="btn btn-gold" style="width:100%;justify-content:center" onclick="alert('Membership signup coming soon!')">Join Elite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — ABOUT / CREDENTIALS
+     ============================================================ -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-layout">
+      <div class="about-image reveal">
+        <div class="about-image-main">
+          <!-- White coat, arms crossed — star cropped via CSS overflow + object-position -->
+          <img src="https://WHMClients.b-cdn.net/088f63e0-70a6-4fe6-8d6a-286db61b1d35.jpg" alt="Shekeya Gipson, RN BSN — Aesthetic Maven" style="object-position:center 15%;transform:scale(1.05)">
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-eyebrow reveal">The Maven</span>
+        <h2 class="section-heading reveal reveal-delay-1">The Maven Behind <em>the Practice</em></h2>
+        <div class="gold-rule reveal reveal-delay-1"></div>
+        <p class="about-body reveal reveal-delay-2">Shekeya Gipson is a Board-Certified RN, BSN with a background in emergency medicine &mdash; where precision, composure, and clinical excellence aren't optional. She founded Aesthetic Maven on a single belief: that aesthetic results should look effortlessly natural, not done.</p>
+        <p class="about-body reveal reveal-delay-2">Fully trained, insured, and continuously advancing her expertise, Shekeya treats every client as an individual &mdash; never a template. Whether you're new to injectables or a seasoned patient looking for a more intentional provider, you've found your person.</p>
+        <div class="credentials reveal reveal-delay-3">
+          <div class="credential">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            RN, BSN Licensed
+          </div>
+          <div class="credential">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Emergency Medicine
+          </div>
+          <div class="credential">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Fully Insured
+          </div>
+          <div class="credential">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            June Skin Partner
+          </div>
+          <div class="credential">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Concierge Available
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5 — CONCIERGE & EVENTS
+     ============================================================ -->
+<section class="concierge" id="concierge">
+  <div class="section-inner">
+    <div class="concierge-content">
+      <span class="section-eyebrow reveal">Private Experiences</span>
+      <h2 class="section-heading reveal reveal-delay-1">Aesthetic Maven <em>Comes to You</em></h2>
+      <p class="concierge-sub reveal reveal-delay-2">The Maven experience, wherever you are.</p>
+      <div class="gold-rule-center reveal reveal-delay-2"></div>
+      <p class="concierge-body reveal reveal-delay-2">Shekeya offers full concierge MedSpa services &mdash; bringing the Maven experience to your venue, your event, or your home. Perfect for groups who want to celebrate, refresh, and invest in themselves together.</p>
+      <div class="concierge-types reveal reveal-delay-3">
+        <span class="concierge-type">Bachelorette Parties</span>
+        <span class="concierge-type">Corporate Wellness</span>
+        <span class="concierge-type">Bridal Prep</span>
+        <span class="concierge-type">Private Events</span>
+        <span class="concierge-type">Pop-Up Experiences</span>
+      </div>
+      <!-- Concierge inquiry form -->
+      <form class="concierge-form reveal reveal-delay-4" action="mailto:hello@whitehausmedia.com" method="post" enctype="text/plain">
+        <!-- TODO: Replace mailto with actual form endpoint (Formspree, etc.) -->
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <select name="event_type" class="full-width" required>
+          <option value="" disabled selected>Event Type</option>
+          <option value="bachelorette">Bachelorette Party</option>
+          <option value="corporate">Corporate Wellness</option>
+          <option value="bridal">Bridal Prep</option>
+          <option value="private">Private Event</option>
+          <option value="popup">Pop-Up Experience</option>
+          <option value="other">Other</option>
+        </select>
+        <input type="text" name="date" placeholder="Preferred Date">
+        <input type="number" name="group_size" placeholder="Group Size" min="1">
+        <textarea name="details" class="full-width" placeholder="Tell us about your event..."></textarea>
+        <button type="submit" class="btn btn-gold full-width" style="justify-content:center">
+          Request a Concierge Event
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6 — SKINCARE SHOP / JUNE SKIN
+     ============================================================ -->
+<section class="skincare" id="skincare">
+  <div class="section-inner">
+    <div class="skincare-text">
+      <span class="section-eyebrow reveal">At-Home Care</span>
+      <h2 class="section-heading reveal reveal-delay-1">Extend Your Results <em>at Home</em></h2>
+      <p class="skincare-sub reveal reveal-delay-2">Medical-grade skincare, curated by Shekeya.</p>
+      <div class="gold-rule reveal reveal-delay-2"></div>
+      <p class="skincare-body reveal reveal-delay-2">Aesthetic treatments work best when supported by the right at-home regimen. As a certified June Skin partner, Shekeya offers personalized prescription skincare and product recommendations tailored to your skin &mdash; because what you do between appointments matters.</p>
+      <!-- TODO: Update href to actual June Skin storefront link when available -->
+      <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="btn btn-gold reveal reveal-delay-3" target="_blank">
+        Shop Skincare
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="skincare-visual reveal">
+      <div class="skincare-orb">
+        <div class="skincare-orb-icon">
+          <!-- Botanical leaf icon -->
+          <svg viewBox="0 0 24 24"><path d="M12 22c-4-4-8-7.5-8-12C4 5.5 7.5 2 12 2s8 3.5 8 8c0 4.5-4 8-8 12z"/><path d="M12 2v20"/><path d="M8 6c2 2 4 4 4 8"/><path d="M16 6c-2 2-4 4-4 8"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7 — BOOKING CTA + FOOTER
+     ============================================================ -->
+<section class="cta-banner">
+  <h2 class="section-heading reveal" style="color:var(--white)">Ready to <em style="color:var(--white);opacity:.85">Start?</em></h2>
+  <p class="reveal reveal-delay-1">Book online in minutes. Concierge and event inquiries welcome.</p>
+  <a href="https://app.bookjune.com/providers/740cb2ba-a2d8-4bd8-ba23-5d0cfaea3f57" class="btn btn-white reveal reveal-delay-2" target="_blank">
+    Book Your Appointment
+    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Column 1: Brand -->
+    <div class="footer-col footer-brand">
+      <svg class="am-logo" viewBox="0 0 120 170" xmlns="http://www.w3.org/2000/svg">
+        <g class="logo-fill">
+          <path d="M60 4C30 4 8 30 8 62v46c0 32 22 58 52 58s52-26 52-58V62C112 30 90 4 60 4zM60 8c27.6 0 48 24.2 48 54v46c0 29.8-20.4 54-48 54S12 137.8 12 108V62C12 32.2 32.4 8 60 8z" fill-rule="evenodd"/>
+          <path d="M60 12C35 12 16 34.5 16 62v46c0 27.5 19 50 44 50s44-22.5 44-50V62c0-27.5-19-50-44-50zM60 14.5c23.5 0 41.5 21.5 41.5 47.5v46c0 26-18 47.5-41.5 47.5S18.5 134 18.5 108V62c0-26 18-47.5 41.5-47.5z" fill-rule="evenodd" opacity=".3"/>
+          <path d="M60 34L44 78h4.5L53 66.5h14L71.5 78H76L60 34zM60 40l5.5 23h-11L60 40z"/>
+          <circle cx="60" cy="85" r="2.5"/>
+          <path d="M38 92h3.5v34l18-24 18.5 24V92H82v40h-4L60 108.5 42 132h-4V92z"/>
+          <text x="60" y="158" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" letter-spacing="3.2" font-weight="400">AESTHETIC MAVEN</text>
+        </g>
+      </svg>
+      <p class="footer-tagline">Natural Results. Clinical Precision. Concierge Care.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/aestheticmaven.co" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- Column 2: Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-detail">
+        2801 Spring Forest Rd, STE 105<br>
+        Raleigh, NC 27616<br><br>
+        <a href="tel:+19199150798">(919) 915-0798</a><br>
+        <a href="https://www.instagram.com/aestheticmaven.co" target="_blank">@aestheticmaven.co</a>
+      </div>
+    </div>
+    <!-- Column 3: Hours -->
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul class="footer-hours">
+        <li><span>Monday</span><span>9 AM &ndash; 6 PM</span></li>
+        <li><span>Tuesday</span><span>9 AM &ndash; 6 PM</span></li>
+        <li><span>Wednesday</span><span>9 AM &ndash; 6 PM</span></li>
+        <li><span>Thursday</span><span>9 AM &ndash; 6 PM</span></li>
+        <li><span>Friday</span><span>9 AM &ndash; 6 PM</span></li>
+        <li><span>Saturday</span><span>10 AM &ndash; 4 PM</span></li>
+        <li><span>Sunday</span><span>Closed</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 Aesthetic Maven &nbsp;|&nbsp; Raleigh, NC</p>
+    <p class="footer-credit">Site by <a href="https://whitehausmedia.com" target="_blank">White Haus Media</a></p>
+  </div>
+</footer>
+
+<script>
+// ====================================
+// NAV SCROLL BEHAVIOR
+// ====================================
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+// ====================================
+// MOBILE MENU TOGGLE
+// ====================================
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+function closeMenu() {
+  menuToggle.classList.remove('active');
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ====================================
+// SCROLL REVEAL
+// ====================================
+const reveals = document.querySelectorAll('.reveal');
+
+function checkReveal() {
+  const trigger = window.innerHeight * 0.88;
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkReveal, { passive: true });
+window.addEventListener('load', checkReveal);
+checkReveal();
+
+// ====================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ====================================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
