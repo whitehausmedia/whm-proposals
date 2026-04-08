@@ -53,7 +53,7 @@ body::before{
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 48px;max-width:1400px;margin:0 auto}
 .nav-logo{display:flex;align-items:center;gap:14px}
 .nav-logo svg.am-logo{height:42px;width:auto}
-.nav-logo svg.am-logo .logo-fill{fill:var(--black)}
+.nav-logo svg.am-logo .logo-fill{fill:var(--black);stroke:var(--black)}
 .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
 .nav-links a{font-size:.72rem;font-weight:400;color:var(--text-muted);letter-spacing:.12em;text-transform:uppercase;transition:color .3s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--gold);transition:width .3s}
@@ -318,7 +318,7 @@ body::before{
 .footer-col h4{font-family:var(--font-serif);font-size:1rem;color:var(--cream);font-weight:400;margin-bottom:16px;font-style:italic}
 .footer-brand{display:flex;flex-direction:column;gap:16px}
 .footer-brand svg.am-logo{height:40px;width:auto}
-.footer-brand svg.am-logo .logo-fill{fill:var(--text-on-dark)}
+.footer-brand svg.am-logo .logo-fill{fill:var(--text-on-dark);stroke:var(--text-on-dark)}
 .footer-tagline{font-family:var(--font-serif);font-size:.88rem;color:var(--taupe);font-style:italic;font-weight:300;margin-top:8px}
 .footer-detail{font-size:.8rem;color:rgba(245,239,228,.35);line-height:1.8;font-weight:300}
 .footer-detail a{color:rgba(245,239,228,.5);transition:color .3s}
@@ -527,14 +527,13 @@ body::before{
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <!-- Aesthetic Maven logo — inline SVG monogram -->
-      <svg class="am-logo" viewBox="0 0 120 170" xmlns="http://www.w3.org/2000/svg">
+      <svg class="am-logo" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
         <g class="logo-fill">
-          <path d="M60 4C30 4 8 30 8 62v46c0 32 22 58 52 58s52-26 52-58V62C112 30 90 4 60 4zM60 8c27.6 0 48 24.2 48 54v46c0 29.8-20.4 54-48 54S12 137.8 12 108V62C12 32.2 32.4 8 60 8z" fill-rule="evenodd"/>
-          <path d="M60 12C35 12 16 34.5 16 62v46c0 27.5 19 50 44 50s44-22.5 44-50V62c0-27.5-19-50-44-50zM60 14.5c23.5 0 41.5 21.5 41.5 47.5v46c0 26-18 47.5-41.5 47.5S18.5 134 18.5 108V62c0-26 18-47.5 41.5-47.5z" fill-rule="evenodd" opacity=".3"/>
-          <path d="M60 34L44 78h4.5L53 66.5h14L71.5 78H76L60 34zM60 40l5.5 23h-11L60 40z"/>
-          <circle cx="60" cy="85" r="2.5"/>
-          <path d="M38 92h3.5v34l18-24 18.5 24V92H82v40h-4L60 108.5 42 132h-4V92z"/>
-          <text x="60" y="158" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" letter-spacing="3.2" font-weight="400">AESTHETIC MAVEN</text>
+          <rect x="18" y="6" width="84" height="120" rx="26" ry="26" fill="none" stroke-width="2"/>
+          <path d="M60 30L46 70M60 30L74 70M50 59h20" fill="none" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="60" cy="78" r="2" stroke="none"/>
+          <path d="M43 112V86l17 19 17-19v26" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="60" y="148" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" letter-spacing="3" font-weight="400" stroke="none">AESTHETIC MAVEN</text>
         </g>
       </svg>
     </a>
@@ -882,14 +881,13 @@ body::before{
   <div class="footer-grid">
     <!-- Column 1: Brand -->
     <div class="footer-col footer-brand">
-      <svg class="am-logo" viewBox="0 0 120 170" xmlns="http://www.w3.org/2000/svg">
+      <svg class="am-logo" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
         <g class="logo-fill">
-          <path d="M60 4C30 4 8 30 8 62v46c0 32 22 58 52 58s52-26 52-58V62C112 30 90 4 60 4zM60 8c27.6 0 48 24.2 48 54v46c0 29.8-20.4 54-48 54S12 137.8 12 108V62C12 32.2 32.4 8 60 8z" fill-rule="evenodd"/>
-          <path d="M60 12C35 12 16 34.5 16 62v46c0 27.5 19 50 44 50s44-22.5 44-50V62c0-27.5-19-50-44-50zM60 14.5c23.5 0 41.5 21.5 41.5 47.5v46c0 26-18 47.5-41.5 47.5S18.5 134 18.5 108V62c0-26 18-47.5 41.5-47.5z" fill-rule="evenodd" opacity=".3"/>
-          <path d="M60 34L44 78h4.5L53 66.5h14L71.5 78H76L60 34zM60 40l5.5 23h-11L60 40z"/>
-          <circle cx="60" cy="85" r="2.5"/>
-          <path d="M38 92h3.5v34l18-24 18.5 24V92H82v40h-4L60 108.5 42 132h-4V92z"/>
-          <text x="60" y="158" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" letter-spacing="3.2" font-weight="400">AESTHETIC MAVEN</text>
+          <rect x="18" y="6" width="84" height="120" rx="26" ry="26" fill="none" stroke-width="2"/>
+          <path d="M60 30L46 70M60 30L74 70M50 59h20" fill="none" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="60" cy="78" r="2" stroke="none"/>
+          <path d="M43 112V86l17 19 17-19v26" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="60" y="148" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" letter-spacing="3" font-weight="400" stroke="none">AESTHETIC MAVEN</text>
         </g>
       </svg>
       <p class="footer-tagline">Natural Results. Clinical Precision. Concierge Care.</p>
