@@ -1251,11 +1251,11 @@ footer {
   .collection { padding: 80px 24px 60px; }
   .collection-header { margin-bottom: 48px; }
   .frag-body { padding: 0 24px; }
-  .frag-card.open .frag-body { padding: 32px 24px; }
+  .frag-card.open .frag-body { padding: 16px 20px 32px; gap: 4px; }
   .frag-card.open .frag-name { font-size: 32px; }
-  .frag-card.open .frag-img-col { order: -1; }
-  .frag-img-col { flex: 0 0 100%; max-height: 520px; }
-  .frag-img-col img { height: 520px; border-left: none; border-top: 2px solid rgba(214,0,108,.27); }
+  .frag-card.open .frag-img-col { order: -1; margin-bottom: -48px; margin-top: -16px; }
+  .frag-img-col { flex: 0 0 100%; max-height: 560px; }
+  .frag-img-col img { height: 560px; border-left: none; border-top: 2px solid rgba(214,0,108,.27); transform: scale(1.4); transform-origin: center; }
   .frag-card.open { min-height: auto; }
   .discovery { padding: 80px 24px; }
   .discovery-inner { gap: 48px; }
@@ -1688,7 +1688,7 @@ footer {
     <span style="font-size:9px;letter-spacing:5px;color:var(--pink);font-family:var(--sans);font-weight:300;text-shadow:0 0 14px rgba(214,0,108,.33)">THE PODCAST</span>
     <h2>Give Me Flowers</h2>
     <div style="margin:20px auto"><div class="pink-line" style="width:32px;margin:0 auto"></div></div>
-    <p>A podcast centered on self-love, intentional care, and honoring women whose impact deserves recognition. Hosted by Sakari Sanders — the same creative vision behind the Give Me Flowers fragrance collection.</p>
+    <p>A podcast centered on self-love, intentional care, and honoring women whose impact deserves recognition. Hosted by Sakari Sanders — the same visionary behind the Give Me Flowers fragrance collection.</p>
     <div style="margin-top:32px"><a href="#" class="lux-btn primary" onclick="event.preventDefault();document.getElementById('reelOverlay').classList.add('active');document.getElementById('reelFrame').src='https://www.youtube.com/embed/goTgtNJTDFY?si=qSEl74nQ4twShNxU'">WATCH NOW</a></div>
   </div>
 </section>
@@ -1978,6 +1978,13 @@ document.addEventListener('click', (e) => {
     currentPill = null;
   }
 });
+
+window.addEventListener('scroll', () => {
+  if (currentPill) {
+    popout.classList.remove('visible');
+    currentPill = null;
+  }
+}, { passive: true });
 
 /* â”€â”€â”€ GALLERY LIGHTBOX â”€â”€â”€ */
 const galleryImages = Array.from(document.querySelectorAll('.gallery-strip img')).map(img => img.src);
@@ -2321,8 +2328,17 @@ document.addEventListener('keydown', e => {
 var chatOpen = false;
 function toggleChat() {
   chatOpen = !chatOpen;
-  document.getElementById('chatWindow').classList.toggle('open', chatOpen);
-  document.getElementById('chatFab').style.display = chatOpen ? 'none' : 'flex';
+  var winEl = document.getElementById('chatWindow');
+  var fabEl = document.getElementById('chatFab');
+  winEl.classList.toggle('open', chatOpen);
+  fabEl.style.display = chatOpen ? 'none' : 'flex';
+  if (!chatOpen) {
+    setTimeout(function() {
+      var msgs = document.getElementById('chatMessages');
+      msgs.innerHTML = '<div class="chat-msg bot">Hey love! \ud83c\udf38 Welcome to ByLeCr\u00e8me. I\'m here to help you find your signature scent. What can I help you with today?</div>';
+      document.getElementById('chatQuickBtns').style.display = 'flex';
+    }, 350);
+  }
 }
 function chatQuick(btn) {
   var text = btn.textContent;
@@ -2363,15 +2379,15 @@ function getChatReply(text) {
       return "Give Me Flowers is at The District in Raleigh, NC! It\u2019s a gorgeous venue right in the heart of downtown. For exact directions and parking info, check the event page\u2014tap EVENT in the menu above or visit whitehausmedia.com/give-me-flowers/ for all the details!";
     }
     if (t.includes('cost') || t.includes('price') || t.includes('ticket') || t.includes('how much') || t.includes('pay') || t.includes('reserve') || t.includes('seat') || t.includes('book')) {
-      return "Seats for Give Me Flowers are $115 per person! That includes the full luxury fragrance experience with five amazing brands. You can reserve your spot right now\u2014tap EVENT in the menu or head to whitehausmedia.com/give-me-flowers/ and hit Reserve Your Seat!";
+      return "Seats for Give Me Flowers are $115 per person! That includes the full luxury fragrance experience with ByLeCrème’s signature scents. You can reserve your spot right now\u2014tap EVENT in the menu or head to whitehausmedia.com/give-me-flowers/ and hit Reserve Your Seat!";
     }
     if (t.includes('time') || t.includes('when') || t.includes('start') || t.includes('end') || t.includes('long') || t.includes('hour')) {
       return "Give Me Flowers is Saturday, June 27th, 2026 from 6:00 PM to 8:00 PM! Two hours of luxury fragrances, amazing brands, and an unforgettable vibe. Tap EVENT in the menu to reserve your seat!";
     }
     if (t.includes('what') || t.includes('about') || t.includes('tell me') || t.includes('info') || t.includes('detail')) {
-      return "Give Me Flowers is an exclusive luxury fragrance experience hosted by ByLeCr\u00e8me Parfums! It\u2019s happening Saturday, June 27th from 6\u20138 PM at The District in Raleigh. Five incredible fragrance brands, one unforgettable night\u2014seats are $115 per person. Tap EVENT in the menu to get all the details and reserve your spot!";
+      return "Give Me Flowers is an exclusive luxury fragrance experience hosted by ByLeCr\u00e8me Parfums! It\u2019s happening Saturday, June 27th from 6\u20138 PM at The District in Raleigh. A celebration of ByLeCrème Parfums, one unforgettable night\u2014seats are $115 per person. Tap EVENT in the menu to get all the details and reserve your spot!";
     }
-    return "Yes! Give Me Flowers is our exclusive fragrance event\u2014Saturday, June 27th, 6\u20138 PM at The District in Raleigh. Seats are $115 and it\u2019s going to be an incredible night with five luxury fragrance brands. Tap EVENT in the menu above to reserve your seat!";
+    return "Yes! Give Me Flowers is our exclusive fragrance event\u2014Saturday, June 27th, 6\u20138 PM at The District in Raleigh. Seats are $115 and it\u2019s going to be an incredible night with ByLeCrème’s luxury fragrances. Tap EVENT in the menu above to reserve your seat!";
   }
   if (t.includes('next fragrance') || t.includes('new fragrance') || t.includes('releasing') || t.includes('release') || t.includes('new scent') || t.includes('upcoming')) {
     return "Ooh great question babe! We\'ve got something special in the works and trust me, you don\'t wanna miss it. Subscribe to LeCr\u00e8me Insiders for priority access to new fragrances, exclusive drops, and all the perks! You\'ll be the first to know \u2728";
