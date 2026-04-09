@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Vision for NSN — White Haus Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #080808;
+  --cream:     #F4EFE6;
+  --gold:      #C6A44C;
+  --gold-dim:  rgba(198,164,76,0.12);
+  --gold-mid:  rgba(198,164,76,0.32);
+  --gold-glow: rgba(198,164,76,0.06);
+  --white:     #FFFFFF;
+  --muted:     rgba(255,255,255,0.45);
+  --muted-dk:  rgba(8,8,8,0.50);
+  --line:      rgba(255,255,255,0.07);
+  --line-lt:   rgba(8,8,8,0.09);
+  --card-bg:   rgba(255,255,255,0.028);
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Reset ── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--ink);
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── Reveal System ── */
+.rv{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.rv.vis{opacity:1;transform:translateY(0);}
+.rv-left{
+  opacity:0;
+  transform:translateX(-40px);
+  transition:opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.rv-left.vis{opacity:1;transform:translateX(0);}
+.rv-right{
+  opacity:0;
+  transform:translateX(40px);
+  transition:opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.rv-right.vis{opacity:1;transform:translateX(0);}
+.rv-scale{
+  opacity:0;
+  transform:scale(0.92);
+  transition:opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.rv-scale.vis{opacity:1;transform:scale(1);}
+.stagger > *{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.stagger.vis > *:nth-child(1){transition-delay:0s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(2){transition-delay:0.08s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(3){transition-delay:0.16s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(4){transition-delay:0.24s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(5){transition-delay:0.32s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(6){transition-delay:0.40s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(7){transition-delay:0.48s;opacity:1;transform:translateY(0);}
+.stagger.vis > *:nth-child(8){transition-delay:0.56s;opacity:1;transform:translateY(0);}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  padding:52px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.orb{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  animation:orbFloat 20s ease-in-out infinite;
+}
+.orb-1{
+  width:860px;height:860px;top:-320px;right:-240px;
+  border:1px solid rgba(198,164,76,0.06);
+  background:radial-gradient(circle, rgba(198,164,76,0.02) 0%, transparent 70%);
+}
+.orb-2{
+  width:480px;height:480px;top:-80px;right:60px;
+  border:1px solid rgba(198,164,76,0.09);
+  animation-delay:-7s;
+}
+.orb-3{
+  width:1200px;height:1200px;bottom:-600px;left:-400px;
+  border:1px solid rgba(198,164,76,0.03);
+  background:radial-gradient(circle, rgba(198,164,76,0.015) 0%, transparent 70%);
+  animation-delay:-14s;
+}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0);}
+  33%{transform:translate(12px,-8px);}
+  66%{transform:translate(-8px,12px);}
+}
+.hero-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:2;
+  opacity:0;animation:fadeDown 1s 0.3s var(--ease-out) forwards;
+}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.logo img{height:32px;display:block;}
+.logo-text{font-size:15px;font-weight:800;color:var(--white);letter-spacing:-0.02em;display:none;}
+.tag{
+  font-size:10px;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;
+  background:var(--gold-glow);
+  border:1px solid rgba(198,164,76,0.15);
+  padding:8px 18px;border-radius:100px;
+}
+.hero-body{
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;padding:100px 0 60px;
+}
+.addressee{
+  display:flex;align-items:center;gap:14px;margin-bottom:56px;
+  opacity:0;animation:fadeUp 0.9s 0.5s var(--ease-out) forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.addressee-bar{width:44px;height:1px;background:var(--gold);}
+.addressee-text{
+  font-size:11px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;
+}
+.hero-h1{
+  font-size:clamp(52px,7.5vw,104px);
+  font-weight:800;line-height:0.92;
+  letter-spacing:-0.035em;max-width:920px;
+  margin-bottom:40px;
+  opacity:0;animation:fadeUp 1.1s 0.7s var(--ease-out) forwards;
+}
+.hero-h1 em{
+  font-style:italic;font-weight:300;color:var(--gold);
+  display:inline;
+}
+.hero-sub{
+  font-size:18px;color:var(--muted);
+  max-width:520px;line-height:1.8;font-weight:400;
+  opacity:0;animation:fadeUp 1s 1s var(--ease-out) forwards;
+}
+.hero-foot{
+  position:relative;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  border-top:1px solid var(--line);padding-top:28px;
+  opacity:0;animation:fadeUp 0.8s 1.3s var(--ease-out) forwards;
+}
+.hero-meta{font-size:12px;color:rgba(255,255,255,0.2);line-height:1.9;}
+.scroll-hint{
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.18);
+}
+.scroll-bar{
+  width:36px;height:1px;background:rgba(255,255,255,0.14);
+  position:relative;overflow:hidden;
+}
+.scroll-bar::after{
+  content:'';position:absolute;left:-100%;top:0;
+  width:100%;height:100%;background:var(--gold);
+  animation:scrollPulse 2.4s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%{left:-100%;}
+  50%{left:100%;}
+  100%{left:100%;}
+}
+
+/* ── Sections ── */
+.wrap{max-width:1040px;margin:0 auto;padding:120px 80px;}
+.cream-section{background:var(--cream);color:var(--ink);}
+.ey{display:flex;align-items:center;gap:12px;margin-bottom:22px;}
+.ey-dot{
+  width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--gold-mid);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;font-weight:800;color:var(--gold);flex-shrink:0;
+  transition:all 0.5s var(--ease-out);
+}
+.vis .ey-dot{
+  background:var(--gold-glow);
+  border-color:var(--gold);
+}
+.ey-txt{
+  font-size:10px;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;
+}
+.ey-line{flex:1;height:1px;background:var(--gold-dim);}
+
+h2{
+  font-size:clamp(36px,5vw,64px);
+  font-weight:800;line-height:1.0;
+  letter-spacing:-0.03em;margin-bottom:16px;
+}
+h2 em{font-style:italic;font-weight:300;color:var(--gold);}
+.lead{
+  font-size:17px;color:var(--muted);
+  max-width:600px;margin-bottom:64px;line-height:1.82;
+}
+.cream-section .lead{color:var(--muted-dk);}
+
+/* ── Stats ── */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  margin-bottom:72px;
+}
+.stat{
+  background:var(--card-bg);padding:40px 28px;text-align:center;
+  transition:background 0.4s ease;
+}
+.stat:hover{background:rgba(255,255,255,0.05);}
+.stat-n{
+  font-size:clamp(38px,4vw,52px);font-weight:800;color:var(--gold);
+  letter-spacing:-0.035em;line-height:1;display:block;
+}
+.stat-l{
+  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);margin-top:10px;font-weight:500;display:block;
+}
+
+/* ── Prose ── */
+.prose{font-size:17px;line-height:1.85;color:var(--muted);max-width:700px;}
+.prose strong{color:var(--white);font-weight:700;}
+.cream-section .prose{color:var(--muted-dk);}
+.cream-section .prose strong{color:var(--ink);}
+.prose+.prose{margin-top:24px;}
+
+/* ── Pullquote ── */
+.pull{
+  border-left:2px solid var(--gold);
+  padding:22px 32px;margin:44px 0;max-width:660px;
+  position:relative;
+}
+.pull::before{
+  content:'';position:absolute;left:-2px;top:0;
+  width:2px;height:100%;
+  background:linear-gradient(to bottom, var(--gold), rgba(198,164,76,0.2));
+}
+.pull p{
+  font-size:22px;font-weight:300;font-style:italic;
+  line-height:1.55;color:var(--white);
+}
+.cream-section .pull p{color:var(--ink);}
+.pull cite{
+  display:block;margin-top:14px;font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;font-style:normal;
+}
+
+/* ── Chips ── */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+.chip{
+  background:rgba(255,255,255,0.04);border:1px solid var(--line);
+  border-radius:6px;padding:8px 16px;
+  font-size:12px;font-weight:700;color:var(--muted);
+  transition:all 0.3s ease;
+}
+.chip:hover{
+  border-color:rgba(198,164,76,0.3);
+  color:var(--gold);
+  background:var(--gold-glow);
+}
+
+/* ── Cards ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+.card{
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  border-radius:16px;padding:36px 30px;
+  transition:border-color 0.4s ease, transform 0.4s var(--ease-out), box-shadow 0.4s ease;
+}
+.card:hover{
+  border-color:rgba(198,164,76,0.2);
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+}
+.card-top{
+  background:var(--ink);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:16px;padding:36px 30px;
+  transition:border-color 0.4s ease, transform 0.4s var(--ease-out), box-shadow 0.4s ease;
+}
+.card-top:hover{
+  border-color:rgba(198,164,76,0.25);
+  transform:translateY(-4px);
+  box-shadow:0 24px 64px rgba(0,0,0,0.2);
+}
+.c-num{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:800;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.c-num::after{
+  content:'';flex:1;height:1px;background:var(--gold-dim);
+}
+.c-title{
+  font-size:20px;font-weight:800;color:var(--white);
+  letter-spacing:-0.015em;margin-bottom:12px;line-height:1.2;
+}
+.c-body{font-size:14px;color:var(--muted);line-height:1.72;}
+
+/* ── Checklist ── */
+.cklist{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:18px;}
+.cklist li{
+  display:flex;gap:12px;font-size:13.5px;
+  color:var(--muted);line-height:1.6;align-items:flex-start;
+}
+.cklist li::before{
+  content:'';width:18px;height:18px;flex-shrink:0;margin-top:1px;
+  background-image:url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='8' stroke='%23C6A44C' stroke-width='0.8'/%3E%3Cpath d='M5.5 9l2.5 2.5 4.5-4.5' stroke='%23C6A44C' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-size:contain;
+}
+.cklist li strong{color:var(--white);}
+.cream-section .cklist li{color:var(--muted-dk);}
+.cream-section .cklist li strong{color:var(--ink);}
+
+/* ── Revenue Table ── */
+.rtable-wrap{
+  margin-top:48px;
+  border:1px solid rgba(198,164,76,0.15);
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(198,164,76,0.03) 0%, transparent 40%);
+}
+.rtable{width:100%;border-collapse:collapse;}
+.rtable thead{background:rgba(198,164,76,0.06);}
+.rtable th{
+  text-align:left;font-size:10px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--gold);font-weight:700;
+  padding:20px 28px 18px;
+  border-bottom:1px solid rgba(198,164,76,0.15);
+}
+.rtable th:last-child{text-align:right;}
+.rtable td{
+  padding:22px 28px;font-size:14px;
+  border-bottom:1px solid var(--line);vertical-align:top;
+  transition:background 0.3s ease;
+}
+.rtable tbody tr:hover td{background:rgba(255,255,255,0.02);}
+.rtable td:first-child{font-weight:700;color:var(--white);width:220px;}
+.rtable td:nth-child(2){color:var(--muted);font-size:13px;}
+.rtable td:last-child{font-weight:800;color:var(--gold);text-align:right;white-space:nowrap;font-size:15px;}
+.rtable tr.total td{
+  border-bottom:none;border-top:2px solid rgba(198,164,76,0.35);
+  font-weight:800;color:var(--white);font-size:16px;padding-top:28px;
+  background:rgba(198,164,76,0.04);
+}
+.rtable tr.total td:last-child{
+  color:var(--gold);font-size:clamp(20px,2.5vw,26px);
+  letter-spacing:-0.02em;
+}
+
+/* ── Callout ── */
+.callout{
+  background:rgba(198,164,76,0.05);
+  border:1px solid rgba(198,164,76,0.18);
+  border-radius:16px;padding:36px 40px;margin:44px 0;
+  position:relative;overflow:hidden;
+}
+.callout::before{
+  content:'';position:absolute;left:0;top:0;
+  width:3px;height:100%;background:var(--gold);
+}
+.callout p{font-size:16px;color:var(--white);line-height:1.82;}
+.callout strong{color:var(--gold);}
+.cream-section .callout{
+  background:rgba(198,164,76,0.06);
+  border-color:rgba(198,164,76,0.2);
+}
+.cream-section .callout p{color:var(--ink);}
+
+/* ── Before / After Compare ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:48px;border-radius:18px;overflow:hidden;border:1px solid var(--line);}
+.compare-col{padding:36px 32px;}
+.compare-col.now-col{background:rgba(192,57,43,0.04);}
+.compare-col.nxt-col{background:rgba(198,164,76,0.04);border-left:1px solid var(--line);}
+.compare-head{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  font-weight:700;padding-bottom:18px;border-bottom:1px solid;margin-bottom:0;
+  display:flex;align-items:center;gap:10px;
+}
+.compare-head.now{color:rgba(192,57,43,0.65);border-color:rgba(192,57,43,0.18);}
+.compare-head.nxt{color:var(--gold);border-color:var(--gold-dim);}
+.compare-head svg{flex-shrink:0;}
+.cmp-item{
+  font-size:13.5px;padding:14px 0;
+  border-bottom:1px solid var(--line);line-height:1.55;
+}
+.cmp-item:last-child{border-bottom:none;}
+.cmp-item.now{color:rgba(255,255,255,0.28);}
+.cmp-item.nxt{color:var(--white);font-weight:500;}
+
+/* ── Phase Timeline ── */
+.phases{display:flex;flex-direction:column;margin-top:12px;}
+.phase-row{display:flex;gap:32px;position:relative;}
+.phase-row::before{
+  content:'';position:absolute;
+  left:23px;top:52px;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom, var(--gold-mid), var(--line));
+}
+.phase-row:last-child::before{display:none;}
+.phase-dot{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--ink);border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:var(--gold);
+  flex-shrink:0;position:relative;z-index:2;
+  transition:all 0.5s var(--ease-out);
+}
+.phase-row:hover .phase-dot{
+  background:rgba(198,164,76,0.08);
+  border-color:var(--gold);
+  box-shadow:0 0 24px rgba(198,164,76,0.12);
+}
+.phase-body{padding-bottom:56px;flex:1;}
+.phase-time{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:6px;
+}
+.phase-name{
+  font-size:clamp(20px,2.5vw,24px);font-weight:800;color:var(--white);
+  letter-spacing:-0.02em;margin-bottom:12px;
+}
+.phase-desc{
+  font-size:14px;color:var(--muted);line-height:1.78;
+  margin-bottom:22px;max-width:560px;
+}
+.phase-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.ptag{
+  background:rgba(255,255,255,0.04);border:1px solid var(--line);
+  border-radius:100px;padding:6px 16px;
+  font-size:12px;color:var(--muted);font-weight:500;
+  transition:all 0.3s ease;
+}
+.ptag:hover{border-color:rgba(198,164,76,0.25);color:rgba(255,255,255,0.65);}
+
+/* ── About Block ── */
+.about-block{
+  background:var(--card-bg);border:1px solid var(--line);
+  border-radius:18px;padding:48px;
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+}
+.about-label{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:16px;
+}
+.about-name{
+  font-size:clamp(26px,3vw,32px);font-weight:800;color:var(--white);
+  letter-spacing:-0.02em;margin-bottom:8px;line-height:1.1;
+}
+.about-role{font-size:13px;color:var(--muted);margin-bottom:20px;}
+.about-body{font-size:14px;color:var(--muted);line-height:1.82;}
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.metric{
+  background:rgba(255,255,255,0.03);border:1px solid var(--line);
+  border-radius:12px;padding:24px;text-align:center;
+  transition:all 0.4s ease;
+}
+.metric:hover{
+  border-color:rgba(198,164,76,0.2);
+  background:rgba(198,164,76,0.03);
+}
+.metric-n{
+  font-size:36px;font-weight:800;color:var(--gold);
+  letter-spacing:-0.025em;line-height:1;display:block;
+}
+.metric-l{
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-top:8px;font-weight:500;display:block;
+}
+
+/* ── CTA Section ── */
+.cta-section{
+  background:var(--cream);color:var(--ink);
+  padding:160px 80px;text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'NSN';
+  position:absolute;font-size:clamp(200px,30vw,420px);font-weight:800;
+  color:rgba(8,8,8,0.025);letter-spacing:-0.05em;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;white-space:nowrap;line-height:1;
+}
+.cta-glow{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(198,164,76,0.08) 0%, transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.cta-ey{
+  font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:28px;
+  position:relative;z-index:2;
+}
+.cta-h{
+  font-size:clamp(40px,6vw,76px);font-weight:800;
+  color:var(--ink);letter-spacing:-0.03em;line-height:1.0;
+  max-width:760px;margin:0 auto 28px;
+  position:relative;z-index:2;
+}
+.cta-h em{font-style:italic;font-weight:300;color:var(--gold);}
+.cta-sub{
+  font-size:17px;color:var(--muted-dk);
+  max-width:480px;margin:0 auto 60px;line-height:1.82;
+  position:relative;z-index:2;
+}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:14px;
+  background:var(--ink);color:var(--white);text-decoration:none;
+  font-size:12px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;padding:20px 42px;border-radius:100px;
+  position:relative;z-index:2;
+  transition:all 0.4s var(--ease-out);
+  box-shadow:0 4px 24px rgba(8,8,8,0.2);
+}
+.cta-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 40px rgba(8,8,8,0.3);
+  gap:18px;
+}
+.btn-circle{
+  width:22px;height:22px;background:var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.3s var(--ease-spring);
+}
+.cta-btn:hover .btn-circle{transform:rotate(-45deg) scale(1.1);}
+.cta-note{
+  margin-top:24px;font-size:12px;
+  color:rgba(8,8,8,0.28);position:relative;z-index:2;
+}
+
+/* ── Section Divider ── */
+.sec-alt{
+  background:rgba(255,255,255,0.018);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+/* ── Footer ── */
+.doc-footer{
+  background:var(--ink);padding:44px 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--line);
+}
+.doc-footer img{height:26px;}
+.footer-r{text-align:right;font-size:12px;color:rgba(255,255,255,0.18);line-height:1.9;}
+
+hr{border:none;border-top:1px solid var(--line);margin:64px 0;}
+
+/* ── Mobile ── */
+@media(max-width:900px){
+  .hero{padding:36px 28px;}
+  .wrap{padding:80px 28px;}
+  .cta-section{padding:100px 28px;}
+  .doc-footer{padding:32px 28px;flex-direction:column;gap:20px;text-align:center;}
+  .footer-r{text-align:center;}
+  .g2,.g3,.stats,.about-block,.metrics-grid{grid-template-columns:1fr;}
+  .compare{grid-template-columns:1fr;}
+  .compare-col.nxt-col{border-left:none;border-top:1px solid var(--line);}
+  .stats{background:transparent;border:none;gap:12px;}
+  .stat{border:1px solid var(--line);border-radius:12px;}
+  .hero-h1{font-size:clamp(38px,10vw,64px);}
+  .rtable-wrap{border-radius:12px;}
+  .rtable th,.rtable td{padding:14px 16px;font-size:12px;}
+  .rtable td:first-child{width:auto;}
+  .rtable td:nth-child(2){display:none;}
+  .phase-row{gap:20px;}
+  .phase-dot{width:40px;height:40px;font-size:12px;}
+  .phase-row::before{left:19px;top:44px;}
+  .about-block{padding:28px;gap:32px;}
+  .callout{padding:28px 24px;}
+}
+@media(max-width:480px){
+  .hero-foot{flex-direction:column;align-items:flex-start;gap:16px;}
+  .tag{font-size:9px;padding:6px 14px;}
+  .addressee-text{font-size:10px;letter-spacing:0.16em;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <nav class="hero-nav">
+    <div class="logo">
+      <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="logo-text">White Haus Media</span>
+    </div>
+    <span class="tag">Point of View — April 2026</span>
+  </nav>
+  <div class="hero-body">
+    <div class="addressee">
+      <div class="addressee-bar"></div>
+      <div class="addressee-text">Prepared for Amira Richardson — Executive Director, NSN</div>
+    </div>
+    <h1 class="hero-h1">The Network<br>That Works<br><em>Deserves a Platform<br>That Works Too.</em></h1>
+    <p class="hero-sub">NSN has spent 30 years building something rare — a community that genuinely changes careers. This is a vision for how the digital experience finally matches the organization behind it.</p>
+  </div>
+  <div class="hero-foot">
+    <div class="hero-meta">National Sales Network &nbsp;·&nbsp; salesnetwork.org<br>Atlanta, GA &nbsp;·&nbsp; Founded 1992</div>
+    <div class="scroll-hint"><span class="scroll-bar"></span>Continue reading</div>
+  </div>
+</section>
+
+<!-- ═══ 01 · THE FOUNDATION ═══ -->
+<section>
+<div class="wrap">
+  <div class="ey rv"><div class="ey-dot">01</div><div class="ey-txt">The Foundation</div><div class="ey-line"></div></div>
+  <h2 class="rv">What You've <em>Built</em> Is Rare.</h2>
+  <p class="lead rv">Before anything else — this needs to be said. What David Richardson started in Newark in 1992 with a handshake and a vision, and what this team has grown into over three decades, is genuinely uncommon. Let's look at what actually exists.</p>
+  <div class="stats stagger">
+    <div class="stat"><span class="stat-n">30+</span><span class="stat-l">Years of Impact</span></div>
+    <div class="stat"><span class="stat-n">100K+</span><span class="stat-l">Network Contacts</span></div>
+    <div class="stat"><span class="stat-n">70+</span><span class="stat-l">Corporate Sponsors</span></div>
+    <div class="stat"><span class="stat-n">20</span><span class="stat-l">Chapters & Growing</span></div>
+  </div>
+  <p class="prose rv">NSN is the only professional organization in the country positioned to develop, recruit, and advance Black sales professionals at <strong>every career level</strong> — from students entering the workforce to senior executives navigating the C-suite. That positioning is rare. The sponsor roster confirms it: Salesforce, Microsoft, Gartner, Johnson &amp; Johnson, the NBA.</p>
+  <p class="prose rv" style="margin-top:22px;">The conference has grown to 3,000+ attendees. New chapters are launching — Boston opened February 2026, Central/North New Jersey is being re-activated. Amira is traveling chapter to chapter, Get Connected events are drawing crowds, and the energy inside NSN is as strong as it's ever been.</p>
+  <div class="pull rv">
+    <p>"Membership is more than access — it's opportunity."</p>
+    <cite>Amira Richardson, Executive Director — NSN</cite>
+  </div>
+  <p class="prose rv">That phrase is exactly right. And it's the lens through which we see the opportunity in front of you. Because right now, that opportunity — the community, the resources, the network, the career-changing potential — is largely invisible online.</p>
+  <div class="chips stagger" style="margin-top:24px;">
+    <div class="chip">Salesforce</div><div class="chip">Microsoft</div><div class="chip">Gartner</div>
+    <div class="chip">Johnson &amp; Johnson</div><div class="chip">SiriusXM</div>
+    <div class="chip">The NBA</div><div class="chip">70+ Corporate Partners</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 02 · THE HONEST ASSESSMENT ═══ -->
+<section class="sec-alt">
+<div class="wrap">
+  <div class="ey rv"><div class="ey-dot">02</div><div class="ey-txt">The Honest Assessment</div><div class="ey-line"></div></div>
+  <h2 class="rv">The Organization Has <em>Outgrown</em><br>Its Digital Presence.</h2>
+  <p class="lead rv">We'll say this the way you'd say it to a nonprofit client: the infrastructure hasn't kept pace with the organization. That's not a criticism — it's the most important growth opportunity on the table.</p>
+  <p class="prose rv">David advises nonprofits on how to scale revenue while holding expenses down. The principle he brings to those engagements applies here too: <strong>when your digital platform isn't working for you, you're working harder than you should have to.</strong></p>
+  <p class="prose rv" style="margin-top:22px;">Right now, NSN's website is a scheduling brochure for conferences. It tells people events are happening and invites them to join. It does not <em>demonstrate</em> value. It does not <em>retain</em> members between events. It does not give the 70+ sponsor partners a year-round commercial surface. And it doesn't yet give the 100,000+ people in the network a reason to engage digitally when there's no conference on the calendar.</p>
+
+  <div class="compare rv-scale">
+    <div class="compare-col now-col">
+      <div class="compare-head now">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="rgba(192,57,43,0.5)" stroke-width="1.2"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="rgba(192,57,43,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Where Things Stand Today
+      </div>
+      <div class="cmp-item now">Membership page: a join button and a YouTube embed</div>
+      <div class="cmp-item now">Members join via an off-site third-party portal</div>
+      <div class="cmp-item now">No stated member benefits — no published pricing</div>
+      <div class="cmp-item now">Sponsors require a form submission just to see pricing</div>
+      <div class="cmp-item now">10+ years of conference video buried in a dropdown</div>
+      <div class="cmp-item now">No member hub, job board, or resource library</div>
+      <div class="cmp-item now">20 chapters — no standardized chapter page template</div>
+      <div class="cmp-item now">Zero digital revenue between events</div>
+    </div>
+    <div class="compare-col nxt-col">
+      <div class="compare-head nxt">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#C6A44C" stroke-width="1.2"/><path d="M5 8l2 2.5L11 6" stroke="#C6A44C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        What This Becomes
+      </div>
+      <div class="cmp-item nxt">A membership page that sells — outcomes, proof, value</div>
+      <div class="cmp-item nxt">Seamless on-brand join and onboarding experience</div>
+      <div class="cmp-item nxt">Tiered membership with clear benefits at every level</div>
+      <div class="cmp-item nxt">Live sponsor hub — self-serve packages, transparent ROI</div>
+      <div class="cmp-item nxt">Media hub surfacing social proof across every page</div>
+      <div class="cmp-item nxt">A member portal that creates year-round engagement</div>
+      <div class="cmp-item nxt">20 SEO-optimized chapter pages — new chapters live in hours</div>
+      <div class="cmp-item nxt">Digital revenue running 365 days, not just event weeks</div>
+    </div>
+  </div>
+
+  <div class="callout rv" style="margin-top:44px;">
+    <p>This isn't about aesthetics. <strong>A redesigned digital platform is a revenue decision.</strong> It changes how many people join, how many renew, how many sponsors commit at higher tiers, and how many of the 100K+ contacts in the network become paying members. The website is currently the weakest link between NSN's mission and its ability to fund it.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 03 · THE VISION ═══ -->
+<section class="cream-section">
+<div class="wrap">
+  <div class="ey rv"><div class="ey-dot">03</div><div class="ey-txt">The Vision</div><div class="ey-line"></div></div>
+  <h2 class="rv">Three Pillars. <em>One Platform.</em></h2>
+  <p class="lead rv">The new NSN digital experience is built around three core pillars — each one tied directly to a revenue outcome and a member outcome. Together, they turn the website from a brochure into the operational backbone of the organization.</p>
+  <div class="g3 stagger">
+    <div class="card-top">
+      <div class="c-num">Pillar 01</div>
+      <div class="c-title">The Member Experience</div>
+      <div class="c-body" style="color:var(--muted);">A fully realized member hub that gives professionals a reason to visit, engage, and stay — 365 days a year, not just during conference season.</div>
+      <ul class="cklist" style="margin-top:18px;">
+        <li><strong>Gated member portal</strong> — on-brand, on-domain, not a third-party redirect</li>
+        <li><strong>Resource library</strong> — on-demand sales training, career tools, exclusive content</li>
+        <li><strong>Member directory</strong> — searchable network of 100K+ professionals</li>
+        <li><strong>Chapter events calendar</strong> — all 20 chapters, unified in one place</li>
+        <li><strong>Member spotlight hub</strong> — the chapter-level stories that currently only live on Instagram, now amplified on the website</li>
+        <li><strong>Tiered membership</strong> — entry-level, professional, and executive tiers that reduce friction to join and increase lifetime value</li>
+      </ul>
+    </div>
+    <div class="card-top">
+      <div class="c-num">Pillar 02</div>
+      <div class="c-title">The Sponsor Engine</div>
+      <div class="c-body" style="color:var(--muted);">A year-round commercial platform that gives corporate partners ongoing value — not just a conference weekend. The site becomes a revenue surface that runs independently of the event calendar.</div>
+      <ul class="cklist" style="margin-top:18px;">
+        <li><strong>Live sponsor hub</strong> — transparent tiers, ROI data, real audience demographics</li>
+        <li><strong>Self-serve packages</strong> — lower-tier sponsors can select, pay, and activate without a sales call</li>
+        <li><strong>Digital ad inventory</strong> — newsletter sponsorships, homepage placements, content series branding</li>
+        <li><strong>Job board</strong> — employers post directly to the NSN member base; hiring outcomes tracked and reported</li>
+        <li><strong>Partner case studies</strong> — how Salesforce, Microsoft, and J&J have used NSN to diversify their sales organizations</li>
+      </ul>
+    </div>
+    <div class="card-top">
+      <div class="c-num">Pillar 03</div>
+      <div class="c-title">The Growth Infrastructure</div>
+      <div class="c-body" style="color:var(--muted);">The backend systems that make the entire organization easier to scale — new chapters, new markets, new members — without adding operational overhead.</div>
+      <ul class="cklist" style="margin-top:18px;">
+        <li><strong>Chapter page system</strong> — 20 templated, SEO-optimized local landing pages; new chapters deploy in hours</li>
+        <li><strong>Local search capture</strong> — "sales networking events in [city]" routes to the NSN chapter page in that market</li>
+        <li><strong>Conference bridge</strong> — seamless path from conference registration to membership, no drop-off</li>
+        <li><strong>Sales Influencer program integration</strong> — the referral program gets a dedicated acquisition funnel</li>
+        <li><strong>10+ years of media surfaced</strong> — conference videos, photos, testimonials become homepage conversion assets</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 04 · REVENUE ═══ -->
+<section>
+<div class="wrap">
+  <div class="ey rv"><div class="ey-dot">04</div><div class="ey-txt">Revenue Unlocked</div><div class="ey-line"></div></div>
+  <h2 class="rv">This Is a <em>Revenue Decision.</em></h2>
+  <p class="lead rv">Every feature in this vision maps to a number. Here's a conservative view of what the platform unlocks — not as a projection, but as a framework for how to think about return.</p>
+  <div class="rtable-wrap rv-scale">
+    <table class="rtable">
+      <thead>
+        <tr><th>Revenue Opportunity</th><th>Mechanism</th><th>Conservative Estimate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Membership Retention</td><td>Reducing churn by 10–15% via member portal engagement; members who log in monthly renew at 2× the rate</td><td>+$40K – $80K/yr</td></tr>
+        <tr><td>New Membership Tiers</td><td>Entry-level ($75/yr) and Executive ($500/yr) tiers capturing members currently priced out or underserved by the single $200 option</td><td>+$75K – $150K/yr</td></tr>
+        <tr><td>Digital Sponsorship Inventory</td><td>Newsletter + website placements for 10–15 corporate partners at $1,500–$5,000/month; runs year-round, not just event windows</td><td>+$180K – $450K/yr</td></tr>
+        <tr><td>Job Board Revenue</td><td>Employer posting packages at $5K–$15K/yr; 20 employers in year one based on existing sponsor relationships</td><td>+$100K – $300K/yr</td></tr>
+        <tr><td>Chapter Local Sponsorships</td><td>SEO-optimized chapter pages attract local employer sponsors in each market; each chapter captures $5K–$15K annually</td><td>+$100K – $300K/yr</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="total"><td>Total Opportunity</td><td>Conservative first-year digital revenue uplift from new platform capabilities</td><td>$495K – $1.28M</td></tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="callout rv" style="margin-top:44px;">
+    <p>These numbers don't require new sponsors, new members, or new events. <strong>They come from the assets NSN already has</strong> — a 100K network, 70+ corporate relationships, 30 years of credibility — finally deployed through a platform that captures their value year-round.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 05 · BUILD PLAN ═══ -->
+<section class="sec-alt">
+<div class="wrap">
+  <div class="ey rv"><div class="ey-dot">05</div><div class="ey-txt">The Build Plan</div><div class="ey-line"></div></div>
+  <h2 class="rv">Phased. Focused. <em>No Disruption.</em></h2>
+  <p class="lead rv">We build in three phases so NSN sees impact at every step — and nothing touches the live event pipeline while it's in motion.</p>
+  <div class="phases">
+    <div class="phase-row rv">
+      <div class="phase-dot">1</div>
+      <div class="phase-body">
+        <div class="phase-time">Phase 1 — Weeks 1 – 4</div>
+        <div class="phase-name">Foundation Rebuild</div>
+        <div class="phase-desc">Every public-facing page rebuilt with a modern, authoritative design system. The visual gap between NSN's institutional credibility and its current website closes completely. The site starts working for both member acquisition and sponsor conversion from day one.</div>
+        <div class="phase-tags">
+          <span class="ptag">Homepage redesign</span><span class="ptag">Membership page with benefits</span>
+          <span class="ptag">Sponsor Hub — live pricing</span><span class="ptag">About / leadership pages</span>
+          <span class="ptag">Media hub</span><span class="ptag">Mobile-first performance</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-row rv">
+      <div class="phase-dot">2</div>
+      <div class="phase-body">
+        <div class="phase-time">Phase 2 — Weeks 5 – 8</div>
+        <div class="phase-name">Chapter Infrastructure</div>
+        <div class="phase-desc">A reusable chapter page template system that gives every chapter its own SEO-optimized local presence. New chapters onboard in hours. Chapter presidents get a straightforward update mechanism. Local content — member spotlights, events, leaders — lives on the NSN domain, not just Instagram.</div>
+        <div class="phase-tags">
+          <span class="ptag">20 chapter landing pages</span><span class="ptag">Local event integration</span>
+          <span class="ptag">Chapter president profiles</span><span class="ptag">Member spotlight sections</span>
+          <span class="ptag">Local sponsor recognition</span><span class="ptag">New chapter rapid-deploy</span>
+        </div>
+      </div>
+    </div>
+    <div class="phase-row rv">
+      <div class="phase-dot">3</div>
+      <div class="phase-body">
+        <div class="phase-time">Phase 3 — Weeks 9 – 14</div>
+        <div class="phase-name">Revenue Platform</div>
+        <div class="phase-desc">The member portal, job board, and digital sponsor infrastructure deploy. This is where the compounding return begins — the website becomes a business asset that generates revenue between events, reduces administrative load, and scales with the organization rather than requiring new headcount.</div>
+        <div class="phase-tags">
+          <span class="ptag">Member portal dashboard</span><span class="ptag">Resource library</span>
+          <span class="ptag">Job board</span><span class="ptag">Member directory</span>
+          <span class="ptag">Digital sponsor self-serve</span><span class="ptag">Email capture &amp; nurture flows</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ 06 · WHO WE ARE ═══ -->
+<section>
+<div class="wrap">
+  <div class="ey rv"><div class="ey-dot">06</div><div class="ey-txt">Who We Are</div><div class="ey-line"></div></div>
+  <h2 class="rv">Built for <em>Organizations<br>That Mean Business.</em></h2>
+  <p class="lead rv" style="margin-bottom:44px;">White Haus Media is a premium custom website agency based in the Triangle area of North Carolina. We build for organizations that have outgrown template solutions and need a digital platform that works as hard as they do.</p>
+  <div class="about-block rv-scale">
+    <div>
+      <div class="about-label">White Haus Media</div>
+      <div class="about-name">Premium Web.<br>Built for Growth.</div>
+      <div class="about-role">Wake Forest, NC — Serving the Southeast & Beyond</div>
+      <div class="about-body">We specialize in custom websites and digital platforms for organizations with complex member, sponsor, and community dynamics. We don't use templates because our clients don't have template-sized ambitions. Every site we deliver is a single-file, performance-first build — fast, custom, and owned entirely by you.</div>
+    </div>
+    <div class="metrics-grid stagger">
+      <div class="metric"><span class="metric-n">100%</span><span class="metric-l">Custom Builds</span></div>
+      <div class="metric"><span class="metric-n">0</span><span class="metric-l">Templates Used</span></div>
+      <div class="metric"><span class="metric-n">SE</span><span class="metric-l">Regional Focus</span></div>
+      <div class="metric"><span class="metric-n">NSN</span><span class="metric-l">Raleigh Chapter</span></div>
+    </div>
+  </div>
+  <div class="callout rv" style="margin-top:36px;">
+    <p>A note on the connection: <strong>NSN has a chapter right here in Raleigh, NC</strong> — established February 2020. This isn't a vendor relationship pitched from across the country. We're in the same network, serving the same community. We have a personal stake in seeing NSN's digital infrastructure match the organization's ambition.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-ey rv">The Next Step</div>
+  <h2 class="cta-h rv">Thirty Years<br>of Community.<br><em>One Conversation<br>to Unlock Its Future.</em></h2>
+  <p class="cta-sub rv">We're not asking for a commitment. We're asking for 30 minutes to walk through this vision together, answer every question you have, and let you decide if this is the right move for NSN.</p>
+  <a href="mailto:hello@whitehausmedia.com?subject=NSN%20Website%20Conversation" class="cta-btn rv">
+    Let's Talk
+    <span class="btn-circle">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M2 8L8 2M8 2H4M8 2V6" stroke="#080808" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <div class="cta-note rv">hello@whitehausmedia.com &nbsp;·&nbsp; whitehausmedia.com</div>
+</section>
+
+<!-- ═══ Footer ═══ -->
+<footer class="doc-footer">
+  <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" onerror="this.style.display='none'">
+  <div class="footer-r">Prepared for National Sales Network · April 2026<br>White Haus Media · Wake Forest, NC · hello@whitehausmedia.com</div>
+</footer>
+
+<!-- ═══ Scroll Reveal Engine ═══ -->
+<script>
+(function(){
+  var targets = document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale,.stagger');
+  if (!targets.length) return;
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+  targets.forEach(function(t){obs.observe(t);});
+
+  /* Parallax orbs on scroll */
+  var orbs = document.querySelectorAll('.orb');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var s = window.pageYOffset;
+        orbs.forEach(function(o, i){
+          var rate = [0.03, 0.05, 0.02][i] || 0.03;
+          o.style.transform = 'translateY(' + (s * rate) + 'px)';
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* Stat number count-up animation */
+  var counted = false;
+  var statNums = document.querySelectorAll('.stat-n');
+  var statObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !counted){
+        counted = true;
+        statNums.forEach(function(el){
+          var text = el.textContent;
+          var match = text.match(/^(\d+)/);
+          if(match){
+            var target = parseInt(match[1]);
+            var suffix = text.replace(match[1],'');
+            var start = 0;
+            var duration = 1600;
+            var startTime = null;
+            function step(ts){
+              if(!startTime) startTime = ts;
+              var p = Math.min((ts - startTime)/duration, 1);
+              var ease = 1 - Math.pow(1 - p, 4);
+              var val = Math.round(start + (target - start) * ease);
+              el.textContent = val + suffix;
+              if(p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          }
+        });
+        statObs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+
+  var statsEl = document.querySelector('.stats');
+  if(statsEl) statObs.observe(statsEl);
+})();
+</script>
+
+</body>
+</html>
