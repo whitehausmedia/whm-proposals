@@ -1,904 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Proposal — Huckleberry's Friends | White Haus Media</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --cream: #F4EFE6;
-            --black: #080808;
-            --gold: #C6A44C;
-            --dark-bg: #0f0f0f;
-            --dark-card: #1a1a1a;
-            --border: #2a2a2a;
-            --text-light: #e8e8e8;
-            --text-muted: #999;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold) 0%, var(--cream) 100%);
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 999;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--cream);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .nav-logo img {
-            height: 44px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .cta-pill {
-            background: var(--gold);
-            color: var(--black);
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .cta-pill:hover {
-            background: var(--cream);
-            transform: translateY(-2px);
-        }
-
-        /* Main Content */
-        main {
-            margin-top: 80px;
-        }
-
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 5rem 2rem;
-        }
-
-        .pill-badge {
-            display: inline-block;
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            color: var(--gold);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: var(--cream);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .meta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .meta-item {
-            text-align: left;
-        }
-
-        .meta-label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .meta-value {
-            color: var(--cream);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Letter Section */
-        .letter {
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .letter h2 {
-            color: var(--cream);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .letter p {
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .letter strong {
-            color: var(--gold);
-        }
-
-        /* Section Titles */
-        h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 0.5rem;
-            color: var(--cream);
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Opportunity Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: var(--gold);
-            transform: translateY(-4px);
-        }
-
-        .card-number {
-            color: var(--gold);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            color: var(--cream);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Solution Section */
-        .solution-list {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .solution-list li {
-            padding: 1rem;
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .solution-list li:before {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 10px;
-            border: solid var(--gold);
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-            margin-right: 0.75rem;
-            flex-shrink: 0;
-        }
-
-        /* Preview Section */
-        .preview-container {
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 2rem;
-        }
-
-        .preview-header {
-            background: var(--border);
-            padding: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .preview-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--gold);
-        }
-
-        .preview-dot:nth-child(2) {
-            background: #ffc107;
-        }
-
-        .preview-dot:nth-child(3) {
-            background: #888;
-        }
-
-        .preview-iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            display: block;
-        }
-
-        @media (max-height: 800px) {
-            .preview-iframe {
-                height: 400px;
-            }
-        }
-
-        /* Process Section */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .step {
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .step-number {
-            color: var(--gold);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .step h3 {
-            color: var(--cream);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .step p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Pricing Section */
-        .pricing-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .investment-box {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--cream) 100%);
-            color: var(--black);
-            border-radius: 8px;
-            padding: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .investment-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .investment-box .price {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .investment-box p {
-            color: rgba(8, 8, 8, 0.7);
-            font-size: 0.95rem;
-        }
-
-        .care-plans {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .plan {
-            background: var(--dark-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-        }
-
-        .plan.featured {
-            border-color: var(--gold);
-            background: linear-gradient(135deg, rgba(198, 164, 76, 0.1) 0%, transparent 100%);
-        }
-
-        .plan h3 {
-            color: var(--cream);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .plan .price {
-            color: var(--gold);
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .plan-features li {
-            padding: 0.5rem 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .plan-features li:before {
-            content: "•";
-            color: var(--gold);
-            margin-right: 0.75rem;
-            font-weight: 700;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--dark-card) 0%, var(--border) 100%);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 3rem;
-            text-align: center;
-            margin: 4rem 0;
-        }
-
-        .cta-section h2 {
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--black);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            background: var(--cream);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--black);
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .footer-section h3 {
-            color: var(--cream);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--gold);
-        }
-
-        .footer-logo {
-            height: 56px;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-logo img {
-            height: 100%;
-            width: auto;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            text-align: center;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reveal {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem;
-                flex-wrap: wrap;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-
-            .hero {
-                padding: 3rem 1rem;
-            }
-
-            .letter {
-                padding: 2rem;
-            }
-
-            .cta-section {
-                padding: 2rem;
-            }
-
-            .investment-box {
-                padding: 2rem;
-            }
-
-            .investment-box .price {
-                font-size: 2.5rem;
-            }
-
-            .meta-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .preview-iframe {
-                height: 500px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 0.75rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-            }
-
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            section {
-                padding: 2rem 1rem;
-            }
-
-            .letter {
-                padding: 1.5rem;
-            }
-
-            .cta-pill {
-                padding: 0.4rem 1rem;
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huckleberry's Friends — Website Proposal | White Haus Media</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Your custom website proposal from White Haus Media — prepared exclusively for Huckleberry's Friends.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://whitehausmedia.com/proposals/huckleberrys-friends/">
+<meta property="og:title" content="Huckleberry's Friends × White Haus Media">
+<meta property="og:description" content="Your custom website proposal — prepared exclusively for Huckleberry's Friends.">
+<meta property="og:image" content="https://WhiteHaus.b-cdn.net/whm-og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="White Haus Media">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Huckleberry's Friends × White Haus Media">
+<meta name="twitter:description" content="Your custom website proposal — prepared exclusively for Huckleberry's Friends.">
+<meta name="twitter:image" content="https://WhiteHaus.b-cdn.net/whm-og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F4EFE6;
+  --black:#080808;
+  --gold:#C6A44C;
+  --gold-light:#D4BA6A;
+  --gold-border:rgba(198,164,76,.25);
+  --gold-dim:rgba(198,164,76,.06);
+  --panel:rgba(255,255,255,.03);
+  --soft-border:rgba(255,255,255,.06);
+  --text-primary:rgba(255,255,255,.88);
+  --text-secondary:rgba(255,255,255,.5);
+  --text-muted:rgba(255,255,255,.28);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--black);color:var(--text-primary);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none;color:inherit;transition:all .2s}
+
+/* Progress bar */
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:1000;width:0%;transition:width .1s linear}
+
+/* Nav */
+.nav{position:fixed;top:2px;left:0;right:0;z-index:100;padding:0 24px;transition:all .3s}
+.nav.scrolled{background:rgba(8,8,8,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1040px;margin:0 auto;padding:16px 0}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{height:28px}
+.nav-logo-text{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.88)}
+.nav-logo-text em{font-style:italic;color:var(--gold);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-pill{background:var(--gold);color:var(--black);padding:8px 20px;border-radius:100px;font-size:.82rem;font-weight:700;transition:all .2s}
+.nav-pill:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* Sections */
+.section{padding:100px 24px}
+.wrap{max-width:680px;margin:0 auto}
+.wrap-wide{max-width:1040px;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:14px}
+.gold-rule{width:48px;height:1.5px;background:var(--gold);margin-bottom:32px;border-radius:2px}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* === HERO === */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(198,164,76,.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:5%;right:15%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(198,164,76,.04) 0%,transparent 70%);pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);padding:8px 20px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:32px}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:4rem;font-weight:500;line-height:1.08;color:rgba(255,255,255,.92);max-width:760px;margin:0 auto 24px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-body{font-size:1.08rem;color:var(--text-secondary);max-width:560px;margin:0 auto 48px;line-height:1.7}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--soft-border);border:1px solid var(--soft-border);border-radius:14px;overflow:hidden;max-width:640px;margin:0 auto}
+.hero-meta-item{background:var(--black);padding:20px 16px;text-align:center}
+.hero-meta-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:4px}
+.hero-meta-value{font-size:.88rem;font-weight:600;color:var(--text-primary)}
+
+/* === LETTER === */
+.letter{padding:100px 24px}
+.letter-card{max-width:680px;margin:0 auto}
+.letter-greeting{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;color:rgba(255,255,255,.85);margin-bottom:8px}
+.letter-rule{width:40px;height:1.5px;background:var(--gold-border);margin:20px 0 28px;border-radius:2px}
+.letter p{font-size:.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:20px}
+.letter-sig{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:28px;border-top:1px solid var(--soft-border)}
+.letter-sig img{height:24px;opacity:.5}
+.letter-sig-text{font-size:.82rem;color:var(--text-muted);line-height:1.5}
+.letter-sig-text strong{color:var(--text-secondary);display:block}
+
+/* === OPPORTUNITY === */
+.opp{padding:100px 24px}
+.opp h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px;letter-spacing:-.01em}
+.opp>div>.sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px;max-width:600px}
+.opp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1040px;margin:0 auto}
+.opp-card{background:var(--panel);border:1px solid var(--soft-border);border-radius:16px;padding:32px 28px;transition:all .3s;position:relative;overflow:hidden}
+.opp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:0;transition:opacity .3s}
+.opp-card:hover{border-color:var(--gold-border);background:rgba(255,255,255,.04)}
+.opp-card:hover::before{opacity:1}
+.opp-num{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:12px}
+.opp-card h3{font-size:1.05rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px}
+.opp-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.65}
+
+/* === SOLUTION === */
+.solution{padding:100px 24px}
+.solution h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px}
+.solution .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px;max-width:600px}
+.del-list{display:flex;flex-direction:column;gap:0}
+.del-item{display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--soft-border)}
+.del-item:first-child{border-top:1px solid var(--soft-border)}
+.del-star{color:var(--gold);font-size:.9rem;flex-shrink:0}
+.del-item span{font-size:.95rem;color:var(--text-primary);font-weight:500}
+
+/* === PREVIEW === */
+.preview{padding:100px 24px}
+.preview h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px}
+.preview .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:40px;max-width:600px}
+.browser{background:#0E0E0E;border:1px solid rgba(198,164,76,.1);border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.03);max-width:1040px;margin:0 auto;position:relative}
+.browser-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.05)}
+.browser-bar-left{display:flex;align-items:center;gap:14px}
+.browser-bar-left svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;opacity:.5}
+.browser-url{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:7px 16px;font-size:.74rem;color:rgba(255,255,255,.25);letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.browser-url svg{width:12px;height:12px;stroke:rgba(255,255,255,.2);fill:none;stroke-width:1.5;flex-shrink:0}
+.browser-open{font-size:.72rem;color:var(--gold);font-weight:600;letter-spacing:.04em;display:flex;align-items:center;gap:6px;transition:all .2s;padding:7px 16px;border:1px solid var(--gold-border);border-radius:8px}
+.browser-open:hover{background:var(--gold-dim);color:var(--gold-light)}
+.browser-open svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.preview-wrap{position:relative}
+.preview-iframe{width:100%;height:700px;border:none;display:block;background:#F5EFE4}
+.preview-fallback{
+  display:none;width:100%;height:700px;background:linear-gradient(180deg,#F5EFE4 0%,#E8DFD0 100%);
+  flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center;padding:48px;
+}
+.preview-fallback svg{width:48px;height:48px;stroke:rgba(184,149,90,.3);fill:none;stroke-width:1}
+.preview-fallback h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:400;color:#3A3530}
+.preview-fallback p{font-size:.88rem;color:#7A7268;max-width:400px;line-height:1.7}
+.preview-fallback a{color:#B8955A;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.preview-caption{text-align:center;margin-top:20px;font-size:.82rem;color:var(--text-muted);font-style:italic}
+
+/* === PROCESS === */
+.process{padding:100px 24px}
+.process h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:12px}
+.process .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1040px;margin:0 auto}
+.step{background:var(--panel);border:1px solid var(--soft-border);border-radius:16px;padding:28px 24px;text-align:center;position:relative}
+.step-num{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:12px}
+.step h4{font-size:1rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px}
+.step p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+.step-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--gold-border);font-size:1.2rem}
+
+/* === PRICING === */
+.pricing{padding:100px 24px}
+.pricing-head{text-align:center;margin-bottom:48px}
+.pricing-head h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:4px}
+.pricing-cards{display:grid;grid-template-columns:1fr;gap:20px;max-width:540px;margin:0 auto}
+.p-card{background:var(--panel);border:1px solid var(--gold-border);border-radius:20px;padding:48px 36px;text-align:center;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(198,164,76,.2))}
+.p-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);padding:5px 14px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.p-card .p-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.p-card .p-headline{font-size:1.3rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:28px}
+.p-amount{font-size:3.6rem;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.p-amount sup{font-size:1.4rem;vertical-align:super;margin-right:2px}
+.p-label{font-size:.85rem;color:var(--text-muted);margin-top:6px;margin-bottom:28px}
+.p-list{text-align:left;margin-bottom:32px}
+.p-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--soft-border)}
+.p-item:last-child{border:none}
+.p-check{color:var(--gold);flex-shrink:0;margin-top:2px;font-size:.85rem}
+.p-item span{font-size:.88rem;color:var(--text-secondary)}
+.p-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);padding:16px 36px;border-radius:100px;font-size:.95rem;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all .25s}
+.p-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(198,164,76,.25)}
+.p-note{font-size:.78rem;color:var(--text-muted);margin-top:16px}
+
+/* Care plans */
+.care-plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:540px;margin:24px auto 0}
+.care-card{background:var(--panel);border:1px solid var(--soft-border);border-radius:16px;padding:28px 22px;text-align:center;transition:all .2s}
+.care-card.rec{border-color:var(--gold-border);position:relative;overflow:hidden}
+.care-card.rec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.care-name{font-size:.92rem;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:4px}
+.care-price{font-size:1.6rem;font-weight:800;color:#fff}
+.care-price span{font-size:.82rem;font-weight:500;color:var(--text-muted)}
+.care-desc{font-size:.78rem;color:var(--text-secondary);margin-top:8px;line-height:1.6}
+.care-note{text-align:center;max-width:540px;margin:16px auto 0;font-size:.78rem;color:var(--text-muted)}
+
+/* === CTA === */
+.cta-section{padding:100px 24px}
+.cta-box{max-width:680px;margin:0 auto;background:rgba(198,164,76,.04);border:1px solid var(--gold-border);border-radius:24px;padding:64px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(198,164,76,.06) 0%,transparent 60%);pointer-events:none}
+.cta-box h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;font-weight:500;color:rgba(255,255,255,.88);margin-bottom:16px;position:relative}
+.cta-box p{font-size:.95rem;color:var(--text-secondary);line-height:1.7;max-width:480px;margin:0 auto 32px;position:relative}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);padding:16px 32px;border-radius:100px;font-size:.95rem;font-weight:700;transition:all .25s}
+.cta-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.cta-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--text-secondary);padding:16px 24px;border-radius:100px;font-size:.9rem;font-weight:500;border:1px solid var(--soft-border);transition:all .2s}
+.cta-secondary:hover{border-color:var(--gold-border);color:var(--gold)}
+
+/* === FOOTER === */
+.footer{padding:40px 24px;text-align:center;border-top:1px solid var(--soft-border)}
+.footer img{height:20px;margin:0 auto 12px;opacity:.3}
+.footer p{font-size:.78rem;color:var(--text-muted)}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .hero h1{font-size:2.6rem}
+  .hero-meta{grid-template-columns:1fr 1fr}
+  .opp-grid{grid-template-columns:1fr}
+  .step-grid{grid-template-columns:1fr 1fr}
+  .step-arrow{display:none}
+  .care-plans{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .section{padding:64px 20px}
+  .hero{padding:120px 20px 80px}
+  .cta-box{padding:40px 24px}
+  .opp h2,.solution h2,.preview h2,.process h2,.pricing-head h2,.cta-box h2{font-size:1.9rem}
+  .preview-iframe,.preview-fallback{height:480px}
+  .browser-bar{padding:12px 16px;flex-wrap:wrap;gap:10px}
+  .browser-url{font-size:.68rem;padding:6px 12px}
+  .browser-open{font-size:.66rem;padding:6px 12px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2rem}
+  .hero-meta{grid-template-columns:1fr}
+  .p-card{padding:32px 20px}
+  .preview-iframe,.preview-fallback{height:380px}
+  .browser-bar-left svg{display:none}
+  .browser-open svg{display:none}
+}
+</style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
 
-    <nav>
-        <a href="#" class="nav-logo">
-            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+<!-- PROGRESS BAR -->
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+      <span class="nav-logo-text">White Haus <em>Media</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#preview">Preview</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="#contact" class="nav-pill">Let's Talk</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-pill reveal">Prepared exclusively for Huckleberry's Friends</div>
+    <h1 class="reveal">A digital home as <em>welcoming</em> as the one you've built for families.</h1>
+    <p class="hero-body reveal">Parents searching for childcare don't just want a program — they want to feel confident in their choice before they ever visit. A dedicated website gives your center that first impression, 24 hours a day.</p>
+    <div class="hero-meta reveal">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared for</div>
+        <div class="hero-meta-value">Huckleberry's Friends</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared by</div>
+        <div class="hero-meta-value">White Haus Media</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Date</div>
+        <div class="hero-meta-value">April 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Delivery</div>
+        <div class="hero-meta-value">Under 2 Weeks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter">
+  <div class="letter-card">
+    <div class="eyebrow reveal">A note from White Haus Media</div>
+    <div class="letter-greeting reveal">Hello there,</div>
+    <div class="letter-rule"></div>
+    <p class="reveal">We took some time to look at your center's current digital footprint — your social media, your directory listings, your reviews — and what stood out immediately is that the quality of care you provide speaks for itself. Families trust you with their children, and that's the strongest foundation any business can have.</p>
+    <p class="reveal">What's missing is a dedicated online home that communicates that same level of care to parents who haven't found you yet. Right now, families searching for childcare in your area are comparing providers side by side — and the centers with polished, professional websites are making a stronger first impression before a single tour is booked.</p>
+    <p class="reveal">So instead of just writing up a proposal, we built a working concept of what your website could look like. Not a template — a fully designed, interactive preview built specifically around your center, your programs, and the families you serve. It's embedded below so you can scroll through it right here.</p>
+    <div class="letter-sig reveal">
+      <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="WHM">
+      <div class="letter-sig-text">
+        <strong>White Haus Media</strong>
+        Boutique Web Design &amp; Digital Media
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="opp section" id="opportunity">
+  <div class="wrap-wide">
+    <div class="eyebrow reveal">Where the opportunity lives</div>
+    <h2 class="reveal">Your center deserves more than a directory listing.</h2>
+    <p class="sub reveal">After reviewing your current online presence, we identified four areas where a dedicated website would directly impact how families discover and choose your center.</p>
+    <div class="opp-grid">
+      <div class="opp-card reveal">
+        <div class="opp-num">01</div>
+        <h3>No Dedicated Website</h3>
+        <p>Your center's entire online presence currently lives on directory sites, social media, and review platforms. Parents searching for childcare are comparing you against providers who have their own professional websites. A custom site gives you a home base that you control — not a third-party platform that could change its layout or policies at any time.</p>
+      </div>
+      <div class="opp-card reveal">
+        <div class="opp-num">02</div>
+        <h3>Program Details Are Hard to Find</h3>
+        <p>Your age groups, curriculum approach, daily schedule, and tuition information should be the easiest things for a parent to find online. Right now, that information is either scattered across multiple platforms or missing entirely. A website puts your programs front and center — exactly where a searching parent needs them.</p>
+      </div>
+      <div class="opp-card reveal">
+        <div class="opp-num">03</div>
+        <h3>No Online Tour or Enrollment Path</h3>
+        <p>When a parent decides they're interested, there should be a clear next step — schedule a tour, request information, or start enrollment. Without a website, that path doesn't exist. A simple inquiry form on your own site converts interest into action.</p>
+      </div>
+      <div class="opp-card reveal">
+        <div class="opp-num">04</div>
+        <h3>Your Reputation Isn't Working for You Online</h3>
+        <p>Families already love your center — your reviews and word-of-mouth prove it. But without a website to anchor those testimonials and showcase your facility, that reputation isn't reaching the parents who are actively searching. A website turns your existing trust into new enrollments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution section" id="solution">
+  <div class="wrap">
+    <div class="eyebrow reveal">What we would build</div>
+    <h2 class="reveal">A complete digital home for Huckleberry's Friends.</h2>
+    <p class="sub reveal">Every site we create is built from scratch around your specific business. Here is exactly what's included — delivered in under two weeks.</p>
+    <div class="del-list">
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Custom single-page website designed for childcare enrollment</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Program sections organized by age group with curriculum highlights</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Tour scheduling and enrollment inquiry forms</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>About section highlighting staff credentials and center philosophy</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Parent testimonials and trust-building content</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Photo gallery showcasing your facility and classrooms</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>Mobile-first responsive build optimized for parent browsing</span></div>
+      <div class="del-item reveal"><span class="del-star">&#10022;</span><span>SEO foundation — meta tags, Open Graph, schema markup</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section class="preview section" id="preview">
+  <div class="wrap-wide">
+    <div class="eyebrow reveal">See it for yourself</div>
+    <h2 class="reveal">We already built you a working concept.</h2>
+    <p class="sub reveal">Rather than mockups, we built a fully interactive preview. Every section is real content, real services, real copy. Scroll through below or open the full screen version.</p>
+    <div class="browser reveal">
+      <div class="browser-bar">
+        <div class="browser-bar-left">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <div class="browser-url">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            huckleberrysfriends.com
+          </div>
+        </div>
+        <a href="preview.html" target="_blank" class="browser-open">
+          View Full Site
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
-        <ul class="nav-links">
-            <li><a href="#opportunity">Opportunity</a></li>
-            <li><a href="#solution">Solution</a></li>
-            <li><a href="#preview">Preview</a></li>
-            <li><a href="#investment">Investment</a></li>
-            <li><a href="#contact" class="cta-pill">Let's Talk</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="pill-badge">Prepared exclusively for Huckleberry's Friends</div>
-            <h1>Nearly 40 Years of Trust Deserves to Be Seen</h1>
-            <p>Your reputation is stellar. Your website is silent. Let's change that.</p>
-            <div class="meta-grid">
-                <div class="meta-item">
-                    <div class="meta-label">Prepared For</div>
-                    <div class="meta-value">Emily Sauls</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Prepared By</div>
-                    <div class="meta-value">White Haus Media</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Date</div>
-                    <div class="meta-value">April 2026</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Delivery</div>
-                    <div class="meta-value">Under 2 Weeks</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Letter Section -->
-        <section>
-            <div class="letter reveal">
-                <h2>Dear Emily,</h2>
-                <p>We found your website. Well, we tried to—and discovered it's been completely offline. Your SSL certificate expired, and families searching for "childcare in Garner" or "preschool near me" can't find you. Not because your business isn't exceptional, but because your digital presence has gone dark.</p>
-                <p>That's a problem worth solving quickly. You've spent <strong>nearly 40 years</strong> building trust, a 5-star rating, and a reputation for excellence. You serve families from 6 weeks through 12 years old—the widest age range in the area. Parents are looking for exactly what you offer. They just can't see you.</p>
-                <p>We've built a working concept of what your new website could look like: modern, responsive, trustworthy, and ready to capture the families who need you most. This proposal outlines the opportunity, the solution, and a clear path forward.</p>
-                <p><strong>Let's get you back online—and make sure families can find you.</strong></p>
-            </div>
-        </section>
-
-        <!-- Opportunity Section -->
-        <section id="opportunity">
-            <h2>The Opportunity</h2>
-            <p class="section-subtitle">Why this matters right now</p>
-            <div class="cards-grid">
-                <div class="card reveal">
-                    <div class="card-number">1</div>
-                    <h3>You're Invisible Online</h3>
-                    <p>Your website is completely offline. Families searching for you find nothing. Your competitors capture those leads every single day.</p>
-                </div>
-                <div class="card reveal">
-                    <div class="card-number">2</div>
-                    <h3>37+ Years of Trust Goes Unseen</h3>
-                    <p>Your history, your 5-star rating, your expertise—it's all real, but it's not visible to new families who don't know you yet.</p>
-                </div>
-                <div class="card reveal">
-                    <div class="card-number">3</div>
-                    <h3>No Path to Enrollment</h3>
-                    <p>There's no online way for interested families to contact you, learn about your programs, or start the enrollment process.</p>
-                </div>
-                <div class="card reveal">
-                    <div class="card-number">4</div>
-                    <h3>Local Competitors Own Your Search Traffic</h3>
-                    <p>When parents search for childcare in Garner, they see other centers. Your reputation should be making this easy. Instead, you're losing leads.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solution Section -->
-        <section id="solution">
-            <h2>The Solution</h2>
-            <p class="section-subtitle">What you'll get</p>
-            <ul class="solution-list">
-                <li>Modern, fully responsive website built on current web standards</li>
-                <li>Trust-building hero section highlighting 37+ years of family-owned care</li>
-                <li>Clear program pages for all age groups (Infants, Toddlers, Preschool, School-Age, Before/After)</li>
-                <li>Photo gallery to showcase your beautiful facility and happy families</li>
-                <li>Enrollment inquiry form integrated directly into your site</li>
-                <li>Mobile-optimized contact section with hours, location, and phone</li>
-                <li>Trust badges and testimonials prominently displayed</li>
-                <li>SEO-ready foundation to help families find you in local searches</li>
-                <li>Professional design reflecting your warm, trustworthy brand</li>
-                <li>Deployed to a secure, fast, global CDN</li>
-                <li>Clean, maintainable code for future updates</li>
-                <li>Includes 30 days of post-launch support</li>
-            </ul>
-        </section>
-
-        <!-- Preview Section -->
-        <section id="preview">
-            <h2>The Preview</h2>
-            <p class="section-subtitle">Below is a working design concept showing exactly what your new site could look and feel like. This is built around your real programs, nearly 40 years of trust, and what makes Huckleberry's Friends stand out. We can tailor every detail to your needs.</p>
-            <div class="preview-container">
-                <div class="preview-header">
-                    <div class="preview-dot"></div>
-                    <div class="preview-dot"></div>
-                    <div class="preview-dot"></div>
-                </div>
-                <iframe class="preview-iframe" src="preview.html"></iframe>
-            </div>
-        </section>
-
-        <!-- Process Section -->
-        <section>
-            <h2>The Process</h2>
-            <p class="section-subtitle">How we'll get you there</p>
-            <div class="process-steps">
-                <div class="step reveal">
-                    <div class="step-number">1</div>
-                    <h3>Discovery</h3>
-                    <p>We'll gather your program details, photos, testimonials, and brand preferences to build the perfect site for your center.</p>
-                </div>
-                <div class="step reveal">
-                    <div class="step-number">2</div>
-                    <h3>Design & Development</h3>
-                    <p>We'll design and build your website with all the features you need: programs, gallery, enrollment forms, and contact pathways.</p>
-                </div>
-                <div class="step reveal">
-                    <div class="step-number">3</div>
-                    <h3>Review & Refinement</h3>
-                    <p>You'll see the site, provide feedback, and we'll make refinements until it's exactly what you want.</p>
-                </div>
-                <div class="step reveal">
-                    <div class="step-number">4</div>
-                    <h3>Launch & Support</h3>
-                    <p>We'll deploy your site, set up domain redirects, ensure everything works perfectly, and provide 30 days of support.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section id="investment">
-            <div class="pricing-intro">
-                <h2>The Investment</h2>
-                <p class="section-subtitle">One-time website build, then ongoing care</p>
-            </div>
-
-            <div class="investment-box">
-                <h3>Website Build (One-Time)</h3>
-                <div class="price">$897</div>
-                <p>Complete, fully responsive website designed and deployed in under 2 weeks</p>
-            </div>
-
-            <h3 style="text-align: center; color: var(--cream); margin-top: 3rem; margin-bottom: 2rem;">Then Choose Your Care Plan</h3>
-            <div class="care-plans">
-                <div class="plan">
-                    <h3>Core Care</h3>
-                    <div class="price">$47<span style="font-size: 1rem; color: var(--text-muted);">/month</span></div>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">For centers that want essential updates and support.</p>
-                    <ul class="plan-features">
-                        <li>Monthly content updates</li>
-                        <li>2 hours of edits per month</li>
-                        <li>Email support</li>
-                        <li>Basic maintenance</li>
-                    </ul>
-                </div>
-                <div class="plan featured">
-                    <h3>Full Care</h3>
-                    <div class="price">$97<span style="font-size: 1rem; color: rgba(8, 8, 8, 0.6);">/month</span></div>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Our most popular. Everything you need to stay current and secure.</p>
-                    <ul class="plan-features">
-                        <li>Everything in Core Care</li>
-                        <li>4 hours of edits per month</li>
-                        <li>Security monitoring</li>
-                        <li>Uptime monitoring</li>
-                        <li>Monthly performance report</li>
-                        <li>Priority support</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section" id="contact">
-            <h2>Ready to Get Back Online?</h2>
-            <p>Let's talk about bringing your nearly 40-year reputation back to where it belongs: where families can find you.</p>
-            <a href="mailto:hello@whitehausmedia.com?subject=Let%27s%20talk%20about%20my%20website" class="cta-button">Get Started Today</a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-logo">
-            <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+      </div>
+      <div class="preview-wrap">
+        <iframe src="preview.html" class="preview-iframe" id="previewFrame" title="Huckleberry's Friends Website Concept" loading="lazy"></iframe>
+        <div class="preview-fallback" id="previewFallback">
+          <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+          <h3>Preview loading after deployment</h3>
+          <p>This concept preview will render here once the proposal is live. In the meantime, <a href="preview.html" target="_blank">open the full site preview</a> directly.</p>
         </div>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>White Haus Media</h3>
-                <p>Premium custom websites for businesses in the Triangle area.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <ul>
-                    <li><a href="mailto:hello@whitehausmedia.com">hello@whitehausmedia.com</a></li>
-                    <li><a href="tel:+19198675309">(919) 867-5309</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Location</h3>
-                <p>Wake Forest, NC<br>Serving the Triangle</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 White Haus Media. All rights reserved.</p>
-        </div>
-    </footer>
+      </div>
+    </div>
+    <p class="preview-caption">Fully interactive prototype — not a static mockup.</p>
+  </div>
+</section>
 
-    <script>
-        // Progress bar
-        function updateProgressBar() {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrolled = window.scrollY;
-            const progress = (scrolled / scrollHeight) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
+<!-- PROCESS -->
+<section class="process section">
+  <div class="wrap-wide">
+    <div class="eyebrow reveal">How we work together</div>
+    <h2 class="reveal">Four steps. Under two weeks.</h2>
+    <p class="sub reveal">From kickoff to launch, the process is straightforward and transparent.</p>
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>Discovery Call</h4>
+        <p>We talk about your goals, your families, and what you want Huckleberry's Friends's online presence to communicate.</p>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h4>Design &amp; Build</h4>
+        <p>We build your site from scratch around your brand — your photos, your voice, your programs. No templates.</p>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h4>Review &amp; Refine</h4>
+        <p>You see everything before it goes live. We adjust colors, copy, images, and layout until it's exactly right.</p>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h4>Launch &amp; Support</h4>
+        <p>We handle deployment, domain setup, and your site keeps working for your center long after launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="investment">
+  <div>
+    <div class="pricing-head">
+      <div class="eyebrow reveal">Preliminary pricing</div>
+      <h2 class="reveal">An investment in where Huckleberry's Friends is headed.</h2>
+    </div>
+    <div class="pricing-cards">
+      <div class="p-card reveal">
+        <div class="p-badge">&#10003; Recommended</div>
+        <div class="p-eyebrow">Custom Website Build</div>
+        <div class="p-headline">Everything Huckleberry's Friends needs online.</div>
+        <div class="p-amount"><sup>$</sup>897</div>
+        <div class="p-label">One-time investment</div>
+        <div class="p-list">
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Fully custom responsive website design</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Mobile-first build optimized for enrollment</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Complete single-page site tailored to your programs</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Tour &amp; enrollment inquiry forms</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Parent-friendly program &amp; tuition sections</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>About &amp; credentials section</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>SEO fundamentals (schema, OG tags, meta)</span></div>
+          <div class="p-item"><span class="p-check">&#10003;</span><span>Delivered in under 2 weeks</span></div>
+        </div>
+        <a href="https://whitehausmedia.com/consultation/" class="p-cta">Book a Free Consultation</a>
+        <p class="p-note">No obligation. We'll walk through the concept together and answer every question.</p>
+      </div>
+    </div>
+
+    <!-- Care Plans -->
+    <div class="care-plans">
+      <div class="care-card reveal">
+        <div class="care-name">Core Care</div>
+        <div class="care-price">$47<span>/mo</span></div>
+        <p class="care-desc">Software updates, 2 content edits/month, hosting coordination.</p>
+      </div>
+      <div class="care-card rec reveal">
+        <div class="care-name">Full Care</div>
+        <div class="care-price">$97<span>/mo</span></div>
+        <p class="care-desc">Everything in Core + security monitoring, uptime monitoring, monthly performance report.</p>
+      </div>
+    </div>
+    <p class="care-note">Your site keeps working for you long after launch. Both plans are month-to-month with no commitments.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-box reveal">
+    <h2>Ready to see what's possible?</h2>
+    <p>Everything above is a recommendation based on what we found. Book a free consultation and we'll walk through the concept together, answer every question, and make sure the scope fits exactly where Huckleberry's Friends is headed.</p>
+    <div class="cta-btns">
+      <a href="https://whitehausmedia.com/consultation/" class="cta-primary">Book a Free Consultation</a>
+      <a href="mailto:hello@whitehausmedia.com" class="cta-secondary">hello@whitehausmedia.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media">
+  <p>&copy; 2026 White Haus Media &middot; Wake Forest, NC</p>
+</footer>
+
+<!-- JS: Progress bar, scroll nav, reveal animations, iframe fallback -->
+<script>
+(function(){
+  var prog=document.getElementById('progress');
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var s=window.scrollY;
+    prog.style.width=(s/h*100)+'%';
+    if(s>60)nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+
+  // Iframe fallback — if preview.html fails, show fallback message
+  var frame=document.getElementById('previewFrame');
+  var fallback=document.getElementById('previewFallback');
+  if(frame&&fallback){
+    frame.addEventListener('load',function(){
+      try{
+        var doc=frame.contentDocument||frame.contentWindow.document;
+        if(!doc||!doc.body||doc.body.innerText.indexOf('404')>-1||doc.body.children.length<2){
+          frame.style.display='none';
+          fallback.style.display='flex';
         }
-
-        window.addEventListener('scroll', updateProgressBar);
-
-        // Reveal animations on scroll
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                }
-            });
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Run on load
-
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+      }catch(e){
+        // Cross-origin — iframe loaded successfully
+      }
+    });
+    frame.addEventListener('error',function(){
+      frame.style.display='none';
+      fallback.style.display='flex';
+    });
+  }
+})();
+</script>
 </body>
 </html>
