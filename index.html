@@ -288,7 +288,7 @@
   --r:16px;--font:'Plus Jakarta Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--b);color:var(--t1);overflow-x:clip;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6;letter-spacing:.005em}
+body{font-family:var(--font);background:var(--b);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6;letter-spacing:.005em}
 .w{max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,80px)}
 ::selection{background:var(--g);color:var(--b)}
 a{text-decoration:none;color:inherit}
@@ -1846,19 +1846,59 @@ function scrollChat(){
 </script>
 
 <script>
-// Scroll reveal — IntersectionObserver (body uses overflow-x:clip
-// so body does NOT become a scroll container, IO root:null works)
+// Scroll reveal — hybrid approach for maximum reliability
+// IO handles the normal case; scroll listener is fallback for edge cases
+// (hidden tabs where IO is deferred, or overflow scroll containers)
 (function() {
   var els = document.querySelectorAll('.rv');
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('vis');
-        observer.unobserve(entry.target);
+  var revealed = 0;
+  var total = els.length;
+
+  function checkReveal() {
+    if (revealed >= total) return;
+    var wh = window.innerHeight;
+    els.forEach(function(el) {
+      if (el.classList.contains('vis')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < wh - 30 && r.bottom > 0) {
+        el.classList.add('vis');
+        revealed++;
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-  els.forEach(function(el) { observer.observe(el); });
+  }
+
+  // Primary: IntersectionObserver
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('vis');
+          observer.unobserve(entry.target);
+          revealed++;
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el) { observer.observe(el); });
+  }
+
+  // Fallback: scroll listener (catches overflow container + hidden tab cases)
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(function() { ticking = false; checkReveal(); });
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // Handle tab becoming visible (IO deferred in background tabs)
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) checkReveal();
+  });
+
+  // Initial check
+  checkReveal();
 })();
 
 // Navigation scroll effect
