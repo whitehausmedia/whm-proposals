@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByLeCrème Parfums — Growth Proposal | White Haus Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #080808;
+      --surface:  #101010;
+      --surface2: #161616;
+      --border:   rgba(198, 164, 76, 0.18);
+      --gold:     #C6A44C;
+      --gold-light: #D4BA74;
+      --gold-dim: rgba(198, 164, 76, 0.55);
+      --white:    #F4EFE6;
+      --muted:    rgba(244, 239, 230, 0.48);
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* PROGRESS BAR */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--gold);
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    /* NAV */
+    .site-nav {
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 28px;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo img { height: 20px; width: auto; display: block; opacity: 0.9; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold); }
+
+    .page { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 96px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    /* BADGE */
+    .private-badge {
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 28px;
+      gap: 16px;
+    }
+    .badge-text {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .badge-text strong { color: var(--gold); font-weight: 500; }
+
+    /* HERO */
+    .hero { padding: 100px 0 88px; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(198, 164, 76, 0.08);
+      border: 1px solid rgba(198, 164, 76, 0.2);
+      padding: 8px 20px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--white);
+      margin-bottom: 28px;
+      max-width: 680px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { color: var(--muted); font-size: 16px; max-width: 560px; line-height: 1.75; margin-bottom: 48px; }
+    .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .meta-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .meta-value { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--white); }
+
+    /* SECTION HEADERS */
+    .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); font-weight: 300; line-height: 1.2; color: var(--white); margin-bottom: 16px; }
+    h2 em { font-style: italic; color: var(--gold); }
+    .section-intro { color: var(--muted); font-size: 16px; max-width: 580px; margin-bottom: 52px; line-height: 1.75; }
+
+    /* LETTER */
+    .letter-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px 52px;
+      position: relative;
+    }
+    .letter-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--gold);
+    }
+    .letter-greeting {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .letter-box p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .letter-box p:last-of-type { margin-bottom: 0; }
+    .letter-sig {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--white);
+      line-height: 1.6;
+    }
+    .letter-sig span { display: block; font-size: 12px; color: var(--muted); font-family: var(--sans); letter-spacing: 0.06em; margin-top: 4px; }
+
+    /* OPPORTUNITY CARDS */
+    .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .opp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .opp-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+    }
+    .opp-num {
+      font-family: var(--serif);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .opp-card h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .opp-card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    /* FOUR PILLARS 2x2 */
+    .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pillar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+    }
+    .pillar-icon svg { width: 36px; height: 36px; }
+    .pillar-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .pillar-card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    /* EDUCATE PANELS */
+    .edu-panel {
+      padding: 36px 0;
+      border-top: 2px solid var(--gold);
+      margin-bottom: 40px;
+    }
+    .edu-panel:last-child { margin-bottom: 0; }
+    .edu-panel h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .edu-panel p { color: var(--muted); font-size: 15px; line-height: 1.75; }
+
+    /* ALLOCATION BARS */
+    .alloc-bars { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+    .alloc-row { display: flex; flex-direction: column; gap: 6px; }
+    .alloc-header { display: flex; align-items: center; gap: 12px; }
+    .alloc-label { font-size: 13px; font-weight: 500; color: var(--white); min-width: 80px; }
+    .alloc-pct { font-family: var(--serif); font-size: 18px; color: var(--gold); min-width: 48px; text-align: right; }
+    .alloc-track { height: 8px; background: rgba(244, 239, 230, 0.06); width: 100%; overflow: hidden; }
+    .alloc-fill { height: 100%; transition: width 0.6s ease; }
+    .alloc-note { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+
+    /* OFFER HIERARCHY */
+    .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .offer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+    }
+    .offer-card.primary {
+      border: 1.5px solid var(--gold);
+      background: rgba(198, 164, 76, 0.04);
+    }
+    .offer-badge {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .offer-card h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .offer-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-pill {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      border: 1px solid rgba(198, 164, 76, 0.3);
+      padding: 4px 12px;
+      background: rgba(198, 164, 76, 0.06);
+    }
+
+    /* CHAIN VIZ */
+    .chain { display: flex; align-items: stretch; gap: 0; margin-bottom: 48px; }
+    .chain-node {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .chain-node strong { display: block; font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+    .chain-node span { font-size: 12px; color: var(--muted); }
+    .chain-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      color: var(--gold);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* OUTCOME CARDS */
+    .outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
+    .outcome-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .outcome-trigger { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .outcome-arrow { color: var(--gold); font-size: 16px; margin-bottom: 8px; }
+    .outcome-result { font-family: var(--serif); font-size: 17px; color: var(--white); }
+
+    /* ROI SLIDER */
+    .roi-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      padding: 40px 36px;
+    }
+    .roi-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .roi-panel h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .roi-sub { color: var(--muted); font-size: 14px; margin-bottom: 32px; line-height: 1.6; }
+    .roi-controls { margin-bottom: 32px; }
+    .slider-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .slider-value {
+      font-family: var(--serif);
+      font-size: 36px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .roi-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: rgba(244, 239, 230, 0.1);
+      outline: none;
+      margin-bottom: 28px;
+    }
+    .roi-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      cursor: pointer;
+      border: none;
+    }
+    .roi-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      cursor: pointer;
+      border: none;
+    }
+    .margin-toggles { display: flex; gap: 8px; margin-bottom: 8px; }
+    .margin-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .margin-btn {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .margin-btn.active {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+    .roi-outputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .roi-output {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .roi-output.highlight { border-color: var(--gold); background: rgba(198, 164, 76, 0.06); }
+    .roi-output-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .roi-output-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 4px;
+      transition: opacity 0.3s;
+    }
+    .roi-output.highlight .roi-output-num { color: var(--gold); }
+    .roi-output-sub { font-size: 12px; color: var(--muted); }
+    .roi-note { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* DEMOGRAPHICS */
+    .demo-list { display: flex; flex-direction: column; gap: 32px; margin-bottom: 32px; }
+    .demo-row { padding-bottom: 32px; border-bottom: 1px solid rgba(244, 239, 230, 0.06); }
+    .demo-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .demo-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+    .demo-metro { font-family: var(--serif); font-size: 20px; color: var(--gold); }
+    .demo-tier { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .demo-stats { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 10px; }
+    .demo-stat { font-size: 13px; color: var(--white); }
+    .demo-stat strong { color: var(--gold); font-weight: 500; }
+    .demo-justification { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .demo-footer { font-size: 13px; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; }
+
+    /* ROADMAP */
+    .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .phase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+    }
+    .phase-card:nth-child(1)::before { background: var(--gold); }
+    .phase-card:nth-child(2)::before { background: var(--gold-light); }
+    .phase-card:nth-child(3)::before { background: rgba(198, 164, 76, 0.5); }
+    .phase-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .phase-card h3 {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .phase-list { list-style: none; }
+    .phase-list li {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(244, 239, 230, 0.04);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .phase-list li:last-child { border-bottom: none; }
+    .phase-list li::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+
+    /* DELIVERABLES */
+    .del-list { list-style: none; }
+    .del-item {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(244, 239, 230, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .del-item:last-child { border-bottom: none; }
+    .del-star { color: var(--gold); font-size: 10px; flex-shrink: 0; margin-top: 6px; }
+
+    /* MUTUAL PLAN */
+    .mutual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .mutual-col {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+    }
+    .mutual-col.lead {
+      background: rgba(198, 164, 76, 0.04);
+      border-left: 3px solid var(--gold);
+    }
+    .mutual-title {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .mutual-list { list-style: none; }
+    .mutual-list li {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(244, 239, 230, 0.04);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .mutual-list li:last-child { border-bottom: none; }
+    .mutual-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* PRICING TABLE */
+    .rec-note {
+      background: var(--surface);
+      border: 1px solid var(--gold);
+      padding: 24px 28px;
+      margin-bottom: 36px;
+    }
+    .rec-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .rec-note p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .pricing-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    .pricing-table thead tr { border-bottom: 1px solid var(--border); }
+    .pricing-table th {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 0 14px;
+      text-align: left;
+      font-weight: 400;
+    }
+    .pricing-table th:nth-child(2),
+    .pricing-table th:nth-child(3),
+    .pricing-table th:nth-child(4) { text-align: right; }
+    .pricing-table td {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(244, 239, 230, 0.05);
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .pricing-table td:first-child { color: var(--white); font-family: var(--serif); font-size: 16px; }
+    .pricing-table td:nth-child(2),
+    .pricing-table td:nth-child(3),
+    .pricing-table td:nth-child(4) { text-align: right; }
+    .pricing-table tr.highlight td {
+      color: var(--gold);
+      font-weight: 500;
+      border-bottom-color: rgba(198, 164, 76, 0.2);
+    }
+    .pricing-table tr.highlight td:first-child { color: var(--gold); }
+    .table-note { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* CLOSING */
+    .closing { text-align: center; padding: 96px 0; }
+    .closing h2 { margin: 0 auto 20px; max-width: 600px; }
+    .closing p { color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 560px; margin: 0 auto 40px; }
+    .closing-tags {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .closing-tags .dot { color: var(--gold); margin: 0 10px; }
+
+    /* FOOTER */
+    footer { padding: 40px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-brand img { height: 20px; width: auto; opacity: 0.65; }
+    .footer-meta { font-size: 11px; color: var(--muted); text-align: right; line-height: 1.7; }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page { padding: 0 24px; }
+      section { padding: 72px 0; }
+      .hero { padding: 72px 0 64px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 10px; }
+      .opp-grid { grid-template-columns: 1fr; }
+      .pillar-grid { grid-template-columns: 1fr; }
+      .offer-grid { grid-template-columns: 1fr; }
+      .roadmap-grid { grid-template-columns: 1fr; }
+      .mutual-grid { grid-template-columns: 1fr; }
+      .outcome-grid { grid-template-columns: 1fr; }
+      .roi-outputs { grid-template-columns: 1fr; }
+      .chain { flex-direction: column; }
+      .chain-arrow { transform: rotate(90deg); padding: 4px 0; justify-content: center; }
+      .letter-box { padding: 32px 24px; }
+      .roi-panel { padding: 32px 24px; }
+      .pricing-table { font-size: 13px; }
+    }
+    @media (max-width: 480px) {
+      .page { padding: 0 20px; }
+      section { padding: 56px 0; }
+      .hero { padding: 56px 0 48px; }
+      .hero-meta { grid-template-columns: 1fr; gap: 20px; }
+      .nav-links { display: none; }
+      .demo-stats { flex-direction: column; gap: 4px; }
+      footer { flex-direction: column; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" />
+      </a>
+      <div class="nav-links">
+        <a href="#opportunity">Opportunity</a>
+        <a href="#system">The System</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#investment">Investment</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BADGE -->
+  <div class="private-badge">
+    <div class="badge-text">Private Proposal &nbsp;·&nbsp; <strong>ByLeCrème Parfums</strong> &nbsp;·&nbsp; April 2026</div>
+  </div>
+
+  <div class="page">
+
+    <!-- 1. HERO -->
+    <section class="hero reveal">
+      <div class="hero-eyebrow">Prepared exclusively for ByLeCrème</div>
+      <h1>Paid and organic growth, built around <em>ByLeCrème</em>.</h1>
+      <p class="hero-sub">
+        A connected system across SEO, content, and paid media. Designed to attract the right buyer, lift order value, and turn the Give Me Flowers Collection into a category leader.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="meta-label">Prepared For</div>
+          <div class="meta-value">ByLeCrème Parfums</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Prepared By</div>
+          <div class="meta-value">White Haus Media</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Date</div>
+          <div class="meta-value">April 2026</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Engagement</div>
+          <div class="meta-value">90-Day Roadmap</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. LETTER -->
+    <section class="reveal">
+      <div class="section-label">A note from White Haus Media</div>
+      <div class="letter-box">
+        <div class="letter-greeting">To Sakari and the ByLeCrème team,</div>
+        <p>
+          ByLeCrème is already what most fragrance brands are still trying to become. A 12-year Atlanta institution. A storefront people travel for. A community of 37,000 people who know the brand by name. The Give Me Flowers Collection isn't a launch from zero. It's the next chapter for a brand that's already won Best of ATL 2025.
+        </p>
+        <p>
+          This proposal is built around one idea. The fastest way to scale ByLeCrème Parfums is to put real fuel behind what's already working. That means a connected growth system. SEO that earns long-term visibility. Organic content that compounds. Paid media that captures demand now. And offer strategy that lifts order value from day one.
+        </p>
+        <p>
+          We're not pitching a retainer. We're proposing a partnership where every dollar is accounted for and every decision has a reason behind it. The structure scales with you, starting at a level that makes sense for where ByLeCrème is today.
+        </p>
+        <div class="letter-sig">
+          White Haus Media
+          <span>Boutique Web Design &amp; Digital Media</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OPPORTUNITY -->
+    <section id="opportunity" class="reveal">
+      <div class="section-label">Where the opportunity lives</div>
+      <h2>ByLeCrème has the brand. The system is what scales it.</h2>
+      <p class="section-intro">
+        Four areas where a connected growth partner makes the biggest difference for a luxury fragrance brand at this stage.
+      </p>
+      <div class="opp-grid">
+        <div class="opp-card">
+          <div class="opp-num">01</div>
+          <h3>Search Visibility That Compounds</h3>
+          <p>Most fragrance brands rely entirely on paid traffic. SEO and content build long-term discoverability that keeps working after the ad spend stops. Every blog post, product page, and review becomes a permanent asset.</p>
+        </div>
+        <div class="opp-card">
+          <div class="opp-num">02</div>
+          <h3>Paid Media That Matches the Brand</h3>
+          <p>ByLeCrème is visual, sensory, and story-driven. Meta is the natural lead channel for that. Google captures high-intent search. TikTok scales with content. Budget is weighted to where this brand actually wins.</p>
+        </div>
+        <div class="opp-card">
+          <div class="opp-num">03</div>
+          <h3>An Offer Strategy That Lifts AOV</h3>
+          <p>The Give Me Flowers Discovery Set is already engineered for higher order value. Cold buyers convert better with three scents than one. We build the campaign system around what's already there.</p>
+        </div>
+        <div class="opp-card">
+          <div class="opp-num">04</div>
+          <h3>Trust and Conversion That Earn Every Dollar</h3>
+          <p>Brand presence, message clarity, and site experience determine how much revenue every visit produces. Better conversion means better returns on SEO, content, and paid alike. This is the multiplier that compounds across every channel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. THE SYSTEM — FOUR PILLARS -->
+    <section id="system" class="reveal">
+      <div class="section-label">The growth system</div>
+      <h2>Four connected areas. One integrated engine.</h2>
+      <p class="section-intro">
+        Each pillar feeds the others. SEO builds the foundation. Content fills it in. Paid accelerates demand. Conversion strategy turns attention into revenue.
+      </p>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#C6A44C" stroke-width="1.2">
+              <circle cx="18" cy="18" r="14" />
+              <path d="M12 18h12M18 12v12" />
+            </svg>
+          </div>
+          <div class="pillar-name">SEO</div>
+          <p>Helps search engines understand and surface ByLeCrème to the right buyers. The foundation for qualified, compounding traffic that doesn't require paying for every click.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#C6A44C" stroke-width="1.2">
+              <rect x="6" y="8" width="24" height="20" rx="2" />
+              <line x1="6" y1="14" x2="30" y2="14" />
+              <line x1="12" y1="20" x2="24" y2="20" />
+              <line x1="12" y1="24" x2="20" y2="24" />
+            </svg>
+          </div>
+          <div class="pillar-name">Organic Content</div>
+          <p>Product pages, blog content, FAQs, and reviews that answer real buying questions. Each piece adds discoverability and works long after publishing.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#C6A44C" stroke-width="1.2">
+              <path d="M8 28L14 16l6 8 4-12 6 16" />
+              <line x1="8" y1="28" x2="30" y2="28" />
+            </svg>
+          </div>
+          <div class="pillar-name">Paid Advertising</div>
+          <p>Immediate reach. Faster demand capture. Real-time creative testing. Paid is how we generate performance data that makes everything smarter.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#C6A44C" stroke-width="1.2">
+              <path d="M10 26V14l8-6 8 6v12" />
+              <rect x="15" y="20" width="6" height="6" />
+            </svg>
+          </div>
+          <div class="pillar-name">Conversion Strategy</div>
+          <p>The website experience, offer structure, and follow-up path. Better conversion improves returns from every channel feeding the funnel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. EDUCATE -->
+    <section id="strategy" class="reveal">
+      <div class="section-label">Before we talk numbers</div>
+      <h2>A few ideas worth understanding first.</h2>
+      <p class="section-intro">
+        The proposal makes more sense once these three concepts are clear. We've kept them short on purpose.
+      </p>
+
+      <!-- 5A — SEO -->
+      <div class="edu-panel">
+        <h3>SEO is compound interest for traffic.</h3>
+        <p>Paid ads stop the moment you stop paying. SEO keeps delivering. When someone searches "Black-owned luxury perfume Atlanta" or "gourmand perfume gift set," the goal is for ByLeCrème to be the answer. Every product page, blog post, and review we publish makes the brand more discoverable. That visibility compounds over months and years. It's the difference between renting traffic and owning it.</p>
+      </div>
+
+      <!-- 5B — AI Search -->
+      <div class="edu-panel">
+        <h3>ChatGPT, Perplexity, and Google AI Overviews are now part of the discovery layer.</h3>
+        <p>When a buyer asks an AI assistant for a Black-owned luxury fragrance brand based in Atlanta, the answer is determined by what's on the site, in the structured data, and in the reviews. Almost no fragrance brand is optimizing for this yet. That's an open lane. ByLeCrème's existing AI Concierge is already ahead of the curve. We make sure the brand shows up in AI-generated answers across every platform that matters.</p>
+      </div>
+
+      <!-- 5C — Channel Allocation -->
+      <div class="edu-panel">
+        <h3>Meta leads. Google captures intent. TikTok scales with content.</h3>
+        <p>ByLeCrème is visual, emotional, and experience-driven. That's a perfect fit for Meta, which gets 60 percent of the paid media weighting. Google takes 25 percent for high-intent searches. TikTok takes the remaining 15 percent and scales up only when short-form content output is consistent. The split reflects where this brand has the strongest fit, not where every brand should spend.</p>
+
+        <div class="alloc-bars">
+          <div class="alloc-row">
+            <div class="alloc-header">
+              <span class="alloc-label">Meta</span>
+              <span class="alloc-pct">60%</span>
+            </div>
+            <div class="alloc-track">
+              <div class="alloc-fill" style="width:60%;background:var(--gold);"></div>
+            </div>
+            <div class="alloc-note">Primary channel. Visual storytelling, product discovery, retargeting, first-purchase conversion.</div>
+          </div>
+          <div class="alloc-row">
+            <div class="alloc-header">
+              <span class="alloc-label">Google</span>
+              <span class="alloc-pct">25%</span>
+            </div>
+            <div class="alloc-track">
+              <div class="alloc-fill" style="width:25%;background:var(--gold-light);"></div>
+            </div>
+            <div class="alloc-note">High-intent demand capture. Reaches users actively searching for fragrance, gift sets, and Black-owned beauty brands.</div>
+          </div>
+          <div class="alloc-row">
+            <div class="alloc-header">
+              <span class="alloc-label">TikTok</span>
+              <span class="alloc-pct">15%</span>
+            </div>
+            <div class="alloc-track">
+              <div class="alloc-fill" style="width:15%;background:rgba(198,164,76,0.4);"></div>
+            </div>
+            <div class="alloc-note">Awareness and creative testing. Scales up with consistent short-form content output.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. OFFER HIERARCHY -->
+    <section class="reveal">
+      <div class="section-label">Offer strategy</div>
+      <h2>Lead with the Discovery Set. Convert with the singles.</h2>
+      <p class="section-intro">
+        Fragrance is personal. First-time buyers hesitate to commit to one scent blind. The Give Me Flowers Discovery Set solves that. Three scents in one purchase, lower risk, higher perceived value, stronger gift potential. It's already engineered for cold traffic.
+      </p>
+      <div class="offer-grid">
+        <div class="offer-card primary">
+          <div class="offer-badge">Primary acquisition offer</div>
+          <h3>Give Me Flowers Discovery Set</h3>
+          <p>Three 10ml fragrances in one purchase. Soul Ties, Lover Girl, and Take Me With You together. Higher AOV, lower commitment risk for cold buyers, naturally giftable, and the strongest creative angle for paid media. This is what cold traffic gets pointed at.</p>
+          <div class="tag-row">
+            <span class="tag-pill">Higher AOV</span>
+            <span class="tag-pill">Giftable</span>
+            <span class="tag-pill">Lower risk</span>
+            <span class="tag-pill">Cold traffic</span>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-badge">Retargeting and follow-up</div>
+          <h3>The Singles Collection</h3>
+          <p>Once a buyer knows the brand, the 50ml singles become more effective. Best positioned for retargeting, warm audiences, and email flows to existing customers ready to commit to their signature scent.</p>
+          <div class="tag-row">
+            <span class="tag-pill">Warm audiences</span>
+            <span class="tag-pill">Lower funnel</span>
+            <span class="tag-pill">Repeat path</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TRUST → ROI -->
+    <section class="reveal">
+      <div class="section-label">Trust and ROI</div>
+      <h2>Trust is not a brand concept. It's a performance driver.</h2>
+      <p class="section-intro">
+        The clearer and more credibly the brand shows up, the less friction a buyer feels. Less friction means better conversion. Better conversion means stronger returns from every dollar of traffic. This is the mechanism that connects brand presentation to business results.
+      </p>
+
+      <!-- Chain Viz -->
+      <div class="chain">
+        <div class="chain-node">
+          <strong>Clear presence</strong>
+          <span>Right channels, right message</span>
+        </div>
+        <div class="chain-arrow">&#8594;</div>
+        <div class="chain-node">
+          <strong>Less friction</strong>
+          <span>Credibility removes hesitation</span>
+        </div>
+        <div class="chain-arrow">&#8594;</div>
+        <div class="chain-node">
+          <strong>Better conversion</strong>
+          <span>Intent becomes action</span>
+        </div>
+        <div class="chain-arrow">&#8594;</div>
+        <div class="chain-node">
+          <strong>Stronger ROI</strong>
+          <span>Returns improve across all spend</span>
+        </div>
+      </div>
+
+      <!-- Outcome Cards -->
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <div class="outcome-trigger">Right offer</div>
+          <div class="outcome-arrow">&#8593;</div>
+          <div class="outcome-result">Order value</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-trigger">Clearer message</div>
+          <div class="outcome-arrow">&#8593;</div>
+          <div class="outcome-result">Ad efficiency</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-trigger">Better targeting</div>
+          <div class="outcome-arrow">&#8593;</div>
+          <div class="outcome-result">Traffic quality</div>
+        </div>
+      </div>
+
+      <!-- Interactive ROI Slider -->
+      <div class="roi-panel" id="roiPanel">
+        <div class="roi-eyebrow">Run the math</div>
+        <h3>What every dollar can return.</h3>
+        <p class="roi-sub">Drag the slider to see how monthly ad spend translates to required units sold. Toggle gross margin to match your cost structure.</p>
+
+        <div class="roi-controls">
+          <div class="slider-label">Monthly ad spend</div>
+          <div class="slider-value" id="sliderDisplay">$2,000</div>
+          <input type="range" class="roi-slider" id="adSpendSlider" min="1500" max="10000" step="500" value="2000" />
+
+          <div class="margin-label">Gross margin assumption</div>
+          <div class="margin-toggles">
+            <button class="margin-btn" data-margin="0.30">30%</button>
+            <button class="margin-btn active" data-margin="0.40">40%</button>
+            <button class="margin-btn" data-margin="0.50">50%</button>
+          </div>
+        </div>
+
+        <div class="roi-outputs">
+          <div class="roi-output highlight">
+            <div class="roi-output-label">Discovery Sets to break even</div>
+            <div class="roi-output-num" id="outTrio">53</div>
+            <div class="roi-output-sub">at $95 AOV</div>
+          </div>
+          <div class="roi-output">
+            <div class="roi-output-label">Single bottles to break even</div>
+            <div class="roi-output-num" id="outSingle">143</div>
+            <div class="roi-output-sub">at $35 AOV</div>
+          </div>
+          <div class="roi-output">
+            <div class="roi-output-label">Per day, Discovery Sets</div>
+            <div class="roi-output-num" id="outDaily">1.8</div>
+            <div class="roi-output-sub">to hit break-even</div>
+          </div>
+        </div>
+
+        <p class="roi-note">Break-even on ad spend only. Doesn't account for repeat purchases, organic traffic from SEO, retargeting conversions, or upsell paths. Real ROI scales above this baseline as the system matures past Phase 1.</p>
+      </div>
+    </section>
+
+    <!-- 8. TARGETED DEMOGRAPHICS -->
+    <section class="reveal">
+      <div class="section-label">Who we're targeting</div>
+      <h2>We meet the right buyer where she already is.</h2>
+      <p class="section-intro">
+        ByLeCrème's ideal customer is specific. College-educated Black women, 25 to 44, with disposable income and a strong appreciation for craftsmanship, identity, and luxury that feels personal. The geographic concentration of that audience is also specific. We weight paid spend across five metros where the data shows the highest density of buyers in our target income tier.
+      </p>
+
+      <div class="demo-list">
+        <div class="demo-row">
+          <div class="demo-header">
+            <span class="demo-metro">Atlanta MSA</span>
+            <span class="demo-tier">Anchor market</span>
+          </div>
+          <div class="demo-stats">
+            <span class="demo-stat">Black household median income: <strong>$58,684</strong></span>
+            <span class="demo-stat">Earning $100K+: <strong>24.9%</strong></span>
+            <span class="demo-stat">Bachelor's degree+: <strong>32.6%</strong></span>
+          </div>
+          <p class="demo-justification">Home base. Storefront. Existing 37K community. Best of ATL 2025. Press footprint already in place.</p>
+        </div>
+
+        <div class="demo-row">
+          <div class="demo-header">
+            <span class="demo-metro">Washington DC / DMV</span>
+            <span class="demo-tier">Tier 1 expansion</span>
+          </div>
+          <div class="demo-stats">
+            <span class="demo-stat">Black household median income: <strong>$82,045</strong></span>
+            <span class="demo-stat">Earning $100K+: <strong>40%+</strong></span>
+            <span class="demo-stat">Bachelor's degree+: <strong>37.2%</strong></span>
+          </div>
+          <p class="demo-justification">Highest-income, most-educated concentrated Black population in the country. PG County alone is the highest-income majority-Black county in the US.</p>
+        </div>
+
+        <div class="demo-row">
+          <div class="demo-header">
+            <span class="demo-metro">Houston MSA</span>
+            <span class="demo-tier">Tier 1 expansion</span>
+          </div>
+          <div class="demo-stats">
+            <span class="demo-stat">Black population: <strong>22.3%</strong> of metro</span>
+            <span class="demo-stat">Highest concentration of upper-income households of any top-10 US metro</span>
+          </div>
+          <p class="demo-justification">Affluent Black communities anchored in Sugar Land, Missouri City, Pearland.</p>
+        </div>
+
+        <div class="demo-row">
+          <div class="demo-header">
+            <span class="demo-metro">Dallas–Fort Worth</span>
+            <span class="demo-tier">Tier 2 expansion</span>
+          </div>
+          <div class="demo-stats">
+            <span class="demo-stat">Garland &amp; Grand Prairie: <strong>#7</strong> and <strong>tied-#1</strong> nationally for Black economic outcomes</span>
+            <span class="demo-stat">Black household median: above <strong>$61K</strong></span>
+          </div>
+          <p class="demo-justification">Strong middle-class density and a growing creator economy.</p>
+        </div>
+
+        <div class="demo-row">
+          <div class="demo-header">
+            <span class="demo-metro">Charlotte MSA</span>
+            <span class="demo-tier">Tier 2 expansion</span>
+          </div>
+          <div class="demo-stats">
+            <span class="demo-stat">Black population: <strong>542,000</strong> (13th largest in the US, 22% of metro)</span>
+          </div>
+          <p class="demo-justification">Historic top-3 destination for Black migration. Fast-growing professional class. JCSU alumni network.</p>
+        </div>
+      </div>
+
+      <p class="demo-footer">National Black household median income is $56,020. The metros above are 1.5 to 2x more concentrated with the income tier we're targeting. That's the math behind a defensible geo strategy.</p>
+    </section>
+
+    <!-- 9. 90-DAY ROADMAP -->
+    <section id="roadmap" class="reveal">
+      <div class="section-label">Execution roadmap</div>
+      <h2>Foundation. Test. Scale. Thirty days at a time.</h2>
+      <p class="section-intro">
+        Each phase builds on the last. Results from early phases directly inform decisions in later ones. The system gets smarter as it runs.
+      </p>
+      <div class="roadmap-grid">
+        <div class="phase-card">
+          <div class="phase-label">Phase 1 — Days 1 to 30</div>
+          <h3>Foundation</h3>
+          <ul class="phase-list">
+            <li>Set up conversion tracking across the site and ad platforms</li>
+            <li>Audit and align technical SEO with priority keywords</li>
+            <li>Map the existing 37K community and email list for warm launch</li>
+            <li>Develop initial creative direction across the three fragrances</li>
+            <li>Launch first paid campaigns with the Discovery Set as hero</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-label">Phase 2 — Days 31 to 60</div>
+          <h3>Test and Refine</h3>
+          <ul class="phase-list">
+            <li>Iterate on creative based on real performance data</li>
+            <li>Refine audience targeting in priority metros</li>
+            <li>Reallocate budget toward what's actually working</li>
+            <li>Build retargeting paths for site visitors and engaged users</li>
+            <li>Begin SEO content production around fragrance, gifting, and brand discovery</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-label">Phase 3 — Days 61 to 90</div>
+          <h3>Optimize and Scale</h3>
+          <ul class="phase-list">
+            <li>Push harder into proven channels and winning creatives</li>
+            <li>Expand strongest campaigns into Tier 1 expansion markets</li>
+            <li>Refine the customer journey from first click to repeat purchase</li>
+            <li>SEO and content engine compounds, organic traffic begins contributing to total revenue</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. WHAT'S INCLUDED -->
+    <section class="reveal">
+      <div class="section-label">What's included every month</div>
+      <h2>A complete growth partnership for ByLeCrème.</h2>
+      <p class="section-intro">
+        Every engagement includes the full scope below. No à la carte, no hidden scope.
+      </p>
+      <ul class="del-list">
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Strategy and campaign planning across paid, SEO, content, and conversion</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Platform and creative recommendations based on offer, audience, and objective</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Paid media buying and optimization across Meta, Google, and TikTok</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Audience and demographic targeting tailored to each campaign</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>SEO foundation work and ongoing content recommendations</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>AI search optimization for ChatGPT, Perplexity, and Google AI Overviews</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Conversion oversight on the Give Me Flowers site and product pages</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Analytics and tracking management for accurate attribution</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Monthly performance reporting with clear metrics and insights</li>
+        <li class="del-item"><svg class="del-star" width="10" height="10" viewBox="0 0 10 10"><path d="M5 0l1.12 3.88L10 5 6.12 6.12 5 10 3.88 6.12 0 5l3.88-1.12z" fill="#C6A44C"/></svg>Strategy and review meetings to align on priorities and results</li>
+      </ul>
+    </section>
+
+    <!-- 11. MUTUAL PLAN -->
+    <section class="reveal">
+      <div class="section-label">Mutual plan</div>
+      <h2>Strong results come from shared alignment.</h2>
+      <p class="section-intro">
+        This works at the highest level when both sides are engaged in the same process. Our role is execution. ByLeCrème's role is direction and creative input. Together, that's how the best outcomes happen.
+      </p>
+      <div class="mutual-grid">
+        <div class="mutual-col lead">
+          <div class="mutual-title">We Lead</div>
+          <ul class="mutual-list">
+            <li>Strategy and campaign architecture</li>
+            <li>Paid media execution and management</li>
+            <li>SEO and AI search optimization</li>
+            <li>Creative testing and iteration</li>
+            <li>Audience targeting and refinement</li>
+            <li>Performance analysis and reporting</li>
+          </ul>
+        </div>
+        <div class="mutual-col">
+          <div class="mutual-title">You Support</div>
+          <ul class="mutual-list">
+            <li>Brand direction and product priorities</li>
+            <li>Timely approvals on creative and copy</li>
+            <li>Photography, video, and behind-the-scenes content from the studio</li>
+            <li>Responsiveness on key decisions</li>
+            <li>Commitment to the shared performance goals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. PRICING -->
+    <section id="investment" class="reveal">
+      <div class="section-label">The investment</div>
+      <h2>Transparent pricing. Predictable structure.</h2>
+      <p class="section-intro">
+        Monthly ad spend plus management. No hidden fees, no long-term lock-in. Scale up as performance compounds.
+      </p>
+
+      <div class="rec-note">
+        <div class="rec-eyebrow">Our Recommendation</div>
+        <p>Start at $2,000 monthly ad spend. It's the smallest tier where the system has enough volume to gather real data, optimize creative, and produce defensible early results. ByLeCrème can scale up as performance compounds.</p>
+      </div>
+
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Monthly Ad Spend</th>
+            <th>Base Fee</th>
+            <th>Mgmt (19%)</th>
+            <th>Total / Month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$1,500</td>
+            <td>$250</td>
+            <td>$285</td>
+            <td>$2,035</td>
+          </tr>
+          <tr class="highlight">
+            <td>$2,000</td>
+            <td>$250</td>
+            <td>$380</td>
+            <td>$2,630</td>
+          </tr>
+          <tr>
+            <td>$3,000</td>
+            <td>$250</td>
+            <td>$570</td>
+            <td>$3,820</td>
+          </tr>
+          <tr>
+            <td>$5,000</td>
+            <td>$250</td>
+            <td>$950</td>
+            <td>$6,200</td>
+          </tr>
+          <tr>
+            <td>$7,500</td>
+            <td>$250</td>
+            <td>$1,425</td>
+            <td>$9,175</td>
+          </tr>
+          <tr>
+            <td>$10,000</td>
+            <td>$250</td>
+            <td>$1,900</td>
+            <td>$12,150</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="table-note">Total monthly cost = ad spend + base fee + management fee. Month-to-month with no long-term commitment required.</p>
+    </section>
+
+    <!-- 13. CLOSING -->
+    <section class="closing reveal">
+      <div class="section-label">The Goal</div>
+      <h2>A system that gets more efficient, more intelligent, and more valuable over time.</h2>
+      <p>This is not a stack of tactics. It's a connected growth system. SEO builds lasting visibility. Content strengthens authority. Paid ads accelerate demand. The Discovery Set lifts order value from day one. Trust and conversion turn attention into revenue. Execution turns all of it into measurable progress.</p>
+      <div class="closing-tags">
+        SEO Foundation<span class="dot">&middot;</span>Organic Content<span class="dot">&middot;</span>Meta-Led Paid Media<span class="dot">&middot;</span>Discovery Set Acquisition<span class="dot">&middot;</span>Trust-to-Conversion Logic<span class="dot">&middot;</span>90-Day Roadmap<span class="dot">&middot;</span>Shared Execution
+      </div>
+    </section>
+
+    <!-- 14. FOOTER -->
+    <footer>
+      <div class="footer-brand">
+        <img src="https://WhiteHaus.b-cdn.net/WhiteHause%20Logo%20.png" alt="White Haus Media" />
+      </div>
+      <div class="footer-meta">
+        Wake Forest, NC &nbsp;&middot;&nbsp; hello@whitehausmedia.com<br>
+        Private proposal prepared for ByLeCrème Parfums &middot; April 2026
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Progress bar
+    window.addEventListener('scroll', function() {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+    });
+
+    // Reveal animations
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(el) { observer.observe(el); });
+
+    // Active nav link on scroll
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', function() {
+      var scrollPos = window.scrollY + 120;
+      sections.forEach(function(section) {
+        if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+          var id = section.getAttribute('id');
+          navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+
+    // ROI Slider
+    (function() {
+      var slider = document.getElementById('adSpendSlider');
+      var display = document.getElementById('sliderDisplay');
+      var outTrio = document.getElementById('outTrio');
+      var outSingle = document.getElementById('outSingle');
+      var outDaily = document.getElementById('outDaily');
+      var marginBtns = document.querySelectorAll('.margin-btn');
+      var activeMargin = 0.40;
+
+      function calculate() {
+        var adSpend = parseInt(slider.value);
+        display.textContent = '$' + adSpend.toLocaleString();
+
+        var unitsTrio = Math.ceil(adSpend / (95 * activeMargin));
+        var unitsSingle = Math.ceil(adSpend / (35 * activeMargin));
+        var setsPerDay = (unitsTrio / 30).toFixed(1);
+
+        // Animate numbers
+        [outTrio, outSingle, outDaily].forEach(function(el) {
+          el.style.opacity = '0.3';
+          setTimeout(function() { el.style.opacity = '1'; }, 150);
+        });
+
+        setTimeout(function() {
+          outTrio.textContent = unitsTrio.toLocaleString();
+          outSingle.textContent = unitsSingle.toLocaleString();
+          outDaily.textContent = setsPerDay;
+        }, 100);
+      }
+
+      slider.addEventListener('input', calculate);
+
+      marginBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          marginBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeMargin = parseFloat(btn.dataset.margin);
+          calculate();
+        });
+      });
+
+      // Initial calculation
+      calculate();
+    })();
+  </script>
+</body>
+</html>
