@@ -13,7 +13,7 @@ proposals/
 ```
 
 ## PROPOSAL URL FORMAT
-`https://whm-proposals.vercel.app/proposals/[company-slug]/index.html`
+`https://whitehausmedia.com/proposals/[company-slug]/index.html`
 
 Slug rules: lowercase, hyphens only, match company name closely.
 Example: "Aversboro Road Child Care Center" → `aversboro-road-child-care-center`
