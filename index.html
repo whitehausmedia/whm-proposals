@@ -1846,13 +1846,15 @@ function scrollChat(){
 </script>
 
 <script>
-// Scroll reveal animation — uses scroll listener + getBoundingClientRect
-// (IntersectionObserver breaks when body has overflow-x:hidden, which
-//  promotes body to a scroll container while IO watches the viewport)
+// Scroll reveal — listens on window, document, AND body to handle
+// any scroll container scenario (body overflow-x:hidden promotes body
+// to scroll container, stealing scroll events from window)
 (function() {
   var els = document.querySelectorAll('.rv');
   var pending = els.length;
+  var ticking = false;
   function reveal() {
+    ticking = false;
     if (!pending) return;
     var wh = window.innerHeight;
     els.forEach(function(el) {
@@ -1863,11 +1865,20 @@ function scrollChat(){
         pending--;
       }
     });
-    if (!pending) window.removeEventListener('scroll', onScroll);
+    if (!pending) cleanup();
   }
-  function onScroll() { requestAnimationFrame(reveal); }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  reveal(); // initial check for elements already in viewport
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(reveal); }
+  }
+  function cleanup() {
+    [window, document, document.body].forEach(function(t) {
+      t.removeEventListener('scroll', onScroll);
+    });
+  }
+  [window, document, document.body].forEach(function(t) {
+    t.addEventListener('scroll', onScroll, { passive: true });
+  });
+  reveal();
 })();
 
 // Navigation scroll effect
