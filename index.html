@@ -281,7 +281,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --cream:#F4EFE6;--b:#080808;--b2:#0E0E0E;--b3:#141414;
-  --g:#C6A44C;--gl:#D4B565;--gp:#E2CA88;--gc:#AB8C30;
+  --g:#C6A44C;--gl:#D4B565;--gp:#E2CA88;--gc:#B8993D;
   --gd:rgba(198,164,76,.06);--gb:rgba(198,164,76,.1);
   --t1:rgba(244,239,230,.93);--t2:rgba(244,239,230,.5);--t3:rgba(244,239,230,.28);
   --bd:rgba(198,164,76,.07);
@@ -358,7 +358,7 @@ nav.scrolled .logo-img{height:56px}
 .ghost:hover::before{opacity:1}
 
 /* ── BRAND PROMISE STRIP ── */
-.promise{padding:clamp(48px,8vw,80px) 0;border-top:1px solid rgba(171,140,48,.12);border-bottom:none;background:linear-gradient(180deg, var(--cream) 0%, rgba(244,239,230,.98) 100%)}
+.promise{padding:clamp(48px,8vw,80px) 0;border-top:1px solid rgba(184,153,61,.12);border-bottom:none;background:linear-gradient(180deg, var(--cream) 0%, rgba(244,239,230,.98) 100%)}
 .promise .w{text-align:center}
 .promise-label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:32px;text-wrap:balance}
 .promise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
@@ -382,67 +382,69 @@ nav.scrolled .logo-img{height:56px}
 .photo-banner h2 span{color:var(--g);font-weight:600}
 
 /* ── SECTIONS ── */
-.sec{padding:clamp(56px,10vw,96px) 0;position:relative;background:var(--b)}
+.sec{padding:clamp(56px,10vw,96px) 0;position:relative;background:var(--b);border-top:1px solid rgba(198,164,76,.06)}
 .sec::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(180deg, rgba(14,14,14,0) 0%, var(--b) 100%);pointer-events:none}
-.sec-alt{padding:clamp(56px,10vw,96px) 0;position:relative;background:var(--b2)}
+.sec-alt{padding:clamp(56px,10vw,96px) 0;position:relative;background:var(--b2);border-top:1px solid rgba(198,164,76,.06)}
 .sec-alt::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(180deg, rgba(14,14,14,0) 0%, var(--b2) 100%);pointer-events:none}
-.sec-cream{padding:clamp(56px,10vw,96px) 0;position:relative;background:linear-gradient(180deg, var(--cream) 0%, rgba(244,239,230,.98) 100%);color:#080808}
+.sec-cream{padding:clamp(56px,10vw,96px) 0;position:relative;background:linear-gradient(180deg, var(--cream) 0%, rgba(244,239,230,.98) 100%);color:#080808;border-top:1px solid rgba(184,153,61,.15);border-bottom:1px solid rgba(184,153,61,.15)}
 .sec-cream::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(180deg, transparent 0%, var(--cream) 100%);pointer-events:none}
-.sec-cream .ey{color:#AB8C30}
-.sec-cream .gl{color:#AB8C30}
+.sec-cream .ey{color:#B8993D}
+.sec-cream .gl{color:#B8993D}
 .sec-cream .sh{color:#080808}
 .sec-cream .sp{color:rgba(8,8,8,.55)}
-.sec-cream .svc{border-color:rgba(171,140,48,.12);background:rgba(171,140,48,.04)}
-.sec-cream .svc:hover{border-color:rgba(171,140,48,.25)}
+.sec-cream .svc{border-color:rgba(184,153,61,.12);background:rgba(184,153,61,.04)}
+.sec-cream .svc:hover{border-color:rgba(184,153,61,.25)}
 .sec-cream .svc h3{color:#080808}
 .sec-cream .svc p{color:rgba(8,8,8,.55)}
-.sec-cream .svc-divider{background:#AB8C30}
-.sec-cream .proc{border-color:rgba(171,140,48,.12)}
+.sec-cream .svc-divider{background:#B8993D}
+.sec-cream .proc{border-color:rgba(184,153,61,.12)}
 .sec-cream .proc h4{color:#080808}
 .sec-cream .proc p{color:rgba(8,8,8,.55)}
-.sec-cream .card{border-color:rgba(171,140,48,.12);background:rgba(171,140,48,.04)}
-.sec-cream .card:hover{border-color:rgba(171,140,48,.25)}
+.sec-cream .card{border-color:rgba(184,153,61,.12);background:rgba(184,153,61,.04)}
+.sec-cream .card:hover{border-color:rgba(184,153,61,.25)}
 .sec-cream .card h3{color:#080808}
 .sec-cream .card p{color:rgba(8,8,8,.55)}
-.sec-cream .card-ico{background:rgba(171,140,48,.08);border:1px solid rgba(171,140,48,.15)}
-.sec-cream .card-ico svg{stroke:#AB8C30}
-.sec-cream .acc-i{border-color:rgba(171,140,48,.12)}
-.sec-cream .acc-h:hover{background:rgba(171,140,48,.04)}
+.sec-cream .card-ico{background:rgba(184,153,61,.08);border:1px solid rgba(184,153,61,.15)}
+.sec-cream .card-ico svg{stroke:#B8993D}
+.sec-cream .acc-i{border-color:rgba(184,153,61,.12)}
+.sec-cream .acc-h:hover{background:rgba(184,153,61,.04)}
 .sec-cream .acc-h h4{color:#080808}
-.sec-cream .acc-t{color:#AB8C30}
+.sec-cream .acc-t{color:#B8993D}
 .sec-cream .acc-bd p{color:rgba(8,8,8,.55)}
-.sec-cream .promise-label{color:#AB8C30}
-.sec-cream .promise-ico{border-color:rgba(171,140,48,.2);background:rgba(171,140,48,.06)}
-.sec-cream .promise-ico svg{stroke:#AB8C30}
+.sec-cream .promise-label{color:#B8993D}
+.sec-cream .promise-ico{border-color:rgba(184,153,61,.2);background:rgba(184,153,61,.06)}
+.sec-cream .promise-ico svg{stroke:#B8993D}
 .sec-cream .promise-grid p{color:rgba(8,8,8,.55)}
 .sec-cream .promise-grid h4{color:#080808}
 
 /* Verticals tabs */
 .vert-tabs{display:flex;gap:8px;margin-bottom:40px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
 .vert-tabs::-webkit-scrollbar{display:none}
-.vert-tab{padding:10px 22px;border:1px solid rgba(171,140,48,.15);border-radius:100px;font-size:14px;font-weight:600;color:rgba(8,8,8,.45);background:transparent;cursor:pointer;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
-.vert-tab:hover{border-color:rgba(171,140,48,.35);color:rgba(8,8,8,.7)}
-.vert-tab.active{background:#AB8C30;color:#F4EFE6;border-color:#AB8C30}
+.vert-tab{padding:10px 22px;border:1px solid rgba(184,153,61,.15);border-radius:100px;font-size:14px;font-weight:600;color:rgba(8,8,8,.45);background:transparent;cursor:pointer;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.vert-tab:hover{border-color:rgba(184,153,61,.35);color:rgba(8,8,8,.7)}
+.vert-tab.active{background:#B8993D;color:#F4EFE6;border-color:#B8993D}
 .vert-panel{display:none;animation:vertFade .4s ease}
 .vert-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @keyframes vertFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.vert-card{padding:24px;border:1px solid rgba(171,140,48,.12);border-radius:var(--r);background:rgba(171,140,48,.04);transition:all .3s}
-.vert-card:hover{border-color:rgba(171,140,48,.25);background:rgba(171,140,48,.08)}
+.vert-card{padding:24px;border:1px solid rgba(184,153,61,.12);border-radius:var(--r);background:rgba(184,153,61,.04);transition:all .3s}
+.vert-card:hover{border-color:rgba(184,153,61,.25);background:rgba(184,153,61,.08)}
 .vert-card h4{font-size:16px;font-weight:700;color:#080808;margin-bottom:6px}
 .vert-card p{font-size:14px;color:rgba(8,8,8,.55);line-height:1.6}
 
 /* Verticals accordion (mobile) */
 .vert-acc{display:none}
-.vert-acc-item{border:1px solid rgba(171,140,48,.12);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
+.vert-acc-item{border:1px solid rgba(184,153,61,.12);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
 .vert-acc-btn{width:100%;padding:16px 20px;background:transparent;border:none;font-family:var(--font);font-size:15px;font-weight:700;color:#080808;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.vert-acc-btn span{font-size:18px;color:#AB8C30;transition:transform .3s}
+.vert-acc-btn span{font-size:18px;color:#B8993D;transition:transform .3s}
 .vert-acc-item.open .vert-acc-btn span{transform:rotate(45deg)}
 .vert-acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .vert-acc-item.open .vert-acc-body{max-height:600px}
 .vert-acc-inner{padding:0 20px 20px;display:flex;flex-direction:column;gap:12px}
 .vert-acc-inner .vert-card{border:none;padding:12px 0;background:transparent}
 .ey{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g);font-weight:600;margin-bottom:12px}
-.sh{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.sh{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;position:relative;padding-top:24px}
+.sh::before{content:'';position:absolute;top:0;left:0;width:40px;height:3px;background:var(--g);border-radius:2px}
+.sec-cream .sh::before{background:var(--gc)}
 .gl{color:var(--g)}
 .sp{font-size:17px;color:var(--t2);line-height:1.65;max-width:540px;margin-bottom:40px}
 
@@ -465,33 +467,33 @@ nav.scrolled .logo-img{height:56px}
 @keyframes rotateBorder{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .svc-n{margin-bottom:14px;line-height:0;position:relative;z-index:2}
 .svc-n svg{width:30px;height:30px}
-.sec-cream .svc-n svg{stroke:#AB8C30}
+.sec-cream .svc-n svg{stroke:#B8993D}
 .svc h3{font-size:18px;font-weight:700;margin-bottom:8px;position:relative;z-index:2}
 .svc p{font-size:15px;color:var(--t2);line-height:1.6;position:relative;z-index:2}
 .svc-divider{width:60px;height:1px;background:var(--g);margin:56px auto;opacity:.3}
 
 /* Specialized Services — Collapsible */
 .spec-grid{display:flex;flex-direction:column;gap:16px}
-.spec-card{border:1px solid rgba(171,140,48,.12);border-radius:var(--r);background:rgba(171,140,48,.03);transition:border-color .3s, box-shadow .3s;position:relative;backdrop-filter:blur(8px);overflow:hidden}
-.spec-card:hover{border-color:rgba(171,140,48,.25)}
-.spec-card.open{border-color:rgba(171,140,48,.3);box-shadow:0 8px 32px rgba(171,140,48,.08)}
+.spec-card{border:1px solid rgba(184,153,61,.12);border-radius:var(--r);background:rgba(184,153,61,.03);transition:border-color .3s, box-shadow .3s;position:relative;backdrop-filter:blur(8px);overflow:hidden}
+.spec-card:hover{border-color:rgba(184,153,61,.25)}
+.spec-card.open{border-color:rgba(184,153,61,.3);box-shadow:0 8px 32px rgba(184,153,61,.08)}
 .spec-header{display:flex;align-items:center;gap:20px;padding:28px 32px;cursor:pointer;-webkit-user-select:none;user-select:none}
-.spec-icon{width:48px;height:48px;border-radius:12px;background:rgba(171,140,48,.08);border:1px solid rgba(171,140,48,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.spec-icon{width:48px;height:48px;border-radius:12px;background:rgba(184,153,61,.08);border:1px solid rgba(184,153,61,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .spec-icon svg{width:24px;height:24px}
 .spec-header-text{flex:1;min-width:0}
 .spec-card h3{font-size:20px;font-weight:800;color:#080808;margin-bottom:4px;letter-spacing:-.02em}
 .spec-tagline{font-size:14px;color:rgba(8,8,8,.45);font-weight:500;font-style:italic;margin:0}
-.spec-toggle{width:36px;height:36px;border-radius:50%;border:1px solid rgba(171,140,48,.15);background:rgba(171,140,48,.04);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .4s cubic-bezier(.4,0,.2,1), background .3s}
-.spec-toggle svg{width:14px;height:14px;stroke:#AB8C30;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.spec-card.open .spec-toggle{transform:rotate(180deg);background:rgba(171,140,48,.12)}
+.spec-toggle{width:36px;height:36px;border-radius:50%;border:1px solid rgba(184,153,61,.15);background:rgba(184,153,61,.04);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .4s cubic-bezier(.4,0,.2,1), background .3s}
+.spec-toggle svg{width:14px;height:14px;stroke:#B8993D;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.spec-card.open .spec-toggle{transform:rotate(180deg);background:rgba(184,153,61,.12)}
 .spec-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
 .spec-body-inner{padding:0 32px 32px}
 .spec-details{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-.spec-detail-item{padding:20px;border-radius:12px;background:rgba(171,140,48,.04);border:1px solid rgba(171,140,48,.08)}
+.spec-detail-item{padding:20px;border-radius:12px;background:rgba(184,153,61,.04);border:1px solid rgba(184,153,61,.08)}
 .spec-detail-item h4{font-size:14px;font-weight:700;color:#080808;margin-bottom:8px;letter-spacing:.01em}
 .spec-detail-item p{font-size:14px;color:rgba(8,8,8,.55);line-height:1.65}
 .spec-detail-item:first-child{grid-column:1/-1}
-.spec-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#AB8C30;letter-spacing:.04em;transition:gap .3s,color .3s}
+.spec-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#B8993D;letter-spacing:.04em;transition:gap .3s,color .3s}
 .spec-cta:hover{gap:10px;color:#080808}
 @media(max-width:768px){
   .spec-header{padding:20px;gap:14px}
@@ -505,7 +507,7 @@ nav.scrolled .logo-img{height:56px}
 
 /* Process */
 .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.proc-grid::before{content:'';position:absolute;top:68px;left:5%;right:5%;height:1px;background:linear-gradient(90deg, transparent, rgba(171,140,48,.25), transparent);z-index:0;pointer-events:none}
+.proc-grid::before{content:'';position:absolute;top:68px;left:5%;right:5%;height:1px;background:linear-gradient(90deg, transparent, rgba(184,153,61,.25), transparent);z-index:0;pointer-events:none}
 .proc{padding:28px;border-right:1px solid var(--bd);text-align:center;position:relative;z-index:1}
 .proc:last-child{border-right:none}
 .proc-n{margin-bottom:10px;line-height:0;position:relative;z-index:2}
@@ -529,7 +531,7 @@ nav.scrolled .logo-img{height:56px}
 .xm{font-size:13px;color:rgba(255,100,100,.5);flex-shrink:0}
 .cm{font-size:13px;color:var(--g);flex-shrink:0}
 .sec-cream .tf-col.bef{background:rgba(8,8,8,.03);border-color:rgba(8,8,8,.08)}
-.sec-cream .tf-col.aft{background:rgba(171,140,48,.06);border-color:rgba(171,140,48,.15)}
+.sec-cream .tf-col.aft{background:rgba(184,153,61,.06);border-color:rgba(184,153,61,.15)}
 .sec-cream .tf-ul li{color:rgba(8,8,8,.6)}
 .sec-cream .tf-col.bef .tf-lbl{color:rgba(8,8,8,.35)}
 .sec-cream .xm{color:rgba(200,60,60,.6)}
@@ -547,11 +549,11 @@ nav.scrolled .logo-img{height:56px}
 .tab-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .tab-icon svg{width:22px;height:22px;stroke:rgba(8,8,8,.25);fill:none;stroke-width:1.2;transition:all .3s ease}
 .tab-label{font-size:15px;font-weight:600;color:rgba(8,8,8,.35);transition:all .3s ease;letter-spacing:.01em}
-.tab-btn::after{content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%) scaleY(0);width:2px;height:32px;background:var(--gc,#AB8C30);transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.tab-btn::after{content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%) scaleY(0);width:2px;height:32px;background:var(--gc,#B8993D);transition:transform .4s cubic-bezier(.23,1,.32,1)}
 .tab-btn:hover .tab-label{color:rgba(8,8,8,.7)}
 .tab-btn:hover .tab-icon svg{stroke:rgba(8,8,8,.5)}
 .tab-btn.active .tab-label{color:var(--b);font-weight:700}
-.tab-btn.active .tab-icon svg{stroke:var(--gc,#AB8C30)}
+.tab-btn.active .tab-icon svg{stroke:var(--gc,#B8993D)}
 .tab-btn.active::after{transform:translateY(-50%) scaleY(1)}
 .tab-panels{position:relative;padding-left:56px}
 .tab-panel{display:none;animation:panelIn .4s ease}
@@ -564,7 +566,7 @@ nav.scrolled .logo-img{height:56px}
 .panel-features-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(8,8,8,.35);margin-bottom:16px}
 .feature-list{display:flex;flex-wrap:wrap;gap:10px}
 .feature-tag{padding:10px 20px;font-size:14px;font-weight:500;color:var(--b);background:rgba(8,8,8,.04);border:1px solid rgba(8,8,8,.08);transition:background .3s,border-color .3s,transform .3s;border-radius:20px}
-.feature-tag:hover{background:rgba(171,140,48,.08);border-color:rgba(171,140,48,.2);transform:translateY(-2px)}
+.feature-tag:hover{background:rgba(184,153,61,.08);border-color:rgba(184,153,61,.2);transform:translateY(-2px)}
 .featured-project{display:flex;align-items:center;gap:24px;padding:24px;background:var(--b);margin-top:8px;border-radius:var(--r);transition:all .3s}
 .featured-project:hover{box-shadow:0 8px 32px rgba(0,0,0,.3)}
 .featured-mark{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(198,164,76,.25);flex-shrink:0;border-radius:8px}
@@ -675,13 +677,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .cream .proc-n{color:var(--gc)}
 .cream .card{background:rgba(8,8,8,.025);border-color:rgba(8,8,8,.07);backdrop-filter:blur(8px)}
 .cream .card:hover{border-color:rgba(8,8,8,.14);background:rgba(8,8,8,.04)}
-.cream .card-ico{background:rgba(171,140,48,.07);color:var(--gc)}
+.cream .card-ico{background:rgba(184,153,61,.07);color:var(--gc)}
 .cream .card-ico svg{stroke:var(--gc)}
 .cream .svc{background:rgba(8,8,8,.025);border-color:rgba(8,8,8,.07);backdrop-filter:blur(8px)}
 .cream .svc:hover{border-color:rgba(8,8,8,.14);background:rgba(8,8,8,.04)}
 .cream .svc-icon svg{stroke:var(--gc)}
 .cream .acc-i{border-color:rgba(8,8,8,.07)}
-.cream .acc-h:hover{background:rgba(171,140,48,.04)}
+.cream .acc-h:hover{background:rgba(184,153,61,.04)}
 .cream .acc-h h4{color:var(--b)}
 .cream .acc-t{color:var(--gc)}
 .cream .proc{border-color:rgba(8,8,8,.07)}
@@ -690,7 +692,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .cream .promise-label{color:var(--b)}
 .cream .promise-item h4{color:var(--b)}
 .cream .promise-item p{color:rgba(8,8,8,.6)}
-.cream .promise-ico{border-color:rgba(171,140,48,.18);background:rgba(171,140,48,.06)}
+.cream .promise-ico{border-color:rgba(184,153,61,.18);background:rgba(184,153,61,.06)}
 .cream .promise-ico svg{stroke:var(--gc)}
 
 /* ── CREDIBILITY BAR ── */
@@ -790,7 +792,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .proc-grid{grid-template-columns:1fr}
   .proc{border-right:none!important;border-bottom:1px solid var(--bd)!important}
   .proc:last-child{border-bottom:none!important}
-  .sec-cream .proc{border-bottom-color:rgba(171,140,48,.12)!important}
+  .sec-cream .proc{border-bottom-color:rgba(184,153,61,.12)!important}
   .sec-cream .proc:last-child{border-bottom:none!important}
   .audit-inner{grid-template-columns:1fr}
   .vert-tabs-wrap{display:none}
@@ -863,7 +865,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 </section>
 
 <!-- BRAND PROMISE — replaces "worked with brands" -->
-<section class="promise sec-cream" style="padding:clamp(48px,8vw,80px) 0;border-top:1px solid rgba(171,140,48,.12);border-bottom:none">
+<section class="promise sec-cream" style="padding:clamp(48px,8vw,80px) 0;border-top:1px solid rgba(184,153,61,.12);border-bottom:none">
 <div class="w">
   <div class="promise-label rv">Strategic consultants first. Website builders second.</div>
   <div class="promise-grid">
@@ -958,10 +960,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <p class="sp">No bloated timelines. No unnecessary complexity. Just focused work that moves the needle.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc rv d1"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><h3>Website Refresh</h3><p>We take your existing site and make it faster, mobile-friendly, and built to convert. Done in a week.</p></div>
-    <div class="svc rv d2"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>Full Custom Build</h3><p>Complete visual overhaul, brand-aligned design, and a site that tells your story the way it deserves.</p></div>
-    <div class="svc rv d3"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2"/><circle cx="6" cy="12" r="3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/></svg></div><h3>Brand Identity</h3><p>Logo, color system, typography, and a style guide that keeps everything consistent across every platform.</p></div>
-    <div class="svc rv d4"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Site Care & Hosting</h3><p>Hosting, maintenance, security updates, backups, and monthly reporting so your site never falls behind.</p></div>
+    <div class="svc rv d1"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><h3>Website Refresh</h3><p>We take your existing site and make it faster, mobile-friendly, and built to convert. Done in a week.</p></div>
+    <div class="svc rv d2"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>Full Custom Build</h3><p>Complete visual overhaul, brand-aligned design, and a site that tells your story the way it deserves.</p></div>
+    <div class="svc rv d3"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2"/><circle cx="6" cy="12" r="3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/></svg></div><h3>Brand Identity</h3><p>Logo, color system, typography, and a style guide that keeps everything consistent across every platform.</p></div>
+    <div class="svc rv d4"><div class="svc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Site Care & Hosting</h3><p>Hosting, maintenance, security updates, backups, and monthly reporting so your site never falls behind.</p></div>
   </div>
 </div>
 </section>
@@ -998,7 +1000,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <!-- SEO SERVICES -->
     <div class="spec-card rv d1" onclick="toggleSpec(this)">
       <div class="spec-header">
-        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></div>
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></div>
         <div class="spec-header-text">
           <h3>Search Engine Optimization</h3>
           <p class="spec-tagline">Get found by the people already searching for what you do.</p>
@@ -1037,7 +1039,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <!-- HEADLESS SHOPIFY / CUSTOM STOREFRONTS -->
     <div class="spec-card rv d2" onclick="toggleSpec(this)">
       <div class="spec-header">
-        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></div>
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/><path d="M12 17v4"/><path d="M8 21h8"/></svg></div>
         <div class="spec-header-text">
           <h3>Custom Shopify Storefronts</h3>
           <p class="spec-tagline">Your Shopify backend. Our custom-designed frontend. No theme limitations.</p>
@@ -1076,7 +1078,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <!-- SOCIAL MEDIA MARKETING MANAGEMENT -->
     <div class="spec-card rv d3" onclick="toggleSpec(this)">
       <div class="spec-header">
-        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/><path d="M2 8c0-3.31 2.69-6 6-6"/><path d="M22 8c0-3.31-2.69-6-6-6"/></svg></div>
+        <div class="spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/><path d="M2 8c0-3.31 2.69-6 6-6"/><path d="M22 8c0-3.31-2.69-6-6-6"/></svg></div>
         <div class="spec-header-text">
           <h3>Social Media Management</h3>
           <p class="spec-tagline">Consistent content. Growing audience. Zero effort from you.</p>
@@ -1120,7 +1122,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <!-- WHO WE BUILD FOR -->
 <section class="verticals" id="work" style="background: var(--cream, #F4EFE6);">
   <div class="section-label">Who We Build For</div>
-  <h2 class="section-heading">Every industry has a story. <span style="color:#AB8C30;font-style:italic">We know how to tell yours.</span></h2>
+  <h2 class="section-heading">Every industry has a story. <span style="color:#B8993D;font-style:italic">We know how to tell yours.</span></h2>
   <p class="section-sub">Every business is different. We build sites tailored to how the people you serve find you, evaluate you, and take action.</p>
 
   <div class="verticals-layout">
@@ -1335,25 +1337,25 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="proc-grid">
     <div class="proc rv d1">
       <div class="proc-step">01</div>
-      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
       <h4>We Learn</h4>
       <p>A discovery call where we dig into your business — why you started it, what matters to you, where you're headed, and where the gaps are.</p>
     </div>
     <div class="proc rv d2">
       <div class="proc-step">02</div>
-      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
       <h4>We Audit &amp; Advise</h4>
       <p>We analyze your site, your market, and your competitors — then deliver strategic recommendations that go beyond design.</p>
     </div>
     <div class="proc rv d3">
       <div class="proc-step">03</div>
-      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
       <h4>We Build</h4>
       <p>Custom code, responsive design, speed optimization, and every integration you need.</p>
     </div>
     <div class="proc rv d4">
       <div class="proc-step">04</div>
-      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3"/></svg></div>
+      <div class="proc-n"><svg viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 3 0 3 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-3 0-3"/></svg></div>
       <h4>We Launch &amp; Advise</h4>
       <p>You review, we refine, then go live — with analytics configured and a strategic roadmap for what comes next.</p>
     </div>
@@ -1658,17 +1660,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   </div>
   <div class="alt-contact rv">
     <div class="alt-c rv d1">
-      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</h4>
+      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</h4>
       <p>hello@whitehausmedia.com</p>
       <a href="mailto:hello@whitehausmedia.com">Send us a message</a>
     </div>
     <div class="alt-c rv d2">
-      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Phone</h4>
+      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Phone</h4>
       <p>(919) 263-4634</p>
       <a href="tel:+19192634634">Call now</a>
     </div>
     <div class="alt-c rv d3">
-      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AB8C30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Chat</h4>
+      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8993D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Chat</h4>
       <p>Click the chat bubble below</p>
       <a href="javascript:void(0)" onclick="toggleChat()">Start a chat</a>
     </div>
