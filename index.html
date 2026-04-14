@@ -288,7 +288,7 @@
   --r:16px;--font:'Plus Jakarta Sans',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--b);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6;letter-spacing:.005em}
+body{font-family:var(--font);background:var(--b);color:var(--t1);overflow-x:clip;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6;letter-spacing:.005em}
 .w{max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,80px)}
 ::selection{background:var(--g);color:var(--b)}
 a{text-decoration:none;color:inherit}
@@ -1846,39 +1846,19 @@ function scrollChat(){
 </script>
 
 <script>
-// Scroll reveal — listens on window, document, AND body to handle
-// any scroll container scenario (body overflow-x:hidden promotes body
-// to scroll container, stealing scroll events from window)
+// Scroll reveal — IntersectionObserver (body uses overflow-x:clip
+// so body does NOT become a scroll container, IO root:null works)
 (function() {
   var els = document.querySelectorAll('.rv');
-  var pending = els.length;
-  var ticking = false;
-  function reveal() {
-    ticking = false;
-    if (!pending) return;
-    var wh = window.innerHeight;
-    els.forEach(function(el) {
-      if (el.classList.contains('vis')) return;
-      var r = el.getBoundingClientRect();
-      if (r.top < wh - 30 && r.bottom > 0) {
-        el.classList.add('vis');
-        pending--;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('vis');
+        observer.unobserve(entry.target);
       }
     });
-    if (!pending) cleanup();
-  }
-  function onScroll() {
-    if (!ticking) { ticking = true; requestAnimationFrame(reveal); }
-  }
-  function cleanup() {
-    [window, document, document.body].forEach(function(t) {
-      t.removeEventListener('scroll', onScroll);
-    });
-  }
-  [window, document, document.body].forEach(function(t) {
-    t.addEventListener('scroll', onScroll, { passive: true });
-  });
-  reveal();
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el) { observer.observe(el); });
 })();
 
 // Navigation scroll effect
