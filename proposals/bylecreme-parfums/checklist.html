@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Revision Checklist | ByLeCreme x White Haus Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #F7F2EA;
+    --ivory-deep: #EFE7DB;
+    --ink: #1C1915;
+    --ink-soft: #3A3631;
+    --taupe: #7A726A;
+    --bronze: #9C7A4F;
+    --bronze-deep: #7C5F3B;
+    --line: #D9CFC1;
+    --line-soft: #E6DDD0;
+    --cream-card: #FDFAF4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--ivory);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.01em;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Header */
+  .brand-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--line);
+    background: var(--ivory);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+
+  .wordmark {
+    font-family: 'Italiana', serif;
+    font-size: 20px;
+    letter-spacing: 0.32em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .wordmark span { color: var(--bronze); }
+
+  .brand-meta {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    font-weight: 400;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--bronze));
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(48px, 7vw, 82px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--bronze);
+    font-weight: 400;
+  }
+
+  .hero .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .hero .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--bronze);
+    margin: 40px auto 0;
+  }
+
+  .prepared-for {
+    margin-top: 48px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+
+  .prepared-for strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    margin-top: 8px;
+    font-family: 'Italiana', serif;
+  }
+
+  /* Intro */
+  .intro {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .intro p {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+
+  .intro p:last-child { margin-bottom: 0; }
+
+  .intro .note {
+    margin-top: 48px;
+    padding: 32px 36px;
+    background: var(--cream-card);
+    border-left: 2px solid var(--bronze);
+  }
+
+  .intro .note-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .intro .note p {
+    font-size: 16px;
+    margin-bottom: 0;
+    font-style: normal;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--ink-soft);
+  }
+
+  /* How to use */
+  .how-to {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .how-to-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .how-to-item {
+    text-align: left;
+  }
+
+  .how-to-num {
+    font-family: 'Italiana', serif;
+    font-size: 32px;
+    color: var(--bronze);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .how-to-item h4 {
+    font-family: 'Italiana', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .how-to-item p {
+    font-size: 14px;
+    color: var(--taupe);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .section-num {
+    font-family: 'Italiana', serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--bronze);
+  }
+
+  .section h2 {
+    font-family: 'Italiana', serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+
+  .section-intro {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+
+  /* Checkbox items */
+  .check-list {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .check-item:hover {
+    background: var(--cream-card);
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .check-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--taupe);
+    background: transparent;
+    cursor: pointer;
+    margin-top: 2px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .check-item input[type="checkbox"]:checked {
+    background: var(--bronze);
+    border-color: var(--bronze);
+  }
+
+  .check-item input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--ivory);
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+  }
+
+  .check-item input[type="checkbox"]:checked ~ .check-content {
+    color: var(--taupe);
+  }
+
+  .check-item input[type="checkbox"]:checked ~ .check-content .check-title {
+    text-decoration: line-through;
+    text-decoration-color: var(--bronze);
+    text-decoration-thickness: 1px;
+  }
+
+  .check-content {
+    flex: 1;
+    transition: color 0.2s ease;
+  }
+
+  .check-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: 0.005em;
+  }
+
+  .check-hint {
+    font-size: 13px;
+    color: var(--taupe);
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Notes area */
+  .notes-block {
+    margin-top: 32px;
+  }
+
+  .notes-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 500;
+  }
+
+  .notes-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 18px 20px;
+    background: var(--cream-card);
+    border: 1px solid var(--line);
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--ink);
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.2s ease;
+  }
+
+  .notes-textarea:focus {
+    outline: none;
+    border-color: var(--bronze);
+  }
+
+  .notes-textarea::placeholder {
+    color: var(--taupe);
+    font-style: italic;
+  }
+
+  /* Priority selector */
+  .priority-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: var(--cream-card);
+    border: 1px solid var(--line-soft);
+  }
+
+  .priority-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .priority-options {
+    display: flex;
+    gap: 8px;
+  }
+
+  .priority-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    background: transparent;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .priority-btn:hover {
+    border-color: var(--bronze);
+    color: var(--bronze);
+  }
+
+  .priority-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--ivory);
+  }
+
+  /* Final section */
+  .final {
+    padding: 100px 0 80px;
+    text-align: center;
+  }
+
+  .final h2 {
+    font-family: 'Italiana', serif;
+    font-size: 52px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .final p {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 18px 36px;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--ivory);
+  }
+
+  .btn:hover {
+    background: var(--bronze);
+    border-color: var(--bronze);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--ivory);
+    border-color: var(--ink);
+  }
+
+  /* Summary output (used in error fallback view) */
+  .summary-output {
+    background: var(--cream-card);
+    padding: 24px;
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    border: 1px solid var(--line-soft);
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-top: 24px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 48px 40px;
+    border-top: 1px solid var(--line);
+    background: var(--ivory-deep);
+    text-align: center;
+  }
+
+  .footer-mark {
+    font-family: 'Italiana', serif;
+    font-size: 16px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .footer-tag {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--taupe);
+    margin-bottom: 16px;
+  }
+
+  .footer-meta {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .brand-bar { padding: 24px; }
+    .page { padding: 0 24px; }
+    .hero { padding: 80px 0 60px; }
+    .section { padding: 60px 0 40px; }
+    .section-head { flex-direction: column; gap: 8px; }
+    .section h2 { font-size: 30px; }
+    .final h2 { font-size: 38px; }
+    .how-to-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* Print styles */
+  @media print {
+    .brand-bar { position: static; }
+    .actions { display: none !important; }
+    body { background: white; }
+    .section { page-break-inside: avoid; }
+  }
+
+  /* Fade-in on load */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+  .hero .eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.25s; }
+  .hero .subtitle { animation-delay: 0.4s; }
+  .hero .divider { animation-delay: 0.55s; }
+  .hero .prepared-for { animation-delay: 0.7s; }
+</style>
+</head>
+<body>
+
+<header class="brand-bar">
+  <div class="wordmark">White Haus<span>.</span></div>
+  <div class="brand-meta">Client Workbook / 2026</div>
+</header>
+
+<main class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="eyebrow">Website Revision Checklist</div>
+    <h1>Before we <em>begin</em>,<br>let us listen.</h1>
+    <p class="subtitle">A thoughtful review of your website before your deposit, so the first build reflects exactly what you envision.</p>
+    <div class="divider"></div>
+    <div class="prepared-for">
+      Prepared For
+      <strong>ByLeCreme</strong>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <p>This workbook is designed to help you walk through your current site with fresh eyes. Our goal is not to identify what is wrong, but to give you space to imagine what could be refined, elevated, or reimagined as we prepare to build.</p>
+    <p>There are no right or wrong answers. Some sections may not apply, and some may inspire ideas we have not yet discussed. Capture everything that comes to mind. The more clarity we have now, the more intentional the first draft becomes.</p>
+
+    <div class="note">
+      <div class="note-label">A Note From Our Team</div>
+      <p>We recommend reviewing bylecreme.com on both desktop and mobile as you complete this checklist. Take your time. This is the quietest part of the process, and often the most important.</p>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="how-to">
+    <div class="section-head">
+      <div class="section-num">How to use</div>
+    </div>
+    <div class="how-to-grid">
+      <div class="how-to-item">
+        <span class="how-to-num">I.</span>
+        <h4>Review</h4>
+        <p>Walk through each section at your own pace. Check items you would like to revisit or rethink.</p>
+      </div>
+      <div class="how-to-item">
+        <span class="how-to-num">II.</span>
+        <h4>Reflect</h4>
+        <p>Add notes in your own voice. Reference examples, brands you admire, or feelings you want to evoke.</p>
+      </div>
+      <div class="how-to-item">
+        <span class="how-to-num">III.</span>
+        <h4>Return</h4>
+        <p>When finished, generate your summary and send it back to us. We take it from there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 01 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section One</div>
+    </div>
+    <h2>Brand Foundations</h2>
+    <p class="section-intro">The visual language your customers meet before they read a single word. Small shifts here can change how your entire brand feels.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="b1"><label for="b1" class="check-content"><div class="check-title">Logo placement, size, and clarity</div><div class="check-hint">Is it presented with the weight it deserves, on both desktop and mobile?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="b2"><label for="b2" class="check-content"><div class="check-title">Color palette consistency</div><div class="check-hint">Do the colors on your site match the mood you want ByLeCreme to evoke?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="b3"><label for="b3" class="check-content"><div class="check-title">Typography and text hierarchy</div><div class="check-hint">Are headlines, body copy, and product names styled in a way that feels intentional and on-brand?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="b4"><label for="b4" class="check-content"><div class="check-title">Tone of voice in written copy</div><div class="check-hint">Does the language feel like you? Poetic, editorial, intimate, or something else entirely?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="b5"><label for="b5" class="check-content"><div class="check-title">Overall aesthetic direction</div><div class="check-hint">Luxury, minimalist, romantic, avant-garde. What single word should a new visitor feel within five seconds?</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-1" placeholder="Reference brands, palettes, or specific elements you would like to change or refine."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 02 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Two</div>
+    </div>
+    <h2>Homepage Experience</h2>
+    <p class="section-intro">The first impression, and often the only one. Every element here carries weight.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="h1"><label for="h1" class="check-content"><div class="check-title">Hero section imagery and headline</div><div class="check-hint">Does the first thing visitors see capture the soul of your brand?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="h2"><label for="h2" class="check-content"><div class="check-title">Featured fragrances or collections</div><div class="check-hint">Which products should receive prominent placement? Are there new additions?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="h3"><label for="h3" class="check-content"><div class="check-title">Brand story placement</div><div class="check-hint">Is there a moment on the homepage that invites visitors into your world?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="h4"><label for="h4" class="check-content"><div class="check-title">Call-to-action clarity</div><div class="check-hint">Are the primary actions (shop, explore, discover) styled to feel inviting rather than transactional?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="h5"><label for="h5" class="check-content"><div class="check-title">Social proof or press mentions</div><div class="check-hint">Testimonials, editorial features, or a community moment.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="h6"><label for="h6" class="check-content"><div class="check-title">Newsletter or email capture</div><div class="check-hint">How does ByLeCreme invite someone into a deeper relationship?</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-2" placeholder="Describe the homepage you imagine. What should a visitor feel the moment the page loads?"></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 03 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Three</div>
+    </div>
+    <h2>Product Pages &amp; Catalog</h2>
+    <p class="section-intro">Where the decision to purchase is made. Every detail should honor the fragrance it represents.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="p1"><label for="p1" class="check-content"><div class="check-title">Product photography quality and consistency</div><div class="check-hint">Are images styled to the same standard as the brand itself?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="p2"><label for="p2" class="check-content"><div class="check-title">Product descriptions and fragrance notes</div><div class="check-hint">Top, heart, and base notes. Inspiration, mood, story. Is the written world rich enough?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="p3"><label for="p3" class="check-content"><div class="check-title">Pricing and size options display</div><div class="check-hint">Clear, elegant, and easy to scan without losing refinement.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="p4"><label for="p4" class="check-content"><div class="check-title">Ingredients, sourcing, and craftsmanship details</div><div class="check-hint">Transparency that reinforces luxury rather than diminishes it.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="p5"><label for="p5" class="check-content"><div class="check-title">Add to cart and sampling options</div><div class="check-hint">Is there an opportunity to offer samples, discovery sets, or gift presentations?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="p6"><label for="p6" class="check-content"><div class="check-title">Related or recommended products</div><div class="check-hint">How visitors are guided to discover more of the collection.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="p7"><label for="p7" class="check-content"><div class="check-title">Reviews, testimonials, or customer notes</div><div class="check-hint">If present, do they enhance the experience or distract from it?</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-3" placeholder="Specific products that need updated imagery, new scents to add, or copy you would like rewritten."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 04 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Four</div>
+    </div>
+    <h2>Navigation &amp; Structure</h2>
+    <p class="section-intro">The architecture beneath the experience. When it works, no one notices. When it does not, everyone does.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="n1"><label for="n1" class="check-content"><div class="check-title">Main menu labels and organization</div><div class="check-hint">Are categories intuitive, elegant, and easy to explore?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="n2"><label for="n2" class="check-content"><div class="check-title">Footer contents</div><div class="check-hint">Links, contact, social, policies. What belongs here and what does not?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="n3"><label for="n3" class="check-content"><div class="check-title">Category and collection pages</div><div class="check-hint">Should fragrances be grouped by season, mood, family, or something more distinctive?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="n4"><label for="n4" class="check-content"><div class="check-title">Search functionality</div><div class="check-hint">Does it exist, and does it feel considered?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="n5"><label for="n5" class="check-content"><div class="check-title">Breadcrumbs and internal flow</div><div class="check-hint">Can a visitor always find their way back to where they started?</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-4" placeholder="Thoughts on how visitors should move through the site."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 05 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Five</div>
+    </div>
+    <h2>Content &amp; Story Pages</h2>
+    <p class="section-intro">Beyond the shop. These are the pages that turn browsers into believers.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="c1"><label for="c1" class="check-content"><div class="check-title">About page and founder story</div><div class="check-hint">Is the narrative of ByLeCreme told with the depth and elegance it deserves?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="c2"><label for="c2" class="check-content"><div class="check-title">Process, inspiration, or craftsmanship pages</div><div class="check-hint">Is there a place where the art behind the fragrance lives?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="c3"><label for="c3" class="check-content"><div class="check-title">Contact page or inquiries</div><div class="check-hint">Warm, clear, and easy to reach you through.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="c4"><label for="c4" class="check-content"><div class="check-title">FAQ or care instructions</div><div class="check-hint">How to wear, how to store, how fragrance evolves on skin.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="c5"><label for="c5" class="check-content"><div class="check-title">Journal, blog, or editorial section</div><div class="check-hint">A long-form space for the world of ByLeCreme to unfold.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-5" placeholder="New pages you would like to add, or existing pages that need a fresh voice."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 06 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Six</div>
+    </div>
+    <h2>Shopify &amp; Commerce</h2>
+    <p class="section-intro">Your store runs on Shopify, which handles the cart, checkout, payments, and customer accounts natively. Our work here is how the site greets Shopify and hands your customer over gracefully.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="s1"><label for="s1" class="check-content"><div class="check-title">Add to Bag button styling and placement</div><div class="check-hint">How the purchase moment feels on the site before Shopify takes over.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="s2"><label for="s2" class="check-content"><div class="check-title">Product sync, variants, and inventory</div><div class="check-hint">Scents, sizes, and pricing flow from Shopify. Confirm each variant is configured the way you want.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="s3"><label for="s3" class="check-content"><div class="check-title">Discovery Set as a bundled offering</div><div class="check-hint">Set up as a single product, a curated bundle, or an upsell at checkout.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="s4"><label for="s4" class="check-content"><div class="check-title">Shopify email template branding</div><div class="check-hint">Order confirmations, shipping updates, and thank-you notes. Native Shopify or custom-branded.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="s5"><label for="s5" class="check-content"><div class="check-title">Shopify apps to consider</div><div class="check-hint">Subscriptions, loyalty, reviews, wishlists, or gift messaging. What fits your vision?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="s6"><label for="s6" class="check-content"><div class="check-title">Shipping zones and delivery expectations</div><div class="check-hint">Where ByLeCrème ships, timelines shown at checkout, and any gift-wrap options.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-6" placeholder="Current Shopify setup details, apps you already use, or functionality you want added."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 07 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Seven</div>
+    </div>
+    <h2>Mobile Experience</h2>
+    <p class="section-intro">More than half of your visitors will experience ByLeCreme on a phone. The mobile version is not a smaller site. It is a different one.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="m1"><label for="m1" class="check-content"><div class="check-title">Mobile hero and first impression</div><div class="check-hint">Does the homepage hold its elegance on a smaller screen?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="m2"><label for="m2" class="check-content"><div class="check-title">Navigation and menu on mobile</div><div class="check-hint">Easy, intuitive, and visually calm.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="m3"><label for="m3" class="check-content"><div class="check-title">Product pages on mobile</div><div class="check-hint">Is imagery rendered beautifully and is purchasing frictionless?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="m4"><label for="m4" class="check-content"><div class="check-title">Load speed and performance</div><div class="check-hint">Luxury should never feel slow.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="m5"><label for="m5" class="check-content"><div class="check-title">Tap targets, buttons, and readability</div><div class="check-hint">Comfortable to use with one hand.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-7" placeholder="Specific mobile issues or moments you would like refined."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 08 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Eight</div>
+    </div>
+    <h2>Imagery &amp; Visual Assets</h2>
+    <p class="section-intro">Photography, textures, and motion carry as much meaning as language in a luxury brand.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="i1"><label for="i1" class="check-content"><div class="check-title">New product photography needed</div><div class="check-hint">Any scents without refined imagery yet?</div></label></li>
+      <li class="check-item"><input type="checkbox" id="i2"><label for="i2" class="check-content"><div class="check-title">Lifestyle and editorial imagery</div><div class="check-hint">Photography that shows ByLeCreme as a world, not just a product.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="i3"><label for="i3" class="check-content"><div class="check-title">Video, motion, or ambient elements</div><div class="check-hint">Subtle motion that adds atmosphere rather than noise.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="i4"><label for="i4" class="check-content"><div class="check-title">Icons, textures, and decorative details</div><div class="check-hint">The small marks that give the site its signature.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="i5"><label for="i5" class="check-content"><div class="check-title">Imagery you would like removed or replaced</div><div class="check-hint">Anything currently live that no longer represents the brand.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-8" placeholder="List assets you have, assets you need, and moodboard references if helpful."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 09 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Nine</div>
+    </div>
+    <h2>Discoverability &amp; SEO</h2>
+    <p class="section-intro">The work that happens quietly in the background so the right customers find you.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="d1"><label for="d1" class="check-content"><div class="check-title">Page titles and meta descriptions</div><div class="check-hint">How ByLeCreme appears in search results and shared links.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="d2"><label for="d2" class="check-content"><div class="check-title">Keywords and search terms</div><div class="check-hint">The phrases your ideal customer uses when searching for a fragrance like yours.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="d3"><label for="d3" class="check-content"><div class="check-title">Image alt text and accessibility</div><div class="check-hint">Descriptive, helpful, and inclusive.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="d4"><label for="d4" class="check-content"><div class="check-title">Social sharing previews</div><div class="check-hint">How links to bylecreme.com appear when shared on Instagram, Pinterest, or in email.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="d5"><label for="d5" class="check-content"><div class="check-title">Integration with Instagram, Pinterest, or TikTok</div><div class="check-hint">Where the site meets your wider presence online.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-9" placeholder="Keywords, competitors, or platforms you want to prioritize."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 10 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Ten</div>
+    </div>
+    <h2>Policies &amp; Trust</h2>
+    <p class="section-intro">The fine print that quietly reassures every visitor. These pages are prepared during the build phase and integrate naturally with Shopify's native trust features.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="t1"><label for="t1" class="check-content"><div class="check-title">Privacy policy</div><div class="check-hint">Current, clear, and appropriate for your regions.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="t2"><label for="t2" class="check-content"><div class="check-title">Terms of service</div><div class="check-hint">The agreement between you and your customers.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="t3"><label for="t3" class="check-content"><div class="check-title">Return and exchange policy</div><div class="check-hint">Clear, gracious, and easy to find.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="t4"><label for="t4" class="check-content"><div class="check-title">Shipping policy and international orders</div><div class="check-hint">Where ByLeCreme ships, how long it takes, and what to expect.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="t5"><label for="t5" class="check-content"><div class="check-title">Accessibility statement</div><div class="check-hint">A small commitment that speaks volumes.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-10" placeholder="Anything about policies or trust elements you would like addressed."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 11 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Eleven</div>
+    </div>
+    <h2>Signature Features</h2>
+    <p class="section-intro">The elements that make your site unmistakably ByLeCrème. Each of these was designed with intention and deserves a moment of careful review.</p>
+
+    <ul class="check-list">
+      <li class="check-item"><input type="checkbox" id="sf1"><label for="sf1" class="check-content"><div class="check-title">LeCrème Concierge (AI assistant)</div><div class="check-hint">Opening message, voice, suggested prompts, and the topics she should guide guests through.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf2"><label for="sf2" class="check-content"><div class="check-title">Give Me Flowers podcast placement</div><div class="check-hint">The video, its framing, and how it lives within the site. Embedded player, thumbnail link, or a dedicated page.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf3"><label for="sf3" class="check-content"><div class="check-title">Luxury Experiences (Bridal, Private Events, Book a Session)</div><div class="check-hint">How these are presented, whether they live in-house or link out, and what imagery represents them.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf4"><label for="sf4" class="check-content"><div class="check-title">Press and featured-in list</div><div class="check-hint">MTV, VoyageATL, Peacock, Love &amp; Hip Hop, Shoutout Atlanta, BestSelf. Final list, styling, and any additions.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf5"><label for="sf5" class="check-content"><div class="check-title">Gift Cards and Refills</div><div class="check-hint">How they are offered, presented, and whether they deserve dedicated pages or live as Shopify products.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf6"><label for="sf6" class="check-content"><div class="check-title">Founder quote and story accuracy</div><div class="check-hint">The words attributed to you, word for word. This is your voice on your site.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf7"><label for="sf7" class="check-content"><div class="check-title">Studio contact details</div><div class="check-hint">Address, phone, email. Every character should be exact.</div></label></li>
+      <li class="check-item"><input type="checkbox" id="sf8"><label for="sf8" class="check-content"><div class="check-title">Brand milestones and stats</div><div class="check-hint">Founding year, community size, awards, and any recognitions you would like celebrated.</div></label></li>
+    </ul>
+
+    <div class="notes-block">
+      <span class="notes-label">Your Notes</span>
+      <textarea class="notes-textarea" id="notes-11" placeholder="Refinements to any of the signature features, new ideas, or personality notes for the concierge."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 12 -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">Section Twelve</div>
+    </div>
+    <h2>Beyond the Checklist</h2>
+    <p class="section-intro">This space is yours. If there is a feature, a feeling, or an idea we have not yet named, name it here.</p>
+
+    <div class="notes-block">
+      <span class="notes-label">Features or functionality to consider</span>
+      <textarea class="notes-textarea" id="notes-extra-1" placeholder="Loyalty, gift cards, quizzes, subscription, wholesale portal, wishlist, or anything else that excites you."></textarea>
+    </div>
+
+    <div class="notes-block" style="margin-top:32px;">
+      <span class="notes-label">Brands or websites that inspire you</span>
+      <textarea class="notes-textarea" id="notes-extra-2" placeholder="Share three to five references with a note on what you love about each."></textarea>
+    </div>
+
+    <div class="notes-block" style="margin-top:32px;">
+      <span class="notes-label">Anything else on your mind</span>
+      <textarea class="notes-textarea" id="notes-extra-3" placeholder="No thought is too small. This is where the best ideas often live."></textarea>
+    </div>
+
+    <div class="priority-row">
+      <span class="priority-label">Overall Priority Level</span>
+      <div class="priority-options">
+        <button class="priority-btn" data-priority="Light refinements">Light refinements</button>
+        <button class="priority-btn" data-priority="Moderate reimagining">Moderate reimagining</button>
+        <button class="priority-btn" data-priority="Complete reinvention">Complete reinvention</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final" id="final-section">
+
+    <div id="pre-submit-view">
+      <h2>You have been heard.</h2>
+      <p>When your reflections feel complete, send them to the White Haus Media studio below. We will review your notes and reach out personally to confirm direction before your deposit.</p>
+      <div class="actions">
+        <button class="btn" id="submit-btn" onclick="submitRevisions()">Send Your Revisions</button>
+        <button class="btn btn-secondary" onclick="window.print()">Print This Workbook</button>
+      </div>
+    </div>
+
+    <div id="post-submit-view" style="display:none;">
+      <div style="width:44px; height:44px; border:1px solid var(--bronze); border-radius:50%; margin:0 auto 32px; display:flex; align-items:center; justify-content:center;">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--bronze)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12l5 5L20 7"/>
+        </svg>
+      </div>
+      <h2>Received with care.</h2>
+      <p>Your revisions have been sent to the studio. We will review your notes and reach back out personally to confirm direction before the deposit is submitted.</p>
+      <p style="margin-top:40px; font-family:'EB Garamond',serif; font-style:italic; color:var(--taupe); font-size:17px; max-width:480px; margin-left:auto; margin-right:auto;">Until then, thank you for trusting us with your vision.</p>
+    </div>
+
+    <div id="error-view" style="display:none;">
+      <h2>Let's do this by hand.</h2>
+      <p>We could not deliver your revisions automatically. Copy the summary below and email it to <strong style="color:var(--ink);">hello@whitehausmedia.com</strong>. We will take it from there.</p>
+      <div class="summary-output" id="error-output" style="text-align:left; margin-top:32px; max-height:320px;"></div>
+      <div class="actions" style="margin-top:24px;">
+        <button class="btn" onclick="copyErrorSummary(this)">Copy Summary</button>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-mark">White Haus</div>
+  <div class="footer-tag">Creative. Considered. Custom.</div>
+  <div class="footer-meta">White Haus Media / Prepared for ByLeCreme / 2026</div>
+</footer>
+
+<script>
+  // ================================================
+  // CONFIGURATION
+  // ================================================
+  // This form uses Formsubmit.co, which requires no account and no API key.
+  // The only setup: after the first test submission, Formsubmit sends a one-time
+  // confirmation email to the address below. Click the link in that email to
+  // activate the endpoint. Every submission after that lands in your inbox.
+  const CONFIG = {
+    endpoint: 'https://formsubmit.co/ajax/hello@whitehausmedia.com',
+    emailSubject: 'ByLeCreme Revision Request - Ready for Cowork'
+  };
+
+  // ================================================
+  // PRIORITY BUTTONS
+  // ================================================
+  let selectedPriority = '';
+  document.querySelectorAll('.priority-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedPriority = btn.dataset.priority;
+    });
+  });
+
+  // ================================================
+  // SECTION REGISTRY
+  // ================================================
+  const sectionTitles = {
+    '1': 'Brand Foundations',
+    '2': 'Homepage Experience',
+    '3': 'Product Pages and Catalog',
+    '4': 'Navigation and Structure',
+    '5': 'Content and Story Pages',
+    '6': 'Shopify and Commerce',
+    '7': 'Mobile Experience',
+    '8': 'Imagery and Visual Assets',
+    '9': 'Discoverability and SEO',
+    '10': 'Policies and Trust',
+    '11': 'Signature Features'
+  };
+
+  // ================================================
+  // BUILD COWORK PROMPT
+  // ================================================
+  function buildCoworkPrompt() {
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    let out = '';
+
+    out += '# ByLeCreme Parfums - Revision Request from Client\n\n';
+
+    out += '## Your Role\n';
+    out += 'You are editing the ByLeCreme Parfums proposal site for White Haus Media. The client, Sakari Sanders, has completed her pre-deposit revision review. Implement her requested changes while preserving the luxury editorial aesthetic and poetic tone already established on the site.\n\n';
+
+    out += '## Project Context\n';
+    out += '- Client: ByLeCreme Parfums (luxury indie fragrance brand, Atlanta, est. 2013)\n';
+    out += '- Contact: Sakari Sanders, shop@bylecreme.com\n';
+    out += '- Current site: whitehausmedia.com/proposals/bylecreme-parfums\n';
+    out += '- Tech stack: Next.js on Vercel, Shopify for commerce\n';
+    out += '- Brand voice: Modern parfumerie. Luxury editorial. Poetic, intimate, sensual.\n';
+    out += '- Current features: Hero, Give Me Flowers collection (three scents plus Discovery Set), founder story, studio gallery, podcast integration, LeCreme Concierge AI, press mentions\n\n';
+
+    out += '## Client Priority Level\n';
+    out += (selectedPriority || 'Not specified') + '\n\n';
+
+    out += '## Submitted\n';
+    out += today + '\n\n';
+
+    out += '---\n\n';
+    out += '## Revisions Requested\n\n';
+
+    let hasSectionContent = false;
+
+    for (let i = 1; i <= 11; i++) {
+      const title = sectionTitles[i.toString()];
+      const checkedItems = [];
+      document.querySelectorAll('.section').forEach((sec, idx) => {
+        if (idx === i - 1) {
+          sec.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+            const titleEl = cb.nextElementSibling.querySelector('.check-title');
+            if (titleEl) checkedItems.push(titleEl.textContent.trim());
+          });
+        }
+      });
+      const noteEl = document.getElementById('notes-' + i);
+      const noteValue = noteEl ? noteEl.value.trim() : '';
+
+      if (checkedItems.length > 0 || noteValue) {
+        hasSectionContent = true;
+        const numStr = i < 10 ? '0' + i : i.toString();
+        out += '### ' + numStr + ' - ' + title + '\n\n';
+        if (checkedItems.length > 0) {
+          out += '**Items flagged:**\n';
+          checkedItems.forEach(item => {
+            out += '- ' + item + '\n';
+          });
+          out += '\n';
+        }
+        if (noteValue) {
+          out += '**Client notes:**\n' + noteValue + '\n\n';
+        }
+      }
+    }
+
+    if (!hasSectionContent) {
+      out += '_No specific section revisions requested._\n\n';
+    }
+
+    out += '---\n\n';
+
+    const extra1 = document.getElementById('notes-extra-1').value.trim();
+    const extra2 = document.getElementById('notes-extra-2').value.trim();
+    const extra3 = document.getElementById('notes-extra-3').value.trim();
+
+    if (extra1 || extra2 || extra3) {
+      out += '## Open Requests\n\n';
+      if (extra1) out += '**Features or functionality to consider:**\n' + extra1 + '\n\n';
+      if (extra2) out += '**Brands or websites that inspire the client:**\n' + extra2 + '\n\n';
+      if (extra3) out += '**Other thoughts:**\n' + extra3 + '\n\n';
+      out += '---\n\n';
+    }
+
+    out += '## Execution Instructions\n\n';
+    out += '1. Review every flagged item and client note above.\n';
+    out += '2. For specific requests, implement exactly as described.\n';
+    out += '3. For directional feedback (where the client describes a feeling rather than a specific change), make refined choices consistent with the established brand voice. When uncertain between two valid interpretations, choose the more luxurious or editorial option.\n';
+    out += '4. Preserve existing animations, typography hierarchy, and color palette unless specifically addressed.\n';
+    out += '5. Use educational and consultative language in any client-facing copy you touch. Frame gaps as opportunities, never as criticism.\n\n';
+
+    out += '## Deliverables\n\n';
+    out += '1. Concise bulleted summary of every change made.\n';
+    out += '2. List of any items requiring founder input before proceeding.\n';
+    out += '3. List of any requested revisions you declined and why.\n';
+    out += '4. Git commit with a descriptive message, pushed to a Vercel preview branch for Rico to review before promoting to production.\n';
+    out += '5. Flag any revisions that might affect Shopify integration so they can be tested separately.\n\n';
+
+    out += 'Begin when ready.\n';
+
+    return out;
+  }
+
+  // ================================================
+  // SUBMIT
+  // ================================================
+  async function submitRevisions() {
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const prompt = buildCoworkPrompt();
+
+    try {
+      const response = await fetch(CONFIG.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: CONFIG.emailSubject,
+          _captcha: 'false',
+          _template: 'basic',
+          name: 'ByLeCreme Revision Checklist',
+          message: prompt
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        showSuccess();
+      } else {
+        console.error('Submission failed:', data);
+        showError(prompt);
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      showError(prompt);
+    }
+  }
+
+  function showSuccess() {
+    document.getElementById('pre-submit-view').style.display = 'none';
+    document.getElementById('error-view').style.display = 'none';
+    document.getElementById('post-submit-view').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('final-section').offsetTop - 40, behavior: 'smooth' });
+  }
+
+  function showError(promptText) {
+    document.getElementById('pre-submit-view').style.display = 'none';
+    document.getElementById('post-submit-view').style.display = 'none';
+    document.getElementById('error-view').style.display = 'block';
+    document.getElementById('error-output').textContent = promptText;
+  }
+
+  function copyErrorSummary(btn) {
+    const text = document.getElementById('error-output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(() => btn.textContent = original, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
