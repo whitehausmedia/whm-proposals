@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good-HoneyBears Child Development — Site Concept by White Haus Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito Sans',sans-serif;background:#fff;color:#2d2d2d;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{background:#fff;padding:0 32px;border-bottom:2px solid #fff8e1;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;height:70px}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-icon{width:40px;height:40px;background:linear-gradient(135deg,#ff8f00,#ffd54f);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem}
+.nav-name{font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:800;color:#e65100}
+.nav-links{display:flex;gap:24px;list-style:none;font-size:.88rem;font-weight:600;color:#666}
+.nav-cta{background:#e65100;color:#fff;padding:10px 22px;border-radius:8px;font-size:.85rem;font-weight:700}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#fff8e1 0%,#fff3e0 60%,#fff9c4 100%);padding:80px 32px 72px}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid #ffe082;color:#e65100;padding:6px 16px;border-radius:8px;font-size:.78rem;font-weight:700;letter-spacing:.03em;margin-bottom:20px}
+.hero h1{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:800;color:#bf360c;line-height:1.18;margin-bottom:18px;max-width:700px}
+.hero-sub{font-size:.95rem;color:#666;line-height:1.7;margin-bottom:28px;max-width:560px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{background:#e65100;color:#fff;padding:14px 32px;border-radius:8px;font-weight:700;font-size:.9rem}
+.btn-secondary{background:#fff;color:#e65100;border:2px solid #e65100;padding:12px 28px;border-radius:8px;font-weight:700;font-size:.9rem}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+.stat-item{text-align:left}
+.stat-num{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:800;color:#e65100;line-height:1}
+.stat-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-top:4px}
+
+/* TRUST BAR */
+.trust-bar{background:#e65100;padding:16px 32px}
+.trust-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;color:#fff;font-size:.88rem;font-weight:600}
+.trust-icon{color:#ffd54f;font-size:1rem}
+
+/* ABOUT */
+.about{padding:72px 32px}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-image{background:linear-gradient(135deg,#fff8e1,#ffe0b2);border-radius:20px;height:340px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#e65100;margin-bottom:10px}
+.section-title{font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:800;color:#bf360c;margin-bottom:14px;line-height:1.25}
+.section-body{font-size:.92rem;color:#666;line-height:1.8;margin-bottom:14px}
+
+/* PROGRAMS */
+.programs{padding:72px 32px;background:#fafafa}
+.prog-inner{max-width:1100px;margin:0 auto}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.prog-card{background:#fff;border-radius:14px;padding:28px;border:1px solid #f0f0f0}
+.prog-emoji{font-size:2rem;margin-bottom:12px}
+.prog-age{display:inline-block;background:#fff3e0;color:#e65100;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:10px}
+.prog-card h3{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:#2d2d2d;margin-bottom:6px}
+.prog-card p{font-size:.82rem;color:#888;line-height:1.65}
+
+/* LOCATIONS */
+.locations{padding:72px 32px}
+.loc-inner{max-width:1100px;margin:0 auto}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+.loc-card{background:#fff8e1;border:2px solid #ffe082;border-radius:14px;padding:32px}
+.loc-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#e65100;background:#fff3e0;padding:4px 12px;border-radius:6px;display:inline-block;margin-bottom:14px}
+.loc-card h3{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#bf360c;margin-bottom:8px}
+.loc-card p{font-size:.88rem;color:#666;line-height:1.6}
+
+/* REVIEWS */
+.reviews{padding:72px 32px;background:#fff}
+.rev-inner{max-width:1100px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.rev-card{background:#fffde7;border:1px solid #fff9c4;border-radius:14px;padding:28px}
+.rev-stars{color:#FFC107;font-size:.95rem;margin-bottom:10px}
+.rev-text{font-size:.88rem;color:#555;line-height:1.7;font-style:italic;margin-bottom:14px}
+.rev-name{font-size:.78rem;font-weight:700;color:#e65100}
+
+/* CTA */
+.cta{background:#bf360c;padding:72px 32px;text-align:center}
+.cta h2{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:800;color:#fff;margin-bottom:12px}
+.cta p{font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:30px;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-btn{background:#ffd54f;color:#bf360c;padding:15px 36px;border-radius:8px;font-weight:800;font-size:.95rem;display:inline-block}
+
+/* FOOTER */
+footer{background:#1a0000;padding:36px 32px;text-align:center}
+footer p{font-size:.82rem;color:rgba(255,255,255,.5)}
+footer strong{color:#fff}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-icon">&#128059;</div>
+      <div class="nav-name">Good-HoneyBears</div>
+    </div>
+    <ul class="nav-links">
+      <li>About</li>
+      <li>Programs</li>
+      <li>Locations</li>
+      <li>Enrollment</li>
+    </ul>
+    <a href="#" class="nav-cta">Schedule a Tour</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">&#128059; Garner's Trusted Childcare · 25+ Years · Newborn–10 Years</div>
+    <h1>Quality Childcare That Garner Families Have Trusted for Over 25 Years</h1>
+    <p class="hero-sub">Family-owned and community-rooted. Three locations across Garner, serving children from newborn through age ten with a commitment to their development and potential.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Schedule a Free Tour</a>
+      <a href="#" class="btn-secondary">View Our Programs</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Years in Garner</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Garner Locations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Newborn–10</div>
+        <div class="stat-label">Ages Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5.0&#9733;</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">&#128064;</span> North Carolina Licensed Facility</div>
+    <div class="trust-item"><span class="trust-icon">&#128222;</span> (919) 661-2327</div>
+    <div class="trust-item"><span class="trust-icon">&#128197;</span> Enrolling Now — All Age Groups</div>
+    <div class="trust-item"><span class="trust-icon">&#128205;</span> Multiple Garner Locations</div>
+  </div>
+</div>
+
+<section class="about">
+  <div class="about-inner">
+    <div class="about-image">&#128059;&#127831;</div>
+    <div>
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Twenty-Five Years of Caring for Garner's Children</h2>
+      <p class="section-body">Good-HoneyBears Child Development has proudly served the Garner community for over 25 years. What started as a single center has grown to multiple locations — all united by the same philosophy: that every child has the ability to learn, and that our responsibility is to help them develop to their full potential.</p>
+      <p class="section-body">We care for children from newborn through age ten across our Garner locations, offering a structured, nurturing environment that parents in the community have trusted across generations of families.</p>
+      <p class="section-body">When you bring your child to Good-HoneyBears, you're not enrolling in a franchise. You're joining a Garner community institution that has been here longer than most of its competition.</p>
+    </div>
+  </div>
+</section>
+
+<section class="programs">
+  <div class="prog-inner">
+    <div class="section-label">Programs</div>
+    <h2 class="section-title" style="color:#bf360c;font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:800;margin-bottom:12px">Care for Every Age, Every Stage</h2>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="prog-emoji">&#128356;</div>
+        <div class="prog-age">Newborn–12 months</div>
+        <h3>Infant Care</h3>
+        <p>Attentive, responsive care for your youngest. Low ratios and consistent caregivers for the earliest months.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-emoji">&#9889;</div>
+        <div class="prog-age">1–3 years</div>
+        <h3>Toddler Program</h3>
+        <p>Structured play, language development, and social foundations through daily routines built for growing toddlers.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-emoji">&#127775;</div>
+        <div class="prog-age">3–5 years</div>
+        <h3>Preschool &amp; Pre-K</h3>
+        <p>Kindergarten-readiness learning that builds literacy, numeracy, and social confidence in a supportive classroom.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-emoji">&#127959;</div>
+        <div class="prog-age">School Age</div>
+        <h3>School-Age Care</h3>
+        <p>Before and after school care for children through age 10 — supervised, enriching, and safe every school day.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-emoji">&#9728;&#65039;</div>
+        <div class="prog-age">Summer</div>
+        <h3>Summer Programs</h3>
+        <p>Keep children active, engaged, and learning all summer long with our enriched summer care programming.</p>
+      </div>
+      <div class="prog-card" style="background:#fff8e1;border:2px solid #ffe082">
+        <div class="prog-emoji">&#128221;</div>
+        <div class="prog-age">Now Enrolling</div>
+        <h3>Check Availability</h3>
+        <p>Spaces may be available across age groups. Schedule a tour to find out what's open for your child.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="locations">
+  <div class="loc-inner">
+    <div class="section-label">Our Locations</div>
+    <h2 class="section-title" style="color:#bf360c;font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:800;margin-bottom:12px">Multiple Garner Locations to Serve You</h2>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <div class="loc-tag">Location 1</div>
+        <h3>Cornwallis Road</h3>
+        <p>7106 Cornwallis Road, Garner, NC 27529 · (919) 661-2327</p>
+        <p style="margin-top:10px;font-size:.82rem;color:#888">Open Mon–Fri · All age groups · NC Licensed</p>
+      </div>
+      <div class="loc-card">
+        <div class="loc-tag">Location 2</div>
+        <h3>White Oak Road</h3>
+        <p>7441 White Oak Rd, Garner, NC 27529 · (919) 661-2327</p>
+        <p style="margin-top:10px;font-size:.82rem;color:#888">Open Mon–Fri · All age groups · NC Licensed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="rev-inner">
+    <div class="section-label">Parent Reviews</div>
+    <h2 class="section-title" style="color:#bf360c;font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:800;margin-bottom:12px">What Garner Families Say</h2>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rev-text">"My child attended Good-HoneyBears for over 3 years. I love this center and so did my son! The staff genuinely cared about his development and always made us feel welcome."</p>
+        <div class="rev-name">Garner Parent — 5 Stars</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rev-text">"We've trusted Good-HoneyBears for years. The consistency, the staff, the environment — it's a place where children are genuinely known and cared for. 25 years in Garner means something."</p>
+        <div class="rev-name">Garner Parent — 5 Stars</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>See Good-HoneyBears for Yourself</h2>
+  <p>Tours are free and available at both Garner locations Monday through Friday. We'd love to meet your family.</p>
+  <a href="#" class="cta-btn">Request a Free Tour</a>
+</section>
+
+<footer>
+  <p><strong>Good-HoneyBears Child Development</strong> &middot; Garner, NC &middot; (919) 661-2327</p>
+  <p style="margin-top:6px">NC Licensed &middot; Est. 25+ Years &middot; Newborn Through Age 10</p>
+  <p style="margin-top:16px;font-size:.75rem">Concept site by <strong style="color:#C9A84C">White Haus Media</strong> &middot; whitehausmedia.com</p>
+</footer>
+
+</body>
+</html>
