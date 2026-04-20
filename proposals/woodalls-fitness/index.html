@@ -3,214 +3,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Proposal — Woodall's Fitness | White Haus Media</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Woodall's Fitness — Website Proposal | White Haus Media</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --black: #080808;
-  --cream: #F4EFE6;
-  --gold: #C6A44C;
-  --gold-dim: rgba(198,164,76,0.15);
-  --gold-border: rgba(198,164,76,0.25);
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#F7F3EB;
+  --paper-dark:#EDE8DF;
+  --charcoal:#1A1A1A;
+  --mid:#3D3938;
+  --bronze:#8B6F47;
+  --bronze-light:#A08560;
+  --bronze-border:rgba(139,111,71,.22);
+  --bronze-dim:rgba(139,111,71,.07);
+  --panel:rgba(26,26,26,.04);
+  --soft-border:rgba(26,26,26,.1);
+  --text-primary:#1A1A1A;
+  --text-secondary:#5C5855;
+  --text-muted:#9B9794;
 }
-html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--black); color: var(--cream); line-height: 1.6; }
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--paper);color:var(--text-primary);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none;color:inherit;transition:all .2s}
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(8,8,8,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gold-border); }
-.nav-logo { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-.nav-cta { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 10px 20px; border-radius: 2px; text-decoration: none; }
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--bronze);z-index:1000;width:0%;transition:width .1s linear}
 
-/* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 40px 80px; max-width: 900px; margin: 0 auto; }
-.hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-.hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 28px; }
-.hero h1 em { font-style: normal; color: var(--gold); }
-.hero-sub { font-size: 17px; line-height: 1.7; opacity: 0.6; max-width: 560px; margin-bottom: 40px; }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn-primary { display: inline-block; background: var(--gold); color: var(--black); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; text-decoration: none; }
-.btn-secondary { display: inline-block; border: 1px solid var(--gold-border); color: var(--cream); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; text-decoration: none; opacity: 0.7; }
+.nav{position:fixed;top:2px;left:0;right:0;z-index:100;padding:0 24px;transition:all .3s}
+.nav.scrolled{background:rgba(247,243,235,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--soft-border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1040px;margin:0 auto;padding:16px 0}
+.nav-logo-text{font-size:.9rem;font-weight:700;color:var(--charcoal)}
+.nav-logo-text em{font-style:italic;color:var(--bronze);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-secondary);transition:color .2s}
+.nav-links a:hover{color:var(--charcoal)}
+.nav-pill{background:var(--charcoal);color:var(--paper);padding:8px 20px;border-radius:100px;font-size:.82rem;font-weight:700;transition:all .2s}
+.nav-pill:hover{background:var(--mid);transform:translateY(-1px)}
 
-/* SECTION BASE */
-section { padding: 80px 40px; max-width: 900px; margin: 0 auto; }
-.section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.section-title { font-size: clamp(24px, 4vw, 36px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
-.section-body { font-size: 15px; line-height: 1.75; opacity: 0.65; max-width: 620px; }
-hr.divider { border: none; border-top: 1px solid var(--gold-border); margin: 0 40px; }
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ISSUES */
-.issues-grid { display: grid; gap: 2px; margin-top: 40px; }
-.issue-card { background: #0e0e0e; border: 1px solid var(--gold-border); border-left: 3px solid var(--gold); padding: 28px 32px; }
-.issue-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-.issue-body { font-size: 13px; line-height: 1.65; opacity: 0.55; }
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;position:relative;overflow:hidden;background:var(--paper)}
+.hero::before{content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(139,111,71,.06) 0%,transparent 70%);pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--bronze-dim);border:1px solid var(--bronze-border);color:var(--bronze);padding:8px 20px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.04em;margin-bottom:32px}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:500;line-height:1.08;color:var(--charcoal);max-width:700px;margin:0 auto 24px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--bronze)}
+.hero-body{font-size:1.05rem;color:var(--text-secondary);max-width:520px;margin:0 auto 48px;line-height:1.7}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--soft-border);border:1px solid var(--soft-border);border-radius:14px;overflow:hidden;max-width:640px;margin:0 auto}
+.hero-meta-item{background:var(--paper);padding:20px 16px;text-align:center}
+.hero-meta-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:4px}
+.hero-meta-value{font-size:.88rem;font-weight:600;color:var(--text-primary)}
 
-/* DELIVERABLES */
-.deliverables-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2px; margin-top: 40px; }
-.deliverable { background: #0e0e0e; border: 1px solid var(--gold-border); padding: 24px 28px; }
-.deliverable-icon { width: 24px; height: 24px; margin-bottom: 14px; }
-.deliverable-icon path, .deliverable-icon rect, .deliverable-icon circle, .deliverable-icon line, .deliverable-icon polyline { stroke: var(--gold); }
-.deliverable-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-.deliverable-body { font-size: 12px; line-height: 1.6; opacity: 0.5; }
+.letter{padding:100px 24px;background:var(--paper-dark)}
+.letter-card{max-width:680px;margin:0 auto}
+.letter-greeting{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;color:var(--charcoal);margin-bottom:8px}
+.letter-rule{width:40px;height:1.5px;background:var(--bronze-border);margin:20px 0 28px;border-radius:2px}
+.letter p{font-size:.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:20px}
+.letter-sig{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:28px;border-top:1px solid var(--soft-border)}
+.letter-sig-text{font-size:.82rem;color:var(--text-muted);line-height:1.5}
+.letter-sig-text strong{color:var(--text-secondary);display:block}
 
-/* PRICING */
-.pricing-card { background: #0e0e0e; border: 1px solid var(--gold-border); padding: 48px; margin-top: 40px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
-.pricing-name { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-.pricing-price { font-size: 56px; font-weight: 800; color: var(--gold); line-height: 1; }
-.pricing-period { font-size: 12px; opacity: 0.35; margin-top: 4px; }
-.pricing-desc { font-size: 14px; line-height: 1.7; opacity: 0.55; margin-top: 16px; max-width: 480px; }
-.pricing-includes { margin-top: 24px; display: grid; gap: 8px; }
-.pricing-line { font-size: 12px; opacity: 0.5; padding-left: 16px; position: relative; }
-.pricing-line::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.6; }
+.opp{padding:100px 24px}
+.opp .wrap-wide{max-width:1040px;margin:0 auto}
+.section-eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--bronze);margin-bottom:14px}
+.section-rule{width:48px;height:1.5px;background:var(--bronze);margin-bottom:32px;border-radius:2px}
+.opp h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:500;color:var(--charcoal);margin-bottom:12px}
+.opp .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px;max-width:600px}
+.opp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.opp-card{background:#fff;border:1px solid var(--soft-border);border-radius:16px;padding:32px 28px;transition:all .3s;position:relative;overflow:hidden}
+.opp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--bronze);opacity:0;transition:opacity .3s}
+.opp-card:hover{border-color:var(--bronze-border);box-shadow:0 4px 20px rgba(26,26,26,.06)}
+.opp-card:hover::before{opacity:1}
+.opp-num{font-size:.72rem;font-weight:700;color:var(--bronze);letter-spacing:.08em;margin-bottom:12px}
+.opp-card h3{font-size:1.05rem;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.opp-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.65}
 
-/* FOOTER */
-footer { padding: 40px; border-top: 1px solid var(--gold-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 16px; }
-.footer-logo { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
-.footer-info { font-size: 11px; opacity: 0.3; }
+.solution{padding:100px 24px;background:var(--paper-dark)}
+.solution .wrap-wide{max-width:1040px;margin:0 auto}
+.solution h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:500;color:var(--charcoal);margin-bottom:12px}
+.solution .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px;max-width:600px}
+.del-list{display:flex;flex-direction:column;gap:0;max-width:680px}
+.del-item{display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--soft-border)}
+.del-item:first-child{border-top:1px solid var(--soft-border)}
+.del-star{color:var(--bronze);font-size:.9rem;flex-shrink:0}
+.del-item span{font-size:.95rem;color:var(--text-primary);font-weight:500}
 
-@media (max-width: 640px) {
-  nav { padding: 16px 20px; }
-  .hero, section { padding-left: 20px; padding-right: 20px; }
-  hr.divider { margin: 0 20px; }
-  .pricing-card { grid-template-columns: 1fr; }
-  footer { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+.process{padding:100px 24px}
+.process .wrap-wide{max-width:1040px;margin:0 auto}
+.process h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:500;color:var(--charcoal);margin-bottom:12px}
+.process .sub{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:48px}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:#fff;border:1px solid var(--soft-border);border-radius:16px;padding:28px 24px;text-align:center;position:relative}
+.step-num{font-size:.72rem;font-weight:700;color:var(--bronze);letter-spacing:.08em;margin-bottom:12px}
+.step h4{font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.step p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+.step-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--bronze-border);font-size:1.2rem}
+
+.pricing{padding:100px 24px;background:var(--paper-dark)}
+.pricing-head{text-align:center;margin-bottom:48px}
+.pricing-head h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:500;color:var(--charcoal);margin-bottom:4px}
+.pricing-cards{display:grid;grid-template-columns:1fr;gap:20px;max-width:540px;margin:0 auto}
+.p-card{background:#fff;border:1px solid var(--bronze-border);border-radius:20px;padding:48px 36px;text-align:center;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--bronze)}
+.p-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bronze-dim);border:1px solid var(--bronze-border);color:var(--bronze);padding:5px 14px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.p-headline{font-size:1.3rem;font-weight:700;color:var(--charcoal);margin-bottom:28px}
+.p-amount{font-size:3.6rem;font-weight:800;color:var(--charcoal);letter-spacing:-.03em;line-height:1}
+.p-amount sup{font-size:1.4rem;vertical-align:super;margin-right:2px}
+.p-label{font-size:.85rem;color:var(--text-muted);margin-top:6px;margin-bottom:28px}
+.p-list{text-align:left;margin-bottom:32px}
+.p-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--soft-border)}
+.p-item:last-child{border:none}
+.p-check{color:var(--bronze);flex-shrink:0;margin-top:2px;font-size:.85rem}
+.p-item span{font-size:.88rem;color:var(--text-secondary)}
+.p-cta{display:inline-flex;align-items:center;gap:10px;background:var(--charcoal);color:var(--paper);padding:16px 36px;border-radius:100px;font-size:.95rem;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:all .25s;text-decoration:none}
+.p-cta:hover{background:var(--mid);transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,26,26,.15)}
+.p-note{font-size:.78rem;color:var(--text-muted);margin-top:16px}
+
+.care-plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:540px;margin:24px auto 0}
+.care-card{background:#fff;border:1px solid var(--soft-border);border-radius:16px;padding:28px 22px;text-align:center}
+.care-card.rec{border-color:var(--bronze-border);position:relative;overflow:hidden}
+.care-card.rec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--bronze)}
+.care-name{font-size:.92rem;font-weight:700;color:var(--charcoal);margin-bottom:4px}
+.care-price{font-size:1.6rem;font-weight:800;color:var(--charcoal)}
+.care-price span{font-size:.82rem;font-weight:500;color:var(--text-muted)}
+.care-desc{font-size:.78rem;color:var(--text-secondary);margin-top:8px;line-height:1.6}
+.care-note{text-align:center;max-width:540px;margin:16px auto 0;font-size:.78rem;color:var(--text-muted)}
+
+.cta-section{padding:100px 24px}
+.cta-box{max-width:680px;margin:0 auto;background:var(--bronze-dim);border:1px solid var(--bronze-border);border-radius:24px;padding:64px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-box h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;font-weight:500;color:var(--charcoal);margin-bottom:16px}
+.cta-box p{font-size:.95rem;color:var(--text-secondary);line-height:1.7;max-width:480px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta-primary{display:inline-flex;align-items:center;gap:8px;background:var(--charcoal);color:var(--paper);padding:16px 32px;border-radius:100px;font-size:.95rem;font-weight:700;transition:all .25s}
+.cta-primary:hover{background:var(--mid);transform:translateY(-1px)}
+.cta-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--text-secondary);padding:16px 24px;border-radius:100px;font-size:.9rem;font-weight:500;border:1px solid var(--soft-border);transition:all .2s}
+.cta-secondary:hover{border-color:var(--bronze-border);color:var(--bronze)}
+
+.footer{padding:40px 24px;text-align:center;border-top:1px solid var(--soft-border)}
+.footer-text{font-size:.82rem;color:var(--text-muted)}
+.footer-text strong{color:var(--text-secondary)}
+
+@media(max-width:768px){
+  .opp-grid{grid-template-columns:1fr}
+  .step-grid{grid-template-columns:1fr 1fr}
+  .care-plans{grid-template-columns:1fr}
+  .hero-meta{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .cta-box{padding:40px 24px}
 }
 </style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
-<nav>
-  <div class="nav-logo">White Haus Media</div>
-  <a href="mailto:hello@whitehausmedia.com" class="nav-cta">Get Started</a>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo-text">White Haus <em>Media</em></div>
+    <ul class="nav-links">
+      <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#investment">Investment</a></li>
+    </ul>
+    <a href="mailto:hello@whitehausmedia.com?subject=Proposal — Woodall's Fitness" class="nav-pill">Let&#8217;s Talk</a>
+  </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
   <div>
-    <div class="hero-eyebrow">Website Proposal — Woodall's Fitness</div>
-    <h1>Twenty years of fitness expertise.<br><em>None of it on your website.</em></h1>
-    <p class="hero-sub">Every article, every tip, every piece of content Woodall's produces links readers to Constant Contact — a third-party email platform. Your site gets none of the credit, none of the traffic, and none of the search visibility that content should be building.</p>
-    <div class="hero-actions">
-      <a href="mailto:hello@whitehausmedia.com?subject=Woodall's Fitness Proposal" class="btn-primary">Accept This Proposal</a>
-      <a href="#issues" class="btn-secondary">See the Issues</a>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- ISSUES -->
-<section id="issues">
-  <div class="section-label">What We Found</div>
-  <h2 class="section-title">Three things holding<br>your site back</h2>
-  <p class="section-body">We reviewed woodallsfitness.com directly. Here's what we found — no assumptions, just what's live on the site today.</p>
-
-  <div class="issues-grid">
-    <div class="issue-card">
-      <div class="issue-title">Your content lives on someone else's platform</div>
-      <div class="issue-body">Every "Strength Report" article on your site links out to conta.cc — Constant Contact's domain. Readers leave your site, Google doesn't credit woodallsfitness.com for any of it, and you're building someone else's traffic instead of your own. Twenty years of expertise should be searchable on your domain.</div>
-    </div>
-    <div class="issue-card">
-      <div class="issue-title">No online booking — a contact form is not a signup flow</div>
-      <div class="issue-body">Someone ready to join has to fill out a contact form and wait for a call back. Every hour between that form submission and your response is an hour they might sign up somewhere else. Real-time booking or a direct membership sign-up eliminates that friction completely.</div>
-    </div>
-    <div class="issue-card">
-      <div class="issue-title">Your page title is a tagline, not a search term</div>
-      <div class="issue-body">The browser tab for your homepage reads "Fueling Your Fitness" — which is great branding but tells Google nothing about who you are or where you are. People searching for a gym in Clayton aren't finding woodallsfitness.com because the site isn't optimized for those searches.</div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- SOLUTION -->
-<section>
-  <div class="section-label">What We Build</div>
-  <h2 class="section-title">A site that works<br>as hard as your clients do</h2>
-  <p class="section-body">We rebuild woodallsfitness.com from scratch — bringing your content on-site, adding real booking capability, and making sure Clayton residents can find you when they search for a gym.</p>
-
-  <div class="deliverables-grid">
-    <div class="deliverable">
-      <svg class="deliverable-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-      </svg>
-      <div class="deliverable-title">Custom Website Design</div>
-      <div class="deliverable-body">Built to match Woodall's brand and community — fast, mobile-first, and built to convert visitors into members.</div>
-    </div>
-    <div class="deliverable">
-      <svg class="deliverable-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-      <div class="deliverable-title">On-Site Blog</div>
-      <div class="deliverable-body">Migrate your Strength Report content onto woodallsfitness.com so every article builds your domain authority, not Constant Contact's.</div>
-    </div>
-    <div class="deliverable">
-      <svg class="deliverable-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
-      </svg>
-      <div class="deliverable-title">Membership Sign-Up Flow</div>
-      <div class="deliverable-body">Replace the contact form with a direct sign-up experience. Prospective members can commit when they're ready — no waiting for a callback.</div>
-    </div>
-    <div class="deliverable">
-      <svg class="deliverable-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-      </svg>
-      <div class="deliverable-title">Local SEO Foundation</div>
-      <div class="deliverable-body">Proper page titles, meta descriptions, Google Business integration, and schema markup so Clayton-area searches surface Woodall's first.</div>
-    </div>
-    <div class="deliverable">
-      <svg class="deliverable-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-      <div class="deliverable-title">Hosting &amp; SSL</div>
-      <div class="deliverable-body">Secure, fast hosting with SSL included. No more relying on the limitations of a basic website builder.</div>
-    </div>
-    <div class="deliverable">
-      <svg class="deliverable-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-      <div class="deliverable-title">Class &amp; Schedule Display</div>
-      <div class="deliverable-body">A clean schedule page that keeps members and prospects informed without requiring constant manual updates.</div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="section-label">Investment</div>
-  <h2 class="section-title">One flat fee.<br>No surprises.</h2>
-
-  <div class="pricing-card">
-    <div>
-      <div class="pricing-name">Custom Website Package</div>
-      <div class="pricing-price">$597</div>
-      <div class="pricing-period">one-time project fee</div>
-      <p class="pricing-desc">Everything Woodall's needs to turn woodallsfitness.com into an asset that brings in new members — not just a placeholder while the real work happens elsewhere.</p>
-      <div class="pricing-includes">
-        <div class="pricing-line">Custom design &amp; development</div>
-        <div class="pricing-line">On-site blog with content migration</div>
-        <div class="pricing-line">Membership sign-up flow</div>
-        <div class="pricing-line">Local SEO setup &amp; Google Business integration</div>
-        <div class="pricing-line">Class schedule page</div>
-        <div class="pricing-line">SSL, hosting setup &amp; launch</div>
-        <div class="pricing-line">30 days post-launch support</div>
+    <div class="hero-pill reveal">Prepared exclusively for Woodall's Fitness</div>
+    <h1 class="reveal">20 years of fitness content.<br><em>All of it on Constant Contact.</em></h1>
+    <p class="hero-body reveal">Every Strength Report article on woodallsfitness.com links out to conta.cc — Constant Contact's domain. Your content is building someone else's traffic. Every article, every tip, every piece of expertise belongs to a third-party platform instead of your site.</p>
+    <div class="hero-meta reveal">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared for</div>
+        <div class="hero-meta-value">the Woodall's team</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared by</div>
+        <div class="hero-meta-value">White Haus Media</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Date</div>
+        <div class="hero-meta-value">April 20, 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Delivery</div>
+        <div class="hero-meta-value">Under 2 Weeks</div>
       </div>
     </div>
-    <div style="text-align:right;">
-      <a href="mailto:hello@whitehausmedia.com?subject=Woodall's Fitness Proposal — Accept" class="btn-primary">Accept Proposal</a>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter">
+  <div class="letter-card">
+    <div class="letter-greeting reveal">Hey the Woodall's team,</div>
+    <div class="letter-rule reveal"></div>
+    <div class="reveal">
+      <p>We looked at woodallsfitness.com while researching fitness studios in the Clayton area. Twenty years is a long time to build a community, and it's clear the expertise is real. What caught our attention was where that expertise actually lives online.</p><p>Every article in the Strength Report section links to conta.cc — Constant Contact's platform. When a member or prospective client reads one of those articles, they're on Constant Contact's domain, not yours. Google credits Constant Contact, not Woodall's Fitness, for that content. All the SEO value from two decades of fitness knowledge is going to a third-party email tool.</p><p>There's also no online booking — just a contact form. And the page title on the homepage reads 'Fueling Your Fitness' which is great branding but tells Google nothing about who or where you are.</p><p>We can bring all of that on-site and fix what's holding the site back.</p>
+    </div>
+    <div class="letter-sig reveal">
+      <div class="letter-sig-text">
+        <strong>Rico White</strong>
+        White Haus Media &middot; Wake Forest, NC
+      </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<!-- OPPORTUNITY -->
+<section class="opp" id="opportunity">
+  <div class="wrap-wide">
+    <div class="reveal"><div class="section-eyebrow">Where the opportunity lives</div></div>
+    <h2 class="reveal">What we found on your site</h2>
+    <div class="section-rule reveal"></div>
+    <div class="opp-grid">
+      
+        <div class="opp-card reveal">
+          <div class="opp-num">01</div>
+          <h3>All Strength Report content lives on Constant Contact's domain</h3>
+          <p>Every article linked from woodallsfitness.com routes to conta.cc — Constant Contact's platform. Readers leave your site, and Google credits that content to Constant Contact's domain, not yours. Two decades of fitness expertise should be building your domain authority, not theirs.</p>
+        </div>
+        <div class="opp-card reveal">
+          <div class="opp-num">02</div>
+          <h3>No online booking — a contact form is not a membership flow</h3>
+          <p>Someone ready to join Woodall's fills out a contact form and waits for a callback. Every hour between that submission and your response is an opportunity for them to sign up somewhere else. Real-time booking or a direct membership sign-up eliminates that friction entirely.</p>
+        </div>
+        <div class="opp-card reveal">
+          <div class="opp-num">03</div>
+          <h3>Page title is a tagline, not a search term</h3>
+          <p>The browser tab on the homepage reads 'Fueling Your Fitness.' That's strong brand copy — but it tells Google nothing about what Woodall's is, where it is, or who it serves. People searching for a gym in Clayton aren't finding woodallsfitness.com because the site isn't optimized for those searches.</p>
+        </div>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">White Haus Media</div>
-  <div class="footer-info">Wake Forest, NC · hello@whitehausmedia.com · whitehausmedia.com</div>
+<!-- SOLUTION -->
+<section class="solution" id="solution">
+  <div class="wrap-wide">
+    <div class="reveal"><div class="section-eyebrow">What we build</div></div>
+    <h2 class="reveal">Everything included, delivered in under two weeks</h2>
+    <div class="section-rule reveal"></div>
+    <div class="del-list">
+      <div class="del-item"><span class="del-star">✦</span><span>Custom responsive website built around Woodall's brand</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>On-site blog — migrate Strength Report content to woodallsfitness.com</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>Membership sign-up or direct booking flow</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>Class schedule display — easy to update</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>Local SEO foundation: proper titles, meta tags, Google Business integration</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>Social media integration with live feeds</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>Mobile-first build with fast load times</span></div>
+<div class="del-item"><span class="del-star">✦</span><span>SSL, hosting coordination, and launch support</span></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap-wide">
+    <div class="reveal"><div class="section-eyebrow">How we work together</div></div>
+    <h2 class="reveal">Four steps. Under two weeks.</h2>
+    <div class="section-rule reveal"></div>
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h4>Discovery Call</h4>
+        <p>We talk through your goals, your clients, and what you want your site to communicate.</p>
+        <div class="step-arrow">&#8250;</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h4>Design &amp; Build</h4>
+        <p>We build from scratch around your brand — your photos, your voice, your services.</p>
+        <div class="step-arrow">&#8250;</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h4>Review &amp; Refine</h4>
+        <p>You see everything before it goes live. We adjust until it&#8217;s exactly right.</p>
+        <div class="step-arrow">&#8250;</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h4>Launch &amp; Support</h4>
+        <p>We handle deployment and domain setup. You get 30 days of post-launch support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="investment">
+  <div class="pricing-head">
+    <div class="section-eyebrow reveal">Investment</div>
+    <h2 class="reveal">One flat fee. No surprises.</h2>
+  </div>
+  <div class="pricing-cards">
+    <div class="p-card reveal">
+      <div class="p-badge">&#10003; Recommended</div>
+      <div class="p-headline">Custom Website Build</div>
+      <div class="p-amount"><sup>$</sup>597</div>
+      <div class="p-label">one-time investment</div>
+      <div class="p-list">
+        <div class="p-item"><span class="p-check">✓</span><span>Custom design and development</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>On-site blog with content migration from Constant Contact</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>Membership sign-up or booking flow</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>Class schedule page</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>Local SEO: titles, meta tags, Google Business</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>Social integration</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>Mobile-first responsive build</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>SSL, hosting, and launch</span></div>
+<div class="p-item"><span class="p-check">✓</span><span>30 days post-launch support</span></div>
+
+      </div>
+      <a href="mailto:hello@whitehausmedia.com?subject=Ready to move forward — Woodall's Fitness" class="p-cta">Book a Free Consultation</a>
+      <div class="p-note">No obligation — we&#8217;ll walk through everything together.</div>
+    </div>
+  </div>
+  <div class="care-plans">
+    <div class="care-card">
+      <div class="care-name">Core Care</div>
+      <div class="care-price">$47<span>/mo</span></div>
+      <div class="care-desc">Software updates, 2 content edits/month, hosting coordination.</div>
+    </div>
+    <div class="care-card rec">
+      <div class="care-name">Full Care</div>
+      <div class="care-price">$97<span>/mo</span></div>
+      <div class="care-desc">Everything in Core + security monitoring, uptime checks, monthly performance report.</div>
+    </div>
+  </div>
+  <div class="care-note">Both plans are month-to-month. No commitments.</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-box reveal">
+    <h2>Ready to see what&#8217;s possible?</h2>
+    <p>Everything above is based on what we found. Book a free call and we&#8217;ll walk through it together — no pressure, just clarity on the scope.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@whitehausmedia.com?subject=Ready to move forward — Woodall's Fitness" class="cta-primary">Book a Free Consultation</a>
+      <a href="mailto:hello@whitehausmedia.com" class="cta-secondary">hello@whitehausmedia.com</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-text">&copy; 2026 <strong>White Haus Media</strong> &middot; Wake Forest, NC</div>
 </footer>
 
+<script>
+(function(){
+  var prog=document.getElementById('progress');
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var s=window.scrollY;
+    if(h>0) prog.style.width=(s/h*100)+'%';
+    if(s>60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+})();
+</script>
 </body>
 </html>
