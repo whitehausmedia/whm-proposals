@@ -3,51 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Preview — Freedom Realty Firm | White Haus Media</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Freedom Realty Firm — Sample Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Manrope',sans-serif;background:#F8F7F3;color:#242528;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
-.card{max-width:560px;width:100%;border:1px solid rgba(16,42,67,.15);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 24px rgba(36,37,40,.08)}
-.card-header{background:#102A43;padding:32px;border-bottom:1px solid rgba(16,42,67,.4)}
-.label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#CEC195;margin-bottom:12px}
-.card-header h1{font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;line-height:1.2;margin-bottom:12px;color:#F8F7F3}
-.card-header h1 span{color:#CEC195}
-.hook{font-size:14px;line-height:1.65;color:rgba(248,247,243,.65)}
-.card-body{padding:28px 32px}
-.issues-row{display:grid;gap:10px;margin-bottom:24px}
-.issue-pill{font-size:12px;padding:8px 14px;border-left:2px solid #102A43;background:rgba(16,42,67,.05);border-radius:0 4px 4px 0;color:#4A4C50}
-.meta{display:flex;justify-content:space-between;align-items:flex-end;padding-top:20px;border-top:1px solid rgba(36,37,40,.1)}
-.price-block .price{font-size:36px;font-weight:800;color:#102A43;line-height:1}
-.price-block .price-label{font-size:11px;color:#8A8C90;margin-top:4px}
-.btn{display:inline-block;background:#102A43;color:#F8F7F3;font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;padding:12px 24px;border-radius:100px;text-transform:uppercase;text-decoration:none;transition:all .2s}
-.btn:hover{background:#1B3D5C}
-.footer-bar{background:#F8F7F3;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(36,37,40,.08)}
-.footer-bar .logo{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6889A6}
-.footer-bar .info{font-size:11px;color:#8A8C90}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --p:#1C3557;
+  --p2:#264B76;
+  --a:#C8A96E;
+  --ad:rgba(200,169,110,.1);
+  --ab:rgba(200,169,110,.28);
+  --bg:#F8F7F3;
+  --bg2:#EEE9E1;
+  --ink:#242528;
+  --ink2:#4A4C50;
+  --ink3:#8A8C90;
+  --border:rgba(36,37,40,.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',-apple-system,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+
+/* SAMPLE BANNER */
+.sample-banner{background:var(--p);padding:10px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:200}
+.sample-banner-left{display:flex;align-items:center;gap:10px}
+.sample-dot{width:8px;height:8px;border-radius:50%;background:var(--a);flex-shrink:0}
+.sample-banner-text{font-size:.72rem;font-weight:600;color:rgba(248,247,243,.75);letter-spacing:.06em;text-transform:uppercase}
+.sample-banner-text strong{color:var(--a)}
+.sample-banner-link{font-size:.72rem;font-weight:700;color:var(--a);letter-spacing:.06em;text-transform:uppercase;padding:6px 16px;border:1px solid var(--ab);border-radius:100px;white-space:nowrap;transition:all .2s}
+.sample-banner-link:hover{background:var(--ad)}
+
+/* NAV */
+.sitenav{background:var(--p);padding:0 28px}
+.sitenav-inner{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.sitenav-brand{font-family:'Source Serif 4',Georgia,serif;font-size:1.15rem;font-weight:600;color:#F8F7F3;letter-spacing:-.01em}
+.sitenav-brand em{font-style:italic;color:var(--a)}
+.sitenav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.sitenav-links a{font-size:.82rem;font-weight:500;color:rgba(248,247,243,.6);transition:color .2s;letter-spacing:.01em}
+.sitenav-links a:hover{color:#F8F7F3}
+.sitenav-cta{background:var(--a);color:var(--p);padding:9px 22px;border-radius:100px;font-size:.82rem;font-weight:700;letter-spacing:.02em;transition:all .2s}
+.sitenav-cta:hover{opacity:.9;transform:translateY(-1px)}
+
+/* HERO */
+.hero{background:var(--p);padding:100px 28px 90px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 65%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--a);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--a)}
+.hero-eyebrow::after{content:'';width:20px;height:1px;background:var(--a)}
+.hero h1{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;line-height:1.1;color:#F8F7F3;max-width:660px;margin:0 auto 20px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--a)}
+.hero-sub{font-size:1rem;color:rgba(248,247,243,.65);max-width:500px;margin:0 auto 44px;line-height:1.7}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-btn-primary{background:var(--a);color:var(--p);padding:14px 32px;border-radius:100px;font-size:.92rem;font-weight:700;letter-spacing:.01em;transition:all .2s}
+.hero-btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.hero-btn-secondary{background:rgba(248,247,243,.08);border:1px solid rgba(248,247,243,.2);color:rgba(248,247,243,.8);padding:14px 28px;border-radius:100px;font-size:.9rem;font-weight:500;transition:all .2s}
+.hero-btn-secondary:hover{background:rgba(248,247,243,.12);color:#F8F7F3}
+
+/* STATS BAR */
+.stats-bar{background:#F8F7F3;border-bottom:1px solid var(--border);padding:32px 28px}
+.stats-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:center;gap:0;flex-wrap:wrap}
+.stat-item{flex:1;min-width:150px;text-align:center;padding:16px 20px;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Source Serif 4',Georgia,serif;font-size:2rem;font-weight:600;color:var(--p);line-height:1;margin-bottom:4px}
+.stat-label{font-size:.75rem;font-weight:500;color:var(--ink3);letter-spacing:.04em;text-transform:uppercase}
+
+/* SERVICES */
+.services{padding:90px 28px;background:#F8F7F3}
+.section-eyebrow{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);margin-bottom:12px}
+.section-h2{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.7rem,4vw,2.2rem);font-weight:600;color:var(--p);margin-bottom:12px;letter-spacing:-.02em}
+.section-sub{font-size:.95rem;color:var(--ink2);line-height:1.7;max-width:520px;margin-bottom:52px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:32px 26px;transition:all .3s}
+.svc-card:hover{box-shadow:0 4px 24px rgba(36,37,40,.07);transform:translateY(-2px)}
+.svc-icon{width:44px;height:44px;background:var(--ad);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.svc-card h3{font-size:1rem;font-weight:700;color:var(--p);margin-bottom:8px}
+.svc-card p{font-size:.85rem;color:var(--ink2);line-height:1.65}
+
+/* TESTIMONIAL */
+.testimonial{padding:90px 28px;background:var(--p)}
+.testimonial-inner{max-width:700px;margin:0 auto;text-align:center}
+.quote-mark{font-family:'Source Serif 4',Georgia,serif;font-size:4rem;color:var(--a);line-height:.8;margin-bottom:16px;opacity:.6}
+.testimonial blockquote{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.2rem,3vw,1.6rem);font-weight:400;font-style:italic;color:#F8F7F3;line-height:1.55;margin-bottom:32px;letter-spacing:-.01em}
+.testimonial-name{font-size:.85rem;font-weight:700;color:var(--a);letter-spacing:.04em;text-transform:uppercase}
+.testimonial-role{font-size:.78rem;color:rgba(248,247,243,.5);margin-top:4px}
+
+/* CTA */
+.cta-section{padding:90px 28px;background:#EEE9E1;text-align:center}
+.cta-section h2{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.7rem,4vw,2.2rem);font-weight:600;color:var(--p);margin-bottom:14px;letter-spacing:-.02em}
+.cta-section p{font-size:.95rem;color:var(--ink2);max-width:480px;margin:0 auto 36px;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--p);color:#F8F7F3;padding:15px 34px;border-radius:100px;font-size:.95rem;font-weight:700;letter-spacing:.01em;transition:all .25s}
+.cta-btn:hover{background:var(--p2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(36,37,40,.15)}
+.cta-sub{font-size:.78rem;color:var(--ink3);margin-top:14px}
+
+/* FOOTER */
+.sitefooter{background:var(--p);padding:40px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.sitefooter-brand{font-family:'Source Serif 4',Georgia,serif;font-size:.95rem;font-weight:600;color:#F8F7F3}
+.sitefooter-brand em{color:var(--a);font-style:italic}
+.sitefooter-text{font-size:.75rem;color:rgba(248,247,243,.4)}
+.sitefooter-links{display:flex;gap:20px}
+.sitefooter-links a{font-size:.75rem;color:rgba(248,247,243,.4);transition:color .2s}
+.sitefooter-links a:hover{color:rgba(248,247,243,.8)}
+
+@media(max-width:720px){
+  .svc-grid{grid-template-columns:1fr}
+  .sitenav-links{display:none}
+  .stats-inner{gap:0}
+  .stat-item{min-width:50%;border-bottom:1px solid var(--border)}
+  .stat-item:nth-child(even){border-right:none}
+  .sample-banner{flex-direction:column;gap:8px;text-align:center}
+  .sitefooter{flex-direction:column;text-align:center}
+  .sitefooter-links{justify-content:center}
+}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="card-header">
-    <div class="label">Website Proposal</div>
-    <h1><span>Freedom Realty Firm</span></h1>
-    <p class="hook">The 'Search Triangle Homes' button on freedomrealtyfirm.com returns a broken error page. Your core product isn't working — and raw JS is rendering as visible text.</p>
+
+<!-- SAMPLE BANNER -->
+<div class="sample-banner">
+  <div class="sample-banner-left">
+    <div class="sample-dot"></div>
+    <div class="sample-banner-text">Sample website — designed by <strong>White Haus Media</strong> for Freedom Realty Firm</div>
   </div>
-  <div class="card-body">
-    <div class="issues-row"><div class="issue-pill">Broken property search subdomain — buyers hit an error page</div><div class="issue-pill">Raw JavaScript code rendering as visible text (Joomla issue)</div><div class="issue-pill">Top credential is 'Broker of the Year 2010' — 16 years ago</div></div>
-    <div class="meta">
-      <div class="price-block">
-        <div class="price">$797</div>
-        <div class="price-label">Custom Website Package</div>
-      </div>
-      <a class="btn" href="index.html">View Full Proposal</a>
+  <a href="index.html" class="sample-banner-link">View Proposal &#8250;</a>
+</div>
+
+<!-- NAV -->
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <div class="sitenav-brand">Freedom <em>Realty Firm</em></div>
+    <ul class="sitenav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="#contact" class="sitenav-cta">Search Homes</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">Holly Springs · Cary · Apex · Raleigh</div>
+    <h1>Find Your Triangle Home<br>with an Agent Who <em>Knows the Market</em></h1>
+    <p class="hero-sub">Transparent representation, no double-dipping, and a broker who's been closing in the Triangle for over 25 years.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="hero-btn-primary">Search Homes</a>
+      <a href="#services" class="hero-btn-secondary">See Our Services</a>
     </div>
   </div>
-  <div class="footer-bar">
-    <div class="logo">White Haus Media</div>
-    <div class="info">Wake Forest, NC &middot; whitehausmedia.com</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    
+      <div class="stat-item">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Years in Triangle real estate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$180M+</div>
+        <div class="stat-label">In closed transactions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Average review</div>
+      </div>
   </div>
 </div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-eyebrow">What We Do</div>
+    <h2 class="section-h2">How we help you</h2>
+    <p class="section-sub">Every service we offer is focused on one outcome — making it easier for the right clients to find you and choose you.</p>
+    <div class="svc-grid">
+      
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Buy a Home</h3>
+        <p>Expert buyer representation across Holly Springs, Apex, Cary, and the greater Triangle. No conflicts, no pressure — just clear guidance.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Sell Your Home</h3>
+        <p>Strategic pricing, professional photography, and a marketing plan that gets your home in front of the right buyers fast.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+        </div>
+        <h3>Neighborhood Guides</h3>
+        <p>Detailed relocation guides for every Triangle neighborhood — schools, commute times, parks, and what life actually looks like.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <div class="quote-mark">&#8220;</div>
+    <blockquote>Rich didn't just find us a house — he found us the right neighborhood. He knew every street in Holly Springs and never once pushed us toward something that wasn't right for our family.</blockquote>
+    <div class="testimonial-name">David & Sarah K.</div>
+    <div class="testimonial-role">Home buyers, Holly Springs NC</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="wrap">
+    <h2>Ready to get started?</h2>
+    <p>Whether you're buying, selling, or just exploring — reach out and let's talk about what makes sense for you.</p>
+    <a href="#" class="cta-btn">Search Homes</a>
+    <div class="cta-sub">freedomrealtyfirm.com</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="sitefooter">
+  <div class="sitefooter-brand">Freedom <em>Realty Firm</em></div>
+  <div class="sitefooter-links">
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="sitefooter-text">Sample site designed by White Haus Media &middot; whitehausmedia.com</div>
+</footer>
+
+<script>
+(function(){
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)';obs.unobserve(x.target);}});},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.svc-card,.stat-item').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity .6s ease,transform .6s ease';obs.observe(el);});
+})();
+</script>
 </body>
 </html>
