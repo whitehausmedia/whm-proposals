@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridges and Beyond Preschool — Wake Forest, NC</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --forest:#2C4A2E;
+  --forest-mid:#3D6640;
+  --sage:#7A9E7E;
+  --amber:#C4845A;
+  --amber-light:#D9A07A;
+  --cream:#FBF8F3;
+  --warm-white:#FFFFFF;
+  --charcoal:#2A2A2A;
+  --mid:#555;
+  --light:#888;
+  --border:#E8E2D9;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--charcoal);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,248,243,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;height:68px}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:36px;height:36px;background:var(--forest);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.nav-logo-mark svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.8}
+.nav-brand-text{display:flex;flex-direction:column}
+.nav-name{font-size:.88rem;font-weight:700;color:var(--forest);line-height:1.2;letter-spacing:-.01em}
+.nav-tagline{font-size:.68rem;color:var(--sage);font-weight:500;letter-spacing:.03em}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--mid);transition:color .2s}
+.nav-links a:hover{color:var(--forest)}
+.nav-cta{background:var(--forest);color:#fff;padding:9px 20px;border-radius:6px;font-size:.82rem;font-weight:600;transition:all .2s}
+.nav-cta:hover{background:var(--forest-mid)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 32px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#f0ede5 0%,#e8e4da 40%,#ddd9cf 100%);z-index:0}
+.hero-pattern{position:absolute;inset:0;opacity:.03;background-image:radial-gradient(circle,var(--forest) 1px,transparent 1px);background-size:32px 32px;z-index:1}
+.hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(44,74,46,.08);border:1px solid rgba(44,74,46,.15);color:var(--forest);padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:24px}
+.hero-badge-dot{width:6px;height:6px;background:var(--forest);border-radius:50%}
+.hero h1{font-family:'Lora',Georgia,serif;font-size:3rem;font-weight:600;color:var(--forest);line-height:1.12;letter-spacing:-.02em;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.hero-body{font-size:1.02rem;color:var(--mid);line-height:1.75;margin-bottom:32px;max-width:460px}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px}
+.hero-stat{background:rgba(255,255,255,.7);border:1px solid rgba(44,74,46,.12);border-radius:10px;padding:16px 18px}
+.hero-stat-num{font-family:'Lora',Georgia,serif;font-size:1.8rem;font-weight:700;color:var(--forest);line-height:1}
+.hero-stat-label{font-size:.75rem;color:var(--sage);font-weight:500;margin-top:4px;line-height:1.3}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--forest);color:#fff;padding:13px 24px;border-radius:7px;font-size:.9rem;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--forest-mid);transform:translateY(-1px)}
+.btn-primary svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.btn-secondary{background:transparent;color:var(--forest);padding:13px 20px;border-radius:7px;font-size:.9rem;font-weight:600;border:1.5px solid rgba(44,74,46,.3);transition:all .2s}
+.btn-secondary:hover{border-color:var(--forest);background:rgba(44,74,46,.04)}
+.hero-visual{position:relative}
+.hero-img-wrap{background:linear-gradient(135deg,#d4e4d5 0%,#c2d8c3 100%);border-radius:20px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.hero-img-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,74,46,.08) 0%,rgba(122,158,126,.15) 100%)}
+.hero-img-content{text-align:center;position:relative;padding:40px}
+.hero-icon{width:80px;height:80px;margin:0 auto 20px;background:rgba(44,74,46,.1);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hero-icon svg{width:40px;height:40px;stroke:var(--forest);fill:none;stroke-width:1.5}
+.hero-img-text{font-family:'Lora',Georgia,serif;font-size:1.4rem;color:var(--forest);font-weight:600;margin-bottom:8px}
+.hero-img-sub{font-size:.82rem;color:var(--sage)}
+.hero-tag{position:absolute;top:20px;right:-16px;background:var(--warm-white);border:1px solid var(--border);border-radius:10px;padding:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.hero-tag-num{font-family:'Lora',Georgia,serif;font-size:1.4rem;font-weight:700;color:var(--amber);line-height:1}
+.hero-tag-text{font-size:.72rem;color:var(--mid);margin-top:2px}
+.hero-tag2{position:absolute;bottom:20px;left:-16px;background:var(--forest);border-radius:10px;padding:12px 16px}
+.hero-tag2-text{font-size:.76rem;color:rgba(255,255,255,.8);line-height:1.5}
+.hero-tag2 strong{color:#fff;display:block;margin-bottom:2px;font-size:.82rem}
+
+/* TRUST BAR */
+.trust-bar{background:var(--forest);padding:20px 32px}
+.trust-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1)}
+.trust-item{background:var(--forest);padding:16px 20px;text-align:center}
+.trust-num{font-family:'Lora',Georgia,serif;font-size:1.4rem;font-weight:700;color:#fff}
+.trust-label{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px}
+
+/* DIFFERENTIATORS */
+.diff{padding:96px 32px;background:var(--warm-white)}
+.section-inner{max-width:1080px;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);margin-bottom:12px}
+.section-title{font-family:'Lora',Georgia,serif;font-size:2.2rem;font-weight:600;color:var(--forest);margin-bottom:16px;letter-spacing:-.02em;line-height:1.2}
+.section-sub{font-size:1rem;color:var(--mid);line-height:1.75;max-width:520px;margin-bottom:48px}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.diff-card{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:32px 28px;transition:all .25s;position:relative;overflow:hidden}
+.diff-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--sage);opacity:0;transition:opacity .25s}
+.diff-card:hover{border-color:rgba(44,74,46,.2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(44,74,46,.08)}
+.diff-card:hover::after{opacity:1}
+.diff-card.featured{background:var(--forest);border-color:var(--forest)}
+.diff-card.featured .diff-icon{background:rgba(255,255,255,.1);color:#fff}
+.diff-card.featured .diff-icon svg{stroke:#fff}
+.diff-card.featured .diff-title{color:#fff}
+.diff-card.featured .diff-body{color:rgba(255,255,255,.7)}
+.diff-card.featured::after{background:var(--amber-light);opacity:1}
+.diff-icon{width:44px;height:44px;background:rgba(44,74,46,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.diff-icon svg{width:22px;height:22px;stroke:var(--forest);fill:none;stroke-width:1.8}
+.diff-title{font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:8px}
+.diff-body{font-size:.88rem;color:var(--mid);line-height:1.65}
+
+/* PROGRAMS */
+.programs{padding:96px 32px;background:var(--cream)}
+.programs-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prog-card{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;gap:20px;align-items:flex-start;transition:all .2s}
+.prog-card:hover{border-color:rgba(44,74,46,.2);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.prog-age{width:52px;height:52px;background:var(--forest);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prog-age span{font-family:'Lora',Georgia,serif;font-size:.78rem;font-weight:700;color:#fff;text-align:center;line-height:1.2}
+.prog-content h3{font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:6px}
+.prog-content p{font-size:.85rem;color:var(--mid);line-height:1.6}
+.prog-detail{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:.78rem;color:var(--sage);font-weight:600}
+.prog-detail svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ENROLLMENT */
+.enrollment{padding:96px 32px;background:var(--warm-white)}
+.enroll-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.form-card{background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:40px}
+.form-card h3{font-family:'Lora',Georgia,serif;font-size:1.5rem;font-weight:600;color:var(--forest);margin-bottom:8px}
+.form-card p{font-size:.88rem;color:var(--mid);margin-bottom:28px;line-height:1.6}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.78rem;font-weight:600;color:var(--charcoal);margin-bottom:6px;letter-spacing:.02em}
+.form-group input,
+.form-group select,
+.form-group textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:7px;font-size:.88rem;font-family:inherit;color:var(--charcoal);background:#fff;transition:border .2s;outline:none}
+.form-group input:focus,
+.form-group select:focus{border-color:var(--forest)}
+.form-group textarea{height:80px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;background:var(--forest);color:#fff;padding:13px;border:none;border-radius:7px;font-size:.92rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .2s;margin-top:8px}
+.form-submit:hover{background:var(--forest-mid)}
+.form-note{text-align:center;font-size:.76rem;color:var(--light);margin-top:10px}
+.enroll-info h2{font-family:'Lora',Georgia,serif;font-size:2rem;font-weight:600;color:var(--forest);margin-bottom:16px;line-height:1.2}
+.enroll-info>p{font-size:.95rem;color:var(--mid);line-height:1.75;margin-bottom:32px}
+.enroll-features{display:flex;flex-direction:column;gap:16px}
+.enroll-feat{display:flex;align-items:flex-start;gap:14px}
+.enroll-feat-icon{width:36px;height:36px;background:rgba(44,74,46,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.enroll-feat-icon svg{width:18px;height:18px;stroke:var(--forest);fill:none;stroke-width:2}
+.enroll-feat h4{font-size:.92rem;font-weight:700;color:var(--forest);margin-bottom:3px}
+.enroll-feat p{font-size:.82rem;color:var(--mid);line-height:1.6}
+
+/* ABOUT */
+.about{padding:96px 32px;background:var(--cream)}
+.about-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center}
+.about-photo{background:linear-gradient(135deg,#d0dfd1 0%,#baced0 100%);border-radius:16px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center}
+.about-photo-inner{text-align:center;padding:40px}
+.about-photo-icon{width:72px;height:72px;background:rgba(44,74,46,.15);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.about-photo-icon svg{width:36px;height:36px;stroke:var(--forest);fill:none;stroke-width:1.5}
+.about-photo-name{font-family:'Lora',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--forest)}
+.about-photo-title{font-size:.78rem;color:var(--sage);margin-top:4px}
+.about-content h2{font-family:'Lora',Georgia,serif;font-size:2rem;font-weight:600;color:var(--forest);margin-bottom:16px;line-height:1.2}
+.about-content>p{font-size:.95rem;color:var(--mid);line-height:1.75;margin-bottom:16px}
+.about-quote{background:var(--warm-white);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:20px 24px;margin-top:24px}
+.about-quote p{font-family:'Lora',Georgia,serif;font-size:1rem;color:var(--forest);font-style:italic;line-height:1.7}
+.about-quote cite{display:block;font-size:.76rem;color:var(--sage);margin-top:8px;font-style:normal;font-weight:600}
+
+/* TESTIMONIALS */
+.testimonials{padding:96px 32px;background:var(--forest)}
+.test-inner{max-width:1080px;margin:0 auto}
+.test-inner .eyebrow{color:var(--amber-light)}
+.test-inner .section-title{color:#fff}
+.test-inner .section-sub{color:rgba(255,255,255,.6)}
+.test-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.test-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px;transition:all .2s}
+.test-card:hover{background:rgba(255,255,255,.09)}
+.test-stars{color:var(--amber-light);font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+.test-text{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:20px;font-style:italic}
+.test-author{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.9)}
+.test-author-sub{font-size:.74rem;color:rgba(255,255,255,.45);margin-top:2px}
+
+/* LOCATION */
+.location{padding:96px 32px;background:var(--cream)}
+.loc-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.loc-map{background:linear-gradient(135deg,#d8e8d8 0%,#c8dcc9 100%);border-radius:16px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.loc-map-inner{text-align:center;padding:40px}
+.loc-map-icon{width:64px;height:64px;background:rgba(44,74,46,.12);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.loc-map-icon svg{width:32px;height:32px;stroke:var(--forest);fill:none;stroke-width:1.5}
+.loc-map-text{font-family:'Lora',Georgia,serif;font-size:1.1rem;color:var(--forest);font-weight:600}
+.loc-map-sub{font-size:.82rem;color:var(--sage);margin-top:4px}
+.loc-info h2{font-family:'Lora',Georgia,serif;font-size:2rem;font-weight:600;color:var(--forest);margin-bottom:16px;line-height:1.2}
+.loc-info>p{font-size:.95rem;color:var(--mid);line-height:1.75;margin-bottom:28px}
+.loc-details{display:flex;flex-direction:column;gap:12px}
+.loc-detail{display:flex;align-items:flex-start;gap:12px}
+.loc-detail svg{width:18px;height:18px;stroke:var(--sage);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px}
+.loc-detail span{font-size:.88rem;color:var(--mid);line-height:1.5}
+.loc-detail strong{color:var(--charcoal)}
+
+/* FOOTER */
+footer{background:var(--charcoal);padding:48px 32px 32px}
+.foot-inner{max-width:1080px;margin:0 auto}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-brand-name{font-family:'Lora',Georgia,serif;font-size:1.1rem;color:#fff;font-weight:600;margin-bottom:6px}
+.foot-brand-desc{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.5}
+.foot-links h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:12px}
+.foot-links ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot-links a{font-size:.82rem;color:rgba(255,255,255,.55);transition:color .2s}
+.foot-links a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-size:.76rem;color:rgba(255,255,255,.3)}
+.foot-badge{font-size:.72rem;color:rgba(255,255,255,.3)}
+
+@media(max-width:768px){
+  .hero-inner,.enroll-inner,.about-inner,.loc-inner{grid-template-columns:1fr}
+  .hero-visual,.about-photo{display:none}
+  .diff-grid,.programs-grid,.test-grid{grid-template-columns:1fr}
+  .trust-inner{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hero{padding:88px 20px 60px}
+  .hero h1{font-size:2.2rem}
+  .diff,.programs,.enrollment,.about,.testimonials,.location{padding:64px 20px}
+  .foot-top{flex-direction:column;gap:32px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="nav-brand-text">
+        <span class="nav-name">Bridges and Beyond</span>
+        <span class="nav-tagline">Preschool · Wake Forest, NC</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#enroll" class="nav-cta">Schedule a Tour</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Now enrolling ages 2–5 · Wake Forest, NC</div>
+      <h1>Where every child learns to <em>bridge</em> their full potential.</h1>
+      <p class="hero-body">Bridges and Beyond Preschool offers an intentionally small, inclusive learning environment for children ages 2–5 — including those with special needs. We believe every child deserves to feel capable, connected, and seen.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">8:1</div>
+          <div class="hero-stat-label">Child-to-teacher ratio — among the lowest in the Triangle</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Inclusive classrooms welcoming children with special needs</div>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#enroll" class="btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+          Schedule a Tour
+        </a>
+        <a href="#programs" class="btn-secondary">View Programs</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-img-bg"></div>
+        <div class="hero-img-content">
+          <div class="hero-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="hero-img-text">Small, intentional classrooms</div>
+          <div class="hero-img-sub">Ages 2–5 · Inclusive · Wake Forest</div>
+        </div>
+        <div class="hero-tag">
+          <div class="hero-tag-num">8:1</div>
+          <div class="hero-tag-text">Ratio — child to teacher</div>
+        </div>
+        <div class="hero-tag2">
+          <strong>Inclusive Classrooms</strong>
+          <span class="hero-tag2-text">Welcoming children<br>with special needs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-num">8:1</div>
+      <div class="trust-label">Child-to-teacher ratio</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">Ages 2–5</div>
+      <div class="trust-label">Developmental programs</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">Inclusive</div>
+      <div class="trust-label">Special needs welcome</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">Wake Forest</div>
+      <div class="trust-label">1340 Wall Rd, Ste 500</div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFFERENTIATORS -->
+<section class="diff" id="approach">
+  <div class="section-inner">
+    <div class="eyebrow">Why families choose us</div>
+    <h2 class="section-title">An approach you won't find everywhere.</h2>
+    <p class="section-sub">Most preschools are good. Bridges and Beyond is designed for families who want intentional — a program that sees their child as an individual, not a number.</p>
+    <div class="diff-grid">
+      <div class="diff-card featured">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="diff-title">8:1 Child-to-Teacher Ratio</div>
+        <div class="diff-body">Only 8 children per class. This isn't a policy — it's our foundation. Fewer children means more attention, faster recognition of needs, and a calmer environment where every child can thrive.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="diff-title">Inclusive by Design</div>
+        <div class="diff-body">Our classrooms welcome children with special needs alongside their peers. Inclusion isn't accommodation — it's our core belief that every child belongs and grows together.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="diff-title">Developmental Focus, Ages 2–5</div>
+        <div class="diff-body">Every activity, routine, and interaction is designed around the developmental milestones that matter at this age. Play is purposeful. Learning is joyful. Growth is intentional.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="section-inner">
+    <div class="eyebrow">Our programs</div>
+    <h2 class="section-title">Built around where your child is, and where they're headed.</h2>
+    <p class="section-sub">Three developmental pathways, all sharing the same intentional environment and exceptional teacher ratio.</p>
+    <div class="programs-grid">
+      <div class="prog-card">
+        <div class="prog-age"><span>Ages<br>2–3</span></div>
+        <div class="prog-content">
+          <h3>Toddler Bridge</h3>
+          <p>Our youngest learners explore language, sensory play, and early social skills in a warm, nurturing classroom designed for their developmental stage.</p>
+          <div class="prog-detail">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            8:1 ratio · Half-day and full-day options
+          </div>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-age"><span>Ages<br>3–4</span></div>
+        <div class="prog-content">
+          <h3>Junior Explorers</h3>
+          <p>Building independence, curiosity, and early literacy through structured play, circle time, and hands-on projects. Inclusive classrooms where all children grow side by side.</p>
+          <div class="prog-detail">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            8:1 ratio · Full-day program
+          </div>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-age"><span>Ages<br>4–5</span></div>
+        <div class="prog-content">
+          <h3>Pre-K Pathways</h3>
+          <p>Kindergarten readiness through a balanced curriculum of early reading, math foundations, social-emotional skills, and the confidence to walk into their next chapter ready.</p>
+          <div class="prog-detail">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            8:1 ratio · Full-day program
+          </div>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-age" style="background:var(--amber)"><span>All<br>Ages</span></div>
+        <div class="prog-content">
+          <h3>Inclusive Support Services</h3>
+          <p>We welcome and support children with IEPs, developmental delays, and special needs across all classrooms. Our team works alongside therapists and families to ensure every child thrives.</p>
+          <div class="prog-detail" style="color:var(--amber)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            All programs · Available across all classrooms
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLLMENT -->
+<section class="enrollment" id="enroll">
+  <div class="enroll-inner">
+    <div class="enroll-info">
+      <div class="eyebrow">Schedule a tour</div>
+      <h2>See Bridges and Beyond for yourself.</h2>
+      <p>The best way to know if we're the right fit is to come see a classroom in action. We offer tours Monday through Friday — 20 minutes, no commitment, and you'll leave with a clear sense of whether this is the right environment for your child.</p>
+      <div class="enroll-features">
+        <div class="enroll-feat">
+          <div class="enroll-feat-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div>
+            <h4>Tour Response Within 24 Hours</h4>
+            <p>Submit your request and Debi will personally follow up to find a time that works for your family.</p>
+          </div>
+        </div>
+        <div class="enroll-feat">
+          <div class="enroll-feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div>
+            <h4>Limited Class Sizes</h4>
+            <p>With only 8 children per class, spots fill quickly. Joining the waitlist reserves your priority position at no cost.</p>
+          </div>
+        </div>
+        <div class="enroll-feat">
+          <div class="enroll-feat-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div>
+            <h4>Special Needs Families Welcome</h4>
+            <p>Please mention any specific needs when you book — we want to make sure your tour addresses everything that matters to your family.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-card">
+      <h3>Schedule a Tour</h3>
+      <p>Tell us a little about your family and we'll be in touch within one business day.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Parent / Guardian Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Child's Age</label>
+          <select><option>Select age</option><option>2 years</option><option>3 years</option><option>4 years</option><option>5 years</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(919) 000-0000">
+      </div>
+      <div class="form-group">
+        <label>Preferred Start Date</label>
+        <select><option>Select a timeframe</option><option>ASAP / Open enrollment</option><option>Fall 2026</option><option>Spring 2027</option><option>Just exploring for now</option></select>
+      </div>
+      <div class="form-group">
+        <label>Anything we should know? <span style="font-weight:400;color:var(--light)">(optional)</span></label>
+        <textarea placeholder="Special needs, questions, scheduling preferences..."></textarea>
+      </div>
+      <button class="form-submit">Request a Tour</button>
+      <p class="form-note">We respond to every inquiry within one business day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo">
+      <div class="about-photo-inner">
+        <div class="about-photo-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="about-photo-name">Debi Lilienthal</div>
+        <div class="about-photo-title">Director & Owner</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="eyebrow">About Bridges and Beyond</div>
+      <h2>Built by an educator who believes every child deserves more.</h2>
+      <p>Bridges and Beyond Preschool was founded on a simple conviction: that the early years are too important to spend in an overcrowded classroom. Debi Lilienthal, Director and Owner, built this school around the model she wished every family could access — small, intentional, inclusive, and genuinely caring.</p>
+      <p>Located in Wake Forest, NC, our school serves families across the Triangle who are looking for something different: a program where their child isn't lost in a crowd, where special needs aren't an afterthought, and where teachers have the time and space to truly know each child.</p>
+      <div class="about-quote">
+        <p>"We keep our classes small because we believe every child deserves to be known — not just managed. Eight to one isn't just a number. It's a commitment."</p>
+        <cite>— Debi Lilienthal, Director &amp; Owner</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-inner">
+    <div class="eyebrow">What families say</div>
+    <h2 class="section-title" style="color:#fff">The experience speaks for itself.</h2>
+    <p class="section-sub" style="margin-bottom:40px">From parents who chose Bridges and Beyond for their children.</p>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"The 8:1 ratio was the reason we chose Bridges and Beyond — and it's made all the difference. Our son's teacher knows every detail about how he learns, and it shows every single day."</p>
+        <div class="test-author">Sarah K.</div>
+        <div class="test-author-sub">Parent of a 4-year-old</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"As a parent of a child with special needs, finding a preschool that truly welcomes her — not just tolerates her — was so hard. Bridges and Beyond was the first place that just got it."</p>
+        <div class="test-author">Marcus &amp; Tanya R.</div>
+        <div class="test-author-sub">Parents of a 3-year-old</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Debi and her team are extraordinary. My daughter has grown so much — not just academically but emotionally. She goes to school happy and comes home happy. That says everything."</p>
+        <div class="test-author">Jennifer M.</div>
+        <div class="test-author-sub">Parent of a 5-year-old</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="loc-inner">
+    <div class="loc-map">
+      <div class="loc-map-inner">
+        <div class="loc-map-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="loc-map-text">Wake Forest, NC</div>
+        <div class="loc-map-sub">1340 Wall Rd, Suite 500</div>
+      </div>
+    </div>
+    <div class="loc-info">
+      <div class="eyebrow">Find us</div>
+      <h2>Conveniently located in Wake Forest.</h2>
+      <p>We're easy to reach for families across Wake Forest, Rolesville, and northern Raleigh. Tours are available Monday through Friday during school hours.</p>
+      <div class="loc-details">
+        <div class="loc-detail">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>1340 Wall Rd, Suite 500</strong><br>Wake Forest, NC 27587</span>
+        </div>
+        <div class="loc-detail">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.22 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span><strong>(919) 453-6433</strong><br>Mon–Fri · 8:00 AM – 5:30 PM</span>
+        </div>
+        <div class="loc-detail">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><strong>debi@bridgesandbeyond.org</strong><br>Debi responds to every inquiry personally</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand-name">Bridges and Beyond Preschool</div>
+        <div class="foot-brand-desc">Intentional early childhood education for ages 2–5<br>Wake Forest, NC · Inclusive classrooms · 8:1 ratio</div>
+      </div>
+      <div class="foot-links">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#programs">Toddler Bridge (2–3)</a></li>
+          <li><a href="#programs">Junior Explorers (3–4)</a></li>
+          <li><a href="#programs">Pre-K Pathways (4–5)</a></li>
+          <li><a href="#programs">Inclusive Support</a></li>
+        </ul>
+      </div>
+      <div class="foot-links">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#enroll">Schedule a Tour</a></li>
+          <li><a href="#enroll">Join the Waitlist</a></li>
+          <li><a href="tel:9194536433">(919) 453-6433</a></li>
+          <li><a href="mailto:debi@bridgesandbeyond.org">debi@bridgesandbeyond.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-copy">© 2026 Bridges and Beyond Preschool · 1340 Wall Rd, Suite 500, Wake Forest, NC</div>
+      <div class="foot-badge">Designed by White Haus Media</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
