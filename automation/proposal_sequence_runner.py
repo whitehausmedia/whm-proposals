@@ -51,6 +51,32 @@ def sb_patch(path, row_id, data):
         return r.status
 
 
+def sb_log_communication(company_id, contact_id, subject, html_body):
+    """Log every outbound sequence email to the communications table."""
+    if DRY_RUN:
+        return
+    payload = json.dumps({
+        "company_id": company_id,
+        "contact_id": contact_id,
+        "type": "email",
+        "direction": "outbound",
+        "subject": subject,
+        "body": html_body[:800],  # truncate for storage
+    }).encode()
+    url = f"{SUPABASE_URL}/rest/v1/communications"
+    req = urllib.request.Request(url, data=payload, headers={
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal",
+    }, method="POST")
+    try:
+        with urllib.request.urlopen(req) as r:
+            pass  # 201 = created
+    except urllib.error.HTTPError as e:
+        print(f"  WARN: failed to log communication: {e.code} {e.read().decode()[:100]}")
+
+
 # ─── Resend helper ─────────────────────────────────────────────────────────────
 def send_email(to_email, subject, html_body):
     if DRY_RUN:
@@ -250,17 +276,19 @@ def run():
         print(f"     Contact:   {first_name} {last_name} <{email}>")
 
         company_name = title  # use proposal title as company name in emails
+        contact_id = contact.get("id")
 
         updated = False
 
         # ── Day 1 — Initial send (Approved → Sent) ───────────────────────────
         if status == "Approved" and sent_at is None:
             print(f"     ACTION: Sending Day 1 (initial) — Approved → Sent")
-            subject, html = email_day1(first_name, company_name, url)
-            ok = send_email(email, subject, html)
+            subj, html = email_day1(first_name, company_name, url)
+            ok = send_email(email, subj, html)
             if ok:
                 tracking["sent_at"] = now_utc().isoformat()
                 updated = True
+                sb_log_communication(company_id, contact_id, subj, html)
                 # Update status to Sent
                 if not DRY_RUN:
                     sb_patch("proposals", prop_id, {"status": "Sent", "sent_date": now_utc().date().isoformat()})
@@ -270,32 +298,35 @@ def run():
         # ── Day 4 — Soft bump ────────────────────────────────────────────────
         elif status == "Sent" and followup1_sent is None and days_since(sent_at) >= 4:
             print(f"     ACTION: Sending Day 4 follow-up (day {days_since(sent_at)} since initial)")
-            subject, html = email_day4(first_name, company_name, url)
-            ok = send_email(email, subject, html)
+            subj, html = email_day4(first_name, company_name, url)
+            ok = send_email(email, subj, html)
             if ok:
                 tracking["followup1_sent_at"] = now_utc().isoformat()
                 updated = True
+                sb_log_communication(company_id, contact_id, subj, html)
 
         # ── Day 7 — Final close ──────────────────────────────────────────────
         elif status == "Sent" and followup2_sent is None and days_since(sent_at) >= 7:
             print(f"     ACTION: Sending Day 7 close (day {days_since(sent_at)} since initial)")
-            subject, html = email_day7(first_name, company_name, url)
-            ok = send_email(email, subject, html)
+            subj, html = email_day7(first_name, company_name, url)
+            ok = send_email(email, subj, html)
             if ok:
                 tracking["followup2_sent_at"] = now_utc().isoformat()
                 tracking["nurture_active"]    = True  # Move to nurture after Day 7
                 updated = True
+                sb_log_communication(company_id, contact_id, subj, html)
 
         # ── Monthly nurture ──────────────────────────────────────────────────
         elif status == "Sent" and nurture_active:
             days_since_nurture = days_since(nurture_last) if nurture_last else 999
             if days_since_nurture >= 30:
                 print(f"     ACTION: Sending monthly nurture (day {days_since_nurture} since last nurture)")
-                subject, html = email_nurture(first_name, company_name, url)
-                ok = send_email(email, subject, html)
+                subj, html = email_nurture(first_name, company_name, url)
+                ok = send_email(email, subj, html)
                 if ok:
                     tracking["nurture_last_sent_at"] = now_utc().isoformat()
                     updated = True
+                    sb_log_communication(company_id, contact_id, subj, html)
             else:
                 print(f"     SKIP: nurture active, {days_since_nurture} days since last send (need 30)")
 
