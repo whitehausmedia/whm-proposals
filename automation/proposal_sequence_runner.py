@@ -83,7 +83,7 @@ def send_email(to_email, subject, html_body):
         print(f"  [DRY RUN] Would send to {to_email}: {subject}")
         return True
     payload = json.dumps({
-        "from": f"Rico at White Haus Media <{FROM_EMAIL}>",
+        "from": f"Colton at White Haus Media <{FROM_EMAIL}>",
         "reply_to": REPLY_TO,
         "to": [to_email],
         "subject": subject,
@@ -106,6 +106,62 @@ def send_email(to_email, subject, html_body):
         return False
 
 
+# ─── Shared email components ───────────────────────────────────────────────────
+def _signature_block():
+    """Colton Palmer branded business card signature — email-safe HTML."""
+    return """
+  <!-- Signature -->
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:400px;margin:0 0 8px">
+    <tr>
+      <td style="border-left:3px solid #CEC195;padding:0 0 0 16px">
+        <p style="margin:0 0 2px;font-size:15px;font-weight:700;color:#102A43;font-family:'Helvetica Neue',Arial,sans-serif;line-height:1.3">Colton Palmer</p>
+        <p style="margin:0 0 10px;font-size:11px;color:#6889A6;font-family:'Helvetica Neue',Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;font-weight:600">Co-Founder &amp; Creative Director</p>
+        <p style="margin:0 0 3px;font-size:13px;color:#242528;font-family:'Helvetica Neue',Arial,sans-serif">
+          <a href="mailto:hello@whitehausmedia.com" style="color:#242528;text-decoration:none">hello@whitehausmedia.com</a>
+        </p>
+        <p style="margin:0 0 3px;font-size:13px;font-family:'Helvetica Neue',Arial,sans-serif">
+          <a href="https://whitehausmedia.com" style="color:#102A43;text-decoration:none;font-weight:600">whitehausmedia.com</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://calendly.com/whitehausmedia" style="color:#102A43;text-decoration:none">Book a call</a>
+        </p>
+        <p style="margin:0;font-size:12px;color:#6889A6;font-family:'Helvetica Neue',Arial,sans-serif">Wake Forest, NC</p>
+      </td>
+    </tr>
+  </table>"""
+
+
+def _proposal_preview_card(company_name, proposal_url):
+    """Rich branded proposal preview card — replaces plain URL in Day 1 email."""
+    # Extract slug for display URL
+    slug = proposal_url.rstrip("/").split("/")[-1] if proposal_url else ""
+    display_url = f"whitehausmedia.com/proposals/{slug}" if slug else "whitehausmedia.com"
+    return f"""
+  <!-- Proposal Preview Card -->
+  <table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:540px;border-radius:10px;overflow:hidden;border:1px solid #1a3a58;margin:0 0 32px">
+    <tr>
+      <td style="background:#102A43;padding:28px 32px 24px">
+        <!-- Label -->
+        <p style="font-size:10px;color:#CEC195;letter-spacing:.12em;text-transform:uppercase;margin:0 0 16px;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700">Custom Website Proposal</p>
+        <!-- Company name -->
+        <h2 style="font-size:20px;color:#F8F7F3;margin:0 0 10px;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:600;line-height:1.3">{company_name}</h2>
+        <!-- Description -->
+        <p style="font-size:14px;color:rgba(248,247,243,0.65);margin:0 0 22px;font-family:'Helvetica Neue',Arial,sans-serif;line-height:1.6">A custom concept built for your business — new design, clearer messaging, and a site that converts.</p>
+        <!-- Divider -->
+        <div style="height:1px;background:rgba(248,247,243,0.1);margin:0 0 22px"></div>
+        <!-- Display URL -->
+        <p style="font-size:11px;color:#6889A6;margin:0 0 18px;font-family:'Helvetica Neue',Arial,sans-serif;letter-spacing:.03em">{display_url}</p>
+        <!-- CTA -->
+        <a href="{proposal_url}" style="display:inline-block;background:#CEC195;color:#102A43;text-decoration:none;padding:11px 22px;font-size:12px;font-weight:700;letter-spacing:.06em;border-radius:5px;font-family:'Helvetica Neue',Arial,sans-serif;text-transform:uppercase">View Your Proposal &rarr;</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="background:#0d2235;padding:10px 32px">
+        <p style="font-size:11px;color:#6889A6;margin:0;font-family:'Helvetica Neue',Arial,sans-serif">White Haus Media &middot; Custom Web Design &middot; Wake Forest, NC</p>
+      </td>
+    </tr>
+  </table>"""
+
+
 # ─── Email templates ───────────────────────────────────────────────────────────
 def email_day1(first_name, company_name, proposal_url):
     subject = f"Your proposal from White Haus Media — {company_name}"
@@ -115,14 +171,15 @@ def email_day1(first_name, company_name, proposal_url):
     <p style="font-size:14px;color:#6889A6;letter-spacing:.08em;text-transform:uppercase;margin:0 0 28px">White Haus Media</p>
     <p style="font-size:16px;margin:0 0 20px">Hey {first_name},</p>
     <p style="font-size:16px;margin:0 0 20px">We put together a custom proposal for {company_name}. It covers what we found on your current site, what we'd build instead, and what that could mean for your business.</p>
-    <p style="font-size:16px;margin:0 0 32px">Take a look when you get a minute:</p>
-    <div style="margin:0 0 32px">
-      <a href="{proposal_url}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:14px 28px;font-size:14px;font-weight:600;letter-spacing:.04em;border-radius:6px">View Your Proposal</a>
-    </div>
-    <p style="font-size:16px;margin:0 0 20px">If anything in there sparks a question or you want to talk through the scope, you can grab 20 minutes on my calendar: <a href="{CALENDLY_URL}" style="color:#102A43;font-weight:600">{CALENDLY_URL}</a></p>
-    <p style="font-size:16px;margin:0 0 8px">Rico</p>
-    <p style="font-size:14px;color:#6889A6;margin:0">White Haus Media · Wake Forest, NC</p>
-    <hr style="border:none;border-top:1px solid #EEE9E1;margin:32px 0">
+    <p style="font-size:16px;margin:0 0 28px">Take a look:</p>
+
+    {_proposal_preview_card(company_name, proposal_url)}
+
+    <p style="font-size:16px;margin:0 0 28px">If anything in there sparks a question, or you want to talk through the scope, you can grab 20 minutes on my calendar: <a href="{CALENDLY_URL}" style="color:#102A43;font-weight:600">{CALENDLY_URL}</a></p>
+
+    {_signature_block()}
+
+    <hr style="border:none;border-top:1px solid #EEE9E1;margin:28px 0">
     <p style="font-size:12px;color:#8A8C90;margin:0">You're receiving this because we researched {company_name} and built a custom proposal. Reply to opt out.</p>
   </div>
 </div>"""
@@ -137,15 +194,15 @@ def email_day4(first_name, company_name, proposal_url):
     <p style="font-size:14px;color:#6889A6;letter-spacing:.08em;text-transform:uppercase;margin:0 0 28px">White Haus Media</p>
     <p style="font-size:16px;margin:0 0 20px">Hey {first_name},</p>
     <p style="font-size:16px;margin:0 0 20px">Just wanted to see if you had a chance to look at the proposal for {company_name}. No pressure — I know it can get buried.</p>
-    <p style="font-size:16px;margin:0 0 32px">If you have any questions about what's included or want to talk through the project, just reply here or grab time on my calendar:</p>
-    <div style="margin:0 0 32px">
-      <a href="{CALENDLY_URL}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:14px 28px;font-size:14px;font-weight:600;letter-spacing:.04em;border-radius:6px">Schedule a Call</a>
-      &nbsp;
-      <a href="{proposal_url}" style="display:inline-block;color:#102A43;text-decoration:none;padding:14px 20px;font-size:14px;font-weight:600;letter-spacing:.04em;border:1px solid #102A43;border-radius:6px">View Proposal</a>
+    <p style="font-size:16px;margin:0 0 28px">If you have any questions or want to talk through the project, just reply here or grab time on my calendar. The proposal link is below if you need it:</p>
+    <div style="margin:0 0 28px">
+      <a href="{CALENDLY_URL}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.04em;border-radius:5px;margin:0 8px 0 0;font-family:'Helvetica Neue',Arial,sans-serif">Schedule a Call</a>
+      <a href="{proposal_url}" style="display:inline-block;color:#102A43;text-decoration:none;padding:13px 20px;font-size:13px;font-weight:600;letter-spacing:.04em;border:1px solid #102A43;border-radius:5px;font-family:'Helvetica Neue',Arial,sans-serif">View Proposal</a>
     </div>
-    <p style="font-size:16px;margin:0 0 8px">Rico</p>
-    <p style="font-size:14px;color:#6889A6;margin:0">White Haus Media · Wake Forest, NC</p>
-    <hr style="border:none;border-top:1px solid #EEE9E1;margin:32px 0">
+
+    {_signature_block()}
+
+    <hr style="border:none;border-top:1px solid #EEE9E1;margin:28px 0">
     <p style="font-size:12px;color:#8A8C90;margin:0">Reply to opt out of future messages.</p>
   </div>
 </div>"""
@@ -160,13 +217,14 @@ def email_day7(first_name, company_name, proposal_url):
     <p style="font-size:14px;color:#6889A6;letter-spacing:.08em;text-transform:uppercase;margin:0 0 28px">White Haus Media</p>
     <p style="font-size:16px;margin:0 0 20px">Hey {first_name},</p>
     <p style="font-size:16px;margin:0 0 20px">One last check-in on the proposal for {company_name}. I don't want to keep filling your inbox if the timing isn't right.</p>
-    <p style="font-size:16px;margin:0 0 20px">If this isn't a priority right now, no problem — I'll follow up in a couple months. If you're ready to move forward or want to talk through any of it, the fastest way is to grab 20 minutes:</p>
-    <div style="margin:0 0 32px">
-      <a href="{CALENDLY_URL}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:14px 28px;font-size:14px;font-weight:600;letter-spacing:.04em;border-radius:6px">Book a 20-Minute Call</a>
+    <p style="font-size:16px;margin:0 0 28px">If this isn't a priority right now, no problem — I'll follow up in a couple months. If you're ready to move forward or want to talk through any of it, the fastest way is to grab 20 minutes:</p>
+    <div style="margin:0 0 28px">
+      <a href="{CALENDLY_URL}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.04em;border-radius:5px;font-family:'Helvetica Neue',Arial,sans-serif">Book a 20-Minute Call</a>
     </div>
-    <p style="font-size:16px;margin:0 0 8px">Rico</p>
-    <p style="font-size:14px;color:#6889A6;margin:0">White Haus Media · Wake Forest, NC</p>
-    <hr style="border:none;border-top:1px solid #EEE9E1;margin:32px 0">
+
+    {_signature_block()}
+
+    <hr style="border:none;border-top:1px solid #EEE9E1;margin:28px 0">
     <p style="font-size:12px;color:#8A8C90;margin:0">Reply to opt out — you won't hear from us again on this proposal.</p>
   </div>
 </div>"""
@@ -181,13 +239,14 @@ def email_nurture(first_name, company_name, proposal_url):
     <p style="font-size:14px;color:#6889A6;letter-spacing:.08em;text-transform:uppercase;margin:0 0 28px">White Haus Media</p>
     <p style="font-size:16px;margin:0 0 20px">Hey {first_name},</p>
     <p style="font-size:16px;margin:0 0 20px">Just checking back in. We still have the proposal for {company_name} ready to go whenever the timing makes sense.</p>
-    <p style="font-size:16px;margin:0 0 20px">We've been doing a lot of work with businesses in the Triangle recently — happy to share what's been working if it's helpful. Or if you're ready to revisit the project, the proposal is still live:</p>
-    <div style="margin:0 0 32px">
-      <a href="{proposal_url}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:14px 28px;font-size:14px;font-weight:600;letter-spacing:.04em;border-radius:6px">View Your Proposal</a>
+    <p style="font-size:16px;margin:0 0 28px">We've been doing a lot of work with businesses in the Triangle recently — happy to share what's been working if it's helpful. Or if you're ready to revisit, the proposal is still live:</p>
+    <div style="margin:0 0 28px">
+      <a href="{proposal_url}" style="display:inline-block;background:#102A43;color:#F8F7F3;text-decoration:none;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.04em;border-radius:5px;font-family:'Helvetica Neue',Arial,sans-serif">View Your Proposal</a>
     </div>
-    <p style="font-size:16px;margin:0 0 8px">Rico</p>
-    <p style="font-size:14px;color:#6889A6;margin:0">White Haus Media · Wake Forest, NC</p>
-    <hr style="border:none;border-top:1px solid #EEE9E1;margin:32px 0">
+
+    {_signature_block()}
+
+    <hr style="border:none;border-top:1px solid #EEE9E1;margin:28px 0">
     <p style="font-size:12px;color:#8A8C90;margin:0">Reply to opt out of future check-ins.</p>
   </div>
 </div>"""
