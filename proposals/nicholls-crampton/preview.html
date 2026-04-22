@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicholls &amp; Crampton, P.A. — Attorneys at Law, Raleigh NC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0e1d2b;--gold:#b89b5e;--cream:#faf7f0;--line:#d9cfb8;--text:#2a323c;--muted:#6b7685;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.75;}
+.banner{position:sticky;top:0;z-index:200;background:#102A43;color:#CEC195;padding:10px 20px;text-align:center;font-size:13px;}
+.banner a{color:#CEC195;font-weight:500;text-decoration:underline;margin-left:10px;}
+nav{background:var(--ink);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(184,155,94,.2);}
+.logo{color:#fff;font-family:'Playfair Display',serif;font-weight:600;font-size:22px;letter-spacing:0.01em;}
+.logo .amp{color:var(--gold);font-style:italic;font-weight:400;}
+nav ul{display:flex;gap:40px;list-style:none;}
+nav ul a{color:#e8eef5;text-decoration:none;font-size:14px;letter-spacing:0.02em;font-weight:400;transition:color .2s;}
+nav ul a:hover{color:var(--gold);}
+.nav-cta{color:var(--ink);background:var(--gold);padding:10px 24px;text-decoration:none;font-weight:500;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;transition:background .2s;}
+.nav-cta:hover{background:#a08648;}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:620px;}
+.hero-left{padding:100px 60px;background:var(--cream);display:flex;flex-direction:column;justify-content:center;}
+.hero-right{background:var(--ink);position:relative;overflow:hidden;}
+.hero-right::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;border:1px solid rgba(184,155,94,.25);border-radius:50%;}
+.hero-right::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;border:1px solid rgba(184,155,94,.4);border-radius:50%;}
+.hero-seal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-family:'Playfair Display',serif;font-size:18px;letter-spacing:0.3em;text-align:center;}
+.hero-seal .big{font-size:56px;letter-spacing:0;display:block;margin:12px 0;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:inline-block;padding-bottom:8px;border-bottom:1px solid var(--gold);}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4.4vw,52px);font-weight:600;line-height:1.15;letter-spacing:-0.01em;color:var(--ink);margin-bottom:28px;}
+.hero-left p{font-size:17px;color:var(--muted);max-width:520px;margin-bottom:36px;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{padding:14px 30px;text-decoration:none;font-weight:500;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;transition:all .2s;display:inline-block;}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:var(--gold);color:var(--ink);}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink);}
+.btn-ghost:hover{background:var(--ink);color:#fff;}
+.stats{background:#fff;padding:56px 40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.stat-label{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+.practices{padding:120px 40px;max-width:1200px;margin:0 auto;}
+.practices-head{max-width:700px;margin-bottom:64px;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,46px);font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:16px;}
+.practices-head p{color:var(--muted);font-size:17px;}
+.practices-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px;background:var(--line);border:1px solid var(--line);}
+.practice{background:#fff;padding:44px 36px;transition:all .4s;opacity:0;transform:translateY(24px);border-top:3px solid var(--gold);}
+.practice.revealed{opacity:1;transform:translateY(0);}
+.practice:hover{background:var(--cream);}
+.practice .icon{margin-bottom:28px;}
+.practice h3{font-family:'Playfair Display',serif;font-weight:600;font-size:22px;color:var(--ink);margin-bottom:12px;}
+.practice p{font-size:15px;color:var(--muted);margin-bottom:18px;}
+.practice a{color:var(--ink);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;}
+.quote{background:var(--ink);color:#fff;padding:140px 40px;text-align:center;position:relative;}
+.quote::before{content:"\201C";position:absolute;top:40px;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:160px;color:var(--gold);opacity:.2;line-height:1;}
+.quote-inner{max-width:840px;margin:0 auto;position:relative;}
+.quote blockquote{font-family:'Playfair Display',serif;font-weight:400;font-style:italic;font-size:clamp(22px,2.8vw,30px);line-height:1.5;margin-bottom:40px;color:#fff;}
+.quote cite{font-style:normal;font-size:13px;color:rgba(255,255,255,.6);letter-spacing:0.15em;text-transform:uppercase;}
+.quote cite strong{color:var(--gold);font-weight:500;display:block;margin-bottom:6px;font-family:'DM Sans';letter-spacing:0.02em;text-transform:none;font-size:15px;}
+.cta{padding:120px 40px;text-align:center;background:var(--cream);}
+.cta h2{margin-bottom:16px;}
+.cta p{color:var(--muted);font-size:17px;max-width:580px;margin:0 auto 36px;}
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:60px 40px 30px;border-top:3px solid var(--gold);}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+footer .logo{color:#fff;margin-bottom:16px;}
+footer h4{color:#fff;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;font-weight:500;}
+footer ul{list-style:none;}
+footer ul li{margin-bottom:8px;font-size:14px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:12px;letter-spacing:0.08em;}
+@media(max-width:900px){.hero{grid-template-columns:1fr;}.hero-right{min-height:280px;}.hero-left{padding:60px 32px;}nav ul{display:none;}.footer-grid{grid-template-columns:1fr;gap:32px;}}
+</style>
+</head>
+<body>
+<div class="banner">Sample website designed by White Haus Media for Nicholls &amp; Crampton, P.A. <a href="index.html">View Proposal →</a></div>
+
+<nav>
+  <div class="logo">Nicholls <span class="amp">&amp;</span> Crampton</div>
+  <ul>
+    <li><a href="#">Attorneys</a></li>
+    <li><a href="#">Practice Areas</a></li>
+    <li><a href="#">Insights</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Consultation</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="eyebrow">Raleigh, North Carolina · Est. 1985</span>
+    <h1>A full-service law firm serving North Carolina families and businesses since 1985.</h1>
+    <p>Measured counsel. Board-certified attorneys. Super Lawyers recognition. Forty years of experience across litigation, estate planning, business law, and family matters — all in one firm.</p>
+    <div class="btns">
+      <a href="#" class="btn btn-primary">Request Consultation</a>
+      <a href="#" class="btn btn-ghost">Meet the Attorneys</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-seal">
+      EST.<span class="big">1985</span>RALEIGH · NC
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div><div class="stat-num">40+</div><div class="stat-label">Years Established</div></div>
+    <div><div class="stat-num">8</div><div class="stat-label">Practice Areas</div></div>
+    <div><div class="stat-num">Super</div><div class="stat-label">Lawyers Recognized</div></div>
+    <div><div class="stat-num">NC</div><div class="stat-label">Board Certified</div></div>
+  </div>
+</section>
+
+<section class="practices">
+  <div class="practices-head">
+    <span class="eyebrow">Practice Areas</span>
+    <h2>Counsel across the matters that shape a life and a business.</h2>
+    <p>From estate plans drafted for a single family to commercial litigation spanning years, our attorneys bring the same quiet rigor to every matter.</p>
+  </div>
+  <div class="practices-grid">
+    <div class="practice">
+      <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e1d2b" stroke-width="1.6"><path d="M12 2L3 6v6c0 5 3 9 9 10 6-1 9-5 9-10V6l-9-4z"/><path d="M8 12l3 3 5-6"/></svg></div>
+      <h3>Estate Planning</h3>
+      <p>Wills, trusts, probate, and wealth-transfer strategy. Structured protection for the next generation.</p>
+      <a href="#">Learn more →</a>
+    </div>
+    <div class="practice">
+      <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e1d2b" stroke-width="1.6"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M8 8V5a2 2 0 012-2h4a2 2 0 012 2v3"/></svg></div>
+      <h3>Business &amp; Corporate</h3>
+      <p>Entity formation, contracts, commercial disputes, and transactions for closely-held NC businesses.</p>
+      <a href="#">Learn more →</a>
+    </div>
+    <div class="practice">
+      <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e1d2b" stroke-width="1.6"><path d="M12 2v20M7 7l10 10M17 7L7 17"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <h3>Civil Litigation</h3>
+      <p>Represented clients in state and federal court for four decades. Preparation is how cases are won.</p>
+      <a href="#">Learn more →</a>
+    </div>
+    <div class="practice">
+      <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e1d2b" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14 18c0-2 1.5-3 3-3s3 1 3 3"/></svg></div>
+      <h3>Family Law</h3>
+      <p>Divorce, custody, separation, and support — handled with discretion by attorneys who've seen every situation.</p>
+      <a href="#">Learn more →</a>
+    </div>
+    <div class="practice">
+      <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e1d2b" stroke-width="1.6"><path d="M3 12l9-9 9 9M5 10v10h14V10"/><rect x="10" y="14" width="4" height="6"/></svg></div>
+      <h3>Real Estate</h3>
+      <p>Residential and commercial closings, title work, easements, and real-property disputes.</p>
+      <a href="#">Learn more →</a>
+    </div>
+    <div class="practice">
+      <div class="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0e1d2b" stroke-width="1.6"><path d="M6 3h12v6a6 6 0 01-12 0V3z"/><path d="M12 15v4M8 21h8"/></svg></div>
+      <h3>Appellate Practice</h3>
+      <p>Appeals at the NC Court of Appeals and Supreme Court. Precedent shapes the work we file.</p>
+      <a href="#">Learn more →</a>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="quote-inner">
+    <blockquote>The counsel we received was patient, direct, and delivered without a minute wasted. Exactly what our family needed, and exactly what we'll recommend to anyone facing a matter that requires serious attention.</blockquote>
+    <cite><strong>J. Harrison</strong>Estate Planning Client · Wake County</cite>
+  </div>
+</section>
+
+<section class="cta">
+  <span class="eyebrow">Consultation</span>
+  <h2>Request a confidential conversation.</h2>
+  <p>Initial consultations are scheduled within one business day. Tell us briefly about your matter and the appropriate attorney will be in touch directly.</p>
+  <div class="btns" style="justify-content:center;">
+    <a href="#" class="btn btn-primary">Request Consultation</a>
+    <a href="#" class="btn btn-ghost">Call (919) 781-1311</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo">Nicholls <span class="amp">&amp;</span> Crampton</div>
+      <p style="margin-bottom:12px;">Full-service North Carolina law firm. Raleigh-based since 1985.</p>
+      <p>4700 Homewood Court, Suite 108<br>Raleigh, NC 27609</p>
+    </div>
+    <div>
+      <h4>Practice</h4>
+      <ul><li>Estate Planning</li><li>Business Law</li><li>Litigation</li><li>Family Law</li><li>Real Estate</li></ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul><li>(919) 781-1311</li><li>Mon–Fri 8:30–5:30</li><li>By appointment</li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">Sample site by White Haus Media · © 2026 · Attorney advertising</div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('revealed'),i*90);io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.practice').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
