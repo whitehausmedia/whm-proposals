@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smiles of Cary — Family Dentistry in Cary, NC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --seafoam:#2E8B74;
+  --seafoam-light:#3EAF92;
+  --seafoam-pale:#EAF5F2;
+  --gold:#B8965A;
+  --gold-light:#CEB07A;
+  --warm-white:#FDFAF6;
+  --cream:#F5EFE5;
+  --navy:#1A2E3A;
+  --text:#243040;
+  --muted:#607080;
+  --border:rgba(36,48,64,.1);
+  --soft:#F0F7F5;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--warm-white);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+
+/* BANNER */
+.banner{background:var(--navy);color:rgba(255,255,255,.7);padding:9px 20px;text-align:center;font-size:12px;letter-spacing:.03em;}
+.banner a{color:var(--gold-light);font-weight:600;margin-left:8px;}
+
+/* NAV */
+.nav-wrap{background:var(--warm-white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(36,48,64,.06);}
+nav{max-width:1160px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-leaf{width:34px;height:34px;background:var(--seafoam-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.nav-logo-leaf svg{width:18px;height:18px;stroke:var(--seafoam);fill:none;stroke-width:1.6;}
+.nav-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:600;color:var(--navy);}
+.nav-brand span{color:var(--seafoam);}
+nav ul{display:flex;gap:32px;list-style:none;}
+nav ul a{font-size:.875rem;font-weight:500;color:var(--muted);transition:color .2s;}
+nav ul a:hover{color:var(--navy);}
+.nav-cta{background:var(--seafoam);color:#fff;padding:11px 24px;border-radius:100px;font-size:.85rem;font-weight:600;transition:all .2s;}
+.nav-cta:hover{background:var(--navy);transform:translateY(-1px);}
+
+/* HERO */
+.hero{padding:100px 32px 120px;background:var(--warm-white);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,var(--seafoam-pale) 0%,rgba(234,245,242,.3) 100%);clip-path:ellipse(85% 80% at 100% 50%);pointer-events:none;}
+.hero-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center;position:relative;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--seafoam-pale);color:var(--seafoam);padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:500;line-height:1.1;letter-spacing:-.02em;color:var(--navy);margin-bottom:20px;}
+.hero h1 em{font-style:italic;color:var(--seafoam);}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:500px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-size:.9rem;font-weight:600;transition:all .2s;cursor:pointer;}
+.btn-primary{background:var(--seafoam);color:#fff;}
+.btn-primary:hover{background:var(--navy);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--navy);border:1px solid rgba(36,48,64,.2);}
+.btn-ghost:hover{background:var(--navy);color:#fff;}
+.hero-card{background:var(--warm-white);border-radius:24px;padding:36px 28px;box-shadow:0 12px 48px rgba(36,48,64,.1);border:1px solid var(--border);}
+.hero-card-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--seafoam);margin-bottom:20px;}
+.form-field{margin-bottom:14px;}
+.form-field label{display:block;font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px;}
+.form-field input,.form-field select{width:100%;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:.875rem;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s;}
+.form-field input:focus,.form-field select:focus{border-color:var(--seafoam);}
+.form-submit{width:100%;background:var(--seafoam);color:#fff;padding:13px;border:none;border-radius:100px;font-size:.9rem;font-weight:700;font-family:inherit;cursor:pointer;margin-top:8px;transition:background .2s;}
+.form-submit:hover{background:var(--navy);}
+.form-note{text-align:center;font-size:.75rem;color:var(--muted);margin-top:10px;}
+
+/* TRUST BAR */
+.trust{background:var(--navy);padding:44px 32px;}
+.trust-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center;}
+.trust-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.6rem;font-weight:600;color:var(--gold-light);line-height:1;margin-bottom:5px;}
+.trust-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);}
+
+/* SERVICES */
+.services{padding:100px 32px;background:var(--warm-white);}
+.section-head{text-align:center;max-width:600px;margin:0 auto 64px;}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--seafoam);margin-bottom:14px;}
+h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:500;color:var(--navy);line-height:1.15;letter-spacing:-.015em;margin-bottom:14px;}
+.section-sub{font-size:.95rem;color:var(--muted);line-height:1.75;}
+.services-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.svc-card{background:var(--warm-white);border:1px solid var(--border);border-radius:20px;padding:36px 28px;transition:all .35s;}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(36,48,64,.09);border-color:rgba(46,139,116,.25);}
+.svc-icon-wrap{width:52px;height:52px;border-radius:12px;background:var(--seafoam-pale);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.svc-icon-wrap svg{width:24px;height:24px;stroke:var(--seafoam);fill:none;stroke-width:1.6;}
+.svc-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.svc-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
+
+/* ABOUT */
+.about{padding:100px 32px;background:var(--cream);}
+.about-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-visual{position:relative;}
+.about-frame{background:linear-gradient(135deg,var(--seafoam-pale) 0%,rgba(234,245,242,.5) 100%);border-radius:28px;padding:64px 40px;text-align:center;border:1px solid rgba(46,139,116,.15);}
+.about-initials{font-family:'Cormorant Garamond',Georgia,serif;font-size:5rem;font-weight:600;color:rgba(46,139,116,.2);line-height:1;margin-bottom:8px;}
+.about-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--seafoam);margin-bottom:6px;}
+.about-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:500;color:var(--navy);}
+.about-badge{position:absolute;bottom:-20px;left:-20px;background:var(--warm-white);border:1px solid var(--border);border-radius:16px;padding:16px 20px;box-shadow:0 8px 24px rgba(36,48,64,.1);}
+.about-badge-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:600;color:var(--seafoam);line-height:1;}
+.about-badge-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
+.about h2{margin-bottom:16px;}
+.about-body{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:18px;}
+.about-creds{display:flex;flex-direction:column;gap:10px;margin-top:24px;}
+.cred-row{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text);}
+.cred-mark{width:20px;height:20px;border-radius:50%;background:var(--seafoam-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cred-mark svg{width:11px;height:11px;stroke:var(--seafoam);fill:none;stroke-width:2.5;}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 32px;background:var(--warm-white);}
+.testimonials-inner{max-width:1160px;margin:0 auto;}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.testimonial-card{background:var(--cream);border-radius:20px;padding:36px 28px;border:1px solid var(--border);}
+.stars{display:flex;gap:3px;margin-bottom:14px;}
+.star{width:15px;height:15px;fill:var(--gold);}
+.testimonial-card blockquote{font-size:.9rem;color:var(--text);line-height:1.75;font-style:italic;margin-bottom:20px;}
+.reviewer{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border);}
+.reviewer-avatar{width:36px;height:36px;border-radius:50%;background:var(--seafoam-pale);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;color:var(--seafoam);}
+.reviewer-name{font-weight:700;font-size:.875rem;color:var(--navy);}
+.reviewer-detail{font-size:.75rem;color:var(--muted);}
+
+/* LOCATION */
+.location{padding:100px 32px;background:var(--cream);}
+.location-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.location h2{margin-bottom:12px;}
+.location-sub{font-size:.95rem;color:var(--muted);margin-bottom:36px;}
+.info-group{margin-bottom:24px;}
+.info-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--seafoam);margin-bottom:6px;}
+.info-value{font-size:.95rem;color:var(--text);line-height:1.7;}
+.map-frame{background:var(--seafoam-pale);border-radius:20px;height:320px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(46,139,116,.2);}
+.map-text{font-size:.875rem;font-weight:600;color:var(--seafoam);}
+
+/* CONTACT FORM */
+.contact{padding:100px 32px;background:var(--navy);}
+.contact-inner{max-width:680px;margin:0 auto;text-align:center;}
+.contact .eyebrow{color:var(--gold-light);}
+.contact h2{color:#fff;margin-bottom:12px;}
+.contact-sub{font-size:.95rem;color:rgba(255,255,255,.55);margin-bottom:48px;}
+.form-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:48px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-g{margin-bottom:16px;}
+.form-g label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:7px;}
+.form-g input,.form-g select,.form-g textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px 14px;font-size:.875rem;color:#fff;font-family:inherit;outline:none;transition:border-color .2s;}
+.form-g input:focus,.form-g select:focus,.form-g textarea:focus{border-color:var(--seafoam);}
+.form-g input::placeholder,.form-g textarea::placeholder{color:rgba(255,255,255,.25);}
+.form-g select option{background:var(--navy);}
+.form-g textarea{height:100px;resize:vertical;}
+.form-btn{width:100%;background:var(--seafoam);color:#fff;padding:15px;border:none;border-radius:100px;font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;margin-top:8px;transition:background .2s;}
+.form-btn:hover{background:var(--seafoam-light);}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,.55);padding:60px 32px 36px;}
+.footer-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:10px;}
+.footer-tagline{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.65;}
+footer h4{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:16px;}
+footer ul{list-style:none;}
+footer ul li{margin-bottom:9px;font-size:.875rem;}
+footer ul a:hover{color:#fff;}
+.footer-bottom{max-width:1160px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.3);}
+.footer-bottom a{color:rgba(184,150,90,.7);font-weight:500;}
+
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .about-inner{grid-template-columns:1fr;}
+  .about-visual{display:none;}
+  .location-inner{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  nav ul{display:none;}
+  .trust-grid{grid-template-columns:1fr 1fr;gap:28px;}
+  .services-grid{grid-template-columns:1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hero{padding:64px 24px 80px;}
+  .services,.about,.testimonials,.location,.contact{padding:64px 24px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+  .form-box{padding:32px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  Website concept designed by White Haus Media for Smiles of Cary &mdash; <a href="index.html">View Proposal &rarr;</a>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-leaf">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="10" x2="9.01" y2="10"/><line x1="15" y1="10" x2="15.01" y2="10"/></svg>
+      </div>
+      <div class="nav-brand">Smiles of <span>Cary</span></div>
+    </div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Appointment</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        Family Dentistry &middot; Cary, NC
+      </div>
+      <h1>A smile you'll love, a dentist you'll <em>trust.</em></h1>
+      <p class="hero-sub">Smiles of Cary has been caring for Triangle families for over a decade. Warm, unhurried appointments. Honest recommendations. A practice that feels like home.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">Book an Appointment</a>
+        <a href="#about" class="btn btn-ghost">Meet Dr. Ferzli</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Request Your Visit</div>
+      <div class="form-field">
+        <label>Your Name</label>
+        <input type="text" placeholder="Jane Smith">
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(919) 555-0100">
+      </div>
+      <div class="form-field">
+        <label>Visit Type</label>
+        <select>
+          <option>New Patient Exam &amp; Cleaning</option>
+          <option>Family Appointment</option>
+          <option>Cosmetic Consultation</option>
+          <option>Emergency Visit</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="form-submit">Request Appointment &rarr;</button>
+      <p class="form-note">Most new patients seen within the week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust">
+  <div class="trust-grid">
+    <div>
+      <div class="trust-num">4.9&#9733;</div>
+      <div class="trust-label">Google Rating</div>
+    </div>
+    <div>
+      <div class="trust-num">15+</div>
+      <div class="trust-label">Years Serving Cary</div>
+    </div>
+    <div>
+      <div class="trust-num">4,500+</div>
+      <div class="trust-label">Patients Cared For</div>
+    </div>
+    <div>
+      <div class="trust-num">All Ages</div>
+      <div class="trust-label">Family &amp; Children Welcome</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-head">
+    <span class="eyebrow">What We Offer</span>
+    <h2>Complete care for every smile in your family.</h2>
+    <p class="section-sub">General checkups to full smile makeovers — we handle it all under one roof, with the same warm team every visit.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M12 2L4 7v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-5z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h3>General Dentistry</h3>
+      <p>Cleanings, exams, fillings, and X-rays. Preventive care that keeps your whole family healthy and cavity-free year after year.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r=".6" fill="#2E8B74"/><circle cx="15" cy="10" r=".6" fill="#2E8B74"/></svg>
+      </div>
+      <h3>Cosmetic Dentistry</h3>
+      <p>Professional whitening, porcelain veneers, and Invisalign clear aligners. Smile transformations that look completely natural.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Family Dentistry</h3>
+      <p>From your toddler's first visit to your parents' regular maintenance — we care for every generation with patience and warmth.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+      </div>
+      <h3>Restorative Care</h3>
+      <p>Crowns, bridges, and tooth-colored fillings that restore function beautifully. We fix what's broken and make it look like it never was.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M3 12c0-5 4-9 9-9s9 4 9 9c0 2-1 5-3 7-1 1-2 1-3 0-1-1-2-3-3-3s-2 2-3 3c-1 1-2 1-3 0-2-2-3-5-3-7z"/></svg>
+      </div>
+      <h3>Dental Implants</h3>
+      <p>Permanent, natural-feeling tooth replacement that looks and functions exactly like your original teeth — for life.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Emergency Dentistry</h3>
+      <p>Dental emergencies don't wait for business hours. Same-day care for toothaches, broken teeth, and urgent needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-frame">
+        <div class="about-initials">CF</div>
+        <div class="about-title">Your Dentist</div>
+        <div class="about-name">Dr. Charles Ferzli, DDS</div>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">15+</div>
+        <div class="about-badge-label">Years<br>Serving Cary</div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">About the Practice</span>
+      <h2>Dentistry built around people, not procedures.</h2>
+      <p class="about-body">Dr. Charles Ferzli opened Smiles of Cary because he believed patients deserved better — not just technically excellent care, but a practice where they actually felt comfortable walking in the door.</p>
+      <p class="about-body">Over 15 years later, that philosophy still drives every appointment. No upselling. No rushing. Just honest, thorough care delivered by a team that knows your name and remembers your story.</p>
+      <div class="about-creds">
+        <div class="cred-row">
+          <div class="cred-mark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Doctor of Dental Surgery (DDS)
+        </div>
+        <div class="cred-row">
+          <div class="cred-mark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Advanced training in cosmetic and restorative dentistry
+        </div>
+        <div class="cred-row">
+          <div class="cred-mark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Member, American Dental Association
+        </div>
+        <div class="cred-row">
+          <div class="cred-mark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          Proudly serving Cary, Apex, and the Triangle since 2010
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="testimonials-inner">
+    <div class="section-head">
+      <span class="eyebrow">Patient Stories</span>
+      <h2>What our patients are saying.</h2>
+      <p class="section-sub">The Cary community has trusted Smiles of Cary for over a decade. Here's what they say about their experience.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Dr. Ferzli is the kind of dentist you wish you'd found years earlier. He explained everything without making me feel talked at, and the team is genuinely kind. Our whole family comes here — and my kids actually look forward to it."</blockquote>
+        <div class="reviewer">
+          <div class="reviewer-avatar">AP</div>
+          <div>
+            <div class="reviewer-name">Amanda P.</div>
+            <div class="reviewer-detail">Cary, NC &middot; Patient since 2018</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"I had a dental emergency on a Friday afternoon and they got me in same day. Absolutely no hesitation. Dr. Ferzli fixed the issue quickly and followed up the next week to check on me. That kind of care is rare and I won't go anywhere else."</blockquote>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JM</div>
+          <div>
+            <div class="reviewer-name">James M.</div>
+            <div class="reviewer-detail">Apex, NC &middot; Patient since 2020</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Had Invisalign done here and the process was seamless from start to finish. Dr. Ferzli checked in at every stage and the results are better than I imagined. The office is clean, modern, and the team makes you feel genuinely welcome every time."</blockquote>
+        <div class="reviewer">
+          <div class="reviewer-avatar">RL</div>
+          <div>
+            <div class="reviewer-name">Rachel L.</div>
+            <div class="reviewer-detail">Cary, NC &middot; Patient since 2021</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION & HOURS -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div>
+      <span class="eyebrow">Visit Us</span>
+      <h2>Conveniently located in Cary, NC.</h2>
+      <p class="location-sub">Right off Kildaire Farm Road with easy parking. Close to downtown Cary and easily accessible from Apex and Morrisville.</p>
+      <div class="info-group">
+        <div class="info-label">Address</div>
+        <div class="info-value">Cary, NC<br>Serving Cary, Apex, Morrisville &amp; surrounding areas</div>
+      </div>
+      <div class="info-group">
+        <div class="info-label">Office Hours</div>
+        <div class="info-value">Monday &ndash; Thursday: 8:00am &ndash; 5:00pm<br>Friday: 8:00am &ndash; 2:00pm<br>Saturday &amp; Sunday: Closed</div>
+      </div>
+      <div class="info-group">
+        <div class="info-label">Phone</div>
+        <div class="info-value">(919) 555-0140</div>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="margin-top:8px;">Book an Appointment</a>
+    </div>
+    <div>
+      <div class="map-frame">
+        <span class="map-text">Cary, NC &mdash; Map Embed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <span class="eyebrow">Get Started</span>
+    <h2>Ready to book your visit?</h2>
+    <p class="contact-sub">New patients are always welcome. Most appointments available within the week. Fill out the form and we'll be in touch within one business day.</p>
+    <div class="form-box">
+      <div class="form-row">
+        <div class="form-g">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-g">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-g">
+          <label>Phone</label>
+          <input type="tel" placeholder="(919) 555-0100">
+        </div>
+        <div class="form-g">
+          <label>Email</label>
+          <input type="email" placeholder="jane@email.com">
+        </div>
+      </div>
+      <div class="form-g">
+        <label>Visit Type</label>
+        <select>
+          <option>New Patient Exam &amp; Cleaning</option>
+          <option>Family Appointment</option>
+          <option>Cosmetic Consultation</option>
+          <option>Invisalign Consultation</option>
+          <option>Emergency Visit</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-g">
+        <label>Anything we should know?</label>
+        <textarea placeholder="Dental anxiety, specific concerns, insurance info — anything helps."></textarea>
+      </div>
+      <button class="form-btn">Send Request &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Smiles of Cary</div>
+      <p class="footer-tagline">Warm, unhurried family dentistry. Serving Cary, Apex, and the Triangle with honest care since 2010.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li>General Dentistry</li>
+        <li>Cosmetic Dentistry</li>
+        <li>Family Dentistry</li>
+        <li>Restorative Care</li>
+        <li>Emergency Visits</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Practice</h4>
+      <ul>
+        <li><a href="#about">About Dr. Ferzli</a></li>
+        <li><a href="#reviews">Patient Reviews</a></li>
+        <li><a href="#location">Location &amp; Hours</a></li>
+        <li><a href="#contact">New Patients</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>Cary, NC</li>
+        <li>(919) 555-0140</li>
+        <li>Mon&ndash;Thu: 8am&ndash;5pm</li>
+        <li>Fri: 8am&ndash;2pm</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Smiles of Cary &middot; Cary, NC</span>
+    <span>Site by <a href="https://whitehausmedia.com">White Haus Media</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

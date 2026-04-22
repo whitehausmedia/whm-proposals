@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Core Studios — Morrisville, NC | Lagree Fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dark:#0D0D0D;
+  --dark2:#161616;
+  --dark3:#1E1E1E;
+  --coral:#E8553A;
+  --coral-light:#F0714F;
+  --coral-dim:rgba(232,85,58,.12);
+  --coral-border:rgba(232,85,58,.3);
+  --white:#FFFFFF;
+  --off-white:#F5F5F2;
+  --text-primary:rgba(255,255,255,.92);
+  --text-secondary:rgba(255,255,255,.55);
+  --text-muted:rgba(255,255,255,.3);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--dark);color:var(--text-primary);-webkit-font-smoothing:antialiased;line-height:1.6;font-size:16px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;background:rgba(13,13,13,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;height:68px}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--white)}
+.nav-brand em{color:var(--coral);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-secondary);letter-spacing:.02em;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--coral);color:var(--white);padding:10px 22px;border-radius:6px;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .2s}
+.nav-cta:hover{background:var(--coral-light);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;background:var(--dark);position:relative;overflow:hidden;padding:120px 40px 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(232,85,58,.08) 0%,transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1}
+.hero-eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--coral);margin-bottom:20px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:5.5rem;font-weight:900;line-height:.95;text-transform:uppercase;color:var(--white);margin-bottom:24px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero-sub{font-size:1.05rem;color:var(--text-secondary);line-height:1.7;margin-bottom:36px;max-width:420px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:var(--white);padding:14px 28px;border-radius:6px;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .2s}
+.btn-primary:hover{background:var(--coral-light);transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;color:var(--text-secondary);padding:14px 24px;border-radius:6px;font-size:.9rem;font-weight:600;letter-spacing:.02em;border:1px solid var(--border);transition:all .2s}
+.btn-outline:hover{border-color:var(--coral-border);color:var(--white)}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-card{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:420px;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--coral)}
+.hero-card-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--coral);margin-bottom:16px}
+.hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+.hero-stat{text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid var(--border)}
+.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:800;color:var(--white);line-height:1}
+.hero-stat-label{font-size:.72rem;color:var(--text-muted);margin-top:4px;letter-spacing:.04em}
+.hero-tagline{font-size:.88rem;color:var(--text-secondary);text-align:center;line-height:1.5;padding-top:20px;border-top:1px solid var(--border)}
+
+/* WHAT IS LAGREE */
+.what{padding:100px 40px;background:var(--dark2)}
+.what-inner{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--coral);margin-bottom:16px}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:16px;letter-spacing:-.01em}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.what-body{font-size:.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:24px}
+.what-features{display:flex;flex-direction:column;gap:0}
+.what-feature{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
+.what-feature:first-child{border-top:1px solid var(--border)}
+.what-feature-icon{width:36px;height:36px;background:var(--coral-dim);border:1px solid var(--coral-border);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+.what-feature-text h4{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.what-feature-text p{font-size:.83rem;color:var(--text-secondary);line-height:1.6}
+.megaformer-card{background:var(--dark3);border:1px solid var(--border);border-radius:20px;padding:48px 36px;text-align:center}
+.megaformer-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--coral);margin-bottom:24px}
+.megaformer-graphic{width:100%;height:180px;background:linear-gradient(135deg,rgba(232,85,58,.06) 0%,rgba(255,255,255,.02) 100%);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;font-size:.8rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+.megaformer-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.m-stat{text-align:center}
+.m-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:800;color:var(--coral)}
+.m-stat-label{font-size:.7rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+
+/* WHY IT WORKS */
+.why{padding:100px 40px;background:var(--dark)}
+.why-inner{max-width:1200px;margin:0 auto}
+.why-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.why-card{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:36px 28px;position:relative;overflow:hidden;transition:all .3s}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--coral);opacity:0;transition:opacity .3s}
+.why-card:hover{border-color:var(--coral-border)}
+.why-card:hover::before{opacity:1}
+.why-card-num{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:900;color:rgba(232,85,58,.15);line-height:1;margin-bottom:16px}
+.why-card h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:10px}
+.why-card p{font-size:.85rem;color:var(--text-secondary);line-height:1.65}
+
+/* SCHEDULE */
+.schedule{padding:100px 40px;background:var(--dark2)}
+.schedule-inner{max-width:1200px;margin:0 auto}
+.schedule-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:48px}
+.day-col{background:var(--dark3);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.day-header{background:var(--coral);padding:12px;text-align:center;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--white)}
+.day-classes{padding:12px;display:flex;flex-direction:column;gap:8px}
+.class-slot{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+.class-time{font-size:.68rem;font-weight:700;color:var(--coral);letter-spacing:.04em;margin-bottom:2px}
+.class-name{font-size:.78rem;font-weight:600;color:var(--text-primary)}
+.class-instructor{font-size:.7rem;color:var(--text-muted)}
+.class-slot.full{opacity:.5}
+.class-slot.full .class-name::after{content:' — FULL';color:var(--text-muted);font-size:.65rem}
+.schedule-cta{text-align:center;margin-top:36px}
+
+/* INSTRUCTORS */
+.instructors{padding:100px 40px;background:var(--dark)}
+.instructors-inner{max-width:1200px;margin:0 auto}
+.instructor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.instructor-card{background:var(--dark2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s}
+.instructor-card:hover{border-color:var(--coral-border);transform:translateY(-3px)}
+.instructor-photo{height:260px;background:linear-gradient(160deg,var(--dark3) 0%,rgba(232,85,58,.08) 100%);display:flex;align-items:center;justify-content:center;position:relative}
+.instructor-placeholder{width:80px;height:80px;background:rgba(232,85,58,.15);border:2px solid var(--coral-border);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.instructor-placeholder svg{width:36px;height:36px;stroke:var(--coral);fill:none;stroke-width:1.5}
+.instructor-badge{position:absolute;bottom:16px;right:16px;background:var(--coral);color:var(--white);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:100px}
+.instructor-info{padding:24px}
+.instructor-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.instructor-title{font-size:.78rem;font-weight:600;color:var(--coral);margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase}
+.instructor-bio{font-size:.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:16px}
+.instructor-certs{display:flex;flex-wrap:wrap;gap:6px}
+.cert-tag{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:100px;padding:4px 10px;font-size:.68rem;color:var(--text-muted);font-weight:500}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 40px;background:var(--dark2)}
+.testimonials-inner{max-width:1200px;margin:0 auto}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.testimonial-card{background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--coral);opacity:.4}
+.testimonial-quote{font-size:.9rem;color:var(--text-secondary);line-height:1.75;margin-bottom:24px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:40px;height:40px;background:var(--coral-dim);border:1px solid var(--coral-border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--coral)}
+.testimonial-name{font-size:.88rem;font-weight:700;color:var(--white)}
+.testimonial-result{font-size:.75rem;color:var(--coral);font-weight:600;margin-top:2px}
+.testimonial-stars{color:var(--coral);font-size:.8rem;margin-bottom:16px;letter-spacing:2px}
+
+/* TRIAL CTA */
+.trial{padding:100px 40px;background:linear-gradient(135deg,#0D0D0D 0%,#1a0a07 100%);position:relative;overflow:hidden}
+.trial::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(232,85,58,.06) 0%,transparent 60%)}
+.trial-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.trial h2{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.0;margin-bottom:20px}
+.trial h2 em{font-style:normal;color:var(--coral)}
+.trial p{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:36px}
+.trial-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.trial-note{font-size:.78rem;color:var(--text-muted);margin-top:20px}
+
+/* LOCATION */
+.location{padding:80px 40px;background:var(--dark)}
+.location-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.location h2{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:28px}
+.info-block{margin-bottom:24px}
+.info-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--coral);margin-bottom:6px}
+.info-value{font-size:.92rem;color:var(--text-secondary);line-height:1.6}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hour-row{display:flex;justify-content:space-between;font-size:.85rem;padding:8px 0;border-bottom:1px solid var(--border)}
+.hour-row:last-child{border:none}
+.hour-day{color:var(--text-secondary)}
+.hour-time{color:var(--white);font-weight:600}
+.contact-form{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:36px}
+.contact-form h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.contact-form p{font-size:.82rem;color:var(--text-secondary);margin-bottom:24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:.88rem;color:var(--text-primary);font-family:inherit;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--coral-border)}
+.form-group textarea{height:90px;resize:vertical}
+.form-group select option{background:var(--dark2)}
+.form-submit{width:100%;background:var(--coral);color:var(--white);border:none;padding:14px;border-radius:8px;font-size:.9rem;font-weight:700;font-family:inherit;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;transition:all .2s;margin-top:8px}
+.form-submit:hover{background:var(--coral-light)}
+
+/* FOOTER */
+.footer{padding:48px 40px;background:var(--dark2);border-top:1px solid var(--border)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.footer-brand em{color:var(--coral);font-style:normal}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:.8rem;color:var(--text-muted);transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:.75rem;color:var(--text-muted)}
+
+@media(max-width:900px){
+  .hero-grid,.what-grid,.location-inner{grid-template-columns:1fr}
+  .why-cards,.instructor-grid,.testimonial-grid{grid-template-columns:1fr}
+  .schedule-grid{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:3.5rem}
+  .nav-links{display:none}
+  .hero{padding:100px 24px 60px}
+  .what,.why,.schedule,.instructors,.testimonials,.trial,.location{padding:64px 24px}
+  .megaformer-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Elite <em>Core</em> Studios</div>
+    <ul class="nav-links">
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#team">Instructors</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://calendly.com/whitehausmedia" class="nav-cta">Book a Trial Class</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Lagree Fitness · Morrisville, NC</div>
+      <h1>The most effective<br><em>50 minutes</em><br>of your life.</h1>
+      <p class="hero-sub">High-intensity. Low-impact. Real results. Lagree on the Megaformer is unlike anything you've tried — and it shows in the body you build.</p>
+      <div class="hero-btns">
+        <a href="https://calendly.com/whitehausmedia" class="btn-primary">Book a Trial Class</a>
+        <a href="#method" class="btn-outline">What is Lagree?</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-label">Why members stay</div>
+        <div class="hero-stat-grid">
+          <div class="hero-stat">
+            <div class="hero-stat-num">600+</div>
+            <div class="hero-stat-label">Calories/session</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">50</div>
+            <div class="hero-stat-label">Min. per class</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">0</div>
+            <div class="hero-stat-label">High-impact moves</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">Full body workout</div>
+          </div>
+        </div>
+        <p class="hero-tagline">Slow, controlled movements. Maximum muscle activation. Zero joint damage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS LAGREE -->
+<section class="what" id="method">
+  <div class="what-inner">
+    <div class="section-eyebrow">The Method</div>
+    <div class="what-grid">
+      <div>
+        <h2 class="section-title">What is<br>Lagree?</h2>
+        <p class="what-body">Lagree is a science-backed training method developed by Sebastien Lagree — combining the principles of Pilates, strength training, and endurance into a single, continuous 50-minute session on the Megaformer machine.</p>
+        <p class="what-body">Unlike traditional Pilates, Lagree keeps your muscles under constant tension through slow, deliberate movements — which means more muscle fiber recruitment, more metabolic demand, and faster visible results. It's not cardio. It's not weightlifting. It's both — without the impact.</p>
+        <div class="what-features">
+          <div class="what-feature">
+            <div class="what-feature-icon">&#9889;</div>
+            <div class="what-feature-text">
+              <h4>High-intensity, low-impact</h4>
+              <p>Your heart rate stays elevated throughout, but there's zero jumping, pounding, or joint stress. Sustainable for life.</p>
+            </div>
+          </div>
+          <div class="what-feature">
+            <div class="what-feature-icon">&#127919;</div>
+            <div class="what-feature-text">
+              <h4>Slow is the secret</h4>
+              <p>Movements take 10–14 seconds each way. That time under tension is what makes Lagree dramatically more effective than faster methods.</p>
+            </div>
+          </div>
+          <div class="what-feature">
+            <div class="what-feature-icon">&#9878;</div>
+            <div class="what-feature-text">
+              <h4>Infinitely modifiable</h4>
+              <p>Every exercise adjusts for your fitness level via spring tension. Beginners and athletes work side by side in the same class.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="megaformer-card">
+        <div class="megaformer-label">The Megaformer Machine</div>
+        <div class="megaformer-graphic">Megaformer Illustration</div>
+        <div class="megaformer-stats">
+          <div class="m-stat">
+            <div class="m-stat-num">600+</div>
+            <div class="m-stat-label">Exercise variations</div>
+          </div>
+          <div class="m-stat">
+            <div class="m-stat-num">5</div>
+            <div class="m-stat-label">Spring resistance levels</div>
+          </div>
+          <div class="m-stat">
+            <div class="m-stat-num">1</div>
+            <div class="m-stat-label">Machine. Total body.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WORKS -->
+<section class="why">
+  <div class="why-inner">
+    <div class="section-eyebrow">The Results</div>
+    <h2 class="section-title">Three reasons Lagree works<br>when everything else plateaus.</h2>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-card-num">01</div>
+        <h3>Full body in every single session</h3>
+        <p>Every class at Elite Core hits every major muscle group — core, glutes, legs, arms, back — in 50 minutes. No split days. No wasted sessions. Just consistent, full-body activation that produces visible changes in 8 to 12 sessions.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">02</div>
+        <h3>Low-impact means you can actually keep going</h3>
+        <p>Traditional HIIT destroys your joints and requires rest days. Lagree's controlled, spring-loaded movements create intense muscular work with zero concussive force — which means you can train 3 to 5 times a week without burning out.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-num">03</div>
+        <h3>Modify for any level, every time</h3>
+        <p>Whether you're recovering from an injury, completely new to fitness, or a trained athlete looking for a new challenge — Lagree scales to you. Our instructors guide every spring tension change in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASS SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="schedule-inner">
+    <div class="section-eyebrow">Weekly Schedule</div>
+    <h2 class="section-title">Find your class.</h2>
+    <div class="schedule-grid">
+      <div class="day-col">
+        <div class="day-header">Monday</div>
+        <div class="day-classes">
+          <div class="class-slot">
+            <div class="class-time">6:00 AM</div>
+            <div class="class-name">Lagree Foundations</div>
+            <div class="class-instructor">with Sarah M.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">9:00 AM</div>
+            <div class="class-name">Core Burn</div>
+            <div class="class-instructor">with Jamie L.</div>
+          </div>
+          <div class="class-slot full">
+            <div class="class-time">12:00 PM</div>
+            <div class="class-name">Lagree Express</div>
+            <div class="class-instructor">with Sarah M.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">6:00 PM</div>
+            <div class="class-name">Power Lagree</div>
+            <div class="class-instructor">with Tyler R.</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-col">
+        <div class="day-header">Tuesday</div>
+        <div class="day-classes">
+          <div class="class-slot">
+            <div class="class-time">7:00 AM</div>
+            <div class="class-name">Lagree Foundations</div>
+            <div class="class-instructor">with Jamie L.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">10:00 AM</div>
+            <div class="class-name">Glute Focus</div>
+            <div class="class-instructor">with Tyler R.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">5:30 PM</div>
+            <div class="class-name">Core Burn</div>
+            <div class="class-instructor">with Sarah M.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">7:00 PM</div>
+            <div class="class-name">Lagree Classic</div>
+            <div class="class-instructor">with Jamie L.</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-col">
+        <div class="day-header">Wednesday</div>
+        <div class="day-classes">
+          <div class="class-slot">
+            <div class="class-time">6:00 AM</div>
+            <div class="class-name">Power Lagree</div>
+            <div class="class-instructor">with Tyler R.</div>
+          </div>
+          <div class="class-slot full">
+            <div class="class-time">9:00 AM</div>
+            <div class="class-name">Core Burn</div>
+            <div class="class-instructor">with Sarah M.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">12:00 PM</div>
+            <div class="class-name">Lagree Express</div>
+            <div class="class-instructor">with Jamie L.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">6:00 PM</div>
+            <div class="class-name">Lagree Classic</div>
+            <div class="class-instructor">with Tyler R.</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-col">
+        <div class="day-header">Thursday</div>
+        <div class="day-classes">
+          <div class="class-slot">
+            <div class="class-time">7:00 AM</div>
+            <div class="class-name">Lagree Foundations</div>
+            <div class="class-instructor">with Sarah M.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">10:00 AM</div>
+            <div class="class-name">Glute Focus</div>
+            <div class="class-instructor">with Jamie L.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">5:30 PM</div>
+            <div class="class-name">Power Lagree</div>
+            <div class="class-instructor">with Tyler R.</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-col">
+        <div class="day-header">Friday</div>
+        <div class="day-classes">
+          <div class="class-slot">
+            <div class="class-time">6:00 AM</div>
+            <div class="class-name">Core Burn</div>
+            <div class="class-instructor">with Sarah M.</div>
+          </div>
+          <div class="class-slot">
+            <div class="class-time">9:00 AM</div>
+            <div class="class-name">Lagree Classic</div>
+            <div class="class-instructor">with Tyler R.</div>
+          </div>
+          <div class="class-slot full">
+            <div class="class-time">12:00 PM</div>
+            <div class="class-name">Lagree Express</div>
+            <div class="class-instructor">with Jamie L.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="schedule-cta">
+      <a href="https://calendly.com/whitehausmedia" class="btn-primary">Book Your Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS -->
+<section class="instructors" id="team">
+  <div class="instructors-inner">
+    <div class="section-eyebrow">Your Instructors</div>
+    <h2 class="section-title">Trained to push you<br>in all the right ways.</h2>
+    <div class="instructor-grid">
+      <div class="instructor-card">
+        <div class="instructor-photo">
+          <div class="instructor-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="instructor-badge">Lead Instructor</span>
+        </div>
+        <div class="instructor-info">
+          <div class="instructor-name">Sarah Mitchell</div>
+          <div class="instructor-title">Lagree Certified · 5 Years</div>
+          <p class="instructor-bio">Sarah discovered Lagree after a knee injury ended her running career and never looked back. She specializes in modifications for injury rehabilitation and helping complete beginners find their confidence on the Megaformer.</p>
+          <div class="instructor-certs">
+            <span class="cert-tag">Lagree Certified</span>
+            <span class="cert-tag">CPR/AED</span>
+            <span class="cert-tag">Pre/Postnatal</span>
+          </div>
+        </div>
+      </div>
+      <div class="instructor-card">
+        <div class="instructor-photo">
+          <div class="instructor-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="instructor-badge">Instructor</span>
+        </div>
+        <div class="instructor-info">
+          <div class="instructor-name">Jamie Liu</div>
+          <div class="instructor-title">Lagree Certified · 3 Years</div>
+          <p class="instructor-bio">Jamie came from a classical dance background and immediately recognized the precision Lagree demands. Her classes are known for creative sequencing that keeps regulars challenged while welcoming new faces every session.</p>
+          <div class="instructor-certs">
+            <span class="cert-tag">Lagree Certified</span>
+            <span class="cert-tag">NASM-CPT</span>
+            <span class="cert-tag">Mobility Specialist</span>
+          </div>
+        </div>
+      </div>
+      <div class="instructor-card">
+        <div class="instructor-photo">
+          <div class="instructor-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="instructor-badge">Instructor</span>
+        </div>
+        <div class="instructor-info">
+          <div class="instructor-name">Tyler Reeves</div>
+          <div class="instructor-title">Lagree Certified · 2 Years</div>
+          <p class="instructor-bio">Tyler is a former collegiate athlete who found Lagree while looking for a training method that built functional strength without the chronic injuries. His Power Lagree class is the most booked in the studio every week.</p>
+          <div class="instructor-certs">
+            <span class="cert-tag">Lagree Certified</span>
+            <span class="cert-tag">CSCS</span>
+            <span class="cert-tag">Nutrition Coach</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-eyebrow">Member Results</div>
+    <h2 class="section-title">Real people. Real results.<br>Real Lagree.</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">"I lost 18 pounds and two dress sizes in 3 months — but the real change was how I feel. I'm stronger than I've ever been in my life. My chronic back pain is completely gone. I tell everyone I know about this place."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">KM</div>
+          <div>
+            <div class="testimonial-name">Kristen M.</div>
+            <div class="testimonial-result">Member for 8 months · -18 lbs</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">"As someone who never worked out a day in my life, I was terrified to walk in. Sarah had me feeling capable in my first class. Three months later I'm coming 4 times a week and I've completely changed my relationship with my body."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DP</div>
+          <div>
+            <div class="testimonial-name">David P.</div>
+            <div class="testimonial-result">Member for 3 months · First fitness routine ever</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">"I've done every trendy fitness thing — barre, CrossFit, OrangeTheory. Nothing stuck like Lagree. It's genuinely hard, it's never boring, and I can see the difference in my body every week. Elite Core is the best studio I've walked into."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AT</div>
+          <div>
+            <div class="testimonial-name">Ashley T.</div>
+            <div class="testimonial-result">Member for 6 months · Tried 5+ studio concepts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL CTA -->
+<section class="trial">
+  <div class="trial-inner">
+    <div class="section-eyebrow">Get Started</div>
+    <h2>Your first class<br>is on <em>us.</em></h2>
+    <p>Try a full Lagree session at Elite Core Studios — no experience necessary, no commitment required. Just show up and we'll take it from there.</p>
+    <div class="trial-btns">
+      <a href="https://calendly.com/whitehausmedia" class="btn-primary">Book My Trial Class</a>
+    </div>
+    <p class="trial-note">First trial class complimentary for new members · Morrisville, NC</p>
+  </div>
+</section>
+
+<!-- LOCATION & CONTACT -->
+<section class="location" id="contact">
+  <div class="location-inner">
+    <div>
+      <h2>Find us in<br>Morrisville.</h2>
+      <div class="info-block">
+        <div class="info-label">Address</div>
+        <div class="info-value">123 Elite Drive, Suite 200<br>Morrisville, NC 27560</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Phone</div>
+        <div class="info-value">(919) 555-0190</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Email</div>
+        <div class="info-value">info@elitecorestudios.com</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Studio Hours</div>
+        <div>
+          <div class="hour-row"><span class="hour-day">Monday – Friday</span><span class="hour-time">5:30 AM – 8:00 PM</span></div>
+          <div class="hour-row"><span class="hour-day">Saturday</span><span class="hour-time">7:00 AM – 2:00 PM</span></div>
+          <div class="hour-row"><span class="hour-day">Sunday</span><span class="hour-time">8:00 AM – 12:00 PM</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Have questions?</h3>
+      <p>We'll get back to you within a few hours.</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="First and last name">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label>What can we help with?</label>
+        <select>
+          <option>Booking a trial class</option>
+          <option>Membership options</option>
+          <option>Class schedule</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Any questions, concerns, or fitness goals you'd like to share..."></textarea>
+      </div>
+      <button class="form-submit">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Elite <em>Core</em> Studios</div>
+    <ul class="footer-links">
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#team">Instructors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Elite Core Studios · Morrisville, NC</div>
+  </div>
+</footer>
+
+</body>
+</html>
