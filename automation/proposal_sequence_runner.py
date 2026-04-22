@@ -7,15 +7,19 @@ Usage: python proposal_sequence_runner.py [--dry-run]
 """
 
 import json
+import os
 import sys
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
 
 # ─── Config ────────────────────────────────────────────────────────────────────
+# Load secrets from environment — set these before running:
+#   export WHM_SUPABASE_KEY="eyJ..."
+#   export WHM_RESEND_KEY="re_..."
 SUPABASE_URL  = "https://lpdbffncosplssshclqh.supabase.co"
-SUPABASE_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxwZGJmZm5jb3NwbHNzc2hjbHFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNzI3MzUsImV4cCI6MjA5MDg0ODczNX0.-V_F8OwlHxj9NDVZe_SbB4R4OLJjarrmpxMKf9Kl3z0"
-RESEND_KEY    = "re_HsU4c1Fs_4vsDKmtWjkzWp6J6gEvVX3yL"
+SUPABASE_KEY  = os.environ.get("WHM_SUPABASE_KEY", "")
+RESEND_KEY    = os.environ.get("WHM_RESEND_KEY", "")
 FROM_EMAIL    = "hello@send.whitehausmedia.com"
 REPLY_TO      = "hello@whitehausmedia.com"
 CALENDLY_URL  = "https://calendly.com/whitehausmedia"
