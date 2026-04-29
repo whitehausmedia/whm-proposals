@@ -1,3 +1,13 @@
 {
-  "trailingSlash": true
+    "trailingSlash": true,
+    "rewrites": [
+          {
+                  "source": "/proposals/ms-houston",
+                  "destination": "https://mshouston.vercel.app"
+          },
+          {
+                  "source": "/proposals/ms-houston/:path*",
+                  "destination": "https://mshouston.vercel.app/:path*"
+          }
+    ]
 }
